@@ -1,0 +1,52 @@
+.wrapper
+  max-width: 1000px
+  margin: 0 auto
+
+header
+  display: flex
+  flex-direction: column
+  background: #333
+
+  // nested flexbox container
+  .top-bar
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+
+    .logo
+      margin: 10px
+
+    nav
+      flex: 1
+      display: flex
+      justify-content: flex-end
+      align-items: baseline
+
+      a
+        text-transform: uppercase
+        margin: 0 20px 0 0
+
+        &:last-child
+          margin-right: 10px
+
+  // nested flexbox container
+  .hero
+    height: 60vh
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    color: $brand-primary
+    text-align: center
+
+    h1
+      border: 6px solid $brand-primary
+      text-transform: uppercase
+      padding: 15px 20px
+      margin: 0
+      line-height: 1
+      letter-spacing: 0.02em
+      font-size: 30px
+
+    .kicker
+      margin: 10px 0
