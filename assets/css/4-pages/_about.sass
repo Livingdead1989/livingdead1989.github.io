@@ -1,0 +1,58 @@
+
+// nested flexbox container
+.about-box-container
+  margin: 40px 0
+  display: flex
+  align-items: center
+  flex-wrap: wrap
+  justify-content: center
+
+  // selects any class with contains icon-
+  [class^="icon-"]
+    background: #ccc
+    border-radius: 50%
+    margin: 10px
+    width: 100px
+    height: 100px
+    display: flex
+    justify-content: center
+    align-items: center
+
+    &:hover
+      svg
+        path
+          fill: lighten($brand-primary, 15%)
+          transition: fill 0.2s
+
+    svg
+      height: 50px
+      width: 50px
+
+      path
+        fill: darken($brand-primary, 10%)
+
+  .icon-profile
+    width: 200px
+    height: 200px
+    background: url("http://fillmurray.com/200/200")
+    order: 3
+
+  .icon-twitter
+    order: 1
+  .icon-steam
+    order: 2
+  .icon-github
+    order: 4
+  .icon-codepen
+    order: 5
+
+.about
+  p
+    margin: 0
+    font-size: 16px
+    text-align: center
+    max-width: 600px
+    align-self: center
+
+    &::first-line
+      font-weight: 700
