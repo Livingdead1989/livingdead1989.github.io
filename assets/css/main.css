@@ -313,27 +313,37 @@ header {
       width: 50px; }
       .about-box-container [class^="icon-"] svg path {
         fill: #41671e; }
-  .about-box-container .icon-profile {
-    width: 200px;
-    height: 200px;
-    background: url("http://fillmurray.com/200/200");
-    order: 3; }
-  .about-box-container .icon-twitter {
+  .about-box-container .profile-wrap {
+    order: 3;
+    display: flex;
+    justify-content: center; }
+    .about-box-container .profile-wrap .icon-profile {
+      width: 200px;
+      height: 200px; }
+  .about-box-container [class^="social-wrap-"] {
+    display: flex;
+    justify-content: center; }
+  .about-box-container .social-wrap-twitter {
     order: 1; }
-  .about-box-container .icon-steam {
+  .about-box-container .social-wrap-steam {
     order: 2; }
-  .about-box-container .icon-github {
+  .about-box-container .social-wrap-github {
     order: 4; }
-  .about-box-container .icon-codepen {
+  .about-box-container .social-wrap-codepen {
     order: 5; }
+  @media screen and (max-width: 714px) {
+    .about-box-container .profile-wrap {
+      order: 0;
+      flex: 1 1 100%; } }
+  @media screen and (max-width: 494px) {
+    .about-box-container [class^="social-wrap-"] {
+      flex: 1 0 50%; } }
 
 .about p {
-  margin: 0;
+  margin: 0 20px;
   font-size: 16px;
   text-align: center;
   max-width: 600px;
   align-self: center; }
-  .about p::first-line {
-    font-weight: 700; }
 
 /*# sourceMappingURL=main.css.map */

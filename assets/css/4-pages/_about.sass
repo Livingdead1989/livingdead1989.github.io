@@ -31,28 +31,41 @@
       path
         fill: darken($brand-primary, 10%)
 
-  .icon-profile
-    width: 200px
-    height: 200px
-    background: url("http://fillmurray.com/200/200")
+  .profile-wrap
     order: 3
+    display: flex
+    justify-content: center
 
-  .icon-twitter
+    .icon-profile
+      width: 200px
+      height: 200px
+
+  [class^="social-wrap-"]
+    display: flex
+    justify-content: center
+
+  .social-wrap-twitter
     order: 1
-  .icon-steam
+  .social-wrap-steam
     order: 2
-  .icon-github
+  .social-wrap-github
     order: 4
-  .icon-codepen
+  .social-wrap-codepen
     order: 5
+
+  @media screen and (max-width: 714px)
+    .profile-wrap
+      order: 0
+      flex: 1 1 100%
+
+  @media screen and (max-width: 494px)
+    [class^="social-wrap-"]
+      flex: 1 0 50%
 
 .about
   p
-    margin: 0
+    margin: 0 20px
     font-size: 16px
     text-align: center
     max-width: 600px
     align-self: center
-
-    &::first-line
-      font-weight: 700
