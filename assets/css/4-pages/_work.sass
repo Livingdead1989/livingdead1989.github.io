@@ -1,4 +1,6 @@
 .work-flexwrap
+  max-width: 800px
+  align-self: center
   @extend .flexwrap
   margin:
     left: 20px
@@ -8,12 +10,12 @@
     background: white
     height: 130px
     width: 200px
-    background-size: cover
+    background-size: contain
     background: no-repeat center center
 
     display: flex
 
-    &:hover
+    &:hover, &:focus, &:active
 
       div
         background: rgba(darken($brand-primary, 50%), 0.8)
