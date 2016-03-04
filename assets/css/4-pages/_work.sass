@@ -1,12 +1,10 @@
 .work-flexwrap
   max-width: 800px
   align-self: center
-  @extend .flexwrap
+  @extend %flexwrap
 
   [class^="work-"]
     background: white
-    background-size: cover
-    background: no-repeat center center
     display: flex
 
     &:hover, &:focus, &:active
@@ -35,7 +33,7 @@
       font-size: 1.2em
 
   .work-one
-    background-image: url("http://lorempixel.com/800/400/technics/9")
+    background-image: url("http://lorempixel.com/240/130/technics/9")
   .work-two
     background-image: url("http://lorempixel.com/240/130/technics/4")
   .work-three

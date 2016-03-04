@@ -1,7 +1,7 @@
 
 // nested flexbox container
 .about-flexwrap
-  @extend .flexwrap
+  @extend %flexwrap
 
   // selects any class with contains icon-
   [class^="icon-"]
@@ -58,10 +58,9 @@
     [class^="social-wrap-"]
       flex: 1 0 50%
 
-.about
+#about
   p
     margin: 0 20px
-    font-size: 16px
     text-align: center
     max-width: 600px
     align-self: center

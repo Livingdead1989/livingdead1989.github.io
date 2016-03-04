@@ -51,3 +51,12 @@ header
 
     .kicker
       margin: 10px 0
+      display: flex
+
+      & > *::after
+        content: "//"
+        margin: 0 6px
+
+      & > *:last-child::after
+        content: ""
+        margin: 0

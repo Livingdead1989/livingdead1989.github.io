@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -199,7 +200,8 @@ html {
 
 body {
   background-color: white;
-  font-size: 14px;
+  font-size: 16px;
+  color: #222;
   line-height: 1.5;
   font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -219,7 +221,7 @@ section {
     text-transform: uppercase;
     font-size: 18px; }
 
-.flexwrap, .about-flexwrap, .work-flexwrap {
+.about-flexwrap, .work-flexwrap, .clients-container {
   margin: 40px 0;
   display: flex;
   flex-wrap: wrap;
@@ -251,6 +253,15 @@ hr {
   clear: both;
   margin: 10px 0 30px;
   height: 0; }
+
+.clients-container .client-wrap .client-content p::before, .clients-container .client-wrap .client-content p::after {
+  font-family: serif;
+  font-weight: 700;
+  position: absolute;
+  z-index: -1;
+  font-size: 7em;
+  color: #8dcd51;
+  opacity: 0.4; }
 
 header {
   background: #222;
@@ -294,7 +305,14 @@ header {
       letter-spacing: 0.02em;
       font-size: 30px; }
     header .hero .kicker {
-      margin: 10px 0; }
+      margin: 10px 0;
+      display: flex; }
+      header .hero .kicker > *::after {
+        content: "//";
+        margin: 0 6px; }
+      header .hero .kicker > *:last-child::after {
+        content: "";
+        margin: 0; }
 
 .about-flexwrap [class^="icon-"] {
   background: #ccc;
@@ -339,9 +357,8 @@ header {
   .about-flexwrap [class^="social-wrap-"] {
     flex: 1 0 50%; } }
 
-.about p {
+#about p {
   margin: 0 20px;
-  font-size: 16px;
   text-align: center;
   max-width: 600px;
   align-self: center; }
@@ -351,8 +368,6 @@ header {
   align-self: center; }
   .work-flexwrap [class^="work-"] {
     background: white;
-    background-size: cover;
-    background: no-repeat center center;
     display: flex; }
     .work-flexwrap [class^="work-"]:hover div, .work-flexwrap [class^="work-"]:focus div, .work-flexwrap [class^="work-"]:active div {
       background: rgba(0, 0, 0, 0.8);
@@ -373,7 +388,7 @@ header {
       opacity: 0;
       font-size: 1.2em; }
   .work-flexwrap .work-one {
-    background-image: url("http://lorempixel.com/800/400/technics/9"); }
+    background-image: url("http://lorempixel.com/240/130/technics/9"); }
   .work-flexwrap .work-two {
     background-image: url("http://lorempixel.com/240/130/technics/4"); }
   .work-flexwrap .work-three {
@@ -388,5 +403,71 @@ header {
     background-image: url("http://lorempixel.com/240/130/technics/7"); }
   .work-flexwrap .work-eight {
     background-image: url("http://lorempixel.com/240/130/technics/8"); }
+
+.clients-container .client-wrap {
+  max-width: 800px;
+  align-items: center;
+  display: flex; }
+  .clients-container .client-wrap .client-profile {
+    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    .clients-container .client-wrap .client-profile img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: 0 0 10px 0; }
+    .clients-container .client-wrap .client-profile .client-name {
+      text-transform: uppercase;
+      letter-spacing: 1px; }
+    .clients-container .client-wrap .client-profile .client-title {
+      color: #3c3c3c;
+      font-size: 0.8em; }
+  .clients-container .client-wrap .client-content {
+    margin: 0 20px 0 10px;
+    flex: 2;
+    align-self: flex-start; }
+    .clients-container .client-wrap .client-content p {
+      z-index: 1;
+      position: relative; }
+      .clients-container .client-wrap .client-content p::before {
+        content: "“";
+        top: -40px;
+        left: -14px; }
+      .clients-container .client-wrap .client-content p::after {
+        content: "”";
+        margin: -30px 0 0 -35px; }
+
+footer {
+  background: #222;
+  min-height: 20vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center; }
+  footer .logo {
+    margin: 0 20px;
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    background: url("http://fillmurray.com/100/100");
+    background-size: cover; }
+  footer .footer-links {
+    text-transform: uppercase; }
+    footer .footer-links > * {
+      align-items: center; }
+    footer .footer-links a {
+      margin-right: 20px;
+      font-size: 0.8em;
+      font-weight: 700; }
+      footer .footer-links a:last-of-type {
+        margin-right: 0; }
+    footer .footer-links .copyright {
+      margin: 0;
+      color: #5c6157;
+      font-size: 0.7em;
+      display: block; }
 
 /*# sourceMappingURL=main.css.map */

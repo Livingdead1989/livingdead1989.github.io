@@ -13,27 +13,31 @@
 
     <div class="wrapper">
 
-      <header>
+      <header id="site-header">
         <div class="top-bar">
           <div class="logo"></div>
 
           <nav>
-            <a href="#">About</a>
-            <a href="#">Work</a>
-            <a href="#">Clients</a>
+            <a href="#about">About</a>
+            <a href="#work">Work</a>
+            <a href="#clients">Clients</a>
             <a href="#">Blog</a>
           </nav>
         </div>
 
         <div class="hero">
           <h1>The Untitled Page</h1>
-          <p class="kicker">Clean // Barren // Minimalist</p>
+          <div class="kicker">
+            <p>Clean</p>
+            <p>Barren</p>
+            <p>Minimalist</p>
+          </div>
         </div>
 
 
       </header>
 
-      <section class="about">
+      <section id="about">
 
         <h2>About myself</h2>
 
@@ -81,7 +85,7 @@
 
       </section>
 
-      <section class="work">
+      <section id="work">
 
         <h2>My Work</h2>
 
@@ -147,13 +151,49 @@
 
       </section>
 
-      <section class="clients">
+      <section id="clients">
 
         <h2>Clients</h2>
 
+        <div class="clients-container">
+
+          <div class="client-wrap">
+
+            <div class="client-profile">
+              <img src="http://fillmurray.com/400/400" alt="Client Profile Image" />
+              <strong class="client-name">Bill Murray</strong>
+              <em class="client-title">Actor, Comedian, and Writer</em>
+            </div>
+
+            <div class="client-content">
+              <p><strong>Pellentesque habitant morbi tristique senectus</strong> et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
       </section>
 
-      <footer>footer</footer>
+      <footer id="site-footer">
+
+        <div class="logo"></div>
+
+        <div class="footer-links">
+
+          <a href="#about">About</a>
+          <a href="#work">Work</a>
+          <a href="#clients">Clients</a>
+          <a href="#">Blog</a>
+
+          <p class="copyright">all content copyright 2016</p>
+
+        </div>
+
+      </footer>
 
     </div>
 
