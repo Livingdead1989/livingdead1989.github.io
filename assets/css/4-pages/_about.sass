@@ -1,15 +1,11 @@
 
 // nested flexbox container
-.about-box-container
-  margin: 40px 0
-  display: flex
-  align-items: center
-  flex-wrap: wrap
-  justify-content: center
+.about-flexwrap
+  @extend .flexwrap
 
   // selects any class with contains icon-
   [class^="icon-"]
-    background: #ccc
+    background: $bgcolor
     border-radius: 50%
     margin: 10px
     width: 100px

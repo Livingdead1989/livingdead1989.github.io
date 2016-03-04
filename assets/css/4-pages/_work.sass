@@ -1,0 +1,55 @@
+.work-flexwrap
+  @extend .flexwrap
+  margin:
+    left: 20px
+    right: 20px
+
+  [class^="work-"]
+    background: white
+    height: 130px
+    width: 200px
+    background-size: cover
+    background: no-repeat center center
+
+    display: flex
+
+    &:hover
+
+      div
+        background: rgba(darken($brand-primary, 50%), 0.8)
+        transition: background 0.2s
+
+        & > *
+          opacity: 1
+
+    div
+      overflow: hidden
+      width: 100%
+      text-align: center
+      // nested flex container
+      display: flex
+      flex-wrap: wrap
+      flex-direction: column
+      justify-content: center
+      align-items: center
+
+    div > *
+      opacity: 0
+      font-size: 1.2em
+
+  .work-one
+    background-image: url("http://lorempixel.com/800/400/technics/9")
+  .work-two
+    background-image: url("http://lorempixel.com/240/130/technics/4")
+  .work-three
+    background-image: url("http://lorempixel.com/240/130/technics/6")
+  .work-four
+    background-image: url("http://lorempixel.com/240/130/technics/10")
+  .work-five
+    background-image: url("http://lorempixel.com/240/130/technics/5")
+  .work-six
+    background-image: url("http://lorempixel.com/240/130/technics/3")
+  .work-seven
+    background-image: url("http://lorempixel.com/240/130/technics/7")
+  .work-eight
+    background-image: url("http://lorempixel.com/240/130/technics/8")
