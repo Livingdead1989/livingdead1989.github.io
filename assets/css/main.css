@@ -252,9 +252,6 @@ hr {
   margin: 10px 0 30px;
   height: 0; }
 
-.wrapper {
-  margin: 0 auto; }
-
 header {
   background: #222;
   display: flex;
@@ -351,14 +348,10 @@ header {
 
 .work-flexwrap {
   max-width: 800px;
-  align-self: center;
-  margin-left: 20px;
-  margin-right: 20px; }
+  align-self: center; }
   .work-flexwrap [class^="work-"] {
     background: white;
-    height: 130px;
-    width: 200px;
-    background-size: contain;
+    background-size: cover;
     background: no-repeat center center;
     display: flex; }
     .work-flexwrap [class^="work-"]:hover div, .work-flexwrap [class^="work-"]:focus div, .work-flexwrap [class^="work-"]:active div {
@@ -368,7 +361,8 @@ header {
         opacity: 1; }
     .work-flexwrap [class^="work-"] div {
       overflow: hidden;
-      width: 100%;
+      height: 130px;
+      width: 200px;
       text-align: center;
       display: flex;
       flex-wrap: wrap;

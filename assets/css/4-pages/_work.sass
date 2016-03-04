@@ -2,17 +2,11 @@
   max-width: 800px
   align-self: center
   @extend .flexwrap
-  margin:
-    left: 20px
-    right: 20px
 
   [class^="work-"]
     background: white
-    height: 130px
-    width: 200px
-    background-size: contain
+    background-size: cover
     background: no-repeat center center
-
     display: flex
 
     &:hover, &:focus, &:active
@@ -26,7 +20,8 @@
 
     div
       overflow: hidden
-      width: 100%
+      height: 130px
+      width: 200px
       text-align: center
       // nested flex container
       display: flex
