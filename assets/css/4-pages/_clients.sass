@@ -1,8 +1,11 @@
 .clients-container
   @extend %flexwrap
+  margin-bottom: 0
+  flex-direction: column
 
   .client-wrap
     max-width: 800px
+    padding: 0 10px
     align-items: center
     display: flex
 
@@ -48,3 +51,30 @@
           @extend %client-quotemarks
           content: "”"
           margin: -30px 0 0 -35px
+
+
+  .clients-logos
+    margin-top: 40px
+    display: flex
+    flex-wrap: wrap
+
+    & > a
+      padding: 10px 20px
+      border-bottom: 4px solid transparent
+      display: flex
+      justify-content: center
+      align-items: center
+      flex: 1 1 25%
+
+      &:hover, &:focus, &:active
+        border-bottom: 4px solid $brand-primary
+        transition: border-bottom 0.1s
+
+      & > img
+        height: 100px
+        -webkit-filter: grayscale(60%)
+        filter: grayscale(60%)
+
+    @media screen and (max-width: 580px)
+      & > a
+        flex-basis: 50%
