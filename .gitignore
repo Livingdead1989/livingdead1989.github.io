@@ -1,4 +1,5 @@
 assets/css/.sass-cache
 assets/css/main.css.map
-.DS_Stores
+.sass-cache
+.DS_Store
 assets/.DS_Store
