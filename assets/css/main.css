@@ -276,7 +276,7 @@ header {
       height: 60px;
       width: 60px;
       border-radius: 100%;
-      background: url("http://fillmurray.com/100/100");
+      background: url("/assets/img/profile.jpg");
       background-size: cover; }
     header .top-bar nav {
       flex: 1;
@@ -388,21 +388,21 @@ header {
       opacity: 0;
       font-size: 1.2em; }
   .work-flexwrap .work-one {
-    background-image: url("http://lorempixel.com/240/130/technics/9"); }
+    background-image: url(""); }
   .work-flexwrap .work-two {
-    background-image: url("http://lorempixel.com/240/130/technics/4"); }
+    background-image: url(""); }
   .work-flexwrap .work-three {
-    background-image: url("http://lorempixel.com/240/130/technics/6"); }
+    background-image: url(""); }
   .work-flexwrap .work-four {
-    background-image: url("http://lorempixel.com/240/130/technics/10"); }
+    background-image: url(""); }
   .work-flexwrap .work-five {
-    background-image: url("http://lorempixel.com/240/130/technics/5"); }
+    background-image: url(""); }
   .work-flexwrap .work-six {
-    background-image: url("http://lorempixel.com/240/130/technics/3"); }
+    background-image: url(""); }
   .work-flexwrap .work-seven {
-    background-image: url("http://lorempixel.com/240/130/technics/7"); }
+    background-image: url(""); }
   .work-flexwrap .work-eight {
-    background-image: url("http://lorempixel.com/240/130/technics/8"); }
+    background-image: url(""); }
 
 .clients-container {
   margin-bottom: 0;
