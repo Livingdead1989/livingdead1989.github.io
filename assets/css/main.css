@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -216,12 +215,12 @@ section {
     background: #ccc; }
   section h2 {
     margin: 0;
-    color: #5A8F29;
+    color: #61AE24;
     text-align: center;
     text-transform: uppercase;
     font-size: 18px; }
 
-.about-flexwrap, .work-flexwrap, .clients-container {
+.about-flexwrap, .work-flexwrap {
   margin: 40px 0;
   display: flex;
   flex-wrap: wrap;
@@ -229,11 +228,11 @@ section {
   justify-content: center; }
 
 a {
-  color: #5A8F29;
+  color: #61AE24;
   text-decoration: none;
   outline: 0; }
   a:hover, a:focus {
-    color: #8dcd51; }
+    color: #94dd5b; }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700; }
@@ -253,15 +252,6 @@ hr {
   clear: both;
   margin: 10px 0 30px;
   height: 0; }
-
-.clients-container .client-wrap .client-content p::before, .clients-container .client-wrap .client-content p::after {
-  font-family: serif;
-  font-weight: 700;
-  position: absolute;
-  z-index: -1;
-  font-size: 7em;
-  color: #8dcd51;
-  opacity: 0.4; }
 
 header {
   background: #222;
@@ -287,17 +277,17 @@ header {
         text-transform: uppercase;
         margin: 0 20px 0 0; }
         header .top-bar nav a:last-child {
-          margin-right: 10px; }
+          margin-right: 20px; }
   header .hero {
     height: calc(100vh - 80px);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #5A8F29;
+    color: #61AE24;
     text-align: center; }
     header .hero h1 {
-      border: 6px solid #5A8F29;
+      border: 6px solid #61AE24;
       text-transform: uppercase;
       padding: 15px 20px;
       margin: 0;
@@ -324,13 +314,13 @@ header {
   justify-content: center;
   align-items: center; }
   .about-flexwrap [class^="icon-"]:hover svg path {
-    fill: #80c73d;
+    fill: #87d946;
     transition: fill 0.2s; }
   .about-flexwrap [class^="icon-"] svg {
     height: 50px;
     width: 50px; }
     .about-flexwrap [class^="icon-"] svg path {
-      fill: #41671e; }
+      fill: #49841b; }
 .about-flexwrap .profile-wrap {
   order: 3;
   display: flex;
@@ -387,84 +377,12 @@ header {
     .work-flexwrap [class^="work-"] div > * {
       opacity: 0;
       font-size: 1.2em; }
-  .work-flexwrap .work-one {
+  .work-flexwrap .work-mac {
     background-image: url(""); }
-  .work-flexwrap .work-two {
+  .work-flexwrap .work-pcs {
     background-image: url(""); }
-  .work-flexwrap .work-three {
+  .work-flexwrap .work-scitt {
     background-image: url(""); }
-  .work-flexwrap .work-four {
-    background-image: url(""); }
-  .work-flexwrap .work-five {
-    background-image: url(""); }
-  .work-flexwrap .work-six {
-    background-image: url(""); }
-  .work-flexwrap .work-seven {
-    background-image: url(""); }
-  .work-flexwrap .work-eight {
-    background-image: url(""); }
-
-.clients-container {
-  margin-bottom: 0;
-  flex-direction: column; }
-  .clients-container .client-wrap {
-    max-width: 800px;
-    padding: 0 10px;
-    align-items: center;
-    display: flex; }
-    .clients-container .client-wrap .client-profile {
-      text-align: center;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center; }
-      .clients-container .client-wrap .client-profile img {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        margin: 0 0 10px 0; }
-      .clients-container .client-wrap .client-profile .client-name {
-        text-transform: uppercase;
-        letter-spacing: 1px; }
-      .clients-container .client-wrap .client-profile .client-title {
-        color: #3c3c3c;
-        font-size: 0.8em; }
-    .clients-container .client-wrap .client-content {
-      margin: 0 20px 0 10px;
-      flex: 2;
-      align-self: flex-start; }
-      .clients-container .client-wrap .client-content p {
-        z-index: 1;
-        position: relative; }
-        .clients-container .client-wrap .client-content p::before {
-          content: "“";
-          top: -40px;
-          left: -14px; }
-        .clients-container .client-wrap .client-content p::after {
-          content: "”";
-          margin: -30px 0 0 -35px; }
-  .clients-container .clients-logos {
-    margin-top: 40px;
-    display: flex;
-    flex-wrap: wrap; }
-    .clients-container .clients-logos > a {
-      padding: 10px 20px;
-      border-bottom: 4px solid transparent;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex: 1 1 25%; }
-      .clients-container .clients-logos > a:hover, .clients-container .clients-logos > a:focus, .clients-container .clients-logos > a:active {
-        border-bottom: 4px solid #5A8F29;
-        transition: border-bottom 0.1s; }
-      .clients-container .clients-logos > a > img {
-        height: 100px;
-        -webkit-filter: grayscale(60%);
-        filter: grayscale(60%); }
-    @media screen and (max-width: 580px) {
-      .clients-container .clients-logos > a {
-        flex-basis: 50%; } }
 
 footer {
   background: #222;
@@ -491,7 +409,7 @@ footer {
         margin-right: 0; }
     footer .footer-links .copyright {
       margin: 0;
-      color: #5c6157;
+      color: #677a59;
       font-size: 0.7em;
       display: block; }
 
