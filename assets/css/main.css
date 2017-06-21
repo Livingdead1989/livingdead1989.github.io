@@ -208,7 +208,7 @@ body {
 
 section {
   background: white;
-  padding: 60px 0;
+  padding: 100px 0;
   display: flex;
   flex-direction: column; }
   section:nth-of-type(even) {
@@ -231,7 +231,7 @@ a {
   color: #61AE24;
   text-decoration: none;
   outline: 0; }
-  a:hover, a:focus {
+  a:hover, a:focus, a:active {
     color: #94dd5b; }
 
 h1, h2, h3, h4, h5, h6 {
@@ -378,11 +378,11 @@ header {
       opacity: 0;
       font-size: 1.2em; }
   .work-flexwrap .work-mac {
-    background-image: url(""); }
+    background-image: url("/assets/img/work-mac.png"); }
   .work-flexwrap .work-pcs {
-    background-image: url(""); }
+    background-image: url("/assets/img/work-pcs.png"); }
   .work-flexwrap .work-scitt {
-    background-image: url(""); }
+    background-image: url("/assets/img/work-scitt.png"); }
 
 footer {
   background: #222;
