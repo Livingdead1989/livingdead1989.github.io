@@ -357,8 +357,10 @@ header {
   max-width: 800px;
   align-self: center; }
   .work-flexwrap [class^="work-"] {
-    background: white;
-    display: flex; }
+    display: flex;
+    margin: 0 10px;
+    background: white center no-repeat;
+    background-size: cover; }
     .work-flexwrap [class^="work-"]:hover div, .work-flexwrap [class^="work-"]:focus div, .work-flexwrap [class^="work-"]:active div {
       background: rgba(0, 0, 0, 0.8);
       transition: background 0.2s; }
