@@ -2,12 +2,22 @@ header
   background: $herobgcolor
   display: flex
   flex-direction: column
+  
+  #bgVideo
+    position: absolute
+    right: 0
+    bottom: 0
+    min-width: 100%
+    min-height: 100%
+    z-index: 5
 
   // nested flexbox container
   .top-bar
     display: flex
     flex-wrap: wrap
     align-items: center
+    z-index: 10
+    background: rgba(34,34,34,0.9)
 
     .logo
       margin: 10px
@@ -39,6 +49,8 @@ header
     align-items: center
     color: $brand-primary
     text-align: center
+    z-index: 10
+    background: rgba(34,34,34,0.9)
 
     h1
       border: 6px solid $brand-primary
