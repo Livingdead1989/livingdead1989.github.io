@@ -1,0 +1,14 @@
+- name: home
+  link: /
+
+- name: about me
+  link: "/#about"
+
+- name: brand
+  link: "/#brand"
+
+- name: my work
+  link: "/#work"
+
+- name: blog
+  link: "/blog"

@@ -1,0 +1,66 @@
+
+// nested flexbox container
+.about-flexwrap
+  @extend %flexwrap
+
+  // selects any class with contains icon-
+  [class^="icon-"]
+    background: $bgcolor
+    border-radius: 50%
+    margin: 10px
+    width: 100px
+    height: 100px
+    display: flex
+    justify-content: center
+    align-items: center
+
+    &:hover
+      svg
+        path
+          fill: lighten($brand-primary, 15%)
+          transition: fill 0.2s
+
+    svg
+      height: 50px
+      width: 50px
+
+      path
+        fill: darken($brand-primary, 10%)
+
+  .profile-wrap
+    order: 3
+    display: flex
+    justify-content: center
+
+    .icon-profile
+      width: 200px
+      height: 200px
+
+  [class^="social-wrap-"]
+    display: flex
+    justify-content: center
+
+  .social-wrap-twitter
+    order: 1
+  .social-wrap-steam
+    order: 2
+  .social-wrap-github
+    order: 4
+  .social-wrap-codepen
+    order: 5
+
+  @media screen and (max-width: 714px)
+    .profile-wrap
+      order: 0
+      flex: 1 1 100%
+
+  @media screen and (max-width: 494px)
+    [class^="social-wrap-"]
+      flex: 1 0 50%
+
+#about
+  p
+    margin: 0 20px
+    text-align: center
+    max-width: 600px
+    align-self: center

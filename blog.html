@@ -1,0 +1,25 @@
+---
+title: Blog
+layout: default
+---
+<section id="blog">
+	<h2>Latest Blog Posts</h2>
+
+	<ul class="blog-wrapper">
+		{% for post in site.posts %}
+		<a href="{{ post.url }}">
+			<li>
+				<p class="blog-title">{{ post.title }}</p>
+				<p class="blog-date">Date: {{ post.date | date_to_string }}</p>
+				<hr>
+				<p class="blog-category">Categories: {{ post.categories }}</p>
+				<p class="blog-tag">Tags: {{ post.tags }}</p>
+			</li>
+		</a>
+		{% endfor %}
+	</ul>
+</section>
+
+<div class="backtotop">
+  <a href="#">Back to Top</a>
+</div>
