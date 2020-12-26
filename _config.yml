@@ -14,14 +14,20 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
+locale: "en-GB"
 title: NetworkingDream
+title_seperator: "-"
+name: &name "Steven Smith"
 email: networkingdream@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  An awesome description.
+  Steven Smith's personal website and blog containing his adventurers in various technology projects and subjects including Web Development, Linux, Networking, Cisco and IoT.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://networkingdream.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: livingdead1989
 github_username:  livingdead1989
+
+atom_feed:
+  path: # blank (default) uses feed.xml
 
 # Build settings
 markdown: kramdown
@@ -36,6 +42,11 @@ defaults:
       type: "posts"
     values:
       layout: "post"
+
+# Sass
+sass:
+  sass_dir: _sass
+  style: compressed
 
 plugins:
   - jekyll-feed
