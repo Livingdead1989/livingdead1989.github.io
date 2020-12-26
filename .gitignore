@@ -4,11 +4,14 @@ _site
 .jekyll-metadata
 vendor
 Gemfile.lock
+*.gem
+**/.ruby-version
 main.css.map
+
+# OS Files 
 .DS_Store
 .DS_Store?
 .Spotlight-V100
 .Trashes
 ehthumbs.db
 Thumbs.db
-
