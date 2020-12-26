@@ -3,6 +3,7 @@ _site
 .jekyll-cache
 .jekyll-metadata
 vendor
+Gemfile.lock
 main.css.map
 .DS_Store
 .DS_Store?
@@ -10,3 +11,4 @@ main.css.map
 .Trashes
 ehthumbs.db
 Thumbs.db
+
