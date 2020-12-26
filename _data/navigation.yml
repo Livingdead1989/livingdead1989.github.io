@@ -1,13 +1,10 @@
-- name: home
-  link: /
-
-- name: about me
+- name: about
   link: "/#about"
 
 - name: brand
   link: "/#brand"
 
-- name: my work
+- name: work
   link: "/#work"
 
 - name: blog
