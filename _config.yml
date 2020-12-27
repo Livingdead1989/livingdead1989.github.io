@@ -16,7 +16,6 @@
 
 locale: "en-GB"
 title: NetworkingDream
-title_seperator: "-"
 name: &name "Steven Smith"
 email: networkingdream@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
@@ -46,7 +45,7 @@ defaults:
 # Sass
 sass:
   sass_dir: _sass
-  style: compressed
+  style: compressed #expanded / compressed
 
 plugins:
   - jekyll-feed

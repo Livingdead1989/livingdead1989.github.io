@@ -1,18 +1,15 @@
 <section id="latestblog">
 	<h2>Latest Blog</h2>
 	<div class="latestblog-flexwrap">
-
-	{% for post in site.posts | limit:3 %}
-		<a class="latest-post" href="{{ post.url | relative_url }}">
-			<div>
-				<p>{{ post.title }}</p>
-				<i class="fa fa-book-open"></i>
-			</div>
-		</a>
-	{% endfor %}
-
+		{% for post in site.posts | limit:3 %}
+			<a class="latest-post" href="{{ post.url | relative_url }}">
+				<div>
+					<p>{{ post.title }}</p>
+					<i class="fa fa-book-open"></i>
+				</div>
+			</a>
+		{% endfor %}
 	</div>
-
 	<div class="viewallposts">
 		<a href="/blog">View All Posts</a>
 	</div>

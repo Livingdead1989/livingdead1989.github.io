@@ -2,31 +2,23 @@
 <html>
   <head>
     {% include head.html %}
-
     {% feed_meta %}
     {% seo %}
-
   </head>
   <body>
     <div class="wrapper">
-
-    {% include header.html %}
-
-    <section id="post">
-      <div class="post-wrapper">
-        <h1 class="page-title">{{ page.title }}</h1>
-        <p class="page-date">{{ page.date | date_to_string }}</p>
-
-        {{ content }}
+      {% include header.html %}
+      <section id="post">
+        <div class="post-wrapper">
+          <h1 class="page-title">{{ page.title }}</h1>
+          <p class="page-date">{{ page.date | date_to_string }}</p>
+          {{ content }}
+        </div>
+      </section>
+      <div class="backtotop">
+        <a href="#">Back to Top</a>
       </div>
-    </section>
-
-    <div class="backtotop">
-      <a href="#">Back to Top</a>
-    </div>
-
-    {% include footer.html %}
-
+      {% include footer.html %}
     </div>
   </body>
 </html>
