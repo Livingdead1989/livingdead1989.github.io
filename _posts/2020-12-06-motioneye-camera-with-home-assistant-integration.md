@@ -11,11 +11,12 @@ Our aim here is to deploy the Motioneye OS to a Raspberry Pi Zero and add the st
 ### Hardware used 
 
 * Raspberry Pi Zero W v1.1
-* Offical RPI Zero Case with Camera top
+* Offical RPI Zero Case with Camera top (moved to 3d printed case)
 * Raspberry Pi Camera Rev 1.3
 * Kingston 16GB MicroSD Class10 A1
 * Micro USB cable
 * USB Plug 1.2A Recommended *([documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/power/README.md))*
+* [Pigeon 3D Printed Case](https://www.thingiverse.com/thing:2230707)
 
 ![Hardware used](/assets/images/posts/hardware.jpg)
 
@@ -95,6 +96,8 @@ Once logged in make sure you secure the device using a good admin password from 
 
 Also make sure you give the camera a static IP address or reserve the address on your DHCP server.
 
+I also configured the time zone and set a hostname to match my other cameras
+
 ### Motioneye Tweaks & Changes
 
 Other settings I changed include:
@@ -160,3 +163,22 @@ By default you'll have a new entity in your 'Overview' dashboard because it is a
 * [Home Assistant Integrations: Camera](https://www.home-assistant.io/integrations/camera/)
 * [Home Assistant Integrations: Stream](https://www.home-assistant.io/integrations/stream/)
 
+### Later Alterations
+
+I decided to turn on the Fast Network Camera option, this uses a different backend  which offers better performance but removes features such as motion detection, but in case this was fine as I can make my home assistant instance perform the motion detection.
+
+You can find the Fast Network Camera option within Expert Settings.
+
+I also changed to the [Pigeon: An Open source Raspberry PI Zero W Cloud Camera by Geraldoramos](https://www.thingiverse.com/thing:2230707) which was a dream to print and mount compared to retrofitting the Offical RPI Zero Case, I added my own 3D printed supports as my Raspberry Pi Zero moved a little left and right when connecting power.
+
+The Pigeon case
+
+![Pigeon Case Camera loaded](/assets/images/posts/meye_case_cam_loaded.jpg)
+
+The added supports
+
+![Pigeon Case with Supports](/assets/images/posts/meye_case_supports.jpg)
+
+Mounting
+
+![Camera wall mounted](/assets/images/posts/meye_wall_mounted.jpg)
