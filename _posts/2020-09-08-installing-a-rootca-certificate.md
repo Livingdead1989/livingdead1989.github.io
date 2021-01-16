@@ -2,7 +2,10 @@
 title:  "Installing a root/CA Certificate in Ubuntu"
 date:   2020-09-08 09:33:44 +0000
 categories: ubuntu
+description: How to install a root certificate authority certificate in Ubuntu
 ---
+
+SSL certificates work on a structure regarded as the “chain of trust.” It’s a chain of certificates starting from the certificate authority (CA).
 
 Given a CA certificate file `foo.crt`, follow these steps to install it on Ubuntu:
 
