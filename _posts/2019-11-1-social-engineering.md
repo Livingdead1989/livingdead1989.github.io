@@ -1,7 +1,7 @@
 ---
-title:  "Ethical Hacking: Social Engineering"
+title:  "Social Engineering"
 date:   2019-11-6 16:00:00 +0000
-categories: ethical hacking
+categories: hacking
 ---
 
 ## Social Engineering Overview

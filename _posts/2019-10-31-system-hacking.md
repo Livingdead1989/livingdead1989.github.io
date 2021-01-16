@@ -1,7 +1,7 @@
 ---
-title:  "Ethical Hacking: System Hacking"
+title:  "System Hacking"
 date:   2019-10-31 18:00:00 +0000
-categories: ethical hacking
+categories: hacking
 ---
 
 ## System Hacking Overview

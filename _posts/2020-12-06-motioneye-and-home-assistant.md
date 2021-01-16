@@ -1,5 +1,5 @@
 ---
-title:  "Motioneye Camera with Home Assistant Integration"
+title:  "Motioneye and Home Assistant"
 date:   2020-12-06 10:00:00 +0000
 categories: homeautomation
 ---

@@ -1,7 +1,7 @@
 ---
-title:  "Ethical Hacking: Footprinting and Reconnaissance"
+title:  "Footprinting and Reconnaissance"
 date:   2019-09-10 20:00:00 +0000
-categories: ethical hacking
+categories: hacking
 ---
 # Overview
 

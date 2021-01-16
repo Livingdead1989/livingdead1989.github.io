@@ -19,7 +19,7 @@ title: NetworkingDream
 name: &name "Steven Smith"
 email: networkingdream@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Steven Smith's personal website and blog containing his adventurers in various technology projects and subjects including Web Development, Linux, Networking, Cisco and IoT.
+  Adventurers in various technology projects and topics including Web Development, Linux, Networking, Cisco, IoT and Home Automation.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://networkingdream.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: livingdead1989
@@ -32,7 +32,7 @@ atom_feed:
 markdown: kramdown
 
 # Default permalink style
-permalink: pretty
+permalink: /:categories/:title/
 
 # Setting default layouts
 defaults:

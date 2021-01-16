@@ -1,5 +1,5 @@
 ---
-title:  "OSPF"
+title:  "Open Shortest Path First"
 date:   2020-10-28 11:54:00 +0000
 categories: networking
 ---

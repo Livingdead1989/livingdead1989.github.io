@@ -1,7 +1,7 @@
 ---
-title:  "Ethical Hacking: Scanning Networks"
+title:  "Scanning Networks"
 date:   2019-09-30 18:00:00 +0000
-categories: ethical hacking
+categories: hacking
 ---
 
 1. Foot Printing and Recon

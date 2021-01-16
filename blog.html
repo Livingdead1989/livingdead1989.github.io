@@ -1,9 +1,11 @@
 ---
-title: Blog
+title: Latest Blog Articles
 layout: default
+description: >- # this means to ignore newlines until "baseurl:"
+  Latest blog posts covering various technology projects and topics.
 ---
 <section id="blog">
-	<h2>Latest Blog Posts</h2>
+	<h1>Latest Blog Posts</h1>
 	<ul class="blog-wrapper">
 		{% for post in site.posts %}
 			<a href="{{ post.url }}">
