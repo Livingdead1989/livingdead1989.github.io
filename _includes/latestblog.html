@@ -1,5 +1,6 @@
 <section id="latestblog">
 	<h2>Latest Blog</h2>
+	
 	<div class="latestblog-flexwrap">
 		{% for post in site.posts | limit:3 %}
 			<a class="latest-post" href="{{ post.url | relative_url }}">
@@ -10,7 +11,10 @@
 			</a>
 		{% endfor %}
 	</div>
+
 	<div class="viewallposts">
 		<a href="/blog">View All Posts</a>
 	</div>
+	
+	<p>My latest blog posts, ranging from various technology projects and topics including Web Development, Linux, Networking, Cisco, IoT and Home Automation and more.</p>
 </section>

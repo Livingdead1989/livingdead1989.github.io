@@ -6,6 +6,8 @@ description: >- # this means to ignore newlines until "baseurl:"
 ---
 <section id="blog">
 	<h1>Latest Blog Posts</h1>
+	<p>My latest blog posts, ranging from various technology projects and topics including Web Development, Linux, Networking, Cisco, IoT and Home Automation and more.</p>
+
 	<ul class="blog-wrapper">
 		{% for post in site.posts %}
 			<a href="{{ post.url }}">
@@ -21,6 +23,7 @@ description: >- # this means to ignore newlines until "baseurl:"
 			</a>
 		{% endfor %}
 	</ul>
+	
 </section>
 <div class="backtotop">
 	<a href="#">Back to Top</a>
