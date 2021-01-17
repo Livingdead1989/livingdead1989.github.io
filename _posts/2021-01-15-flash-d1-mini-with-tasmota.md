@@ -7,7 +7,11 @@ description: >- # this means to ignore newlines until "baseurl:"
   How to use Ubuntu 20.10 to flash Tasmota 9.2.0 to a D1 Mini using nothing more than a USB cable.
 ---
 
-In this walk through I will be using Ubuntu 20.04 to flash the D1 Mini to Tasmota 9.2.0 using a USB cable.
+In this walk through I will be using Ubuntu 20.04 to flash the [Wemos D1 Mini](https://www.wemos.cc/en/latest/d1/d1_mini.html) to Tasmota 9.2.0 using a USB cable.
+
+*Tasmota is designed to be controlled and communicate via [MQTT](http://mqtt.org/). To use it to its fullest potential you need an MQTT broker.* 
+
+## Prerequisites
 
 Start by ensuring you have python and pip installed
 
@@ -23,9 +27,13 @@ We will then install the esptool using pip3
 
 ![install esptool using pip3](/assets/images/posts/2-install_pip_esptool.png)
 
-Next download the tasmota.bin *(english)* from the official repository at https://github.com/arendst/Tasmota/releases/tag/v9.2.0
+Next download the tasmota.bin *(english)* from the official repository on [Github](https://github.com/arendst/Tasmota/releases/tag/v9.2.0)
 
 ![download tasmota bin file](/assets/images/posts/3-download_tasmota.png)
+
+
+
+## Flashing the D1 Mini
 
 Plug your D1 mini into your computer using a micro USB cable.
 
@@ -40,7 +48,7 @@ Remember its: `/dev/ttyUSB0`
 Change directory to esptool
 
 ```bash
-cd ~/.local/lib/python3.8/siite-packages/
+cd ~/.local/lib/python3.8/site-packages/
 ```
 
 You'll need to change the permission to allow execution of the `esptool.py` file, there are many ways to grant this permission.
@@ -73,6 +81,10 @@ sudo ./esptool.py --port /dev/ttyUSB0 write_flash -fm dout 0x0 ~/Downloads/tasmo
 
 ![flash tasmota to the d1 mini](/assets/images/posts/8-flash_tasmota.png)
 
+
+
+## First Connect
+
 If the flash was successful the device will be reset and start broadcasting its own Wi-Fi SSID, connect to the D1 wifi
 
 ![connect to d1 mini wifi](/assets/images/posts/9-d1_wifi_connect.png)
@@ -97,6 +109,18 @@ nmap -sn 192.168.1.0/24
 
 ![using nmap to ping scan the network](/assets/images/posts/13-nmap_tasmota_scan.png)
 
-Visit the IP address in your browser, from here you can configure the device further including changing the default board type from Sonoff Basic Module.
+Visit the IP address in your browser, from here you can configure the device further including changing the default board type from Sonoff Basic Module to Generic 18 - [Tasmota D1 Mini](https://tasmota.github.io/docs/devices/Wemos-D1-Mini/)
+
+*WebUI **does not** and **can not** have all the features and commands implemented. For precise and complete control use Console or MQTT commands! - [Tasmota WebUI](https://tasmota.github.io/docs/WebUI/)*
 
 ![tasmota main page](/assets/images/posts/14-tasmota_main_page.png)
+
+
+
+### Other Flashing Tools
+
+- [**Tasmotizer**](https://github.com/tasmota/tasmotizer) - NEW flashing and firmware download tool just for Tasmota. (Windows, Linux or Mac)
+- [**Tasmota PyFlasher**](https://github.com/tasmota/tasmota-pyflasher) - flashing tool intended for Tasmota. (Windows or Mac)
+- [**NodeMCU PyFlasher**](https://github.com/marcelstoer/nodemcu-pyflasher) - easy to use GUI flasher based on esptool.py. (Windows or Mac)
+- [**Esptool executable**](https://github.com/igrr/esptool-ck) - Esptool in executable form, no Python required. (Windows, Linux or Mac)
+
