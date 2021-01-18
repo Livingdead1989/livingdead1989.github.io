@@ -10,7 +10,7 @@
 
   li
     border: 2px solid $brand-primary
-    background: lighten($bgcolor, 10%)
+    background: $lightgrey
     margin: 10px
     padding: 15px 20px
     list-style: none
@@ -18,6 +18,7 @@
     &:hover, &:focus, &:active
       border: 2px solid lighten($brand-primary, 10%)
       background: lighten($bgcolor, 15%)
+      transition: all 0.2s linear
 
     hr
       margin: $spacing-unit / 4
@@ -25,7 +26,7 @@
     [class^="blog-"]
       padding: 0
       margin: 0
-      color: white
+      color: $fontcolor
       font-size: 0.8em
 
     .blog-title

@@ -5,7 +5,7 @@
 
   // selects any class with contains icon-
   [class^="icon-"]
-    background: $bgcolor
+    background: $lightgrey
     border-radius: 50%
     margin: 10px
     width: 100px
@@ -18,14 +18,18 @@
       svg
         path
           fill: lighten($brand-primary, 15%)
-          transition: fill 0.2s
+          transition: fill 0.3s
+        ellipse
+          stroke: lighten($brand-primary, 15%)
+          transition: fill 0.3s
 
     svg
       height: 50px
       width: 50px
-
       path
         fill: $brand-primary
+      ellipse
+        stroke: $brand-primary
 
   .profile-wrap
     order: 3
@@ -42,7 +46,7 @@
 
   .social-wrap-twitter
     order: 1
-  .social-wrap-steam
+  .social-wrap-thingiverse
     order: 2
   .social-wrap-github
     order: 4
