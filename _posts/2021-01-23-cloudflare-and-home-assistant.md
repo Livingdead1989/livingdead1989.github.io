@@ -11,7 +11,7 @@ In this article I will be configuring a domain name with Cloudflare and Home Ass
 
 I personally use pfSense as my firewall and I will be configuring that as well.
 
-We'll need a domain, I'd recommend [NameCheap](https://www.namecheap.com/), they are fast, cheap, offer a range of additional services, to date I have never had any issues with them.
+We'll need a domain, I'd recommend [NameCheap](https://namecheap.pxf.io/z6OoO), they are fast, cheap, offer a range of additional services, to date I have never had any issues with them.
 
 Next you'll need a [Cloudflare](https://www.cloudflare.com/en-gb/) account, for personal usage the free tier is perfect for this project, it will offer us access to the Cloudflare network, DDoS mitigation, DNS, TLS and Firewall settings, plus the benefit of viewing Analytic data.
 
