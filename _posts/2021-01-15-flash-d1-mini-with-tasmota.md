@@ -11,6 +11,11 @@ In this walk through I will be using Ubuntu 20.04 to flash the [Wemos D1 Mini](h
 
 *Tasmota is designed to be controlled and communicate via [MQTT](http://mqtt.org/). To use it to its fullest potential you need an MQTT broker.* 
 
+**Shopping List**
+
+
+* Wemos [D1 Mini](https://amzn.to/3t3ifHq) - ESP8266 Micro Controller
+
 ## Prerequisites
 
 Start by ensuring you have python and pip installed
