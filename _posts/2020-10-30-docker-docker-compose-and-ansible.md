@@ -53,6 +53,16 @@ Verify install
 sudo docker run hello-world
 ```
 
+Add user to groups
+
+```bash
+sudo usermod -aG ubridge $(whoami)
+sudo usermod -aG libvirt $(whoami)
+sudo usermod -aG kvm $(whoami)
+sudo usermod -aG wireshark $(whoami)
+sudo usermod -aG docker $(whoami)
+```
+
 <br>
 
 ### Install Docker Compose using the [documentation](https://docs.docker.com/compose/install/).
@@ -256,6 +266,7 @@ RUN apt-get update && apt-get install net-tools -y
 6. view your new image. `docker images`
 
    
+
 <br>
 
 
