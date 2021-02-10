@@ -132,7 +132,8 @@ obs-studio \
 vlc \
 audacity \
 picard \
-kdenlive
+kdenlive \
+krita
 ```
 
 
