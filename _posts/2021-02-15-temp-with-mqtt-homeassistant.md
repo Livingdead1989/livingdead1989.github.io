@@ -28,7 +28,7 @@ require_certificate: true
 
 Download [MQTT Explorer](https://mqtt-explorer.com/) then connect to Home Assistant to test everything is working so far.
 
-![Connecting to MQTT using MQTT Explorer](mqtt-explorer-connect.png)
+![Connecting to MQTT using MQTT Explorer](/assets/images/posts/mqtt-explorer-connect.png)
 
 ## Tasmota Confguration
 
@@ -64,11 +64,11 @@ Now configure your MQTT broker settings within **Configuration** > **Configure M
 
 **Wemos D1 Mini Temperature and Humidity (DHT-11)**
 
-![D1 Mini and DHT-11 Wiring Diagram](/home/livingdead1989/Documents/website-git/ARTICLES/mqtt/d1-dht11-wiring-diagram.png)
+![D1 Mini and DHT-11 Wiring Diagram](/assets/images/posts/d1-dht11-wiring-diagram.png)
 
 **Wemos D1 Mini Motion (HC-SR501 PIR)**
 
-![D1 Mini and HC-SR501 Wiring Diagram](/home/livingdead1989/Documents/website-git/ARTICLES/mqtt/d1-hcsr501-wiring-diagram.png)
+![D1 Mini and HC-SR501 Wiring Diagram](/assets/images/posts/d1-hcsr501-wiring-diagram.png)
 
 I used a breadboard to connect my D1 Mini and the sensors as they can share power and ground.
 
@@ -78,7 +78,7 @@ We can use MQTT Explorer to view the Tasmota device as it is now communicating w
 
 We'll need this to find the correct values of our sensors so we can create our Home Assistant entities.
 
-![MQTT Explorer Tasmota Topic](/home/livingdead1989/Documents/website-git/ARTICLES/mqtt/mqtt-explorer.png)
+![MQTT Explorer Tasmota Topic](/assets/images/posts/mqtt-explorer.png)
 
 The state_topic is copied from the Topic in MQTT Explorer and the value_template is created using what type of data we want, in this case JSON, from our DHT11 sensor with the value of Temperature. The availability_topic and payload_available content is standard device availability configuration.
 
@@ -129,7 +129,7 @@ Check your configuration and restart Home Assistant, on your overview dashboard 
 
 By default this information will be polled every 5 minutes.
 
-![Home Assistant Badges - Motion, Temperature and Humidity](ha-badges.png)
+![Home Assistant Badges - Motion, Temperature and Humidity](/assets/images/posts/ha-badges.png)
 
 I would suggest using a [DHT-22](https://amzn.to/3u7iRfQ) sensor over the DHT-11 as it is vastly more accurate.
 
