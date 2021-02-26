@@ -136,6 +136,12 @@ kdenlive \
 krita
 ```
 
+Grant MusicBrainz Picard removable media access (including Network)
+
+```bash
+snap connect picard:removable-media
+```
+
 
 
 ### Other
