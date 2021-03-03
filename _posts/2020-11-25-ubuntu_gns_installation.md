@@ -12,7 +12,7 @@ Following the official documentation on https://docs.gns3.com
 ```bash
 sudo add-apt-repository ppa:gns3/ppa
 sudo apt update  
-sudo apt install gns3-gui gns3-server
+sudo apt install -y gns3-gui gns3-server
 ```
 
 Select `yes` for non-root users being able to run GNS3.
@@ -24,7 +24,7 @@ IOU stands for IOS on Unix, this allows for Cisco IOS images to run on Unix/Linu
 ```bash
 sudo dpkg --add-architecture i386
 sudo apt update
-sudo apt install gns3-iou
+sudo apt install -y gns3-iou
 ```
 
 **Docker Installation**
@@ -32,7 +32,7 @@ sudo apt install gns3-iou
 Install the prerequisites
 
 ```bash
-sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
 ```
 
 Import the official Docker GPG key
@@ -43,6 +43,8 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
 Add the Docker repo
 
+You can check your architecture by using `uname -m` in terminal.
+
 ```bash
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 ```
@@ -51,7 +53,7 @@ Install Docker
 
 ```bash
 sudo apt update
-sudo apt install docker-ce
+sudo apt install -y docker-ce
 ```
 
 Add your user to the following groups, we can use the **$USER** environment variable which gives the username of the user executing.
