@@ -11,13 +11,13 @@ A brief summary of VLANs, what they are, why we use them, different types we use
 ## Contents
 
 * [What is a VLAN](#what-is-a-vlan)
-* [Why use?](#why-use?)
-* [Different VLAN types?](different-vlan-types?)
-* [How to use?](#how-to-use?)
-  * [Cisco Configuration - Switch Access Port](#cisco-configuration-switch-access-port)
-  * [Cisco Configuration - Switch Trunk Port](#cisco-configuration-switch-trunk-port)
-  * [Cisco Configuration - Router on Stick](#cisco-configuration-router-on-stick)
-  * [Cisco Configuration - Multi-Layer Switch](#cisco-configuration-multi-layer-switch)
+* [Why use?](#why-use)
+* [Different VLAN types?](different-vlan-types)
+* [How to use?](#how-to-use)
+  * [Cisco Configuration - Switch Access Port](#cisco-configuration---switch-access-port)
+  * [Cisco Configuration - Switch Trunk Port](#cisco-configuration---switch-trunk-port)
+  * [Cisco Configuration - Router on Stick](#cisco-configuration---router-on-stick)
+  * [Cisco Configuration - Multi-Layer Switch](#cisco-configuration---multi-layer-switch)
 * [Example Files](#example-files)
 * [References and Resources](#references-and-resources)
 
@@ -44,7 +44,6 @@ VLAN stands for Virtual Local Area Network, its a logical separation of a physic
 ### Layer 3 Switching
 
 * Routing of packets operates at the OSI layer 3 (Network).
-
 * Cross VLAN communication requires routing either through a Router or Multi-layer Switch
 
   
@@ -334,30 +333,12 @@ The client machines; ADMIN and STUDENT now need to use their respective default 
 
 ## References and Resources
 
-1. What is VLAN? Types, Advantages, Examples
-   * Author: Guru99
-   * URL: https://www.guru99.com/vlan-definition-types-advantages.html
-2. VLANs and Trunks for Beginners - Part 1
-   * Author DansCourses
-   * URL: https://www.youtube.com/watch?v=aBOzFa6ioLw
-3. Layer 3 vs Layer 2 Switching
-   * Author: Cisco
-   * URL: https://documentation.meraki.com/MS/Layer_3_Switching/Layer_3_vs_Layer_2_Switching
-4. Understanding VLAN Trunking
-   * Author: SolarWinds MSP
-   * URL: https://www.solarwindsmsp.com/blog/vlan-trunking
-5. What is a management VLAN?
-   * Author: NETGEAR
-   * URL: https://kb.netgear.com/000048450/What-is-a-management-VLAN
-6. Voice VLAN - Auxiliary VLAN
-   * Author: Practical Networking
-   * URL: https://www.practicalnetworking.net/stand-alone/voice-vlan-auxiliary-vlan/
-7. Configuring Access and Trunk Interfaces
-   * Author: Cisco
-   * URL: https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus5000/sw/layer2/503_n2_1/503_n2_1nw/Cisco_n5k_layer2_config_gd_rel_503_N2_1_chapter6.html
-8. How to Configure Cisco Router-on-a-stick with Switch
-   * Author: Networks Training
-   * URL: https://www.networkstraining.com/cisco-router-on-a-stick-with-switch/
-9. Inter-VLAN Routing using a Multi-Layer Switch | Cisco CCNA 200-301
-   * Author: Keith Barker
-   * URL: https://www.youtube.com/watch?v=F6b7oQ6J7Ek
+1. [What is VLAN? Types, Advantages, Examples](https://www.guru99.com/vlan-definition-types-advantages.html) | Guru99
+2. [VLANs and Trunks for Beginners - Part 1](https://www.youtube.com/watch?v=aBOzFa6ioLw) | DansCourses 
+3. [Layer 3 vs Layer 2 Switching](https://documentation.meraki.com/MS/Layer_3_Switching/Layer_3_vs_Layer_2_Switching) | Cisco
+4. [Understanding VLAN Trunking](https://www.solarwindsmsp.com/blog/vlan-trunking) | SolarWinds MSP
+5. [What is a management VLAN?](https://kb.netgear.com/000048450/What-is-a-management-VLAN) | NETGEAR
+6. [Voice VLAN - Auxiliary VLAN](https://www.practicalnetworking.net/stand-alone/voice-vlan-auxiliary-vlan/) | Practical Networking
+7. [Configuring Access and Trunk Interfaces](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus5000/sw/layer2/503_n2_1/503_n2_1nw/Cisco_n5k_layer2_config_gd_rel_503_N2_1_chapter6.html) | Cisco
+8. [How to Configure Cisco Router-on-a-stick with Switch](https://www.networkstraining.com/cisco-router-on-a-stick-with-switch/) | Networks Training
+9. [Inter-VLAN Routing using a Multi-Layer Switch | Cisco CCNA 200-301](https://www.youtube.com/watch?v=F6b7oQ6J7Ek) | Keith Barker
