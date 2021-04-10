@@ -333,12 +333,12 @@ The client machines; ADMIN and STUDENT now need to use their respective default 
 
 ## References and Resources
 
-1. [What is VLAN? Types, Advantages, Examples](https://www.guru99.com/vlan-definition-types-advantages.html) | Guru99
-2. [VLANs and Trunks for Beginners - Part 1](https://www.youtube.com/watch?v=aBOzFa6ioLw) | DansCourses 
-3. [Layer 3 vs Layer 2 Switching](https://documentation.meraki.com/MS/Layer_3_Switching/Layer_3_vs_Layer_2_Switching) | Cisco
-4. [Understanding VLAN Trunking](https://www.solarwindsmsp.com/blog/vlan-trunking) | SolarWinds MSP
-5. [What is a management VLAN?](https://kb.netgear.com/000048450/What-is-a-management-VLAN) | NETGEAR
-6. [Voice VLAN - Auxiliary VLAN](https://www.practicalnetworking.net/stand-alone/voice-vlan-auxiliary-vlan/) | Practical Networking
-7. [Configuring Access and Trunk Interfaces](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus5000/sw/layer2/503_n2_1/503_n2_1nw/Cisco_n5k_layer2_config_gd_rel_503_N2_1_chapter6.html) | Cisco
-8. [How to Configure Cisco Router-on-a-stick with Switch](https://www.networkstraining.com/cisco-router-on-a-stick-with-switch/) | Networks Training
-9. [Inter-VLAN Routing using a Multi-Layer Switch | Cisco CCNA 200-301](https://www.youtube.com/watch?v=F6b7oQ6J7Ek) | Keith Barker
+1. [What is VLAN? Types, Advantages, Examples](https://www.guru99.com/vlan-definition-types-advantages.html) - Guru99
+2. [VLANs and Trunks for Beginners - Part 1](https://www.youtube.com/watch?v=aBOzFa6ioLw) - DansCourses 
+3. [Layer 3 vs Layer 2 Switching](https://documentation.meraki.com/MS/Layer_3_Switching/Layer_3_vs_Layer_2_Switching) - Cisco
+4. [Understanding VLAN Trunking](https://www.solarwindsmsp.com/blog/vlan-trunking) - SolarWinds MSP
+5. [What is a management VLAN?](https://kb.netgear.com/000048450/What-is-a-management-VLAN) - NETGEAR
+6. [Voice VLAN - Auxiliary VLAN](https://www.practicalnetworking.net/stand-alone/voice-vlan-auxiliary-vlan/) - Practical Networking
+7. [Configuring Access and Trunk Interfaces](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus5000/sw/layer2/503_n2_1/503_n2_1nw/Cisco_n5k_layer2_config_gd_rel_503_N2_1_chapter6.html) - Cisco
+8. [How to Configure Cisco Router-on-a-stick with Switch](https://www.networkstraining.com/cisco-router-on-a-stick-with-switch/) - Networks Training
+9. [Inter-VLAN Routing using a Multi-Layer Switch - Cisco CCNA 200-301](https://www.youtube.com/watch?v=F6b7oQ6J7Ek) - Keith Barker
