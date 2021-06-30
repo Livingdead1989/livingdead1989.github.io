@@ -6,18 +6,18 @@ description: >- # this means to ignore newlines until "baseurl:"
   Deploying a TP-Link Omada Wireless Network solution for my organisation, we are investigating the Omada range and how to integrate this within our organisation. I have deployed TP-Link Omada EAP660 HD access points and OC300 controller with Wireless Networks including Rate Limit, WLAN Scheduling, RADIUS authentication using Windows NPS and Active Directory and a Captive portal using Voucher authentication.
 ---
 
-The purpose of this article is to cover deploying the TP-Link Omada series as a Wireless solution for my organisation, this solution came in under budget with a total cost of roughly £13,500 compared to other solutions which had quotes of £37,000-40,000. The requirements were to provide Wi-Fi coverage for all three sites with support for 802.11ax. We also wanted to change how to authenticated our clients, therefore this solution required a captive portal with voucher (guest usernames) support, RADIUS authentication while still maintaining features such as Rate Limiting and Scheduling.
+The purpose of this article is to cover deploying the TP-Link Omada series as a Wireless solution for my organization, this solution came in under budget with a total cost of roughly £13,500 compared to other solutions which had quotes of £37,000-40,000. The requirements were to provide Wi-Fi coverage for all three sites with support for 802.11ax. We also wanted to change how to authenticate our clients, therefore this solution required a captive portal with voucher (guest usernames) support, RADIUS authentication while still maintaining features such as Rate Limiting and Scheduling.
 
-TP-Link Omada ticked all of our requirement boxes therefore we purchased two EAP660 HD access points and a OC300 controller for prototyping, the article below are the steps taken in our demonstration before we committed to purchasing 60 more access points. Its worth noting that our existing switching infrastructure does not support the listed 2.5G Ethernet of the EAPs but we wanted to invested in something that could last 5-10 years.
+TP-Link Omada ticked all of our requirement boxes therefore we purchased two EAP660 HD access points and a OC300 controller for prototyping, the article below are the steps taken in our demonstration before we committed to purchasing 60 more access points. Its worth noting that our existing switching infrastructure does not support the listed 2.5G Ethernet of the EAPs, but we wanted to invest in something that could last 5-10 years.
 
-The euipment used in the full solution:
+The equipment used in the full solution:
 
 * 1x [TP-Link Omada OC300 Controller](https://amzn.to/34G2tra)
 * 62x [TP-Link Omada EAP660 HD Access Point](https://amzn.to/3iiQLe3)
 
 
 
-Firstly start by unboxing the OC300 controller and rack mounting it, providing mains power and Ethernet connectivity to our switch. The controller will automatically request an IP address from our DHCP server, which I will reserve going forward.
+Firstly, start by unboxing the OC300 controller and rack mounting it, providing mains power and Ethernet connectivity to our switch. The controller will automatically request an IP address from our DHCP server, which I will reserve going forward.
 
 ![omada-dhcp-lease](/assets/images/posts/omada-dhcp-lease.png)
 
@@ -117,7 +117,7 @@ Click Apply and we are done, Pre-Shared Key (PSK) wireless networks and quick an
 
 ### Creating a Voucher based Captive Portal Wireless Network
 
-Our previous setup we had a guest network where our community staff could generate a username and password for guests to log into our network. We wanted to continue this and TP-Link provide a voucher option where codes can be generated and used as a 1-off, this type of authentication is called a Voucher.
+In our previous setup, we had a guest network where our community staff could generate a username and password for guests to log into our network. We wanted to continue this and TP-Link provide a voucher option where codes can be generated and used as a 1-off, this type of authentication is called a Voucher.
 
 There are three steps required to create one of these networks;
 
@@ -128,7 +128,7 @@ There are three steps required to create one of these networks;
 
 
 
-We needed to create a new Wireless Network due to our VLAN setup, guests have their own VLAN separate from the rest of the network. As you can see from the screenshot, I have created a Wireless Network similar to the PSK network but changed the VLAN to VLAN 110. I have kept the password as this will ensure that devices do not see this as an "open" network, which will cause users to see security warnings.
+We needed to create a new Wireless Network due to our VLAN setup, guests have their own VLAN separate from the rest of the network. As you can see from the screenshot, I have created a Wireless Network similar to the PSK network, but changed the VLAN to VLAN 110. I have kept the password, as this will ensure that devices do not see this as an "open" network, which will cause users to see security warnings.
 
 ![omada-wifi-portal-1](/assets/images/posts/omada-wifi-portal-1.png)
 
@@ -172,7 +172,7 @@ Click Save and now you have a Operator account that can manage the Vouchers with
 
 ### Creating a Windows Radius Wireless Network
 
-The purpose of this wireless network is to allow Staff to connect their devices to our network by authenticating using their Active Directory account credentials. I will be using a Microsoft Server configured with [Network Policy Server (NPS)](https://docs.microsoft.com/en-us/windows-server/networking/technologies/nps/nps-top), then configuring our TP-Link controller to use RADIUS to authenticate user credentials.
+The purpose of this wireless network is to allow staff to connect their devices to our network by authenticating using their Active Directory account credentials. I will be using a Microsoft Server configured with [Network Policy Server (NPS)](https://docs.microsoft.com/en-us/windows-server/networking/technologies/nps/nps-top), then configuring our TP-Link controller to use RADIUS to authenticate user credentials.
 
 
 
@@ -320,7 +320,7 @@ The second setting is Automatic Certificate Request, we will create a new comput
 
 ##### Organisation Owned iPads
 
-I will be deploying our newly configured wireless network to our organisationally owned iPads using Apple Configurator 2, I'll create a profile containing the wireless information, RADIUS username and password with a trust certificate for our server.
+I will be deploying our newly configured wireless network to our organizationally owned iPads using Apple Configurator 2, I'll create a profile containing the wireless information, RADIUS username and password with a trust certificate for our server.
 
 We'll need to create a new user in Active Directory to use for authentication, I have created a user called "RADIUS_auth_ipad" and made it a member of the "RADIUS_auth_users" group that we previously created.
 
@@ -364,6 +364,18 @@ Now in the Wi-Fi section in the left pane we'll be creating a new payload. In th
 
 ![omada-apple-5](/assets/images/posts/omada-apple-5.png)
 
+
+
+##### Apple DEP and Profile Manager
+
+To ease Apple's DEP onboarding, I will be using Apple Configurator 2 to load a temporary Wi-Fi and restore the device, this will cause the iPad to automatically enrol to our DEP and Profile Manager server.
+
+On our Profile Manager server, I have configured a device group which applies the same RADIUS Wi-Fi as above.
+
+The end result is one that allows us to quickly and very easily restore any Apple iPad with automatic restore of Student Wi-Fi to a hidden SSID authenticated against Windows NPS (RADIUS).
+
+
+
 ### NPS Accounting 
 
 I have configure NPS accounting which keeps a log of the selected requests, status and failures. In this demonstration I am logging to a text file on our RADIUS server.
@@ -378,9 +390,9 @@ I have kept the default options, which will log everything and store this in Win
 
 ### Configure TP-Link Controller
 
-Now we will configure the TP-Link OC300 controller with our RADIUS profile. In the screenshot below I am creating a new Wireless Network, I have selected WPA-Enterprise for the Security option which provides a drop down menu for a RADIUS profile.
+Now we will configure the TP-Link OC300 controller with our RADIUS profile. In the screenshot below I am creating a new Wireless Network, I have selected WPA-Enterprise for the Security option which provides a drop-down menu for a RADIUS profile.
 
-In this menu you can create a new RADIUS profile, which I am doing. I have enabled the RADIUS accounting providing the IP address of the RADIUS server and the shared secret from when we configured NPS.
+In this menu, you can create a new RADIUS profile, which I am doing. I have enabled the RADIUS accounting, providing the IP address of the RADIUS server and the shared secret from when we configured NPS.
 
 ![omada-radius-oc-profile](/assets/images/posts/omada-radius-oc-profile.png)
 
@@ -466,9 +478,9 @@ You can enable this by navigating to Settings > Site, check the Advanced Feature
 
 The process of adding new EAPs is easy, simply connect a new EAP into your network and configure any switch VLAN configuration and the TP-Link OC300 will detect the newly added device, here we can click the Adopt button.
 
-Because we have RADIUS authentication enabled we also need to add the newly added EAP to our clients list on our Windows Network Policy server (NPS).
+Because we have RADIUS authentication enabled, we also need to add the newly added EAP to our clients list on our Windows Network Policy server (NPS).
 
-Right click the RADIUS Clients from the NPS and select New.
+Right-click the RADIUS Clients from the NPS and select New.
 
 ![omada-radius-nps-add-client-1](/assets/images/posts/omada-radius-nps-add-client-1.png)
 
