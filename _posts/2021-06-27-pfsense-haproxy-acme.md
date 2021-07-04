@@ -184,6 +184,14 @@ Now we can access our internal services using our external domain names. We can 
 
 
 
+## Extras
+
+A few extra settings we can include are:
+
+* HAProxy > Frontend > Edit > Advanced settings, we can enable the use "forwardfor" option this will pass the client's IP address through to our servers, this is helpful otherwise all connections will look to be coming from our WAN or LAN address.
+
+
+
 ## Troubleshooting
 
 Some services have policies for internal address and external addresses such as Emby can handle connections different depending if it thinks you are local or remote.
