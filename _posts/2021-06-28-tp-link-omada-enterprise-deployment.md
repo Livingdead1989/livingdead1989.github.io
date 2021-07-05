@@ -2,6 +2,7 @@
 title: "TP-Link Omada Enterprise Deployment"
 date: 2021-06-28 14:30:00 +0000
 categories: networking
+tags: tplink omada eap wireless wifi nps radius 802.1x captiveportal voucher
 description: >- # this means to ignore newlines until "baseurl:"
   Deploying a TP-Link Omada Wireless Network solution for my organisation, we are investigating the Omada range and how to integrate this within our organisation. I have deployed TP-Link Omada EAP660 HD access points and OC300 controller with Wireless Networks including Rate Limit, WLAN Scheduling, RADIUS authentication using Windows NPS and Active Directory and a Captive portal using Voucher authentication.
 ---
