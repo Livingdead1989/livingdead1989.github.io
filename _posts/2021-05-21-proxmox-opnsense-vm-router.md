@@ -2,6 +2,7 @@
 title: "Proxmox OpnSense VM Router"
 date: 2021-05-24 15:00:00 +0000
 categories: server
+tags: proxmox opnsense virtual router
 description: >- # this means to ignore newlines until "baseurl:"
   The aim of this guide is to deploy a Virtual Machine running OpnSense in Proxmox offering firewall and router capabilities.
 ---

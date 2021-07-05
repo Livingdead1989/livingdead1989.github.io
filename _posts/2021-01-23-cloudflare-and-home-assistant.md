@@ -2,6 +2,7 @@
 title: "Cloudflare and Home Assistant"
 date: 2021-01-23 13:00:00 +0000
 categories: server
+tags: cloudflare homeassistant hassio
 image: cloudflare-full-encrypt-strict.png
 description: >- # this means to ignore newlines until "baseurl:"
   How to setup a Namecheap custom domain, Cloudflare services with Home Assistant and pfSense for a secure remote access.

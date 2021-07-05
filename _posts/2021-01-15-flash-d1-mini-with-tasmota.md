@@ -2,6 +2,7 @@
 title: "Flash D1 Mini with Tasmota"
 date: 2021-01-15 22:14:00 +0000
 categories: iot
+tags: d1mini flash tasmota
 image: 4-plug_in_d1.jpg
 description: >- # this means to ignore newlines until "baseurl:"
   How to use Ubuntu 20.10 to flash Tasmota 9.2.0 to a D1 Mini using nothing more than a USB cable.

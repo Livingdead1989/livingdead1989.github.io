@@ -2,6 +2,7 @@
 title: "HA Proxmox Cluster with Shared Storage"
 date: 2021-05-13 11:00:00 +0000
 categories: server
+tags: proxmox cluster server storage
 description: >- # this means to ignore newlines until "baseurl:"
   In this guide I will be configuring a Proxmox lab using three HPE DL360 G7s servers with a QNAP NAS for shared storage and a Layer 2 VLAN capable switch interconnecting them. The aim is create a lab environment with High availability capability using existing equipment as a learning opportunity.
 ---

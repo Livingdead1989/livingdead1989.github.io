@@ -2,6 +2,7 @@
 title: "Temp with MQTT HomeAssistant"
 date: 2021-02-15 16:00:00 +0000
 categories: iot
+tags: iot homeassistant hassio mqtt mosquitto d1mini sensor
 description: >- # this means to ignore newlines until "baseurl:"
   Using a D1 Mini with a PIR and DHT11 to capture motion, temperature and humidity and push this data into our Home Assistant instance.
 ---

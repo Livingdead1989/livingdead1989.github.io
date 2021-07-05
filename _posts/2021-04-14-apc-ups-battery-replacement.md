@@ -2,6 +2,7 @@
 title: "APC UPS Battery Replacement"
 date: 2021-04-14 10:15:00 +0000
 categories: misc
+tags: apc ups battery
 description: >- # this means to ignore newlines until "baseurl:"
   A quick guide to replacing some APC Smart Uninterruptible power supply (UPS) SMT batteries for model SMT750RMI2U.
 ---

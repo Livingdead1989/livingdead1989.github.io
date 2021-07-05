@@ -2,6 +2,7 @@
 title: "DPM Unable to Connect"
 date: 2021-05-06 14:10:00 +0000
 categories: misc
+tags: microsoft server dpm sql
 description: >- # this means to ignore newlines until "baseurl:"
   How to fix DPM remote administration unable to connect to DPM, verify that the DPM service is running on this computer. Adding SQL permissions
 ---

@@ -2,6 +2,7 @@
 title: "FOSS Software"
 date: 2021-02-10 08:00:00 +0000
 categories: desktop
+tags: foss software alternative
 description: >- # this means to ignore newlines until "baseurl:"
   Free and Open-Source Software, their benefits and alternatives to popular closed-source paid software.
 ---

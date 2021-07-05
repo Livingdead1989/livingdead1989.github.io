@@ -2,6 +2,7 @@
 title: "After Ubuntu Install"
 date: 2021-02-03 10:15:00 +0000
 categories: desktop
+tags: ubuntu software
 description: >- # this means to ignore newlines until "baseurl:"
   Software and Tweaks to apply after a fresh Ubuntu installation.
 ---

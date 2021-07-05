@@ -2,6 +2,7 @@
 title: "VLAN Simplified"
 date: 2021-04-10 17:00:00 +0000
 categories: networking
+tags: vlan access trunk layer3 layer2 switch
 description: >- # this means to ignore newlines until "baseurl:"
   A brief summary of VLANs, what they are, why we use them, different types we use and how to configure using Cisco.
 ---
