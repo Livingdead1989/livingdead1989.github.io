@@ -2,6 +2,7 @@
 title: "pfSense HAProxy ACME"
 date: 2021-06-27 12:30:00 +0000
 categories: server
+tags: router pfsense haproxy acme letsencrypt
 description: >- # this means to ignore newlines until "baseurl:"
   The aim of this guide is to deploy HAProxy and Let's Encrypt ACME onto our pfSense instance, this will enable us to simplify our exposed ports and provide internal services with free SSL certificates.
 ---
