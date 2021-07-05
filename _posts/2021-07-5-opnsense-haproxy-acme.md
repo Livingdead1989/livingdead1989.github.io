@@ -3,6 +3,7 @@
 title: "OPNsense HAProxy ACME"
 date: 2021-07-5 11:15:00 +0000
 categories: server
+tags: router opnsense haproxy acme letsencrypt
 description: >- # this means to ignore newlines until "baseurl:"
   The aim of this guide is to deploy HAProxy and Let's Encrypt ACME onto our OPNsense instance, this will enable us to simplify our exposed ports and provide internal services with free SSL certificates.
 ---
