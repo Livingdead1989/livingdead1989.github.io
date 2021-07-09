@@ -115,6 +115,10 @@ Navigate to Services > HAProxy and Settings, check the Enable HAProxy and set th
 
 ![pfsense-haproxy-1](/assets/images/posts/pfsense-haproxy-1.png)
 
+We also want to scroll down to the Tuning section and set a Max SSL Diffie-Hellman size of 1024 or 2048 if your hardware can support the extra load.
+
+![pfsense-haproxy-ssl-diffie-hellman](/assets/images/posts/pfsense-haproxy-ssl-diffie-hellman.png)
+
 With HAProxy enabled we can start by creating our Backend services, these are the internal services.
 
 ![pfsense-haproxy-2](/assets/images/posts/pfsense-haproxy-2.png)
