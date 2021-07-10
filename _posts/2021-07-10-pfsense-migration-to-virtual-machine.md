@@ -31,11 +31,11 @@ We'll first need the [latest copy of pfSense](https://www.pfsense.org/download/)
 
 We'll need an up to date backup file for our pfSense instance, we can download a configuration XML by navigating to Diagnostics > Backup & Restore.
 
-![proxmox-pfsense-backup-1](/home/livingdead1989/Documents/website-git/ARTICLES/pfsense-vm-migration/proxmox-pfsense-backup-1.png)
+![proxmox-pfsense-backup-1](/assets/images/posts/proxmox-pfsense-backup-1.png)
 
 On the Backup & Restore tab, we will check to include extra data and select Download configuration as XML.
 
-![proxmox-pfsense-backup-2](/home/livingdead1989/Documents/website-git/ARTICLES/pfsense-vm-migration/proxmox-pfsense-backup-2.png)
+![proxmox-pfsense-backup-2](/assets/images/posts/proxmox-pfsense-backup-2.png)
 
 Make sure to keep this file safe and to hand as we'll need it to restore our configuration to the new virtual pfSense.
 
@@ -58,7 +58,7 @@ I already had the LAN bridge as you need a minimum of 1 bridge for virtual machi
 
 The WAN bridge does not have any IP configuration applied.
 
-![proxmox-network-pfsense-overview](/home/livingdead1989/Documents/website-git/ARTICLES/pfsense-vm-migration/proxmox-network-pfsense-overview.png)
+![proxmox-network-pfsense-overview](/assets/images/posts/proxmox-network-pfsense-overview.png)
 
 
 
@@ -70,45 +70,45 @@ I will step through the Create: Virtual Machine wizard and mention anything I ch
 
 On the general tab I have checked the Start at boot option, you may need to check the "Advanced" options box at the bottom. I have also added a start order of 1 with 0 delay as I want my pfSense virtual machine to start as soon as possible.
 
-![proxmox-create-pfsense-vm-1](/home/livingdead1989/Documents/website-git/ARTICLES/pfsense-vm-migration/proxmox-create-pfsense-vm-1.png)
+![proxmox-create-pfsense-vm-1](/assets/images/posts/proxmox-create-pfsense-vm-1.png)
 
 On the OS tab I have changed the Guest OS type to "Other".
 
-![proxmox-create-pfsense-vm-2](/home/livingdead1989/Documents/website-git/ARTICLES/pfsense-vm-migration/proxmox-create-pfsense-vm-2.png)
+![proxmox-create-pfsense-vm-2](/assets/images/posts/proxmox-create-pfsense-vm-2.png)
 
 On the System tab I have changed the Graphic card to SPICE, this provides us with more features if we wish, but will also save us some system resource.
 
-![proxmox-create-pfsense-vm-3](/home/livingdead1989/Documents/website-git/ARTICLES/pfsense-vm-migration/proxmox-create-pfsense-vm-3.png)
+![proxmox-create-pfsense-vm-3](/assets/images/posts/proxmox-create-pfsense-vm-3.png)
 
 On the Hard Disk tab I have selected VirtIO Block as advised by Netgate.
 
-![proxmox-create-pfsense-vm-4](/home/livingdead1989/Documents/website-git/ARTICLES/pfsense-vm-migration/proxmox-create-pfsense-vm-4.png)
+![proxmox-create-pfsense-vm-4](/assets/images/posts/proxmox-create-pfsense-vm-4.png)
 
 On the CPU tab I have selected 4 cores, this should be plenty given my host CPU and the expected pfSense workload. I have also selected the Type as host, this means our CPU type will be passed through and reported correctly by pfSense.
 
-![proxmox-create-pfsense-vm-5](/home/livingdead1989/Documents/website-git/ARTICLES/pfsense-vm-migration/proxmox-create-pfsense-vm-5.png)
+![proxmox-create-pfsense-vm-5](/assets/images/posts/proxmox-create-pfsense-vm-5.png)
 
 On the Memory tab I have unchecked Ballooning (Dynamic RAM) and set the RAM to 4GB.
 
 **EDIT**: *I have since bumped this upto 8GB as some of my services were using quite a bit of RAM*
 
-![proxmox-create-pfsense-vm-6](/home/livingdead1989/Documents/website-git/ARTICLES/pfsense-vm-migration/proxmox-create-pfsense-vm-6.png)
+![proxmox-create-pfsense-vm-6](/assets/images/posts/proxmox-create-pfsense-vm-6.png)
 
 On the Network tab I have unchecked the Firewall option and set the Model to VirtIO (paravirtualised). I have also configured the Multiqueue to 8 (Max).
 
 > Multiqueue: This option allows the guest OS to process networking packets using multiple virtual CPUs, providing an increase in the total number of packets transferred. - [PVE Proxmox](https://pve.proxmox.com/wiki/Qemu/KVM_Virtual_Machines)
 
-![proxmox-create-pfsense-vm-7](/home/livingdead1989/Documents/website-git/ARTICLES/pfsense-vm-migration/proxmox-create-pfsense-vm-7.png)
+![proxmox-create-pfsense-vm-7](/assets/images/posts/proxmox-create-pfsense-vm-7.png)
 
 Complete the wizard but do not start the virtual machine.
 
 Now we'll need to add an additional Network Device, go to the Virtual Machine > Hardware > Add > Network Device.
 
-![proxmox-create-pfsense-vm-8](/home/livingdead1989/Documents/website-git/ARTICLES/pfsense-vm-migration/proxmox-create-pfsense-vm-8.png)
+![proxmox-create-pfsense-vm-8](/assets/images/posts/proxmox-create-pfsense-vm-8.png)
 
 Here we will add the other bridge, in my case VMBr3. The settings are the same as the Network Device we configured in the wizard.
 
-![proxmox-create-pfsense-vm-9](/home/livingdead1989/Documents/website-git/ARTICLES/pfsense-vm-migration/proxmox-create-pfsense-vm-9.png)
+![proxmox-create-pfsense-vm-9](/assets/images/posts/proxmox-create-pfsense-vm-9.png)
 
 Our Virtual Machine is now ready to start the installation of pfSense.
 
@@ -122,30 +122,30 @@ The pfSense installation wizard is very straight forward so I will only skim ove
 
 By default the keymap is set to US, I wanted to change mind to United Kingdom as thats where I am from an the type of keyboard I use.
 
-![proxmox-pfsense-install-2](/home/livingdead1989/Documents/website-git/ARTICLES/pfsense-vm-migration/proxmox-pfsense-install-2.png)
+![proxmox-pfsense-install-2](/assets/images/posts/proxmox-pfsense-install-2.png)
 
 I went for a Auto (ZFS) installation, continuing with the defaults.
 
-![proxmox-pfsense-install-3](/home/livingdead1989/Documents/website-git/ARTICLES/pfsense-vm-migration/proxmox-pfsense-install-3.png)
+![proxmox-pfsense-install-3](/assets/images/posts/proxmox-pfsense-install-3.png)
 
 With the installation complete, I selected No as I did not need a shell. The new pfSense install with now reboot.
 
-![proxmox-pfsense-install-6](/home/livingdead1989/Documents/website-git/ARTICLES/pfsense-vm-migration/proxmox-pfsense-install-6.png)
+![proxmox-pfsense-install-6](/assets/images/posts/proxmox-pfsense-install-6.png)
 
 The pfSense will boot and ask us to assign the interfaces. The interfaces should have MAC addresses that match your Proxmox bridge MAC addresses, which makes it really easy to know the correct assignment.
 
-![proxmox-pfsense-install-7](/home/livingdead1989/Documents/website-git/ARTICLES/pfsense-vm-migration/proxmox-pfsense-install-7.png)
+![proxmox-pfsense-install-7](/assets/images/posts/proxmox-pfsense-install-7.png)
 
 In my pfSense instance I did not require any VLAN setup, I then assigned vtnet1 as my WAN and vtnet0 as my LAN, this was based upon the MAC address given above and comparing against Proxmox.
 
-![proxmox-pfsense-install-8](/home/livingdead1989/Documents/website-git/ARTICLES/pfsense-vm-migration/proxmox-pfsense-install-8.png)
+![proxmox-pfsense-install-8](/assets/images/posts/proxmox-pfsense-install-8.png)
 
 We should now have a fresh pfSense instance we can access via the LAN IP address. The default user credentials:
 
 * Username: admin
 * Password: pfsense
 
-![proxmox-pfsense-install-9](/home/livingdead1989/Documents/website-git/ARTICLES/pfsense-vm-migration/proxmox-pfsense-install-9.png)
+![proxmox-pfsense-install-9](/assets/images/posts/proxmox-pfsense-install-9.png)
 
 
 
@@ -155,19 +155,19 @@ Before attempting to restore I ensure that I have a working base system, with a 
 
 **EDIT**: *I had to power off my ISP modem until the restore process completed, please see the Troubleshooting section*
 
-![proxmox-pfsense-restore-1](/home/livingdead1989/Documents/website-git/ARTICLES/pfsense-vm-migration/proxmox-pfsense-restore-1.png)
+![proxmox-pfsense-restore-1](/assets/images/posts/proxmox-pfsense-restore-1.png)
 
 Now we can restore, navigate to Diagnostics > Backup & Restore.
 
-![proxmox-pfsense-backup-1](/home/livingdead1989/Documents/website-git/ARTICLES/pfsense-vm-migration/proxmox-pfsense-backup-1.png)
+![proxmox-pfsense-backup-1](/assets/images/posts/proxmox-pfsense-backup-1.png)
 
 In the Restore Backup section, we will be restoring all. Browse to the configuration file we backed up earlier and begin the restore process.
 
-![proxmox-pfsense-restore-2](/home/livingdead1989/Documents/website-git/ARTICLES/pfsense-vm-migration/proxmox-pfsense-restore-2.png)
+![proxmox-pfsense-restore-2](/assets/images/posts/proxmox-pfsense-restore-2.png)
 
 Once the initial restore completed my pfSense instance restarted and on my console I was prompt for assigning my interfaces again.
 
-![proxmox-pfsense-install-8](/home/livingdead1989/Documents/website-git/ARTICLES/pfsense-vm-migration/proxmox-pfsense-install-8.png)
+![proxmox-pfsense-install-8](/assets/images/posts/proxmox-pfsense-install-8.png)
 
 The complete restore process takes a while, so be patient!
 
@@ -183,7 +183,7 @@ When using VirtIO interfaces in Proxmox VE, hardware checksums must be disabled,
 
 These should be disabled by default, but its worth checking, they can be found by navigating to System > Advanced > Networking.
 
-![proxmox-pfsense-tweak-1](/home/livingdead1989/Documents/website-git/ARTICLES/pfsense-vm-migration/proxmox-pfsense-tweak-1.png)
+![proxmox-pfsense-tweak-1](/assets/images/posts/proxmox-pfsense-tweak-1.png)
 
 
 
