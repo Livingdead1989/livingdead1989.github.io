@@ -21,6 +21,11 @@ I already have my Proxmox setup and ready, this article will not cover how to in
 6. Tweaks for Virtual Machine pfSense
 7. Troubleshooting
 
+I have created a simple diagram to illustrate what I plan of doing in terms of physical and logical devices.
+
+![proxmox-pfsense-diagram](/assets/images/posts/proxmox-pfsense-diagram.png)
+
+
 Its worth mentioning that I have an [Intel PRO/1000 PT 4-port 1GB NIC](https://amzn.to/3k4sV6Q) installed in my Proxmox server ready for this project.
 
 We'll first need the [latest copy of pfSense](https://www.pfsense.org/download/), which can be downloaded from their website. I will be installing version 2.5.2, AMD64 DVD Image (ISO).
