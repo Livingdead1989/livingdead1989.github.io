@@ -1,0 +1,4 @@
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"\": expected selector, was \"---\"\A         on line 1 of /home/livingdead1989/Documents/git-web/livingdead1989.github.io/assets/css/site-style.sass\A \A 1: ---\A 2: ---\A 3: \A 4: // Tools\A 5: @import '1-tools/normalize'\A 6: @import '1-tools/fonts'"; }

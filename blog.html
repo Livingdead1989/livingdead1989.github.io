@@ -8,7 +8,12 @@ description: >- # this means to ignore newlines until "baseurl:"
 	<h1>Latest Blog Posts</h1>
 	<p>My latest blog posts, ranging from various technology projects and topics including Web Development, Linux, Networking, Cisco, IoT and Home Automation and more.</p>
 
-	<p><small><em>Articles may contain Affiliate links to help support this site.</em></small></p>
+	<p><small><em>Articles may contain Affiliate links to help support this site, if you would like to support me please consider:</em></small></p>
+	<div class="blog-support">
+		{% for item in site.data.support %}
+			<a class="blog-support-link" href="{{ item.link }}" target="_blank">{{ item.name | capitalize }} {{ item.icon }}</a>
+		{% endfor %}
+	</div>
 
 	<ul class="blog-wrapper">
 		{% for post in site.posts %}
