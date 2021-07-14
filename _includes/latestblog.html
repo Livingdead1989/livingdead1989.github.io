@@ -2,7 +2,7 @@
 	<h2>Latest Blog</h2>
 	
 	<div class="latestblog-flexwrap">
-		{% for post in site.posts | limit:3 %}
+		{% for post in site.posts | limit:6 %}
 			<a class="latest-post" href="{{ post.url | relative_url }}">
 				<div>
 					<p>{{ post.title }}</p>
