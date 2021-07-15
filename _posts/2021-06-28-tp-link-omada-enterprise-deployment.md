@@ -15,8 +15,36 @@ The equipment used in the full solution:
 
 * 1x [TP-Link Omada OC300 Controller](https://amzn.to/34G2tra)
 * 62x [TP-Link Omada EAP660 HD Access Point](https://amzn.to/3iiQLe3)
+* Virtual Windows Server for NPS (RADIUS)
 
 
+
+**Contents**
+
+1. [Controller Install](#controller-install)
+2. [TP-Link Welcome Wizard](#tp-link-welcome-wizard)
+3. [Fixing Cloud Access](#fixing-cloud-access)
+4. [Update Firmware](#update-firmware)
+5. [Auto Backup](#auto-backup)
+6. [Creating Wireless Networks](#creating-wireless-networks)
+   1. [Creating a PSK Wireless Network](#creating-a-psk-wireless-network)
+   2. [Creating a Voucher based Captive Portal Wireless Network](#creating-a-voucher-based-captive-portal-wireless-network)
+   3. [Creating a Windows RADIUS Wireless Network](#creating-a-windows-radius-wireless-network)
+      1. [Configuring Windows RADIUS](#configuring-windows-radius)
+      2. [Organisation Owned iPads](#organisation-owned-ipads)
+      3. [NPS Accounting](#nps-accounting)
+7. [Testing](#testing)
+8. [Student Wireless Network](#student-wireless-network)
+   1. [WLAN Schedule](#wlan-schedule)
+9. [Misc](#misc)
+   1. [Adopting or Resetting an EAP](#adopting-or-resetting-an-eap)
+   2. [Fast Roaming](#fast-roaming)
+   3. [Band Steering](#band-steering)
+   4. [Adding more EAPs](#adding-more-eaps)
+
+
+
+## Controller Install
 
 Firstly, start by unboxing the OC300 controller and rack mounting it, providing mains power and Ethernet connectivity to our switch. The controller will automatically request an IP address from our DHCP server, which I will reserve going forward.
 
@@ -462,6 +490,22 @@ If you ever need to adopt an EAP you'll need the username and password which is 
 ![omada-device-account](/assets/images/posts/omada-device-account.png)
 
 Failing that you may need to reset to EAP, you can do this by pressing and holding the reset button for a few seconds, this can be found next to the Ethernet and Power sockets. Once the device has been reset its like its just been unboxed and you can provision it using controller.
+
+
+
+### Fast Roaming
+
+Is the ability to roam between EAPs in a seamless manner, it will only take affect if the client also supports fast roaming. TP-Link Omada supports 802.11k and v.
+
+You can enable this by navigating to Settings > Site, check the Advanced Features box then enable Fast Roaming as shown in the figure below.
+
+![omada-fast-roaming](/assets/images/posts/omada-fast-roaming.png)
+
+* **AI Roaming** - improves the roaming experience of clients
+* **Dual Band 11k Report** - Provides neighbour list that contains both 2.4GHz and 5Ghz bands
+* **Force-Disassociation** - forces clients to roam whether or not they have the feature enabled.
+
+*As per TP-Links warning, advanced features can negatively impact the performance of the wireless network and need to be configured by network administrators with knowledge of the WLAN parameters.*
 
 
 
