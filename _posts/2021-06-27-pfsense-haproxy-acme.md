@@ -207,6 +207,8 @@ We can add a workaround for this problem by telling our HAProxy to listen on our
 
 First go to your HAProxy Frontend and add your LAN address and an external address, as shown in the figure below.
 
+*EDIT: Due to required configuration differences between internal and external I have not added the LAN address to the WAN frontend, instead I cloned the WAN frontend and replace the WAN address with the LAN address. This gives me two frontend ends.*
+
 ![pfsense-haproxy-10](/assets/images/posts/pfsense-haproxy-10.png)
 
 Now go to your DNS server and add host overrides for the Backend services pointing to your HAProxy LAN address with alias for each domain name.
