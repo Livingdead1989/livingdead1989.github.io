@@ -69,6 +69,11 @@ We will also want to install the qemu agent
 sudo apt install -y qemu-guest-agent
 ```
 
+Ensure the necessary packages are present
+
+```bash
+sudo apt-get install -y wget apt-transport-https gnupg
+```
 
 
 ## Install MongaDB
@@ -119,12 +124,6 @@ We can follow this tutorial to [install MongaDB Community Edition on Debian](htt
 ## Install Java 8 
 
 OpenJDK 8 is no longer available on Debian so we must add the Adopt OpenJDK repository to make this available to us. I have included a link to their documentation about installing for [Linux RPM and DEB installer packages](https://adoptopenjdk.net/installation.html?variant=openjdk8&jvmVariant=hotspot#linux-pkg).
-
-Ensure the necessary packages are present
-
-```bash
-sudo apt-get install -y wget apt-transport-https gnupg
-```
 
 Download the AdoptOpenJDK GPG key
 
@@ -184,7 +183,7 @@ Everything should go smoothly and once finished you should see a Success message
 
 ![tplink_sc_scinstall_3](/assets/images/posts/tplink_sc_scinstall_3.png)
 
-We can open Firefox on our server and test everything looks okay.
+We can open Firefox on our server and test everything looks okay by navigating to http://localhost:8088/, we should automatically be redirected to https://serverip:8043/ with a self-signed certificate.
 
 **Note:** *The Omada Controller software will listen on all available addresses, not just the localhost.*
 
