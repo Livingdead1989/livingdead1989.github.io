@@ -29,7 +29,7 @@ In this article I discover Veeam Backup & Replication Community Edition, Veeam M
 * [History](#history)
 * [Throttling Traffic and Rules](#throttling-traffic-and-rules)
 * [Configuration Backup Settings](#configuration-backup-settings)
-* [I/O Control](#i/o-control)
+* [IO Control](#io-control)
 * [Enable Email Notifications](#enable-email-notifications)
 * [DataLabs - Virtual Lab](#datalabs---virtual-lab)
 * [Staged Restore](#staged-restore)
@@ -819,7 +819,7 @@ Its also worth enabling Notifications  so we are notified about any Successes, W
 
 
 
-## I/O Control
+## IO Control
 
 **Requires Enterprise Edition**
 
