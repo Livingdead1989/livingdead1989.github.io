@@ -4,7 +4,7 @@ date: 2022-03-07 22:30:00 +0000
 categories: server
 tags: homeserver server components hypervisor storage virtual machine container 
 description: >- # this means to ignore newlines until "baseurl:"
-  This article will cover my new 2022 home server deployment, including the hardware components and why I made this selection over others. I will then discuss important aspects of the server such as power saving features, updating firmware and resolving issues with vKVM viewer. The article will continue with a fresh installation of Proxmox VE 7.1, configuring Proxmox CPU governors, interfaces to utilise LAG configuration, use of the community repository and creation of new ZFS disks. As this is a migration for me, I will be discussing steps taken to migrate existing virtual machines and containers and then decommissioning the old clustered server. Although this article is in chronological order, to consolidate its size I have separated it into smaller articles, such as installation and configuration of; Emby and other services.
+  This article will cover my new 2022 home server deployment, including the hardware components and decisions. I will then discuss important aspects of the server such as power saving features. The article will continue steps taken to prepare the new server and migrate existing virtual machines and containers and then decommissioning the old clustered server.
 ---
 
 This article will cover my new 2022 home server deployment, including the hardware components and why I made this selection over others. I will then discuss important aspects of the server such as power saving features, updating firmware and resolving issues with vKVM viewer.
