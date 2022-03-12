@@ -330,7 +330,7 @@ Now we will create a new Virtual Machine (VM), I have included a step-by-step sc
 
 ![hs22-truenas-create-vm-1](/assets/images/posts/hs22-truenas-create-vm-1.png)
 
-Ensure that start at boot is enabled
+Ensure that start at boot is enabled, I have provided a Start/Shutdown order of 1 with a Startup delay of 180 to allow the TrueNAS VM to boot correctly, before starting any other virtual machines or containers, which may rely on TrueNAS storage.
 
 ![hs22-truenas-create-vm-2](/assets/images/posts/hs22-truenas-create-vm-2.png)
 
@@ -338,7 +338,7 @@ As TrueNAS is FreeBSD based, set the Guest OS type to "Other".
 
 ![hs22-truenas-create-vm-3](/assets/images/posts/hs22-truenas-create-vm-3.png)
 
-I have set the graphic card to use "SPICE" as this has a minor positive performance impact.
+I have set the graphic card to use "SPICE" as this has a minor positive performance impact. The SCSI controller has been configured to VirtIO SCSI Single for best performance as per Proxmox documentation.
 
 ![hs22-truenas-create-vm-4](/assets/images/posts/hs22-truenas-create-vm-4.png)
 
@@ -347,9 +347,16 @@ For the disks, following [Proxmox documentation](https://pve.proxmox.com/pve-doc
 * "A SCSI controller of type VirtIO SCSI is the recommended setting if you aim for performance and is automatically selected for newly created Linux VMs"
 * "If you aim at maximum performance, you can select a SCSI controller of type VirtIO SCSI single which will allow you to select the IO Thread option."
 
+
+
+* **SSD emulation** - "If you would like a drive to be presented to the guest as a solid-state drive rather than a rotational hard disk, you can set the SSD emulation option on that drive."
+* **IO Thread** - "Qemu creates one I/O thread per storage controller, rather than a single thread for all I/O. This can increase performance when multiple disks are used and each disk has its own storage controller."
+
 ![hs22-truenas-create-vm-5](/assets/images/posts/hs22-truenas-create-vm-5.png)
 
-I have plenty of CPU threads therefore I have given 4 cores to my TrueNAS VM, I have also changed the type to "host", this will allow the actual CPU information to be passed through to the TrueNAS instance.
+I have plenty of CPU threads therefore I have given 4 cores to my TrueNAS VM, I initially changed the type to "host", to allow the CPU information to be passed through to the TrueNAS instance, but I found that this caused the TrueNAS VM to hang on reboots, I am unsure why this was happening.
+
+**For now leave Type to the default value.**
 
 ![hs22-truenas-create-vm-6](/assets/images/posts/hs22-truenas-create-vm-6.png)
 
@@ -390,7 +397,11 @@ Ensure that the TrueNAS VM is powered off
 On the Proxmox server use the below command to identify the disks on the host server, we'll need this information to add the disks to our TrueNAS VM.
 
 ```bash
-apt install lshwlsblk |awk 'NR==1{print $0" DEVICE-ID(S)"}NR>1{dev=$1;printf $0" ";system("find /dev/disk/by-id -lname \"*"dev"\" -printf \" %p\"");print "";}'|grep -v -E 'part|lvm'
+apt install lshw
+```
+
+```bash
+lsblk |awk 'NR==1{print $0" DEVICE-ID(S)"}NR>1{dev=$1;printf $0" ";system("find /dev/disk/by-id -lname \"*"dev"\" -printf \" %p\"");print "";}'|grep -v -E 'part|lvm'
 ```
 
 ![hs22-truenas-add-disks-1](/assets/images/posts/hs22-truenas-add-disks-1.png)
@@ -415,6 +426,10 @@ qm set 100 -scsi4 /dev/disk/by-id/ata-WDC_xxxxxxxxxxx-xxxxxx_xxxxxxxx
 As shown in the figure below the command was issued and disks were added to my TrueNAS VM.
 
 ![hs22-truenas-add-disks-2](/assets/images/posts/hs22-truenas-add-disks-2.png)
+
+This is a good time to enable `iothread` on each disk.
+
+
 
 Now we are ready to start the TrueNAS VM and continue with importing the storage pool.
 
