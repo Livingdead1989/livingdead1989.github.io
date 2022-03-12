@@ -33,6 +33,7 @@ Although this article is in chronological order, to consolidate its size I have 
   * [CPU Governance](#cpu-governance)
   * [Network Interfaces](#network-interfaces)
   * [Repositories](#repositories)
+  * [Custom NTP server](#custom-ntp-server)
   * [Create ZFS](#create-zfs)
 * [TrueNAS](#truenas)
   * [TrueNAS requirements](#truenas-requirements)
@@ -284,6 +285,43 @@ Lastly go to Updates then click "Refresh" to update our repository list then cli
 This is the same process as performing `apt update` and `apt upgrade` on a Debian based Linux system.
 
 ![hs22-proxmox-update-upgrade](/assets/images/posts/hs22-proxmox-update-upgrade.png)
+
+
+
+### Custom NTP server
+
+As of Proxmox VE 7, `chrony` is used as the default NTP daemon, to add our custom NTP server we need to edit the conf file and restart the service.
+
+```bash
+nano /etc/chrony/chrony.conf
+```
+
+Add your server, an example is below.
+
+```
+# Include configuration files found in /etc/chrony/conf.d.
+confdir /etc/chrony/conf.d
+
+# Custom NTP servers
+server 192.168.1.1 iburst
+
+# Use Debian vendor zone.
+pool 2.debian.pool.ntp.org iburst
+```
+
+Restart chrony
+
+```bash
+systemctl restart chronyd
+```
+
+Check the journal to confirm that the newly configured NTP servers are being used
+
+```bash
+journalctl --since -1h -u chrony
+```
+
+
 
 
 
