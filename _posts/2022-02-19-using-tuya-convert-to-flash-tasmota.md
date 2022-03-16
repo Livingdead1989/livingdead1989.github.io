@@ -20,15 +20,9 @@ To complete this task a Raspberry Pi with Ethernet and Wireless support is requi
 
 Take a look at the community for supported Devices and Templates before you flash, we'll be using [templates.blakadder.com](https://templates.blakadder.com/) later in this guide.
 
-
-
 **WARNING!!** - Use this software at your own risk!. The fact that you can flash Tasmota on your device does not mean all of its features are currently supported. Please research before purchasing to see if other users have successfully flashed the device and are able to use it fully.
 
-
-
 If you are happy to take the risk, lets crack on!
-
-
 
 ## Flashing the MicroSD
 
@@ -46,8 +40,6 @@ Remove once complete.
 
 ![rpi-tuya-convert-rpi-flash-3](/assets/images/posts/rpi-tuya-convert-rpi-flash-3.png)
 
-
-
 ## Raspberry Pi Prep
 
 Plug the Raspberry Pi into power and Ethernet then SSH into it.
@@ -61,8 +53,6 @@ ssh pi@192.168.1.100
 ```bash
 ssh pi@tuya-convert
 ```
-
-
 
 Once logged in set your Wi-Fi country via the Raspi-Config tool
 
@@ -88,8 +78,6 @@ Install Git as its required to pull the Tuya-Convert repo.
 sudo apt install -y git
 ```
 
-
-
 ## Tuya-Convert Install
 
 Clone the [GitHub repository](https://github.com/ct-Open-Source/tuya-convert) and run the install prerequisite script.
@@ -107,8 +95,6 @@ The script will take a minute to complete as it downloads all the prerequisites 
 
 ![rpi-tuya-convert-install-2](/assets/images/posts/rpi-tuya-convert-install-2.png)
 
-
-
 Run Flashing script by using the following command.
 
 Make sure to have your devices ready to complete the flash.
@@ -116,8 +102,6 @@ Make sure to have your devices ready to complete the flash.
 ```bash
 ./start_flash.sh
 ```
-
-
 
 ![rpi-tuya-convert-instructions](/assets/images/posts/rpi-tuya-convert-instructions.png)
 
@@ -160,8 +144,6 @@ Give Tuya-Convert a few seconds to flash the device. A success message should ap
 
 The flash has been completed and we can power down the Raspberry Pi and save the MicroSD card for later use.
 
-
-
 ## Setting up Tasmota
 
 The Tuya IoT device, flashed with Tasmota should now be broadcasting a new Wi-Fi called "Tasmota-xxxx".
@@ -178,11 +160,9 @@ Save the configuration and the IoT device will restart and connect to our Wi-Fi.
 
 You'll see the device in your DHCP server with a new address, which you can connect too.
 
-
-
 ### Tasmota Template
 
-Now we will apply our Tasmota Template. Find the template which is applicable to your device on https://templates.blakadder.com/.
+Now we will apply our Tasmota Template. Find the template which is applicable to your device on <https://templates.blakadder.com/>.
 
 I will be using the Gosund UP111 template, copy the Configuration.
 
@@ -200,13 +180,9 @@ This device is now ready to be added into your preferred Home Automation system,
 
 Finally add a password to the device to secure against unwanted tinkering. Navigate to "**Configuration**" > "**Configure Other**" and enable "**Web Admin Password**" and provide a password.
 
-
-
 ## Accurate Power Monitoring
 
 I will briefly cover calibrating a device, although details of this process can be found on the [Tasmota GitHub](https://tasmota.github.io/docs/Power-Monitoring-Calibration/). To complete this you'll need a Kill-a-meter or calibrated multi-meter and a resistive load device, which draws a constant amount of power such as a light bulb.
-
-
 
 **Steps**
 
@@ -215,13 +191,9 @@ I will briefly cover calibrating a device, although details of this process can 
 3. Open Tasmota web UI
 4. Turn on the light bulb, allow readings to stabilise.
 
-
-
 Before are the readings from the Kill-a-meter.
 
 ![rpi-tuya-convert-kill-a-meter-readings](/assets/images/posts/rpi-tuya-convert-kill-a-meter-readings.png)
-
-
 
 ### Calibration
 
@@ -243,7 +215,7 @@ Commands are issued through the console on Tasmota Web UI.
 
 1. Verify the **Current** reading
 2. calculating current value (amperage) using this formula: `P(W)/V(V)=I(A)`
-3. Adjust current offset, if required. 
+3. Adjust current offset, if required.
 4. `CurrentSet 65` - enter the calculated current in milliAmps)
 
 **Confirm**
@@ -251,13 +223,9 @@ Commands are issued through the console on Tasmota Web UI.
 1. Verify the Power Factor in the Web UI is as close as possible to 1.00
 2. If not 1.00, repeat the calibration process.
 
-
-
 In the figure below the commands can be seen.
 
 ![rpi-tuya-convert-socket-console](/assets/images/posts/rpi-tuya-convert-socket-console.png)
-
-
 
 ### Before and After Calibration
 

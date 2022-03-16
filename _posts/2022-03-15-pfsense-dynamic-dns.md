@@ -1,21 +1,19 @@
 ---
 title: "pfSense Dynamic DNS"
-date: 2022-03-15 09:10:00 +0000
+date: 2022-03-16 20:10:00 +0000
 categories: server
-tags: homeserver server components hypervisor storage virtual machine container 
+tags: ddns dynamicdns dns pfsense cloudflare
 description: >- # this means to ignore newlines until "baseurl:"
   In this demonstration I will be configuring pfSense's DDNS client to update DNS records with Cloudflare.
 ---
 
 Dynamic DNS (DDNS) client registers the IP address of a WAN interface with a variety of dynamic DNS service providers. This is advantageous when your ISP does not provide a static address, when your WAN address changes the DDNS client updates the DNS service provider, therefore records will always be correct.
 
-In this demonstration I will be configuring pfSense's DDNS client to update DNS records with Cloudflare. 
+In this demonstration I will be configuring pfSense's DDNS client to update DNS records with Cloudflare.
 
 There are two sections, first is configuring and collecting credentials for **Cloudflare** and the second is configuring **pfSense** and verifying the deployment is working.
 
-
-
-## Cloudflare 
+## Cloudflare
 
 To create a API token log into Cloudflare and navigate to **My Profile** > **API Tokens**.
 
@@ -43,12 +41,9 @@ In the figure below I have created an A record for DDNS, configured its IPv4 add
 
 ![pfsense-ddns-6](/assets/images/posts/pfsense-ddns-6.png)
 
-
-
 ## pfSense Dynamic DNS
 
 To configure Dynamic DNS within pfSense navigate to **Services** > **Dynamic DNS** and under **Dynamic DNS Clients** click the **Add** button.
-
 
 ![pfsense-ddns-7](/assets/images/posts/pfsense-ddns-7.png)
 
@@ -74,7 +69,4 @@ Click save when finished and the status should return with a green tick and your
 
 Go back to Cloudflare, under DNS and check the updated IP address and enable the proxy.
 
-
-
 In this article we have configured Cloudflare and pfSense to utilise dynamic DNS and ensure that our external IP address is always aligned with our DNS records. This means that are hosted services will not have issues if our ISP changes our IP address.
-

@@ -9,8 +9,6 @@ description: >- # this means to ignore newlines until "baseurl:"
 
 In this article I discover Veeam Backup & Replication Community Edition, Veeam Microsoft Office 365 and Veeam ONE, what they can offer including licensed features. This article provides a full walk through of how they can be installed on top of Proxmox VE using Microsoft Server 2022.
 
-
-
 **Contents**
 
 * [Introduction to Veeam Backup and Replication Community Edition](#introduction-to-veeam-backup-and-replication-community-edition)
@@ -38,8 +36,6 @@ In this article I discover Veeam Backup & Replication Community Edition, Veeam M
 * [Microsoft Office 365](#microsoft-office-365)
 * [Veeam ONE](#veeam-one)
 
-
-
 ## Introduction to Veeam Backup and Replication Community Edition
 
 [Veeam Backup & Replication Community Edition](https://www.veeam.com/virtual-machine-backup-solution-free.html), hence forth known as Veeam provides a free option for up to 10 workloads or 500 GB of unstructured NAS data, this provides administrators with an industry-leading backup solution for virtual, physical and cloud infrastructure.
@@ -51,13 +47,9 @@ Veeam allows administrators to leverage granular item-level recovery, the abilit
 * [Symantec Protection Engine](https://helpcenter.veeam.com/docs/backup/vsphere/av_scan_xml.html?ver=110#symantec)
 * [Kaspersky Security](https://helpcenter.veeam.com/docs/backup/vsphere/av_scan_xml.html?ver=110#kaspersky)
 
-
-
 ### Veeam Training Resources
 
 Veeam provide [Free On-Demand Training](https://www.veeam.com/free-on-demand-trainings.html?ad=menu-resources) and the [Veeam helpcenter](https://www.veeam.com/documentation-guides-datasheets.html) is an excellent resource for any exploration and troubleshooting.
-
-
 
 ### System Requirements
 
@@ -65,34 +57,32 @@ Further information can be found on the [release notes](https://www.veeam.com/ve
 
 **Hardware**
 
-* CPU: x86-64 processor (minimum 4 cores recommended). 
-* Memory: 4 GB RAM plus 500 MB RAM for each concurrent job. 
-* Disk Space: 
-  * 5 GB for product installation 
-  * 4.5 GB for Microsoft .NET Framework 4.7.2 installation. 
-  * 10 GB per 100 VM for guest file system catalog folder (persistent data). 
+* CPU: x86-64 processor (minimum 4 cores recommended).
+* Memory: 4 GB RAM plus 500 MB RAM for each concurrent job.
+* Disk Space:
+  * 5 GB for product installation
+  * 4.5 GB for Microsoft .NET Framework 4.7.2 installation.
+  * 10 GB per 100 VM for guest file system catalog folder (persistent data).
   * Additional free disk space for Instant VM Recovery (IVMR)
-  * Cache folder (non-persistent data, at least 100 GB recommended). 
-* Network: 1 Gbps or faster for on-site backup and replication, and 1 Mbps or faster for off-site backup and replication. High latency and reasonably unstable WAN links are supported. 
+  * Cache folder (non-persistent data, at least 100 GB recommended).
+* Network: 1 Gbps or faster for on-site backup and replication, and 1 Mbps or faster for off-site backup and replication. High latency and reasonably unstable WAN links are supported.
 
-**OS** 
+**OS**
 
-Only 64-bit versions of the following operating systems are supported: 
+Only 64-bit versions of the following operating systems are supported:
 
-* Microsoft Windows Server 2012, 2012 R2, 2016, 2019 
-* Microsoft Windows Server 2008 R2 SP1 
+* Microsoft Windows Server 2012, 2012 R2, 2016, 2019
+* Microsoft Windows Server 2008 R2 SP1
 
 Visit the [Microsoft Evaluation Center](https://www.microsoft.com/en-gb/evalcenter/evaluate-windows-server) to download 180 day trial versions of MS Server.
 
 **Software**
 
-* Microsoft SQL Server 2008 to 2019 (2016 SP1 Express is included) 
-* Microsoft .NET Framework 4.7.2 (included in the setup) 
-* Windows Installer 4.5 (included in the setup) 
-* Microsoft Windows PowerShell 5.1 (included in the setup) 
+* Microsoft SQL Server 2008 to 2019 (2016 SP1 Express is included)
+* Microsoft .NET Framework 4.7.2 (included in the setup)
+* Windows Installer 4.5 (included in the setup)
+* Microsoft Windows PowerShell 5.1 (included in the setup)
 * Firefox, Google Chrome, Microsoft Edge, or Microsoft Internet Explorer 11.0 or later
-
-
 
 ## Installation
 
@@ -134,8 +124,6 @@ The network tab can be left on default values.
 
 ![veeam-ce-vm-install-7](/assets/images/posts/veeam-ce-vm-install-7.png)
 
-
-
 ### Server 2019 Installation
 
 Open the console then start the VM, press any key to start the installation process.
@@ -158,7 +146,7 @@ Now swap the CD/DVD image to the downloaded VirtIO drivers ISO file.
 
 If you did not add the VirtIO drivers during installation you can navigate to the mounted ISO file and install via the Virtio-win-driver-installer Setup.
 
-We'll also need to install the Virtio-win-guest-tools, which can be found on the mounted ISO. 
+We'll also need to install the Virtio-win-guest-tools, which can be found on the mounted ISO.
 
 ![veeam-ce-os-install-3](/assets/images/posts/veeam-ce-os-install-3.png)
 
@@ -170,15 +158,13 @@ Now install the "guest-agent", this will enable the Qemu Agent.
 
 ![veeam-ce-os-install-5](/assets/images/posts/veeam-ce-os-install-5.png)
 
-This is also a good point in time to make sure that the Server has all available updates and security patches. We can also change the host name of the server and set a static IP address if 
+This is also a good point in time to make sure that the Server has all available updates and security patches. We can also change the host name of the server and set a static IP address if
 
 If you haven't already downloaded the ISO you can grab it from [Veeam's website](https://www.veeam.com/virtual-machine-backup-solution-free/alt_download.html).
 
 ![veeam-ce-veeam-iso-upload](/assets/images/posts/veeam-ce-veeam-iso-upload.png)
 
 Now restart the Virtual machine and mount our Veeam Community Edition ISO on the CD/DVD, or download and mount the ISO from within Microsoft Server.
-
-
 
 ### Veeam Installation
 
@@ -268,8 +254,6 @@ Because we installed the console in our demonstration we can open it using the d
 
 ![veeam-ce-login](/assets/images/posts/veeam-ce-login.png)
 
-
-
 ## Getting started with Veeam Backup and Replication
 
 There are two types of backup with Veeam CE, the first is an ad-hoc backup operation called VeeamZIP and the other is a scheduled backup job.
@@ -279,8 +263,6 @@ Use of a Veeam Agent may be required for physical machines, depending on the ope
 Lastly you need to decide where you want to store your backups. By default, during installation of Community Edition, Veeam creates a backup repository on the backup server itself. Veeam supports Directly Attached Storage (DAS) and Network Attached Storage (NAS).
 
 From a security aspect, consider using a backup repository that is immutable, this means a solution that prevents data deletion or modification from the storage. This is achievable within Community Edition by using the [Hardened Linux Repository](https://helpcenter.veeam.com/docs/backup/vsphere/hardened_repository.html?ver=110).
-
-
 
 ### How Veeam Creates Backups
 
@@ -304,10 +286,6 @@ This method will require administrators to create an active full or synthetic fu
 
 This backup chain consists of the last full backup file and a set of reverse
 incremental backup files preceding it. As a result, the most recent restore point in the backup chain is always a full backup and gets updated after every successful backup job session.
-
-
-
-
 
 ## Backup Repositories
 
@@ -380,21 +358,17 @@ The default repository can now be removed if you so wish, this can be achieved b
 
 ![veeam-ce-vm-extra-hdd-14](/assets/images/posts/veeam-ce-vm-extra-hdd-14.png)
 
-
-
 ## Backup Proxies
 
 Proxies are extremely important in a Veeam backup solution. The proxy processes jobs and delivers backup traffic.
 
 Basic backup proxy tasks include the following:
 
-- Retrieving VM data from the production storage
-- Compressing
-- Deduplicating
-- Encrypting
-- Sending it to the backup repository (for example, if you run a backup job) or  another backup proxy (for example, if you run a replication job)
-
-
+* Retrieving VM data from the production storage
+* Compressing
+* Deduplicating
+* Encrypting
+* Sending it to the backup repository (for example, if you run a backup job) or  another backup proxy (for example, if you run a replication job)
 
 ## Adding Storage and Tape Infrastructure
 
@@ -405,8 +379,6 @@ Sadly I do not have a SAN storage array or tape library to explore these options
 To add a Tape library navigate to **Tape Infrastructure** and select **Add Tape Server**, following the configuration wizard.
 
 ![veeam-ce-tape-infrastructure](/assets/images/posts/veeam-ce-tape-infrastructure.png)
-
-
 
 ## Protection Group
 
@@ -426,7 +398,7 @@ Next set the type that fulfils your requirements, in this demonstration I will b
 
 In production, chances are that you will want to use Microsoft Active Directory objects to utilise organisational units, security groups and exclusion rules.
 
-![veeam-ce-protection-group-3](/assets/images/posts/veeam-ce-protection-group-3.png) 
+![veeam-ce-protection-group-3](/assets/images/posts/veeam-ce-protection-group-3.png)
 
 Now computer accounts can be added, using the "Add..." button, providing a host name or IP address and adding credentials
 
@@ -438,7 +410,7 @@ Its worth noting that SSH is required on the Linux host.
 
 ![veeam-ce-protection-group-5](/assets/images/posts/veeam-ce-protection-group-5.png)
 
-Once complete return to the previous window and select "Test Now". 
+Once complete return to the previous window and select "Test Now".
 
 The test should return a "Success" result, if it fails troubleshoot and retry, ensure SSH access is enabled for the provided user credentials.
 
@@ -476,8 +448,6 @@ The installed Veeam clients on both Windows and Ubuntu.
 
 ![veeam-ce-protection-group-12](/assets/images/posts/veeam-ce-protection-group-12.png)
 
-
-
 ## Virtual Infrastructure
 
 Navigating to **Inventory** > **Virtual Infrastructure** is where we add our VMware vSphere or Microsoft Hyper-V environments to Veeam CE.
@@ -494,8 +464,6 @@ For Microsoft Hyper-V protection, add System Center Virtual Machine Manager (SCV
 
 ![veeam-ce-virtual-server-2](/assets/images/posts/veeam-ce-virtual-server-2.png)
 
-
-
 ## Managed Servers
 
 Used to establish connections with relevant servers such as VMware Vcenter, Microsoft Hyper-V clusters or standalone Windows or Linux machines.
@@ -508,7 +476,7 @@ The pop out window will then present us with options for our hyper-visors and se
 
 In this demonstration I will be adding a Linux server. Ensure that the Linux server already has SSH and Perl installed.
 
-Provide a host name or IP address for the Linux server. 
+Provide a host name or IP address for the Linux server.
 
 ![veeam-ce-managed-server-2](/assets/images/posts/veeam-ce-managed-server-2.png)
 
@@ -521,8 +489,6 @@ This process is the same as when we created credentials for the Protection Group
 When you proceed the connection will be tested and any required components installed.
 
 ![veeam-ce-managed-server-4](/assets/images/posts/veeam-ce-managed-server-4.png)
-
-
 
 ## Backup and Restore
 
@@ -605,8 +571,6 @@ When restoring an entire VM, the ability to restore only changed blocks using ch
 
 Veeam offers restoring of VM virtual disks and VM files, such as VM Configurations. Although consideration needs to be given to powering off the VM when attaching a virtual disk over no powering off when extracting VM files.
 
-
-
 #### Restore Linux Guest Files
 
 When restoring Linux guest files a helper Linux machine is required, this is used to mount the backup to for the file-level recovery. In this demonstration I have create a fresh VM with Ubuntu server installed, I also ensured that `openssh-server` and `perl` were installed.
@@ -645,8 +609,6 @@ The below figure shows the helper Linux server while restoring, from the red lin
 
 ![veeam-ce-linux-restore-10](/assets/images/posts/veeam-ce-linux-restore-10.png)
 
-
-
 #### Restore Windows Guest Files
 
 Restoring guest files from a Windows based machine is a similar process but does not require an additional machine as Veeam can mount and explorer from within itself.
@@ -662,8 +624,6 @@ Select the restore point you wish to recover from.
 Veeam will then open a Explorer window with the backed up drive mounted. The administrator can then navigate the directory tree and choose to restore files and folders either copying to a different location or restoring directly back to the server.
 
 ![veeam-ce-windows-restore-3](/assets/images/posts/veeam-ce-windows-restore-3.png)
-
-
 
 ## NAS Backup and Restore
 
@@ -721,8 +681,6 @@ Running the File Share backup job, success can be seen in the figure below.
 
 ![veeam-ce-file-share-backup-11](/assets/images/posts/veeam-ce-file-share-backup-11.png)
 
-
-
 ## Restoring Active Directory Objects
 
 Active Directory can be backed up and restored using Veeam, first navigate to **Home** > **Backup** > **Disk** and select a Domain Controller (DC). The right click context menu offers the option **Restore application items** and within **Microsoft Active Directory objects**.
@@ -743,11 +701,9 @@ Enabling the "Compare with Production" option, the administrator can see all ite
 
 ![veeam-ce-ad-restore-4](/assets/images/posts/veeam-ce-ad-restore-4.png)
 
-
-
 ## Microsoft Exchange and SharePoint
 
-Veeam has to the ability to protect Microsoft Exchange including mailboxes, messages, folders, tasks, contacts and more. 
+Veeam has to the ability to protect Microsoft Exchange including mailboxes, messages, folders, tasks, contacts and more.
 
 To start a recovery, first navigate to **Home** > **Backup** > **Disk** and Select the Exchange backup. Under the right click context menu there are options for **Restore application items** > **Microsoft Exchange mailbox items**.
 
@@ -775,8 +731,6 @@ Veeam allows administrators to Publish, Restore and Export SQL database items an
 
 ![veeam-ce-sql-restore-1](/assets/images/posts/veeam-ce-sql-restore-1.png)
 
-
-
 ## History
 
 Located in the bottom left navigation panel, either as a large icon or a small icon at the bottom right of the panel.
@@ -788,8 +742,6 @@ For example we can investigate who and when has been performing Instant VM recov
 ![veeam-ce-veeam-history](/assets/images/posts/veeam-ce-veeam-history.png)
 
 When looking at detailed backup job results, an administrator can use the keyboard arrow keys to change the results to a previous run.
-
-
 
 ## Throttling Traffic and Rules
 
@@ -803,8 +755,6 @@ A new rule can be created using the "Add..." button, when creating the new rule 
 
 Network rules can also be used to create routes and preferred networks.
 
-
-
 ## Configuration Backup Settings
 
 Configuration backup settings are available via the menu button in the top left and select **Configuration Backup**.
@@ -816,8 +766,6 @@ Its important, that if file encryption is enabled on a backup job that it is als
 Its also worth enabling Notifications  so we are notified about any Successes, Warnings or Errors. Click the **Notifications** button and check "Send e-mail notifcations to the follow recipients".
 
 ![veeam-ce-config-backup-settings-notify](/assets/images/posts/veeam-ce-config-backup-settings-notify.png)
-
-
 
 ## IO Control
 
@@ -831,8 +779,6 @@ This is important for when backup jobs are running that Veeam does not create a 
 ![veeam-ce-io-control](/assets/images/posts/veeam-ce-io-control.png)
 
 Veeam Enterprise Plus allows for individual datastores to be configured.
-
-
 
 ## Enable Email Notifications
 
@@ -850,8 +796,6 @@ Don't forget to send a Test Message to ensure everything is working correctly.
 
 Additional notifications can be found on the **Notifications** tab in the Options window.
 
-
-
 ## DataLabs - Virtual Lab
 
 **Requires Enterprise Edition** - A brief introduction to Veeam DataLabs
@@ -860,7 +804,7 @@ A secure, sandbox virtual environment to bring up VMs from backup. Veeam DataLab
 
 Sandbox DataLabs are useful for; DevOps, Training, Patching, Upgrades and Application Development and use Data Backups, Replicas and Storage Snapshots.
 
-Veeam DataLabs can be found by navigating to **Backup Infrastructure** > **SureBackup** 
+Veeam DataLabs can be found by navigating to **Backup Infrastructure** > **SureBackup**
 
 ![veeam-ce-datalab-1](/assets/images/posts/veeam-ce-datalab-1.png)
 
@@ -884,8 +828,6 @@ Administrators can also perform application item-level restore (U-AIR) on on-dem
 
 **On-Demand Sandbox** will be shutdown when a scheduled backup job is due, as a backup takes priority, therefore its important to give consideration to running on-demand sandboxes.
 
-
-
 ## Staged Restore
 
 Staged Restore leverages Full data backups and the DataLab technology. Staged Restore was built around [GDPR](https://ico.org.uk/for-organisations/guide-to-data-protection/) and '[the right to be forgotten](https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/individual-rights/right-to-erasure/)'.
@@ -900,13 +842,11 @@ Scripts are required with Staged Restore, a restore cannot occur unless a script
 
 Once the changes have been applied Veeam will migrate back into production.
 
-
-
 ## Storage Snapshots
 
 **Requires Enterprise Edition & Supported SAN**
 
-Veeam [Storage Snapshots](https://helpcenter.veeam.com/docs/backup/vsphere/storage_backup.html?ver=110) instruct VMware to stun and snapshot the VM, this snapshot is sent to the Storage (SAN) and cleaned from VMware. 
+Veeam [Storage Snapshots](https://helpcenter.veeam.com/docs/backup/vsphere/storage_backup.html?ver=110) instruct VMware to stun and snapshot the VM, this snapshot is sent to the Storage (SAN) and cleaned from VMware.
 
 Veeam Backup & Replication reads data of processed VMs from storage snapshots, which speeds up backup and replication operations, minimises VM Stun and improves Restore Point Objectives (RPO).
 
@@ -916,19 +856,15 @@ Storage snapshots are configured in backup job, under **Storage** > **Advanced**
 
 ![veeam-ce-storage-snapshot](/assets/images/posts/veeam-ce-storage-snapshot-2.png)
 
-
-
 ## Veeam Backup Enterprise Manager
 
 **Requires Enterprise Edition**
 
 The Veeam Backup Enterprise Manager is a web based management tool used for Federating of multiple Veeam servers, it also provides a search-able file level index and role access levels with 1-click restores and self service abilities.
 
-
-
 ## Microsoft Office 365
 
-System requirements for up to 20,000 objects, 5000 users - *per user is roughly 4 objects*: 
+System requirements for up to 20,000 objects, 5000 users - *per user is roughly 4 objects*:
 
 * 8 CPU
 * 32GB
@@ -938,8 +874,6 @@ System requirements for up to 20,000 objects, 5000 users - *per user is roughly 
 ![veeam-ce-365-1](/assets/images/posts/veeam-ce-365-1.png)
 
 Veeam CE entitles administrators to 10 free users.
-
-
 
 ### Adding Organisiations
 
@@ -971,8 +905,6 @@ Configuration should complete successfully.
 
 ![veeam-ce-365-7](/assets/images/posts/veeam-ce-365-7.png)
 
-
-
 ### Auxiliary Backup Account
 
 Microsoft throttles SharePoint Online and OneDrive site data. This throttling is based on per account to a single site, auxiliary backup accounts to help mitigate this throttling issue, increasing backup speeds from SharePoint Online and OneDrive by connecting over more streams.
@@ -999,8 +931,6 @@ Veeam will then successfully create all of the accounts.
 
 ![veeam-ce-365-10](/assets/images/posts/veeam-ce-365-10.png)
 
-
-
 ### Adding Offloaded Cloud Repositories
 
 Create a **Object Storage Repository** for Azure Blob
@@ -1016,8 +946,6 @@ Check the **Offload backup data to object storage** and then from the drop down 
 It is recommended to encrypt data, enable by checking the **Encrypt data uploaded to object storage** box and adding credentials.
 
 ![veeam-ce-365-14](/assets/images/posts/veeam-ce-365-14.png)
-
-
 
 ### Creating Backup Jobs
 
@@ -1043,8 +971,6 @@ Then configure the backup schedule, by selecting the **Periodically every** opti
 
 ![veeam-ce-365-19](/assets/images/posts/veeam-ce-365-19.png)
 
-
-
 ### Restore Explorers
 
 The restore explorers are available from either the backup job or using the **Explore** button from the ribbon.
@@ -1055,17 +981,13 @@ The Microsoft Office 365 restore explorers are similar to that of other restore 
 
 Administrators have access to [**RESTful API**](https://helpcenter.veeam.com/docs/backup/vbr_rest/overview.html?ver=110), **Advanced Logging**, **Compare to Production** features as well as **Advanced search** and **Reports**.
 
-
-
 ## Veeam ONE
 
 Veeam ONE is available in Community Edition and [available for download](https://www.veeam.com/virtual-server-management-one-free/alt_download.html). Veeam ONE is used to bring
 
-* Monitoring 
+* Monitoring
 * Automation
 * Analytics
-
-
 
 ### Veeam ONE Installation
 
@@ -1077,7 +999,7 @@ To use Veeam ONE, agreement to terms for Veeam license and 3rd party components 
 
 ![veeam-ce-one-install-2](/assets/images/posts/veeam-ce-one-install-2.png)
 
-In this demonstration all components will be installed on a single server therefore the **Typical** installation will suffice. 
+In this demonstration all components will be installed on a single server therefore the **Typical** installation will suffice.
 
 ![veeam-ce-one-install-3](/assets/images/posts/veeam-ce-one-install-3.png)
 
@@ -1137,8 +1059,6 @@ Desktop shortcuts have been created and the installation process succeeded, the 
 
 ![veeam-ce-one-install-15](/assets/images/posts/veeam-ce-one-install-15.png)
 
-
-
 ### Adding Veeam Backup & Replication
 
 To add our existing Veeam Backup & Replication server to Veeam ONE, first navigate to **Data Protection View** > **Backup Infrastructure** and click **Add Server**.
@@ -1163,15 +1083,11 @@ There are many great logs, statistics and reports available from the Veeam ONE c
 
 ![veeam-ce-one-6](/assets/images/posts/veeam-ce-one-6.png)
 
-
-
 ### Notifications
 
 On the top ribbon select "Notifications". The notification settings window is similar to that of Veeam Backup & Replication notifications.
 
 ![veeam-ce-one-4](/assets/images/posts/veeam-ce-one-4.png)
-
-
 
 ### Web Client
 
@@ -1182,4 +1098,3 @@ The web client is installed along side the Veeam ONE server.
 Below is an example of a custom dashboard that I publicly shared, although in my demonstration I do not have any actual stats to view.
 
 ![veeam-ce-one-7](/assets/images/posts/veeam-ce-one-7.png)
-

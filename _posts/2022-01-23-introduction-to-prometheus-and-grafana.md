@@ -9,8 +9,6 @@ description: >- # this means to ignore newlines until "baseurl:"
 
 In this article, I explore the difference between logging and monitoring, expanding my knowledge and understanding of Prometheus, a popular time series metric collector and storage application with Kubernetes integration. I learn how to quickly deploy this alongside Grafana, a popular dashboard application, on my Proxmox server in a container. Lastly, I briefly cover how to import the node exporter full dashboard to visually display our collected metrics.
 
-
-
 ### Logging and Monitoring
 
 Logging is the qualitative data, its related to the state or an event of an application or service. Whereas Monitoring (Time Series, Metric data) is the quantitative data, it relates to data about the rate of change.
@@ -23,23 +21,17 @@ An example of monitoring in Linux is to use the `top` command.
 
 ![monitoring-monitor-example](/assets/images/posts/monitoring-prometheus-monitor-example.png)
 
-
-
 ### Prometheus
 
 Prometheus is pull-based and time series, used in a generic environment with Kubernetes integration. Prometheus captures and stores metrics and has an alerting capability using "[AlertManager](https://prometheus.io/docs/alerting/latest/alertmanager/)".
 
 Prometheus is built to be reliable, standalone and self-containing, this ensures that the service continues to run even when other elements of the network are broken. Prometheus can also be installed within a Kubernetes cluster.
 
-
-
 **Prometheus Server Components**
 
 1. **Retrieval** - Data Retrieval Worker
 2. **Storage** - Time Series Database
 3. **HTTP Server** - Accepts PromQL queries
-
-
 
 Prometheus monitors targets, which contain metrics. Metrics are collected by pulling from HTTP requests such as `http://{hostname}/metrics`.
 
@@ -48,8 +40,6 @@ If metrics cannot be collected directly, Prometheus [Exporters](https://promethe
 Prometheus comes with a WebUI where queries can be executed and graphed on a per query basis. Grafana is a popular Dashboard application to create visual dashboards using the metrics collected by Prometheus.
 
 ![monitoring-prometheus-structure](/assets/images/posts/monitoring-prometheus-structure.png)
-
-
 
 ## Installation of Prometheus and Grafana
 
@@ -82,8 +72,6 @@ Visit IP address of server using port 9090
 ```
 http://192.168.1.x:9090
 ```
-
-
 
 ### Granfana OSS
 
@@ -144,8 +132,6 @@ http://192.168.1.x:3000
 
 Default username and password is admin/admin
 
-
-
 ## Prometheus Configuration
 
 Prometheus configuration file is located under `/etc/prometheus/` and is called '**prometheus.yml**' and if you have alert manager installed that will have its own YAML configuration file called '**alertmanager.yml**' as shown in the figure below.
@@ -199,13 +185,11 @@ Now then we visit the WebUI and navigate to **Status** > **Targets**, the new no
 
 ![monitoring-prometheus-node-exporter-config-2](/assets/images/posts/monitoring-prometheus-node-exporter-config-2.png)
 
-
-
 ### Queries and Graphing
 
 Prometheus uses the language PromQL to write query expressions. I have a crude demonstration showing how to extract usable data.
 
-First navigate to **Graph**. Using the drop down menu, right of the execute button or start typing enter the following. 
+First navigate to **Graph**. Using the drop down menu, right of the execute button or start typing enter the following.
 
 <u>All available metrics are not added immediately, an update needs to occur for them to be added.</u>
 
@@ -270,13 +254,11 @@ Aggregation Operators
 * stddev
 * stdvar
 
-
-
-##  Grafana Configuration
+## Grafana Configuration
 
 The Grafana dashboard is available using port 3000 by default.
 
-The first step in Grafana is to add our Prometheus data source. Navigate to **Configuration** > **Data sources**. 
+The first step in Grafana is to add our Prometheus data source. Navigate to **Configuration** > **Data sources**.
 
 ![monitoring-prometheus-grafana-1](/assets/images/posts/monitoring-prometheus-grafana-1.png)
 
@@ -302,7 +284,7 @@ Either enter the full URL of the dashboard or the ID number and then click **Loa
 
 ![monitoring-prometheus-grafana-5](/assets/images/posts/monitoring-prometheus-grafana-5.png)
 
-Now we can set a dashboard name and set its folder, I will be leaving this as default values in this demonstration. 
+Now we can set a dashboard name and set its folder, I will be leaving this as default values in this demonstration.
 
 Set the Prometheus server from the drop down menu, then click **Import** to complete.
 
@@ -311,4 +293,3 @@ Set the Prometheus server from the drop down menu, then click **Import** to comp
 If successful you will now have a dashboard displaying all the node-exporter metrics collected by Prometheus.
 
 ![monitoring-prometheus-grafana-7](/assets/images/posts/monitoring-prometheus-grafana-7.png)
-

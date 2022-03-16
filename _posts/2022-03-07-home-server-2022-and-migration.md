@@ -15,11 +15,7 @@ As this is a migration for me, I will be discussing steps taken to migrate exist
 
 Although this article is in chronological order, to consolidate its size I have separated it into smaller articles, such as installation and configuration of; Emby and other services.
 
-
-
-[The Proxmox VE Administration Guide is a great resource](https://pve.proxmox.com/pve-docs/pve-admin-guide.pdf) 
-
-
+[The Proxmox VE Administration Guide is a great resource](https://pve.proxmox.com/pve-docs/pve-admin-guide.pdf)
 
 ## Article Contents
 
@@ -49,8 +45,6 @@ Although this article is in chronological order, to consolidate its size I have 
   * [No Quorum?](#no-quorum?)
   * [Separate a Node Without Reinstalling](#separate-a-node-without-reinstalling)
 
-
-
 ## Server
 
 ### Hardware Components
@@ -62,16 +56,14 @@ Below is a list of components for the server:
 * **Motherboard**: [Gigabyte MD70-HB0](https://www.gigabyte.com/Enterprise/Server-Motherboard/MD70-HB0-rev-12) *(Datto rebrand)*
 * **CPU**: 2 x [Intel Xeon E5-2630Lv3](https://www.intel.co.uk/content/www/uk/en/products/sku/83357/intel-xeon-processor-e52630l-v3-20m-cache-1-80-ghz/specifications.html) - 8 core (16 threads) 1.8 GHz
 * **Coolers**: Intel Socket R Square ILM - BKT-0048L-RS Rev.B
-* **RAM**: 2 x Samsung DDR4 32GB 2133Mhz ECC Registered Load Reduced 
+* **RAM**: 2 x Samsung DDR4 32GB 2133Mhz ECC Registered Load Reduced
 * **SSD**: Intel D3-S45110 Series Enterprise SSD
-  * 4 x  240 GB 
+  * 4 x  240 GB
   * 2 x 480 GB
 * **HDD**: 4 x 4 TB WD Red - SATA 64 MB Cache
 * **GPU**: PNY Nvidia Quadro P620 2 GB
 
-
-
-#### Reasons for purchase:
+#### Reasons for purchase
 
 The above components were either ones I already owned or purchased pre-loved. There was a strong focus on price point to reduce the initial up front cost, therefore the components are not the newest.
 
@@ -91,14 +83,6 @@ The larger disks are primarily for used for media storage, Western Digital (WD) 
 
 Lastly **the GPU** is for Emby, because it supports Hardware Based [Transcoding](https://support.emby.media/support/solutions/articles/44001159897-transcoding) using a GPU can substantially reduce the CPU load.
 
-
-
-
-
-
-
-
-
 ### Firmware
 
 As this was a new motherboard for me I wanted to make sure that it was using the latest BMC firmware and BIOS, this is highly recommended but often overlooked. Firmware brings stability, security and bug fixes.
@@ -111,10 +95,6 @@ These upgrades are straight forward and both can be performed via the EMS (Embed
 Navigate to the "Update" menu, select the firmware type and provide the extracted file.
 
 ![hs22-server-firmware](/assets/images/posts/hs22-server-firmware.png)
-
-
-
-
 
 ### vKVM Viewer
 
@@ -134,15 +114,11 @@ The figure below shows the vKVM viewer working, the server is powered on and wai
 
 ![hs22-server-vkvm-viewer-2](/assets/images/posts/hs22-server-vkvm-viewer-2.png)
 
-
-
 ### Fan Configuration
 
 I could configure the motherboard BIOS to run in an energy efficient mode from the BIOS menu, but needed to configure my fan array to be in an "Energy Saving" mode from the EMS, this not only reduces the power consumption but also reduces the noise without removing cooling potential. Navigate to Utilities and under PVM node set "Energy Saving" and submit, these changes will apply instantly.
 
 ![hs22-server-fan-control](/assets/images/posts/hs22-server-fan-control.png)
-
-
 
 ## Proxmox
 
@@ -157,8 +133,6 @@ Storage is the only thing worth mentioning, its highly recommended to install th
 
 As mentioned server chassis has two SSD SATA disks in the back, I have used a ZFS RAID1 with these disks for my operating system.
 
-
-
 ### CPU Governance
 
 In the effort to save energy Proxmox's default CPU power governors can be changed from "Performance" to "Powersave", this combined with [Intel pstate](https://www.kernel.org/doc/html/v4.12/admin-guide/pm/intel_pstate.html) we should be able to optimise our performance compared to energy cost savings.
@@ -172,8 +146,6 @@ watch "lscpu | grep MHz"
 As shown in the figure below we observe CPU MHz, my CPU choice is already a low power option so I do not see a huge benefit.
 
 ![hs22-cpu-governor-1](/assets/images/posts/hs22-cpu-governor-1.png)
-
-
 
 To see available options, use the below command
 
@@ -190,19 +162,13 @@ Options include:
 * performance
 * schedutil
 
-
-
 To apply an option to all CPUs we can use the below command then observe the CPU MHz  again
 
 ```bash
 echo "powersave" | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 ```
 
-
-
 ![hs22-cpu-governor-2](/assets/images/posts/hs22-cpu-governor-2.png)
-
-
 
 To make this change persist across reboots we will add a Cron entry using "@reboot".
 
@@ -214,17 +180,13 @@ crontab -e
 
 I have selected to use "Nano", then add the following line, save *(Ctrl + O)* and exit *(Ctrl + X)*.
 
-*"The job defined by this string runs at startup, immediately after Linux reboots." - https://phoenixnap.com/kb/crontab-reboot*
+*"The job defined by this string runs at startup, immediately after Linux reboots." - [https://phoenixnap.com/kb/crontab-reboot](https://phoenixnap.com/kb/crontab-reboot)*
 
 ```bash
 @reboot echo "powersave" | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 ```
 
 ![hs22-cpu-governor-4](/assets/images/posts/hs22-cpu-governor-4.png)
-
-
-
-
 
 ### Network Interfaces
 
@@ -242,8 +204,6 @@ If your switch supports LACP (IEEE 802.3ad) protocol then it is recommended to u
 * **Balance-XOR**
   * Transmit network packets based on source MAC address XOR’d with destination MAC address modulo NIC slave count. This selects the same NIC slave for each destination MAC address. This mode provides load balancing and fault tolerance.
 
-
-
 I will be configuring a Linux Bond in Balance XOR mode then attaching this to a Virtual Bridge, providing load balancing and fault tolerance. This process needs to occur in stages then apply the new configuration at the end.
 
 1. Remove the bridge ports from the default Linux Bridge "**vmbr0**".
@@ -254,17 +214,13 @@ I will be configuring a Linux Bond in Balance XOR mode then attaching this to a 
 3. Add "**bond0**" to the bridge ports for the Linux Bridge "**vmbr0**".
 4. Apply configuration
 
-The below figures help illustrate the above bullet points. 
+The below figures help illustrate the above bullet points.
 
 I have also enabled jumbo packets by modifying the MTU to "**9000**", which also needs to be configured on each switch and device to be able to utilise it.
-
-
 
 ![hs22-proxmox-interfaces-1](/assets/images/posts/hs22-proxmox-interfaces-1.png)
 
 ![hs22-proxmox-interfaces-2](/assets/images/posts/hs22-proxmox-interfaces-2.png)
-
-
 
 ### Repositories
 
@@ -286,8 +242,6 @@ This is the same process as performing `apt update` and `apt upgrade` on a Debia
 
 ![hs22-proxmox-update-upgrade](/assets/images/posts/hs22-proxmox-update-upgrade.png)
 
-
-
 ### Custom NTP server
 
 As of Proxmox VE 7, `chrony` is used as the default NTP daemon, to add our custom NTP server we need to edit the conf file and restart the service.
@@ -298,7 +252,7 @@ nano /etc/chrony/chrony.conf
 
 Add your server, an example is below.
 
-```
+```text
 # Include configuration files found in /etc/chrony/conf.d.
 confdir /etc/chrony/conf.d
 
@@ -321,10 +275,6 @@ Check the journal to confirm that the newly configured NTP servers are being use
 journalctl --since -1h -u chrony
 ```
 
-
-
-
-
 ### Create ZFS
 
 To utilise the other SSDs I will be creating additional ZFS pools.
@@ -338,13 +288,9 @@ Here we can provide our ZFS name, raid level and the disks we wish to include.
 
 ![hs22-proxmox-disks](/assets/images/posts/hs22-proxmox-disks.png)
 
-
-
 ## TrueNAS
 
 TrueNAS Core is a storage OS, that is free and open-source. It is built upon OpenZFS and provides enterprise level features with an easy to use Web UI.
-
-
 
 ### TrueNAS requirements
 
@@ -355,8 +301,6 @@ TrueNAS is based upon FreeBSD and the official documentation states the minimum 
 * 16 GB Boot Drive (SSD Encouraged)
 
 TrueNAS will use all available RAM for caching, therefore if you can provide more then do so, this will aid with performance but do not over provision.
-
-
 
 ### VM creation
 
@@ -385,8 +329,6 @@ For the disks, following [Proxmox documentation](https://pve.proxmox.com/pve-doc
 * "A SCSI controller of type VirtIO SCSI is the recommended setting if you aim for performance and is automatically selected for newly created Linux VMs"
 * "If you aim at maximum performance, you can select a SCSI controller of type VirtIO SCSI single which will allow you to select the IO Thread option."
 
-
-
 * **SSD emulation** - "If you would like a drive to be presented to the guest as a solid-state drive rather than a rotational hard disk, you can set the SSD emulation option on that drive."
 * **IO Thread** - "Qemu creates one I/O thread per storage controller, rather than a single thread for all I/O. This can increase performance when multiple disks are used and each disk has its own storage controller."
 
@@ -400,6 +342,8 @@ I have plenty of CPU threads therefore I have given 4 cores to my TrueNAS VM, I 
 
 As per TrueNAS server requirements I have provided 16 GB (16384 MB) of RAM and unchecked the "Ballooning" feature as I do not want to dynamically allocate RAM due to performance implications.
 
+**EDIT**: The recommendation is "even when using a fixed memory size, the ballooning device gets added to the VM, because it delivers useful information such as how much memory the guest really uses."
+
 ![hs22-truenas-create-vm-7](/assets/images/posts/hs22-truenas-create-vm-7.png)
 
 For best performance in networking the "VirtIO (paravirtualized)" option is recommended.
@@ -409,8 +353,6 @@ For best performance in networking the "VirtIO (paravirtualized)" option is reco
 After the VM creation I have altered the options to remove the "Use tablet for pointer" option for a minor performance gain.
 
 ![hs22-truenas-create-vm-9](/assets/images/posts/hs22-truenas-create-vm-9.png)
-
-
 
 ### TrueNAS Installation
 
@@ -422,15 +364,9 @@ Continue through the wizard until completion.
 
 ![hs22-truenas-install-2](/assets/images/posts/hs22-truenas-install-2.png)
 
-
-
-
-
 ### Add existing TrueNAS disks and import the pool
 
 Ensure that the TrueNAS VM is powered off
-
-
 
 On the Proxmox server use the below command to identify the disks on the host server, we'll need this information to add the disks to our TrueNAS VM.
 
@@ -443,8 +379,6 @@ lsblk |awk 'NR==1{print $0" DEVICE-ID(S)"}NR>1{dev=$1;printf $0" ";system("find 
 ```
 
 ![hs22-truenas-add-disks-1](/assets/images/posts/hs22-truenas-add-disks-1.png)
-
-
 
 We'll be using the disk ID, from the above output make a note of the disks then update the VM configuration by using the below command to add the disks.
 
@@ -467,8 +401,6 @@ As shown in the figure below the command was issued and disks were added to my T
 
 This is a good time to enable `iothread` on each disk.
 
-
-
 Now we are ready to start the TrueNAS VM and continue with importing the storage pool.
 
 Open the TrueNAS web UI and navigate to **Storage** >  **Pools**, click "Add" and Import an existing pool
@@ -482,8 +414,6 @@ My storage pool does not have GELI encryption, therefore I select "No, continue 
 TrueNAS will scan and provide a drop-down menu of available storage pools to import. Select the available pool and continue through to completion with Storage Pool Importing.
 
 ![hs22-truenas-add-disks-5](/assets/images/posts/hs22-truenas-add-disks-5.png)
-
-
 
 #### Adding Hard Disk Serials
 
@@ -503,8 +433,6 @@ Use the below command to find the serial number of each disk and make a note of 
 lshw -C disk
 ```
 
-
-
 For best practice and just in-case something goes wrong make a backup of the VM configuration file
 
 ```bash
@@ -519,7 +447,7 @@ nano /etc/pve/qemu-server/100.conf
 
 Add the serial information to the end of the disk information, as shown below.
 
-```
+```text
 scsi1: /dev/disk/by-id/ata-WDC_xxxxxxxx-xxxxxxx_WD-xxxxxxxxxxxx,size=3907018584K,serial=WD-xxxxxxxxxxxx
 ```
 
@@ -531,7 +459,7 @@ rm /root/100.conf
 
 ![hs22-truenas-add-disk-serial-2](/assets/images/posts/hs22-truenas-add-disk-serial-2.png)
 
-At this stage I require very little from TrueNAS except an NFS share for migration purpose from my old Proxmox to new. 
+At this stage I require very little from TrueNAS except an NFS share for migration purpose from my old Proxmox to new.
 
 Add Dataset to Storage Pool - Defaults are acceptable.
 
@@ -544,10 +472,6 @@ Edit NFS service, set "Number of servers" to match CPU count of TrueNAS.
 ![hs22-truenas-create-nfs-2](/assets/images/posts/hs22-truenas-create-nfs-2.png)
 
 Ensure service is started automatically.
-
-
-
-
 
 ## Migrating Proxmox VMs and Containers
 
@@ -581,10 +505,6 @@ Once restored the VM or Container will be available to start, this is a good opp
 
 ![hs22-proxmox-migrate-5](/assets/images/posts/hs22-proxmox-migrate-5.png)
 
-
-
-
-
 ### Reattach an existing remote disk to a container
 
 I had a Container *(VMID 103)* that had an additional drive on a remote location, as this was upgrade was "Everything new!" situation I had to detach the disk before backup. I then continued to restore the Container to the new Proxmox server, changing its VMID to 102.
@@ -609,7 +529,7 @@ To re-add the remote storage, which was now on the updated TrueNAS VM, I had to:
 
 5. Add the following to add an un-used disk to the container
 
-    ```
+    ```text
     unused0: Proxmox-Disks:103/vm-103-disk-0.raw
     ```
 
@@ -622,10 +542,6 @@ The figures show the newly added Unused disk and configuring the mount Path.
 Once the Path has been added the disk will be mounted and the container is able to start.
 
 ![hs22-proxmox-attach-disk-3](/assets/images/posts/hs22-proxmox-attach-disk-3.png)
-
-
-
-
 
 ## Removing a node from a Cluster
 
@@ -665,19 +581,15 @@ The first step is to remove the node from the cluster, the following are the ste
 
 The problem I had was because the cluster was expecting at least two votes I had a "no quorum?" error message
 
-
-
 ### No Quorum?
 
-*"quorum - The minimum number of members required for a group to officially conduct business and to cast votes"*
+"quorum - The minimum number of members required for a group to officially conduct business and to cast votes"
 
 We need to ensure that the cluster is still functional after the node removal, otherwise the cluster will go into an active blocking node until a quorate state is met. Using the Proxmox Cluster Management command below we can see the cluster status.
 
 ```bash
 pvecm status
 ```
-
-
 
 ![hs22-cluster-remove-node-3](/assets/images/posts/hs22-cluster-remove-node-3.png)
 
@@ -692,8 +604,6 @@ pvecm expected 1
 ![hs22-cluster-remove-node-4](/assets/images/posts/hs22-cluster-remove-node-4.png)
 
 Now that our single node cluster is active we can continue to separate the node from the cluster completely.
-
-
 
 ### Separate a Node Without Reinstalling
 
@@ -735,4 +645,3 @@ The below figure shows these commands being issued.
 When we revisit the web interface the other clustered node will be gone and cluster information will state "Standalone node - no cluster defined".
 
 ![hs22-cluster-remove-node-6](/assets/images/posts/hs22-cluster-remove-node-6.png)
-
