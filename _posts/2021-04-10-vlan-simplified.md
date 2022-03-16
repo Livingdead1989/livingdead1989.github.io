@@ -22,17 +22,11 @@ A brief summary of VLANs, what they are, why we use them, different types we use
 * [Example Files](#example-files)
 * [References and Resources](#references-and-resources)
 
-
-
 ## What is a VLAN?
 
 VLAN stands for Virtual Local Area Network, its a logical separation of a physical network.
 
-
-
 ![vlan_concept](/assets/images/posts/vlan_concept.png)
-
-
 
 ### Layer 2 Switching
 
@@ -40,26 +34,18 @@ VLAN stands for Virtual Local Area Network, its a logical separation of a physic
 * Packets sent to a specific switch port base upon the destination MAC address.
 * No routing is required for local peers.
 
-
-
 ### Layer 3 Switching
 
 * Routing of packets operates at the OSI layer 3 (Network).
 * Cross VLAN communication requires routing either through a Router or Multi-layer Switch
 
-  
-
 ![vlan_layer3_routing](/assets/images/posts/vlan_layer3_routing.png)
-
-
 
 ### Trunks
 
-A point-to-point connection that carries multiple VLANs' traffic using tagging. 
+A point-to-point connection that carries multiple VLANs' traffic using tagging.
 
 VLAN Tagging uses [802.11Q *(Dot1q)*](https://en.wikipedia.org/wiki/IEEE_802.1Q)
-
-
 
 ### Trunk Port vs Access Port
 
@@ -69,15 +55,9 @@ Access ports send and receive untagged frames and are used from switch to client
 
 Trunk ports must use tagging to correctly identify frames
 
-
-
 ![vlan_trunk_access](/assets/images/posts/vlan_trunk_access.png)
 
-
-
 ---
-
-
 
 ## Why use?
 
@@ -94,11 +74,7 @@ Using VLANs to segment the network can be useful for the following reasons:
   * As the network is more flexible we can save money through using our existing equipment.
   * Bandwidth savings through a more efficient use of network traffic.
 
-
-
 ---
-
-
 
 ## Different VLAN types?
 
@@ -118,11 +94,7 @@ Using VLANs to segment the network can be useful for the following reasons:
 * **Voice VLAN or Auxiliary VLAN**
   * Allows access ports to accept a second VLAN tagged traffic for VoIP
 
-
-
 ---
-
-
 
 ## How to use?
 
@@ -202,8 +174,6 @@ VLAN Name                             Status    Ports
 1005 trnet-default                    active    
 ```
 
-
-
 ### Cisco Configuration - Switch Trunk Port
 
 **Configure the interface as a trunk**
@@ -217,7 +187,7 @@ Switch(config-if)# switchport mode trunk
 
 **Set Native VLAN**
 
-If you do not configure this parameter, the trunk port uses the default VLAN as the native VLAN ID. 
+If you do not configure this parameter, the trunk port uses the default VLAN as the native VLAN ID.
 
 ```
 Switch(config-if)# switchport trunk native vlan 2
@@ -229,8 +199,6 @@ Switch(config-if)# switchport trunk native vlan 2
 Switch(config-if)# switchport trunk allowed vlan 10
 Switch(config-if)# switchport trunk allowed vlan add 20
 ```
-
-
 
 ### Cisco Configuration - Router on Stick
 
@@ -255,8 +223,6 @@ Router(config-if)# no shut
 ```
 
 The client machines; ADMIN and STUDENT now need to use their respective default gateways and the traffic will be sent over to the router and cross-VLAN.
-
-
 
 ### Cisco Configuration - Multi-Layer Switch
 
@@ -296,11 +262,7 @@ Switch(config-if)# exit
 
 The client machines; ADMIN and STUDENT now need to use their respective default gateways and the traffic will be sent over to the router and cross-VLAN.
 
-
-
 ---
-
-
 
 ## Example Files
 
@@ -310,15 +272,11 @@ The client machines; ADMIN and STUDENT now need to use their respective default 
 
 [Link to this Packet Tracer file](/assets/files/vlan_access_network_segment.pkt).
 
-
-
 **Switch Trunk and Router on a Stick**
 
 ![vlan_router_on_stick](/assets/images/posts/vlan_router_on_stick.png)
 
  [Link to this Packet Tracer file](/assets/files/vlan_router_on_stick.pkt).
-
-
 
 **Multi-Layer Switch**
 
@@ -326,16 +284,12 @@ The client machines; ADMIN and STUDENT now need to use their respective default 
 
  [Link to this Packet Tracer file](/assets/files/vlan_multilayer_switch.pkt).
 
-
-
 ---
-
-
 
 ## References and Resources
 
 1. [What is VLAN? Types, Advantages, Examples](https://www.guru99.com/vlan-definition-types-advantages.html) - Guru99
-2. [VLANs and Trunks for Beginners - Part 1](https://www.youtube.com/watch?v=aBOzFa6ioLw) - DansCourses 
+2. [VLANs and Trunks for Beginners - Part 1](https://www.youtube.com/watch?v=aBOzFa6ioLw) - DansCourses
 3. [Layer 3 vs Layer 2 Switching](https://documentation.meraki.com/MS/Layer_3_Switching/Layer_3_vs_Layer_2_Switching) - Cisco
 4. [Understanding VLAN Trunking](https://www.solarwindsmsp.com/blog/vlan-trunking) - SolarWinds MSP
 5. [What is a management VLAN?](https://kb.netgear.com/000048450/What-is-a-management-VLAN) - NETGEAR

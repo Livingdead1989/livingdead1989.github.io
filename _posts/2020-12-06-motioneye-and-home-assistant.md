@@ -8,7 +8,7 @@ categories: homeautomation
 
 Our aim here is to deploy the Motioneye OS to a Raspberry Pi Zero and add the stream into our Home Assistant dashboard.
 
-### Hardware used 
+### Hardware used
 
 * Raspberry Pi Zero W v1.1
 * Offical RPI Zero Case with Camera top (moved to 3d printed case)
@@ -20,16 +20,12 @@ Our aim here is to deploy the Motioneye OS to a Raspberry Pi Zero and add the st
 
 ![Hardware used](/assets/images/posts/hardware.jpg)
 
-<br>
-
-### Software used 
+### Software used
 
 * [Motioneyeos](https://github.com/ccrisan/motioneyeos/releases)
 * [Etcher](https://www.balena.io/etcher/)
 * [Firefox](https://www.mozilla.org/en-GB/firefox/new/)
 * [Sublime Text](https://www.sublimetext.com/)
-
-<br>
 
 ### Steps taken
 
@@ -37,7 +33,7 @@ Our aim here is to deploy the Motioneye OS to a Raspberry Pi Zero and add the st
 
 2. Burn the image file onto your microSD
 
-    ![Etcher](/assets/images/posts/etcher.png) 
+    ![Etcher](/assets/images/posts/etcher.png)
 
 3. Add Wi-Fi configuration
 
@@ -74,19 +70,17 @@ Our aim here is to deploy the Motioneye OS to a Raspberry Pi Zero and add the st
 
 7. Find the device's IP address
 
-    1. Look at your DHCP server 
+    1. Look at your DHCP server
     2. Use an app such as [Hurricane Electric Network Tools](https://networktools.he.net/)
     3. Scan you local network using tools such as [Zenmap](https://nmap.org/zenmap/)
 
 8. Using your preferred browser navigate to the IP address
 
-    * example: http://192.168.1.99/
+    * example: <http://192.168.1.99/>
     * default username: admin
     * default password: *blank*
 
  That is it, next we can change the default configuration to fit our requirements and add the stream into our Home Assistant.
-
-<br>
 
 ### Basic Configuration
 
@@ -138,8 +132,6 @@ Other settings I changed include:
 
   * *Configured to my working days and times*
 
-<br>
-
 ### Extend into Home Assistant
 
 Editing your `configuration.yml` file you can add the stream service and a camera entity
@@ -153,7 +145,7 @@ camera:
     mjpeg_url: "http://192.168.1.99:8081"
 ```
 
-Save, check configuration and restart your Home Assistant 
+Save, check configuration and restart your Home Assistant
 
 * Configuration > Server Controls > Check Configuration
 * Configuration > Server Controls > Restart

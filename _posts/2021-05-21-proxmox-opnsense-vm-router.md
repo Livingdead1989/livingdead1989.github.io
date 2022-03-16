@@ -11,8 +11,6 @@ Building upon my previous article [HA Proxmox Cluster with Shared Storage](https
 
 The aim of this guide is to deploy a Virtual Machine running OpnSense in Proxmox offering firewall and router capabilities. I will be covering how to create a Virtual Machine for a router appliance, how to install OpnSense and some recommended Virtual OPNsense settings.
 
-
-
 ## What is OPNsense?
 
 OPNsense is a open-source firewall and routing software based on [HardenedBSD](https://hardenedbsd.org/). OPNsense is a fork of [pfSense](https://www.pfsense.org/), which is a fork of [m0n0wall](https://m0n0.ch/wall/index.php). Some top features of OPNsense include:
@@ -26,8 +24,6 @@ OPNsense is a open-source firewall and routing software based on [HardenedBSD](h
 * Much more including - Captive Portal, NetFlow Monitoring and REST API
 
 Now we know a little about what OPNsense is, lets crack on with getting this setup within our HA Proxmox cluster.
-
-
 
 ## Create Virtual Machine
 
@@ -46,7 +42,7 @@ We'll be creating a new VM for our OpnSense instance. Use the "Create VM" button
 
 *Notes:*
 
-* *as per OPNsense documentation, Q35 chipset will not work this is why we are using i440fx.* 
+* *as per OPNsense documentation, Q35 chipset will not work this is why we are using i440fx.*
 * [Multiqueue](https://pve.proxmox.com/wiki/Qemu/KVM_Virtual_Machines) it is recommended to set it to a value equal to the number of Total Cores of your guest. Multiqueue parameter to a value greater than one will increase the CPU load on the host and guest systems as the traffic increases. Recommended for VM Router, Proxy or busy HTTP servers.
 
 | Property             | Value                               |
@@ -76,8 +72,6 @@ We'll be creating a new VM for our OpnSense instance. Use the "Create VM" button
 
 ![create-vm](/assets/images/posts/opnsense-create-vm.png)
 
-
-
 ## Install OpnSense
 
 [Official Documentation for OpnSense](https://docs.opnsense.org/)
@@ -98,7 +92,7 @@ Once the installation completes you'll be prompt for a root password and then as
 
 ![opnsense-installation-reboot](/assets/images/posts/opnsense-installation-reboot.png)
 
-The installation finished successfully. After the reboot we can navigate to https://192.168.1.1 but this is not our address space and we wont be able to reach it, instead we need to change the addressing information for the interface.
+The installation finished successfully. After the reboot we can navigate to <https://192.168.1.1> but this is not our address space and we wont be able to reach it, instead we need to change the addressing information for the interface.
 
 From the console we will re-configure the LAN interface. Enter 2 to Set interface IP address and step through the wizard. I will configure a static address so there is no requirement for DHCP. I want my LAN address to be 172.16.1.254/24 and make sure to enter blank to set this to a LAN interface.
 
@@ -113,8 +107,6 @@ Finally it will ask if you want to start a DHCP server for this LAN, I choose no
 Using a browser we can navigate to our OPNsense address and should be greeted with a login box, we can login using root as the username and the password we set when installing.
 
 ![opnsense-dashboard](/assets/images/posts/opnsense-dashboard.png)
-
-
 
 ## VM Configurations
 
@@ -137,4 +129,3 @@ Overall OPNsense has a clean UI, although some menus are less intuitive than exp
 ![opnsense-plugins](/assets/images/posts/opnsense-plugins.png)
 
 Many features are built-in with more than 70 plugins available to expand functionality and is well documented. Its a beautiful system and OPNsense should be proud of their product. I look forward to expanding my OPNsense instance with additional services such as DHCP server, Dnsmasq DNS, [Suricata](https://suricata-ids.org/) and [Sensei](https://www.sunnyvalley.io/sensei/).
-

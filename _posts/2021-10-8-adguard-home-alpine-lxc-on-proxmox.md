@@ -21,17 +21,13 @@ Alpine is tailored for containers, its built as a base for Application deploymen
 
 [AdGuard Home](https://adguard.com/en/adguard-home/overview.html) is a network-wide software for blocking ads & tracking.  AdGuard Home has a focus on family protection (parental control) out of the box. You'll see more when we start deploying this application.
 
-[Comparsion table to PiHole from AdGuard Home](https://github.com/AdguardTeam/AdGuardHome#comparison-pi-hole) 
-
-
+[Comparsion table to PiHole from AdGuard Home](https://github.com/AdguardTeam/AdGuardHome#comparison-pi-hole)
 
 ## Create the LXC container
 
 To deploy LXC containers on Proxmox we first need to add some templates. You'll need to navigate to your storage > CT Templates and click the Templates button at the top, a new list of available templates will show and we can add the Alpine-3.14-default template.
 
 ![agh-prox-container-template](/assets/images/posts/agh-prox-container-template.png)
-
-
 
 Once we have our template we can start to create the Container, at the top right on the Proxmox webGUI click the Create CT button and follow through the wizard.
 
@@ -71,8 +67,6 @@ Now you can start the Container, the username is root and the password we set at
 
 ![agh-container-console](/assets/images/posts/agh-container-console.png)
 
-
-
 ## Software Deployment
 
 Now we are ready to start deploying AdGuard Home on our Apline Container.
@@ -86,7 +80,7 @@ apk upgrade
 
 Now we need to download the Linux 64-bit package we will use wget which is already installed on Alpine. You can find a link to the current version using the AdGuard Home Github Getting started page.
 
-https://github.com/AdguardTeam/AdGuardHome/wiki/Getting-Started
+<https://github.com/AdguardTeam/AdGuardHome/wiki/Getting-Started>
 
 ```bash
 wget https://static.adguard.com/adguardhome/release/AdGuardHome_linux_amd64.tar.gz
@@ -166,9 +160,7 @@ rc-update add AdGuardHome
 rc-service AdGuardHome start
 ```
 
-
-
-Deployment is now complete and we can visit the webGUI on port 3000 for example http://192.168.1.85:3000/.
+Deployment is now complete and we can visit the webGUI on port 3000 for example <http://192.168.1.85:3000/>.
 
 The first run through will be the initial configuration wizard
 

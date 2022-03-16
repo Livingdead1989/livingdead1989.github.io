@@ -13,7 +13,7 @@ MQTT uses a Publish Topic in which other devices can Subscribe to, for example o
 
 Install "Mosquitto" add-on from within Home Assistant, we will then edit the configuration providing a username and password.
 
-```
+```text
 logins:
   - username: mqttuser
     password: supersecretpassword
@@ -36,7 +36,6 @@ Download [MQTT Explorer](https://mqtt-explorer.com/) then connect to Home Assist
 I will be configuring a Wemos D1 Mini with a PIR (HC-SR501), Temperature and Humidity (DHT-11) sensors. I would not recommend these sensors for production or accurate use as the DHT-11 is quite inaccurate with its measurements, the DHT-22 sensor is more accurate but not as cheap.
 
 **Shopping List**
-
 
 * Wemos [D1 Mini](https://amzn.to/3t3ifHq) - ESP8266 Micro Controller
 * [DHT-11](https://amzn.to/2KUQRdG) - Temperature and Humidity Sensor (or DHT-22)
@@ -133,4 +132,3 @@ By default this information will be polled every 5 minutes.
 ![Home Assistant Badges - Motion, Temperature and Humidity](/assets/images/posts/ha-badges.png)
 
 I would suggest using a [DHT-22](https://amzn.to/3u7iRfQ) sensor over the DHT-11 as it is vastly more accurate.
-

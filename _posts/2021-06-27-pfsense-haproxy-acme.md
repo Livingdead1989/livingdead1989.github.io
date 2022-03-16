@@ -28,8 +28,6 @@ Other benefits of this type of solution include:
 * Health checks
 * Reports, Monitoring and Stats.
 
-
-
 ## Installation of Packages
 
 You can install the required package by navigating to System > Package Manager and using the Available Packages to search and install:
@@ -43,8 +41,6 @@ You can install the required package by navigating to System > Package Manager a
 
 ![pfsense-rproxy-packages-installed](/assets/images/posts/pfsense-rproxy-packages-installed.png)
 
-
-
 ## Cloudflare and DNS entries
 
 We have Cloudflare for our domain services, these include Firewall, Caching and DNS. I already have my DNS A records which resolve to my external IP address.
@@ -52,8 +48,6 @@ We have Cloudflare for our domain services, these include Firewall, Caching and 
 I have also configured an API token for ACME as this will need write permission to your DNS records.
 
 ![pfsense-cloudflare-1](/assets/images/posts/pfsense-cloudflare-1.png)
-
-
 
 ## Configuration of Packages
 
@@ -106,8 +100,6 @@ With our manual test completed we can go into the General settings tab and selec
 ![pfsense-acme-10](/assets/images/posts/pfsense-acme-10.png)
 
 With ACME configured and working we can now move onto configuring the HAProxy aspects, its important to complete this step first as the certificates are used within the HAProxy configurations and without them we'll need to revisit.
-
-
 
 ### HAProxy
 
@@ -169,8 +161,6 @@ Scrolling down we can see the SSL Offloading configuration section, here we will
 
 We are now finished and our internal services should be accessible from our domain names.
 
-
-
 ## NAT Reflection
 
 [NAT Reflection](https://docs.netgate.com/pfsense/en/latest/nat/reflection.html) is the ability to access external services from the internal network using the external (usually public) IP address, the same as if the client were on the Internet.
@@ -187,15 +177,11 @@ Now we can access our internal services using our external domain names. We can 
 
 ![pfsense-natreflection-cert](/assets/images/posts/pfsense-natreflection-cert.png)
 
-
-
 ## Extras
 
 A few extra settings we can include are:
 
 * HAProxy > Frontend > Edit > Advanced settings, we can enable the use "forwardfor" option this will pass the client's IP address through to our servers, this is helpful otherwise all connections will look to be coming from our WAN or LAN address.
-
-
 
 ## Troubleshooting
 
@@ -216,4 +202,3 @@ Now go to your DNS server and add host overrides for the Backend services pointi
 ![pfsense-haproxy-11](/assets/images/posts/pfsense-haproxy-11.png)
 
 Now when we visit these domain names the request will be sent to our HAProxy service and forwarded appropriately while still maintaining our Let's Encrypt certificates. Connections will appear as coming from 192.168.1.1 and therefore classified as an internal address.
-

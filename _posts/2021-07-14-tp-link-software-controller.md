@@ -13,11 +13,9 @@ In this article I will be using my Proxmox lab to host the Virtual Machine. TP-L
 
 [Omada SDN Controller User Guide v4.2.4](https://static.tp-link.com/2020/202012/20201223/1910012926-Omada%20SDN%20Controller%204.2.4-User%20Guide.pdf) provides guidance on installation and hardware requirements.
 
-
-
 ## Create a Virtual Machine
 
-You can download the latest image from [Debian's website](https://www.debian.org/) I am using Debian 10.10.0. 
+You can download the latest image from [Debian's website](https://www.debian.org/) I am using Debian 10.10.0.
 
 I have called my VM TPLink-Controller and checked the Start at boot option.
 
@@ -27,7 +25,7 @@ I have configured a graphic card of SPICE, this has a slight resource saving com
 
 ![tplink_sc_vmcreate_2](/assets/images/posts/tplink_sc_vmcreate_2.png)
 
-In the Hard Disk tab I have set a disk size of 256 GB as I will be experimenting with the TP-Link logging capabilities, *the completed VM only took 11 GB of disk space, including desktop environment*. 
+In the Hard Disk tab I have set a disk size of 256 GB as I will be experimenting with the TP-Link logging capabilities, *the completed VM only took 11 GB of disk space, including desktop environment*.
 
 I have also enabled the Discard and IO thread options.
 
@@ -42,8 +40,6 @@ I have provided this VM with 2 logical cores, which should provide enough given 
 
 I then added this VM to my LAN bridge and continued with default values for the rest of the wizard.
 
-
-
 ## Install Debian
 
 I'll skip through the Debian OS installation as I do not want to bog this article down with a Linux OS installation, instead I'll just mention anything I have altered from default.
@@ -51,11 +47,11 @@ I'll skip through the Debian OS installation as I do not want to bog this articl
 1. I've matched the host name with the VM name of TPLink-Controller just to be consistent.
 2. I skipped providing a root password in this demonstration, instead I'll be using an administrative account with sudo permissions.
 3. When partitioning disks I opted for a Guided - use entire disk and set up LVM, this means we can alter the disk later using LVM commands.
-4. I have chosen to install the Debian desktop environment, this is completely optional you can remove this to save resource and reduce footprint. I have also unchecked print server as we do not require it. **EDIT:** *I should have also unchecked standard system utilities* 
+4. I have chosen to install the Debian desktop environment, this is completely optional you can remove this to save resource and reduce footprint. I have also unchecked print server as we do not require it. **EDIT:** *I should have also unchecked standard system utilities*
 
 ![tplink_sc_osinstall_1](/assets/images/posts/tplink_sc_osinstall_1.png)
 
-With Debian installed the VM will reboot into our desktop environment login screen or the CLI depending on what you have installed. 
+With Debian installed the VM will reboot into our desktop environment login screen or the CLI depending on what you have installed.
 
 First and always perform an update and upgrade to ensure the system is up-to-date.
 
@@ -75,7 +71,6 @@ Ensure the necessary packages are present
 sudo apt-get install -y wget apt-transport-https gnupg
 ```
 
-
 ## Install MongaDB
 
 Dependencies of the TP-Link Omada Software Controller software include:
@@ -83,8 +78,6 @@ Dependencies of the TP-Link Omada Software Controller software include:
 * mongadb-server (>= 3.0.0) but (< 1:4.0.0)
 * mongadb-10gen (>= 3.0.0) but (< 4.0.0)
 * mongadb-org-server (>= 3.0.0) but (< 4.0.0)
-
-
 
 We can follow this tutorial to [install MongaDB Community Edition on Debian](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-debian/) to install MongoDB version 3.6 for Debain 9, which will still work.
 
@@ -119,9 +112,7 @@ We can follow this tutorial to [install MongaDB Community Edition on Debian](htt
    sudo systemctl enable mongod
    ```
 
-   
-
-## Install Java 8 
+## Install Java 8
 
 OpenJDK 8 is no longer available on Debian so we must add the Adopt OpenJDK repository to make this available to us. I have included a link to their documentation about installing for [Linux RPM and DEB installer packages](https://adoptopenjdk.net/installation.html?variant=openjdk8&jvmVariant=hotspot#linux-pkg).
 
@@ -148,8 +139,6 @@ Install OpenJDK-8
 ```bash
 sudo apt install -y adoptopenjdk-8-hotspot
 ```
-
-
 
 ## Install Software Controller
 
@@ -179,17 +168,15 @@ We can now install the .deb package using the following terminal command, or use
 sudo apt install -yf ./Omada_SDN_Controller_v4.4.3_linux_x64.deb
 ```
 
-Everything should go smoothly and once finished you should see a Success message and visit http://localhost:8088 to manage wireless network message.
+Everything should go smoothly and once finished you should see a Success message and visit <http://localhost:8088> to manage wireless network message.
 
 ![tplink_sc_scinstall_3](/assets/images/posts/tplink_sc_scinstall_3.png)
 
-We can open Firefox on our server and test everything looks okay by navigating to http://localhost:8088/, we should automatically be redirected to https://serverip:8043/ with a self-signed certificate.
+We can open Firefox on our server and test everything looks okay by navigating to <http://localhost:8088/>, we should automatically be redirected to <https://serverip:8043/> with a self-signed certificate.
 
 **Note:** *The Omada Controller software will listen on all available addresses, not just the localhost.*
 
 ![tplink_sc_scinstall_4](/assets/images/posts/tplink_sc_scinstall_4.png)
-
-
 
 ## Comparison
 
@@ -214,4 +201,3 @@ Although the hardware controller can back up to a USB device, nether provide us 
 If the controller either hardware or software goes off-line you lose fast roaming, meshing, band-steering, and data collection, but the devices and clients continue to function with their existing configuration. Although this isn't the end of the world it does mean we would want to mitigate against any failure, using a software controller in some clustered environment removes that hardware failure chance, as small as it might be.
 
 In summary, the hardware controller is excellent as an easy approach with very minimal cost, but there are some key elements that the software controller shines through on and for that it's worth the extra investment of time and complexity.
-

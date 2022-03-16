@@ -25,12 +25,9 @@ I have created a simple diagram to illustrate what I plan of doing in terms of p
 
 ![proxmox-pfsense-diagram](/assets/images/posts/proxmox-pfsense-diagram.png)
 
-
 Its worth mentioning that I have an [Intel PRO/1000 PT 4-port 1GB NIC](https://amzn.to/3k4sV6Q) installed in my Proxmox server ready for this project.
 
 We'll first need the [latest copy of pfSense](https://www.pfsense.org/download/), which can be downloaded from their website. I will be installing version 2.5.2, AMD64 DVD Image (ISO).
-
-
 
 ## Backup the existing pfSense configuration
 
@@ -45,8 +42,6 @@ On the Backup & Restore tab, we will check to include extra data and select Down
 Make sure to keep this file safe and to hand as we'll need it to restore our configuration to the new virtual pfSense.
 
 Once done, turn off the physical pfSense box.
-
-
 
 ## Configuring Proxmox Networks for a Virtual Router
 
@@ -64,8 +59,6 @@ I already had the LAN bridge as you need a minimum of 1 bridge for virtual machi
 The WAN bridge does not have any IP configuration applied.
 
 ![proxmox-network-pfsense-overview](/assets/images/posts/proxmox-network-pfsense-overview.png)
-
-
 
 ## Creating a Virtual Machine for pfSense
 
@@ -117,8 +110,6 @@ Here we will add the other bridge, in my case VMBr3. The settings are the same a
 
 Our Virtual Machine is now ready to start the installation of pfSense.
 
-
-
 ## Installation of pfSense
 
 Start the pfSense VM and open a Console.
@@ -152,11 +143,9 @@ We should now have a fresh pfSense instance we can access via the LAN IP address
 
 ![proxmox-pfsense-install-9](/assets/images/posts/proxmox-pfsense-install-9.png)
 
-
-
 ## Restore our pfSense Backup
 
-Before attempting to restore I ensure that I have a working base system, with a WAN address issued by my ISP modem. 
+Before attempting to restore I ensure that I have a working base system, with a WAN address issued by my ISP modem.
 
 **EDIT**: *I had to power off my ISP modem until the restore process completed, please see the Troubleshooting section*
 
@@ -178,8 +167,6 @@ The complete restore process takes a while, so be patient!
 
 Once the restore has complete, we are finished, give it a test and check everything is okay.
 
-
-
 ## Tweaks for Virtual Machine pfSense
 
 ### Disable Hardware Offloading
@@ -189,8 +176,6 @@ When using VirtIO interfaces in Proxmox VE, hardware checksums must be disabled,
 These should be disabled by default, but its worth checking, they can be found by navigating to System > Advanced > Networking.
 
 ![proxmox-pfsense-tweak-1](/assets/images/posts/proxmox-pfsense-tweak-1.png)
-
-
 
 ## Troubleshooting
 
@@ -203,4 +188,3 @@ During my restore process I had to leave the ISP modem off until restore complet
 ### DNS Resolver
 
 I have a custom .conf file listed in my DNS resolver custom options, which was not brought over with the Backup & Restore. The entry caused an issue with the Restore but after removing it, services started correctly and everything continued nicely.
-

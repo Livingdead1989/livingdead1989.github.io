@@ -100,10 +100,6 @@ Don't forget to go to options and add the correct boot order for the newly attac
 
 ![gns3-server-boot-order](/assets/images/posts/gns3-server-boot-order.png)
 
-
-
-
-
 ## Adding Qemu Guest Agent
 
 Start the VM and enter a shell, this can be done via the GNS3 VM menu, as shown.
@@ -119,13 +115,11 @@ sudo apt install -y qemu-guest-agent
 
 Lastly reboot the server.
 
-
-
 ## Configuring GNS3
 
 GNS3 offers a web browser version, which has limitations but is still a fantastic tool, it also allows us to add some configuration to our GNS3 server or create additional servers.
 
-Go to the web GUI at http://192.168.1.97/
+Go to the web GUI at <http://192.168.1.97/>
 
 I'm going to remove the default server and create a fresh one.
 
@@ -134,8 +128,6 @@ I'm going to remove the default server and create a fresh one.
 When creating a new server we can provide some details such as; the name, port, protocol and authentication methods. For this article I have setup a HTTP server with basic authentication as shown in the image below.
 
 ![gns3-server-webgui-create](/assets/images/posts/gns3-server-webgui-create.png)
-
-
 
 ## Configuring GNS3 Clients
 
@@ -149,13 +141,9 @@ The remote server should be responsive with a green circle in the Servers Summar
 
 ![gns3-server-client-setup-server](/assets/images/posts/gns3-server-client-setup-server.png)
 
-
-
 Test the setup by adding a few VPCs and Switch, you should notice that everything is working on the remote server, you can even see changes occurring in the web GUI.
 
 ![gns3-server-client-side-by-side](/assets/images/posts/gns3-server-client-side-by-side.png)
-
-
 
 ## Adding devices
 
@@ -176,8 +164,6 @@ Once you have imported the image the device becomes available for use in GNS3, a
 ![gns3-server-2600-working](/assets/images/posts/gns3-server-2600-working.png)
 
 There are many more appliances via the [Market place](https://gns3.com/marketplace/appliances)
-
-
 
 ## Creating Virtual Machines from ISO installers
 
@@ -233,13 +219,4 @@ I skipped through installation, but here you can see a fresh copy of Ubuntu 21.1
 
 ![gns3-server-manual-template-12](/assets/images/posts/gns3-server-manual-template-12.png)
 
-
-
 This brings us to the end of the article, I hope you enjoyed creating a GNS3 server. GNS3 is an extremely powerful tool for playing and learning different technologies.
-
-
-
-
-
-
-

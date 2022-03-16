@@ -11,8 +11,6 @@ In this article I will be exploring Open Media Vault (OMV) on a Raspberry Pi 4 (
 
 Its worth noting that storage connected via USB is not eligible for raiding via OMV, but can still achieved using the built-in raid options and we can group disks together using LVM.
 
-
-
 ## Prepare the MicroSD card
 
 First download the latest version of Raspberry Pi OS Lite from the [Raspberry Pi website](https://www.raspberrypi.com/software/operating-systems/). Now using Etcher flash RaspiOS on to your MicroSD card, I am using a 64GB SanDisk Extreme A2.
@@ -27,11 +25,9 @@ touch /media/username/boot/ssh
 
 Eject the SD and insert into your Rasppberry Pi 4
 
-
-
 ## SSH & Config
 
-SSH into the Raspberry Pi, using a username of "pi" and the password "raspberry". 
+SSH into the Raspberry Pi, using a username of "pi" and the password "raspberry".
 
 *I know the IP address of my new RPI4 because I looked at my DHCP server address leases.*
 
@@ -67,8 +63,6 @@ Now go to Performance Options > GPU Memory and set it to 16, this saves a little
 
 Finish and Reboot the RPI4.
 
-
-
 ## OMV Installation
 
 We will be using the Install Script - [GitHub Repo](https://github.com/OpenMediaVault-Plugin-Developers/installScript)
@@ -84,8 +78,6 @@ In the last step of the installation the eth0 network interface is added to the 
 ![rpi-nas-add-eth0](/assets/images/posts/rpi-nas-add-eth0.png)
 
 You can reconnect using the new IP address or just continue to the webGUI.
-
-
 
 ## Open Media Vault
 
@@ -122,8 +114,6 @@ Once the disk has completed Initialisation you can then mount it.
 ![rpi-nas-storage-filesystem-mount](/assets/images/posts/rpi-nas-storage-filesystem-mount.png)
 
 The File System is now ready to use.
-
-
 
 ## Creating Users
 
@@ -165,8 +155,6 @@ Testing the new share, I have created a folder to test everything is working. I 
 
 ![rpi-nas-folder-shared](/assets/images/posts/rpi-nas-folder-shared.png)
 
-
-
 ## Docker
 
 Now lets take a look at the Docker integration with OMV. Navigate over to System > OMV-Extras and the Docker tab.
@@ -204,8 +192,6 @@ Click the ADMIN@YACHT.LOCAL in the top right and select User, then Change passwo
 * **Projects** - Docker-compose or as in Portainer, Stacks
 
 I will not be covering how to deploy using Yacht as that is a little out of the scope of this article.
-
-
 
 ## Conclusion
 
@@ -250,4 +236,3 @@ To conclude, the Open Media Vault (OMV) is a powerful project, which can be easi
 * Cockpit integration for host management
 
 All behind a slick and intuitive web interface. The last note is that OMV is running on Raspberry Pi OS Lite, which is a Debian based distribution so the possibilities are limitless with what features and functions we can add.
-

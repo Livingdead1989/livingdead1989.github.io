@@ -30,4 +30,3 @@ PS C:\> Reset-ComputerMachinePassword
 After executing the above command I was able to log back in using the domain account.
 
 ![domain-login](/assets/images/posts/domain-login.png)
-

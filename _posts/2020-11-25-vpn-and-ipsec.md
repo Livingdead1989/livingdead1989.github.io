@@ -17,8 +17,6 @@ To secure network traffic between sites and users, organisations use virtual pri
 | **Scalability**   | VPNs allow organisations to use the internet, making it easy to add new users without adding significant infrastructure. |
 | **Compatibility** | VPNs can be implemented across a wide variety of WAN link options. Remote workers can gain secure access to their corporate networks. |
 
-<br>
-
 VPNs can be managed and deployed as:
 
 **Enterprise-Managed VPNs**
@@ -50,8 +48,6 @@ Legacy Solutions
 * Frame Relay
 * Asynchronous Transfer Mode (ATM)
 
-<br>
-
 ## SSL/TLS vs IPsec
 
 | Feature                     | IPsec                                                        | SSL                                                          |
@@ -62,8 +58,6 @@ Legacy Solutions
 | **Connection complexity**   | **Medium** - Because it requires a VPN client pre-installed on a host. | **Low** - It only requires a web browser on a host.          |
 | **Connection option**       | **Limited** - Only specific devices with specific configurations can connect. | **Extensive** - Any device with a web browser can connect.   |
 
-<br>
-
 ## GRE
 
 Generic Routing Encapsulation (GRE) is a non-secure site-to-site VPN tunnelling (**Carrier**) protocol.
@@ -72,13 +66,11 @@ A standard IPsec VPN (non-GRE) can only create secure tunnels for unicast traffi
 
 We can encapsulate routing protocol traffic using a GRE packet, and then encapsulate the GRE packet into an IPsec packet to forward it securely  to the destination VPN gateway.
 
-<br>
-
 ## Dynamic Multipoint VPN (DMVPN)
 
 Site-to-site IPsec VPNs and GRE over IPsec are adequate to use when  there are only a few sites, they are not sufficient when the enterprise adds many more sites because each site would require static configurations to all other sites.
 
-Dynamic Multipoint VPN (DMVPN) is a Cisco software solution for building multiple VPNs in an easy, dynamic, and scalable manner. 
+Dynamic Multipoint VPN (DMVPN) is a Cisco software solution for building multiple VPNs in an easy, dynamic, and scalable manner.
 
 DMVPN relies on IPsec
 
@@ -88,8 +80,6 @@ Each site is configured using Multipoint Generic Routing Encapsulation (mGRE)**.
 
 ![DMVPN Hub and Spoke Tunnels](/assets/images/posts/dmvpn_hub_spoke.png)
 
-<br>
-
 ## IPsec Virtual Tunnel Interface (VTI)
 
 Like DMVPNs, IPsec Virtual Tunnel Interface (VTI) simplifies the configuration process
@@ -98,11 +88,7 @@ IPsec VTI configurations are applied to a virtual interface instead of static ma
 
 VTI is capable of sending and receiving both IP unicast and multicast encrypted traffic.
 
-<br>
-
 ---
-
-<br>
 
 ## IPsec Concepts
 
@@ -112,10 +98,10 @@ IPsec can protect traffic from Layer 4 through Layer 7 of the OSI model.
 
 IPsec provides these essential security functions:
 
-- **Confidentiality** - encryption algorithms to prevent reading the packet contents.
-- **Integrity** - hashing algorithms to ensure that packets have not been altered. (*MD5, SHA, HMAC*)
-- **Origin authentication** - Internet Key Exchange (IKE) protocol to authenticate source and destination pre-shared keys (passwords), digital certificates, or RSA certificates.
-- **Diffie-Hellman** - Secure key exchange typically using various groups of the DH algorithm.
+* **Confidentiality** - encryption algorithms to prevent reading the packet contents.
+* **Integrity** - hashing algorithms to ensure that packets have not been altered. (*MD5, SHA, HMAC*)
+* **Origin authentication** - Internet Key Exchange (IKE) protocol to authenticate source and destination pre-shared keys (passwords), digital certificates, or RSA certificates.
+* **Diffie-Hellman** - Secure key exchange typically using various groups of the DH algorithm.
 
 ![IPsec Framework](/assets/images/posts/ipsec_framework.png)
 
@@ -135,6 +121,3 @@ the peers must share the same SA to negotiate key exchange parameters,  establis
 AH **does not** offer confidentiality as all text is transported encrypted.
 
 DH groups 1, 2, and 5 should no longer be used.
-
-
-

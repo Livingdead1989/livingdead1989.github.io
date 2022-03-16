@@ -10,10 +10,9 @@ description: >- # this means to ignore newlines until "baseurl:"
 
 In this walk through I will be using Ubuntu 20.04 to flash the [Wemos D1 Mini](https://www.wemos.cc/en/latest/d1/d1_mini.html) to Tasmota 9.2.0 using a USB cable.
 
-*Tasmota is designed to be controlled and communicate via [MQTT](http://mqtt.org/). To use it to its fullest potential you need an MQTT broker.* 
+*Tasmota is designed to be controlled and communicate via [MQTT](http://mqtt.org/). To use it to its fullest potential you need an MQTT broker.*
 
 **Shopping List**
-
 
 * Wemos [D1 Mini](https://amzn.to/3t3ifHq) - ESP8266 Micro Controller
 
@@ -36,8 +35,6 @@ We will then install the esptool using pip3
 Next download the tasmota.bin *(english)* from the official repository on [Github](https://github.com/arendst/Tasmota/releases/tag/v9.2.0)
 
 ![download tasmota bin file](/assets/images/posts/3-download_tasmota.png)
-
-
 
 ## Flashing the D1 Mini
 
@@ -87,15 +84,13 @@ sudo ./esptool.py --port /dev/ttyUSB0 write_flash -fm dout 0x0 ~/Downloads/tasmo
 
 ![flash tasmota to the d1 mini](/assets/images/posts/8-flash_tasmota.png)
 
-
-
 ## First Connect
 
 If the flash was successful the device will be reset and start broadcasting its own Wi-Fi SSID, connect to the D1 wifi
 
 ![connect to d1 mini wifi](/assets/images/posts/9-d1_wifi_connect.png)
 
-Connect to the Tasmota web gui using your browser to address http://192.168.4.1/
+Connect to the Tasmota web gui using your browser to address <http://192.168.4.1/>
 
 ![tasmota main page](/assets/images/posts/10-d1_login_page.png)
 
@@ -103,7 +98,7 @@ Add your Wi-Fi credentials and save the configuration. The D1 Mini will then res
 
 ![enter wifi credentials](/assets/images/posts/11-wifi_details.png)
 
-Find the assigned IP address to the D1 Mini using your DHCP server leased addresses 
+Find the assigned IP address to the D1 Mini using your DHCP server leased addresses
 
 ![view dhcp lease to find new ip address](/assets/images/posts/12-tasmota_dhcp_lease.png)
 
@@ -121,12 +116,9 @@ Visit the IP address in your browser, from here you can configure the device fur
 
 ![tasmota main page](/assets/images/posts/14-tasmota_main_page.png)
 
-
-
 ### Other Flashing Tools
 
-- [**Tasmotizer**](https://github.com/tasmota/tasmotizer) - NEW flashing and firmware download tool just for Tasmota. (Windows, Linux or Mac)
-- [**Tasmota PyFlasher**](https://github.com/tasmota/tasmota-pyflasher) - flashing tool intended for Tasmota. (Windows or Mac)
-- [**NodeMCU PyFlasher**](https://github.com/marcelstoer/nodemcu-pyflasher) - easy to use GUI flasher based on esptool.py. (Windows or Mac)
-- [**Esptool executable**](https://github.com/igrr/esptool-ck) - Esptool in executable form, no Python required. (Windows, Linux or Mac)
-
+* [**Tasmotizer**](https://github.com/tasmota/tasmotizer) - NEW flashing and firmware download tool just for Tasmota. (Windows, Linux or Mac)
+* [**Tasmota PyFlasher**](https://github.com/tasmota/tasmota-pyflasher) - flashing tool intended for Tasmota. (Windows or Mac)
+* [**NodeMCU PyFlasher**](https://github.com/marcelstoer/nodemcu-pyflasher) - easy to use GUI flasher based on esptool.py. (Windows or Mac)
+* [**Esptool executable**](https://github.com/igrr/esptool-ck) - Esptool in executable form, no Python required. (Windows, Linux or Mac)

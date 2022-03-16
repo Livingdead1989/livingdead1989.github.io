@@ -17,19 +17,17 @@ description: >- # this means to ignore newlines until "baseurl:"
 
 ---
 
-
-
 ## Footprinting and Recon
 
 Ethical hacking helps system administrators understand how to better protect the assets they manage.
 
 Footprinting and Reconnaissance (method of discovery) is the first stage and involves gathering information about the target.
 
-__Footprinting__: learning as much as possible about the target, including remote access capabilities, open ports and services, and what security mechanisms are in place.
+**Footprinting**: learning as much as possible about the target, including remote access capabilities, open ports and services, and what security mechanisms are in place.
 
-__Reconnaissance__: gathering information about the location of a target by scouting or by setting up covert observation points.
+**Reconnaissance**: gathering information about the location of a target by scouting or by setting up covert observation points.
 
-__Sequence of Steps__
+**Sequence of Steps**
 
 * Gather information
 * Locate the network range
@@ -47,16 +45,16 @@ Used in business to help a company learn about its competitors in order to make 
 ### Finding information
 
 * Public Resources
-	* Websites
-	* Directories
-	* Email Addresses
-	* Job Sites (idea of systems via tech job postings)
-	* Social Networks
+  * Websites
+  * Directories
+  * Email Addresses
+  * Job Sites (idea of systems via tech job postings)
+  * Social Networks
 * Logical Side
-	* Network architecture
-	* Defence mechanisms
-	* Operating systems
-	* Applications
+  * Network architecture
+  * Defence mechanisms
+  * Operating systems
+  * Applications
 
 ### Questions before beginning
 
@@ -66,8 +64,7 @@ Used in business to help a company learn about its competitors in order to make 
 * When is the best time for an attack?
 * How? (learnt after footprinting)
 
-__Document the Findings__: Its important to document any informations to help build a profile.
-
+**Document the Findings**: Its important to document any informations to help build a profile.
 
 ### Search Engine Hacking
 
@@ -84,25 +81,25 @@ Using advanced operators and keywords that may possibly yield pages that contain
 
 Manipulating people to perform actions or reveal confidential information.
 
-* Telephone, 
-* Online, 
-* Dumpster diving, 
-* Shoulder surfing, 
-* Eavesdropping, 
+* Telephone,
+* Online,
+* Dumpster diving,
+* Shoulder surfing,
+* Eavesdropping,
 * Phishing, Pharming
-* Simple persuasion, 
+* Simple persuasion,
 * Impersonation.
 
 Defence: User Education, Authenication Mechanisms, Simply Questioning.
 
-__Dangers of Social Media__:
+**Dangers of Social Media**:
 
 * No autentication of users (acceptance)
 * Forging someone's identity
 * Revealing information (travel plans)
 * Sharing of unsafe links
 
-__Examples of Public Search Engines__
+**Examples of Public Search Engines**
 
 * [Anywho.com](https://www.anywho.com/whitepages)
 * [Spokeo.com](https://www.spokeo.com/)
@@ -110,15 +107,13 @@ __Examples of Public Search Engines__
 * [Pipl.com](https://pipl.com/)
 * [Vitalrec.com](http://www.vitalrec.com/)
 
-### Tracking Reputation 
+### Tracking Reputation
 
 * [Webhose.io](https://webhose.io/)
 * [Twitter Alerts](https://help.twitter.com/en/managing-your-account/how-to-use-twitter-alerts)
 * [Images.google.com](https://images.google.com/)
 * [Google Alerts](https://www.google.co.uk/alerts)
 * [raventools.com](https://raventools.com/)
-
-
 
 ### Email and Websites
 
@@ -130,7 +125,7 @@ Defence:
 
 * Sender Policy Framework (SPF) = 'The From' field spoofing
 * Virus filtering and Antivirus techniques
-* Strong Spam Filtering 
+* Strong Spam Filtering
 * User Education
 
 #### Email investigation
@@ -148,7 +143,7 @@ Download the entire website to examine the content, obtaining emails, phone numb
 
 You can sometimes see concealed comments, directories, links to protected content.
 
-__Free and Paid Tools for Website Mirroring/Extracting__:
+**Free and Paid Tools for Website Mirroring/Extracting**:
 
 * [httrack.com](https://www.httrack.com/)
 * [wget](https://www.gnu.org/software/wget/)
@@ -161,44 +156,44 @@ Open-source intelligence gathering tools
 Generates a more targeted discovery
 
 * [Maltego](https://www.paterva.com/)
-	* Open-source Data Analysis Software
-	* Harvests Domain Names, Whois Information and IP Addresses
-	* Person Specific Information: Websites and Associated Companies.
+  * Open-source Data Analysis Software
+  * Harvests Domain Names, Whois Information and IP Addresses
+  * Person Specific Information: Websites and Associated Companies.
 
 * [Shodan](https://www.shodan.io/)
-	* Discovers Devices are Connected to the Internet
+  * Discovers Devices are Connected to the Internet
 
 * [Metagoofil](https://tools.kali.org/information-gathering/metagoofil)
-	* Extracts Metadata from the Target
+  * Extracts Metadata from the Target
 
 * [FOCA](https://www.elevenpaths.com/labstools/foca/index.html)
-	* Examines Metadata
+  * Examines Metadata
 
 * [theHarvester](https://tools.kali.org/information-gathering/theharvester)
-	* Harvests Info from Public Sources
+  * Harvests Info from Public Sources
 
 ## DNS
 
 DNS uses port 53 over UDP or TCP (zone transfers only)
 
-__Common Types__
+**Common Types**
 
 * A = IPv4 Address of Host
 * AAAA = IPv6 Address of Host
 * PTR = Reverse DNS lookup
 * MX = Mail Exchange record
 
-__Dangers of DNS__
+**Dangers of DNS**
 
 * Exposed Zone File
 * Flood Attack
-	* Similar to a denial of service (DOS).
+  * Similar to a denial of service (DOS).
 * Cache Poisoning
-	* Changes the DNS Cache on the local name server to point toward a bogus server.
+  * Changes the DNS Cache on the local name server to point toward a bogus server.
 * DNS Footprinting
-	* Find information managed by the SOA (Start of Authority).
+  * Find information managed by the SOA (Start of Authority).
 
-__Good Practice__
+**Good Practice**
 
 * Restrict zone transfers to authorized servers
 * Deny all inbound connection requests to TCP Port 53
@@ -214,7 +209,7 @@ Domain names and subdomain names can be used to trick a DNS server into transfer
 
 ### ICMP
 
-Internet Control Message Protcol (ICMP) resides in the network layer (OSI Layer 3), used by routers and intermediary devices to communicate updates or error information. 
+Internet Control Message Protcol (ICMP) resides in the network layer (OSI Layer 3), used by routers and intermediary devices to communicate updates or error information.
 
 Also used for network troubleshooting and to test if a device is alive/available on the network.
 
@@ -232,9 +227,9 @@ Shows packet loss at any given router or link by computing statistics at the end
 
 ### Nslookup
 
-Non-interactive mode `nslookup google.co.uk`. 
+Non-interactive mode `nslookup google.co.uk`.
 
-Interactive mode `nslookup` and then enter what you want to search after `google.co.uk`. 
+Interactive mode `nslookup` and then enter what you want to search after `google.co.uk`.
 
 You can also set other options such as `set type=mx` then `google.co.uk` and you'll get the MX records.
 
@@ -252,11 +247,7 @@ tool used to querying the DNS, native to Linux, installation is required for Win
 * Segment the network
 * Shed paper based information
 
-
-
 ---
-
-
 
 ## Scanning Networks
 
@@ -272,10 +263,10 @@ tool used to querying the DNS, native to Linux, installation is required for Win
 
 ### Scanning Techniques
 
-* Ping Sweep - 
+* Ping Sweep -
 * Port Scan -
 * Network Mapping -
-* OS Fingerprinting - 
+* OS Fingerprinting -
 
 ### Vulnerability Scan
 
@@ -305,7 +296,7 @@ Identifies which ports and services are open, records information based on the q
 
 Precursor to an attack so measures need to be taken to protect devices.
 
-__Firewall Responses__
+**Firewall Responses**
 
 * Open and Listening
 * Closed and Denying
@@ -313,21 +304,21 @@ __Firewall Responses__
 
 Firewalls and IPS can use adaptive firewall responses if port scanning is detected.
 
-__Scanning Methods: Detection Avoidance__
+**Scanning Methods: Detection Avoidance**
 
 * Strobe mode - quietly checks a few ports at a time.
 * Stealth mode - uses scans designed to avoid detection.
 
 ### DNS
 
-Security weaknesses: 
+Security weaknesses:
 
 * Modifying records at the domain.
 * DDOS against DNS infastructure.
 * Cache Poisoning.
 * WHOIS directory information.
 
-__Good Practice__
+**Good Practice**
 
 * Restrict Zone Transfers
 * Deny inbound connections to TCP port 53
@@ -341,7 +332,7 @@ __Good Practice__
 
 In ethical hacking ICMP packets are used to discover; live hosts, network topology, firewall detection and OS fingerprinting.
 
-__Best Practice__
+**Best Practice**
 
 * Type 3 and Type 4 Required, the rest are optional.
 
@@ -364,12 +355,12 @@ Prevent banner grabbing by:
 
 Self-configurating network allows devices to join, leave and learn about other devices
 
-__Universal plug and play (UPnP)__
+**Universal plug and play (UPnP)**
 
 * Provides discovery and advertisements
 * Awareness of services and devices on the network
 
-__Simple Service Discovery Protol (SSDP)__
+**Simple Service Discovery Protol (SSDP)**
 
 Drafted in late 1999
 
@@ -377,7 +368,7 @@ Drafted in late 1999
 * Little or no static configuration required
 * Used for passive discovery of network devices
 
-__Best Practices__
+**Best Practices**
 
 * Configure registery to disable discovery messages
 * Disable SSDP in the group policy object
@@ -391,33 +382,33 @@ Probes targets on the network:
 * Determines software, OSs, and versions
 * Identifies known vulnerabilities
 
-__Information Systems__
+**Information Systems**
 
 Software side, drives business processes and decision making, includes:
 
-* DBMS, 
+* DBMS,
 * DSS,
 * MIS
 
-__Information Technology__
+**Information Technology**
 
 Hardware side
 
-* Computers 
+* Computers
 * Networking Devices
 
 Both work together in an organisation and both should be tested.
 
 Two types of scanning:
 
-__Unauthenticated Scan__
+**Unauthenticated Scan**
 
 * Find basic configuration issues
 * Uses no username or passwords
 * Simple to run
 * Will miss many vulnerabilties
 
-__Authenticated Scan__
+**Authenticated Scan**
 
 * Uses a valid username and password
 * Mimic a user on the system or website
@@ -430,13 +421,13 @@ __Authenticated Scan__
 
 ### Evading Detection
 
-__Intrusion Detection Systems__
+**Intrusion Detection Systems**
 
 * Intrusion Detection or Prevention System
- * Monitor network for unusual of suspicious activity.
- * Stand-alone or integrated within an ASA or router.
- * Detection - Works out of band to identify malicious activity.
- * Prevention - Works in line to block attacks.
+* Monitor network for unusual of suspicious activity.
+* Stand-alone or integrated within an ASA or router.
+* Detection - Works out of band to identify malicious activity.
+* Prevention - Works in line to block attacks.
 
 When scanning you can hide your host IP address by using the `-D` command this is called "Cloaking with Decoys" but doesn't work with all types of scans.
 
@@ -446,7 +437,7 @@ Spoof your MAC or IP Address
 
 Christmas Tree Attack sends a large number of packets with the FIN, PSH and URG flags set. This could be avoided by older systems.
 
-__IP Fragmentation Scan__
+**IP Fragmentation Scan**
 
 Splits an IP packet into fragmented parts to avoid detection as the target would need to fully assemble to identify the host.
 
@@ -459,7 +450,7 @@ Tiny fragmented IP packets splits up the TCP header over several packets.
 
 IP fragmentation can only occur on devices that allow for this type of packet.
 
-__Staying Anonymous__
+**Staying Anonymous**
 
 * Use private browsing
 * Use Browser extensions
@@ -478,7 +469,7 @@ __Staying Anonymous__
   * Disable GPS
   * Think about the apps installed
 
-### Concealing and Spoofing 
+### Concealing and Spoofing
 
 __Hiding with Onion Routing ([TOR](https://www.torproject.org))__
 
@@ -493,15 +484,15 @@ __Hiding with Onion Routing ([TOR](https://www.torproject.org))__
 
 [TOR Flow Map](https://torflow.uncharted.software)
 
-__Proxifier and SocksChain__
+**Proxifier and SocksChain**
 
 Proxy is using something on your behalf. Proxy chaining is where you use multiple proxy servers concealing where the traffic came from.
 
 SOCKS
-	* Socket Secure
-	* [SOCKS5](https://en.wikipedia.org/wiki/SOCKS#SOCKS5) offers more choices for autentication and IPv6, UDP support.
+ *Socket Secure
+ * [SOCKS5](https://en.wikipedia.org/wiki/SOCKS#SOCKS5) offers more choices for autentication and IPv6, UDP support.
 
-__IP address spoofing countermeasures__
+**IP address spoofing countermeasures**
 
 Conceals the identify of the hacker, the header is modified with a fake IP address so that the packet appears to have come from another machine.
 
@@ -523,7 +514,7 @@ Best Practices:
 * Use bogon filters.
 * Deny private IP addresses from coming into the network.
 
-__IP spoofing detection techniques__
+**IP spoofing detection techniques**
 
 * Direct TTL Probe - Only useful when the attacker is on a different segment, we check the TTL value to ensure they are the same.
 * IP Identification Number - Checking the ID number to ensure they are correct.
@@ -536,9 +527,9 @@ Types of Tunneling:
 * Teredo or 6to4 tunneling for dual stack
 * IPSec, LLTP, SSL for encryption
 
-__HTTP Tunnel__
+**HTTP Tunnel**
 
-Wiki Link: https://en.wikipedia.org/wiki/HTTP_tunnel
+Wiki Link: <https://en.wikipedia.org/wiki/HTTP_tunnel>
 
 * Access programs without being monitored
 * Not a true tunnel
@@ -550,12 +541,12 @@ Wiki Link: https://en.wikipedia.org/wiki/HTTP_tunnel
 * All traffic is tunneled inside normal GET and POST
 * This works with most proxies and firewalls
 
-__SSH Tunnel__
+**SSH Tunnel**
 
 * Encrypted
 * Host based autentication
 
-__Defend against tunneling__
+**Defend against tunneling**
 
 * Allow only preapproved software
 * Close unnecessary ports and services
@@ -566,8 +557,7 @@ Detecting HTTP Tunnel
 HTTP connections are not persistent and have small packet sizes. Monitor for lengthy connections using port 80.
 
 Use of a intrusion detection system (IDS)
-	
-
+ 
 * Catch and mine data destined for port 80 using WireShark or NetworkMiner.
 * Inspect log files regularly.
 * Collect and analyse statistics.
@@ -595,12 +585,12 @@ Additional Precautions
 * DMitry (Deepmagic Information Gathering Tool)
 * Curl
 * Armitage
-* https://sectools.org/tag/vuln-scanners/
+* <https://sectools.org/tag/vuln-scanners/>
 * netstat
-* https://dnsdumpster.com/
-* https://w3dt.net/
-* https://macvendorlookup.com/
-* https://hackertarget.com/
+* <https://dnsdumpster.com/>
+* <https://w3dt.net/>
+* <https://macvendorlookup.com/>
+* <https://hackertarget.com/>
 * Proxy Switcher
 * Proxifier
 * Proxy Workbench
@@ -628,13 +618,9 @@ Additional Precautions
 
 ### Additional
 
-https://chrissanders.org/packet-captures/
-
-
+<https://chrissanders.org/packet-captures/>
 
 ---
-
-
 
 ## System Hacking
 
@@ -643,9 +629,9 @@ Advanced Persistent Threat (APT)
 * Stay in the network undetected
 * Goal is to obtain high-value information
 
-__Set the Stage__
+**Set the Stage**
 
-Information about the systems has been obtained in previous steps: 
+Information about the systems has been obtained in previous steps:
 
 * Reconnaissance has been completed
   * Target location
@@ -687,7 +673,7 @@ This stage is System Hacking, which contains the following:
   * Clean up any evidence
   * Delete or modify logs
 
-__Authenticate a User__
+**Authenticate a User**
 
 New Technology LAN Manager (NTLM)
 
@@ -719,7 +705,7 @@ Pluggable Authentication Modules (PAM)
 
 Simple Authentication and Security Layer (SASL)
 
-* Authentication and data security services 
+* Authentication and data security services
 * Used for various connection oriented protcols (LDAP, PAM, Kerberos etc.) to interact together
 * Protocol must include a command for identifying and authenticating a user to a server
 
@@ -731,8 +717,7 @@ Ways for a user to authenticate:
 * What you are: Biometric
 * What you have: ID Card
 
-
-__Where are passwords stored?__
+**Where are passwords stored?**
 
 Windows:
 
@@ -750,7 +735,7 @@ Linux:
 
 * /etc/passwd
 
-__How to obtain?__
+**How to obtain?**
 
 Passive Online:
 
@@ -768,8 +753,8 @@ Active Online:
   * Uses patterns
 * Trojan
 * Guessing
-  * Common passwords: https://www.passwordrandom.com/most-popular-passwords
-  * Manufacturer defaults: https://cirt.net/passwords
+  * Common passwords: <https://www.passwordrandom.com/most-popular-passwords>
+  * Manufacturer defaults: <https://cirt.net/passwords>
   * Dictionary Attack
   * Brute Force Attack
   * Hybrid Attack - Dictionary combined with Brute Force
@@ -788,10 +773,10 @@ Offline:
   * Rainbow tables are tables containing hash values
   * Users authenticate by entering their password which gets converted into a hash then compared
   * Sites:
-    * https://www.fileformat.info/tool/hash.htm - Hash Generator
-    * https://project-rainbowcrack.com/ - Downloadable Rainbow Tables
-    * http://onlinemd5.com/ - MD5 Hash Generator
-    * http://reverse-hash-lookup.online-domain-tools.com/ - Reverse Hash Lookup
+    * <https://www.fileformat.info/tool/hash.htm> - Hash Generator
+    * <https://project-rainbowcrack.com/> - Downloadable Rainbow Tables
+    * <http://onlinemd5.com/> - MD5 Hash Generator
+    * <http://reverse-hash-lookup.online-domain-tools.com/> - Reverse Hash Lookup
   * Salting (random string, stored in the database or with the hash string) will help protect against a rainbow attack
 
 Other Methods:
@@ -814,11 +799,11 @@ Default accounts are known and targets. Make sure they are and secure as a ethic
 
 Local access once obtained can be used to collect data, install rootkits, keyloggers, botnet.
 
-Online botnet checker: https://checkip.kaspersky.com/
+Online botnet checker: <https://checkip.kaspersky.com/>
 
 Once completed the hacker will clean the system to ensure they are undetected.
 
-__Best Practices__
+**Best Practices**
 
 * Restrict Interactive Logon Privileges
   * MFA
@@ -840,7 +825,7 @@ __Best Practices__
 
 ### Spyware
 
-__Malware Categories__
+**Malware Categories**
 
 * Spyware
   * Harvests data:
@@ -860,7 +845,7 @@ __Malware Categories__
   * Presented as a useful tool or free download
 * Rootkits
 
-__Internet Browsers__
+**Internet Browsers**
 
 You may want to block third-party cookies, this can break some sites.
 
@@ -868,7 +853,7 @@ Compact privacy policy tells the user how their information is shared, normally 
 
 Disable ActiveX, although these are some benefits this has been known as a security concern allowing the installation of spyware.
 
-__Protect Your Phone__
+**Protect Your Phone**
 
 * Install app that monitors for security vulnerabilties
 * Use caution when downloading apps
@@ -893,7 +878,7 @@ Keyloggers are hard to detect and can cause more damage than a virus.
   * Can be installed inside another device or USB
   * No software installed, undetectable by anti-malware
 
-__Best Practices__
+**Best Practices**
 
 * Use a firewall
   * Egress (outbound) filtering
@@ -907,14 +892,14 @@ __Best Practices__
 
 ### Hiding in Plain Sight
 
-__NTFS Alternate Data Streaming (ADS)__
+**NTFS Alternate Data Streaming (ADS)**
 
 * Providies compatibility with non-Windows file systems
 * Stores data in hidden files linked to a regular file
 * Streams are not limited in size
 * Attackers can hide tools and data
 
-__Steganography__
+**Steganography**
 
 "Hiding in Plain Sight"
 
@@ -923,9 +908,9 @@ __Steganography__
   * Payload
   * Hidden message
 
-The human eye can only see a range of colours, slightly tweaking these values we can hide data within pixels (demo: https://cs.vu.nl/~ast/books/mos2/zebras.html)
+The human eye can only see a range of colours, slightly tweaking these values we can hide data within pixels (demo: <https://cs.vu.nl/~ast/books/mos2/zebras.html>)
 
-__Detecting Steganography (Steganalysis)__
+**Detecting Steganography (Steganalysis)**
 
 Image steganography tools:
 
@@ -971,11 +956,7 @@ Clean Up - Windows
 
 * Event Viewer - Clear Log
 
-
-
 ---
-
-
 
 ## Social Engineering
 
@@ -996,20 +977,20 @@ Scam artists work on our emotions:
 * Offer important information
 * Threaten to take action if you do not reply.
 
-__Four main phases of Social Engineering__
+**Four main phases of Social Engineering**
 
 1. Reconnaissance
 1. Establishing Trust
 1. Exploiting that Trust
 1. Exit
 
-__Recognising an attack__
+**Recognising an attack**
 
 * Watch out for unscheduled utility service calls
 * Be hesitant with calls claiming to be from the help desk
 * Be aware of anyone who says you will get in trouble if the issue isn't dealt with immediately
 
-__Best Practices__
+**Best Practices**
 
 * Require visitors to check in
 * Require visitors to wear a badge
@@ -1030,10 +1011,10 @@ Browsers are commonly used in social engineering as the portal into the world wi
   * Insert ads
   * Redirect you
 * Use extra protection
-  * Anti-exploit (https://www.malwarebytes.com/antiexploit/)
-  * Microsoft EMET (Enhanced Mitigation Experience Toolkit, https://support.microsoft.com/en-us/help/2458544/the-enhanced-mitigation-experience-toolkit)
+  * Anti-exploit (<https://www.malwarebytes.com/antiexploit/>)
+  * Microsoft EMET (Enhanced Mitigation Experience Toolkit, <https://support.microsoft.com/en-us/help/2458544/the-enhanced-mitigation-experience-toolkit>)
 
-__Mobile based attacks__
+**Mobile based attacks**
 
 Ploys:
 
@@ -1065,7 +1046,7 @@ An organisation cannot control reputation risk as they are an external factor, b
 
 Disgruntled employees
 
-Attacks can come from within from disgruntled employees. Hackers will target these employees as they hold little loyalty. 
+Attacks can come from within from disgruntled employees. Hackers will target these employees as they hold little loyalty.
 
 Reasons:
 
@@ -1087,7 +1068,7 @@ Best Practices to protection against insider (trusted) attacks
 
 ### Penetration Testing with Social Engineering
 
-__Email and Websites__
+**Email and Websites**
 
 Phishing and Pharming
 
@@ -1109,11 +1090,11 @@ Best Practices:
 * Keep up to date
 * Use a safe search tool
 
-__In person and on the phone__
+**In person and on the phone**
 
 If the employee is busy they may provide the information without thinking for example a busy receptionist providing a key card because they are swamped with work.
 
-__Social-Engineering Toolkit__
+**Social-Engineering Toolkit**
 
 Open-source tool, downloadable or already installed on Kali Linux.
 
@@ -1131,9 +1112,9 @@ Attacks from 3 main categories
 * Generate malicious files
 * Create a malicious website
 
-The toolkit: https://www.trustedsec.com/tools/the-social-engineer-toolkit-set/
+The toolkit: <https://www.trustedsec.com/tools/the-social-engineer-toolkit-set/>
 
-__SET in Kali Linux__
+**SET in Kali Linux**
 
 Make sure that the SET configuration has been updated regularly.
 
@@ -1141,7 +1122,7 @@ There are lots of options in SET to build the bait but there is a requirement to
 
 SET should be part of the vulnerabilities tests as we need to test the 'human firewall'.
 
-__Countermeasures__
+**Countermeasures**
 
 Defending against social engineering is hard as we cannot just defend using hardware and software alone.
 
@@ -1149,7 +1130,7 @@ Defending against social engineering is hard as we cannot just defend using hard
 * Standards
 * Education
 
-__Best Practices__
+**Best Practices**
 
 * Caller ID
   * Seperate Ringtone for Internal and External

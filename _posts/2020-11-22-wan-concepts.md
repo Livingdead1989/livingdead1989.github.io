@@ -10,35 +10,29 @@ categories: networking
 * WAN services are provided for a fee.
 * WANs providers offer low to high bandwidth speeds, over long distances using complex physical networks.
 
-<br>
-
 ## Private vs Public WAN
 
 A private WAN is a connection that is dedicated to a single customer. This provides for the following:
 
-- Guaranteed service level
-- Consistent bandwidth
-- Security
+* Guaranteed service level
+* Consistent bandwidth
+* Security
 
 A public WAN connection is typically provided by an ISP or telecommunications service provider using the internet. In this case,  the service levels and bandwidth may vary, and the shared connections do not guarantee security.
-
-<br>
 
 ## WAN Topologies
 
 WANs are implemented using the following logical topology designs:
 
-- Point-to-Point Topology
-- Hub-and-Spoke Topology
-- Dual-homed Topology
-- Fully Meshed Topology
-- Partially Meshed Topology
+* Point-to-Point Topology
+* Hub-and-Spoke Topology
+* Dual-homed Topology
+* Fully Meshed Topology
+* Partially Meshed Topology
 
 ![WAN Topologies](/assets/images/posts/wan_topologies.png)
 
 **Note**: Large networks usually deploy a combination of these topologies.
-
-<br>
 
 ## Carrier Connections
 
@@ -46,21 +40,15 @@ Single carrier is when the organisation connect to single service provider, wher
 
 Dual-carrier provides redundancy and could be used to improve network performance or load balance traffic.
 
-<br>
-
 ---
-
-<br>
 
 ## WAN Standards
 
 WAN standards are defined and managed by authorities including:
 
-- **TIA/EIA** - Telecommunications Industry Association and Electronic Industries Alliance
-- **ISO** - International Organisation for Standardisation
-- **IEEE** - Institute of Electrical and Electronics Engineers
-
-<br>
+* **TIA/EIA** - Telecommunications Industry Association and Electronic Industries Alliance
+* **ISO** - International Organisation for Standardisation
+* **IEEE** - Institute of Electrical and Electronics Engineers
 
 ## OSI Model
 
@@ -70,8 +58,6 @@ WAN standards focus on the first two layers in the OSI model
    * describes the electrical, mechanical, and operational components needed to transmit bits over a WAN
 2. Data Link
    * define how data will be encapsulated into a frame
-
-<br>
 
 ## WAN Terminology
 
@@ -90,39 +76,31 @@ WAN standards focus on the first two layers in the OSI model
 
 ![WAN Terminology Diagram](/assets/images/posts/wan_terms.png)
 
-<br>
-
-
-
 ## Circuit-Switched and Packet-Switched
 
 A circuit-switched network establishes a dedicated circuit (or channel) between endpoints before the users can communicate. For example, when a user makes a telephone call using a landline.
 
 The two most common types of circuit-switched WAN technologies are:
 
-* Public switched telephone network (PSTN) 
+* Public switched telephone network (PSTN)
 * Legacy Integrated Services Digital Network (ISDN).
 
 ![Circuit Switched Example](/assets/images/posts/circuit_switched.png)
 
 In contrast to circuit-switching, packet-switching segments traffic data into packets that are routed over a shared network.
 
-Common types of packet-switched WAN technologies are 
+Common types of packet-switched WAN technologies are
 
-* Ethernet WAN (Metro Ethernet), 
-* Multiprotocol Label Switching (MPLS), 
+* Ethernet WAN (Metro Ethernet),
+* Multiprotocol Label Switching (MPLS),
 * Legacy Frame Relay
 * Legacy Asynchronous Transfer Mode (ATM).
 
 ![Packet Switched Example](/assets/images/posts/packet_switched.png)
 
-
-
-<br>
-
 ## SDH / SONET and DWDM
 
-Service provider networks use fiber-optic infrastructures to transport  user data between destinations. 
+Service provider networks use fiber-optic infrastructures to transport  user data between destinations.
 
 Fiber-optic cable is far superior to copper cable for long distance transmissions due to its much lower attenuation and interference.
 
@@ -134,8 +112,6 @@ Two optical fiber OSI layer 1 standards available to service providers:
    * North American standard
 
 Both standards are essentially the same
-
-
 
 **Dense Wavelength Division Multiplexing** (DWDM) is a newer technology that increases the data-carrying capacity of SDH  and SONET by simultaneously sending multiple streams of data  (multiplexing) using different wavelengths of light.
 
@@ -150,8 +126,6 @@ DWDM has the following features:
 
 **Note:** DWDM circuits are used in long-haul systems and modern submarine communication cable systems.
 
-<br>
-
 ## Modern WANs
 
 New technologies are continually emerging.
@@ -164,15 +138,11 @@ Many fiber-optic cable runs are not in use. Fiber-optic cable that is  not in us
 
 Leasing dark fiber is typically more expensive than any other WAN option available today. However, it provides the greatest flexibility,  control, speed, and security.
 
-<br>
-
 **MPLS**
 
 Multi-protocol Label Switching (MPLS) enables the WAN provider network  to carry any protocol (e.g., IPv4 packets, IPv6 packets, Ethernet, DSL)  as payload data. This enables different sites to connect to the provider network regardless of its access technologies.
 
 MPLS routers are label switched routers (LSRs). This means that they  attach labels to packets that are then used by other MPLS routers to  forward traffic.
-
-<br>
 
 **DSL**
 
@@ -188,8 +158,6 @@ DSL connections, connect to a DSLAM (DSL Access Multiplexer) located in the CO.
 
 DSL is not a  shared medium. Each user has a separate direct connection to the DSLAM.
 
-<br>
-
 **Cable**
 
 The Data over Cable Service Interface Specification (DOCSIS) is the  international standard for adding high-bandwidth data to an existing  cable system.
@@ -200,8 +168,6 @@ HFC uses fiber-optic and coaxial cable in  different portions of the network. Fo
 
 The headend contains the databases needed to provide internet access  while the CMTS is responsible for communicating with the cable modems.
 
-<br>
-
 **Optical Fiber**
 
 Providers install fiber-optic cable to the user location. This is  commonly referred to as Fiber to the x (FTTx) and includes the  following:
@@ -211,8 +177,6 @@ Providers install fiber-optic cable to the user location. This is  commonly refe
 * Fiber to the Node/Neighbourhood (FTTN)
 
 FTTx can deliver the highest bandwidth of all broadband options.
-
-<br>
 
 ## VPN
 
@@ -227,6 +191,3 @@ VPNs are commonly implemented as the following:
 
 * Site-to-Site VPN
 * Remote Access
-
-
-

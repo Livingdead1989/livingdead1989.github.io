@@ -6,7 +6,7 @@ categories: networking
 
 ## Cloud Computing
 
-Typically, an off-premise service that offers on-demand access to a shared pool of configurable computing resources. Cloud computing, with its “pay-as-you-go” model, allows organisations to treat computing and storage expenses more as a utility rather than  investing in infrastructure. 
+Typically, an off-premise service that offers on-demand access to a shared pool of configurable computing resources. Cloud computing, with its “pay-as-you-go” model, allows organisations to treat computing and storage expenses more as a utility rather than  investing in infrastructure.
 
 **Cloud Services**
 
@@ -18,8 +18,6 @@ Typically, an off-premise service that offers on-demand access to a shared pool 
   * Cloud provider is responsible for access to development tools
 * Infrastructure as a Service (**IaaS**)
   * Cloud provider is responsible for giving IT managers access to network equipment, virtualised services and supporting network infrastructure.
-
-<br>
 
 **Cloud Models**
 
@@ -35,30 +33,26 @@ Typically, an off-premise service that offers on-demand access to a shared pool 
 * Community clouds
   * Exclusive use by a specific community, such as healthcare or media.
 
-<br>
-
 ## Virtualisation
 
 Allows for multiple operating systems to exist on a single hardware platform by abstracting the Services, OS, Firmware and Hardware into layers.
 
 **Advantages of Virtualisation**
 
-- **Less equipment is required**
-  - Server consolidation, fewer networking devices, and less supporting infrastructure. It also  means lower maintenance costs.
-- **Less energy is consumed**
-  - lowers the monthly power and cooling costs. 
-- **Less space is required**
-  - Fewer servers, network devices, and racks reduce the amount of required floor space.
-- **Easier prototyping**
-  - Self-contained labs
-- **Faster server provisioning**
-  - Faster than provisioning a physical server.
-- **Increased server up-time**
-  - Redundant fault tolerance features, such as live migration, storage migration, high availability, and distributed resource scheduling.
-- **Improved disaster recovery**
-- **Legacy support**
-
-<br>
+* **Less equipment is required**
+  * Server consolidation, fewer networking devices, and less supporting infrastructure. It also  means lower maintenance costs.
+* **Less energy is consumed**
+  * lowers the monthly power and cooling costs.
+* **Less space is required**
+  * Fewer servers, network devices, and racks reduce the amount of required floor space.
+* **Easier prototyping**
+  * Self-contained labs
+* **Faster server provisioning**
+  * Faster than provisioning a physical server.
+* **Increased server up-time**
+  * Redundant fault tolerance features, such as live migration, storage migration, high availability, and distributed resource scheduling.
+* **Improved disaster recovery**
+* **Legacy support**
 
 **Type 1 - Bare Metal Hypervisor**
 
@@ -81,19 +75,13 @@ Hypervisor is installed on top of the existing OS, examples include:
 
 Virtualised switching and routing
 
-<br>
-
 ## Virtual Network Infrastructure
 
-Network functions can be virtualised. Each network device can be  segmented into multiple virtual devices that operate as independent  devices. 
+Network functions can be virtualised. Each network device can be  segmented into multiple virtual devices that operate as independent  devices.
 
-Examples include sub-interfaces, virtual interfaces, VLANs, and  routing tables. 
+Examples include sub-interfaces, virtual interfaces, VLANs, and  routing tables.
 
-Virtualised routing is called virtual routing and forwarding (VRF). 
-
-
-
-<br>
+Virtualised routing is called virtual routing and forwarding (VRF).
 
 ## Software-Defined Networking
 
@@ -112,20 +100,14 @@ A network device contains the following planes:
 * **Data plane** *(Forwarding plane)*
   * Switch fabric connecting network ports on a device
 
-
-
 Software-Defined Networking moves the control plane of each networking device into a single controller.
 
 ![Traditional and SDN architecture comparison](/assets/images/posts/trad_vs_sdn.png)
 
-<br>
-
 Two major network architectures have been developed to support network virtualization:
 
-- **Software-Defined Networking (SDN)** - A network architecture that virtualizes the network.
-- **Cisco Application Centric Infrastructure (ACI)** - A purpose-built hardware solution for integrating cloud computing and data center management.
-
-
+* **Software-Defined Networking (SDN)** - A network architecture that virtualizes the network.
+* **Cisco Application Centric Infrastructure (ACI)** - A purpose-built hardware solution for integrating cloud computing and data center management.
 
 Components of SDN may include the following:
 
@@ -140,8 +122,6 @@ Components of SDN may include the following:
   * Cisco FabricPath (**FP**)
   * IEEE 802.1aq Shortest Path Bridging (**SPB**)
 
-<br>
-
 ## Controllers
 
 The SDN controller defines the data flows between the centralised control plane and the data planes on individual routers and switches.
@@ -152,15 +132,13 @@ The SDN controller defines the data flows between the centralised control plane 
 
 Within each switch, a series of tables implemented in hardware or  firmware are used to manage the flows of packets through the switch.
 
-- **Flow Table**
-  - matches incoming  packets to a particular flow and specifies the functions that are to be  performed on the packets. 
-  - There may be multiple flow tables that operate in a pipeline fashion.
-- **Group Table**
-  - A flow table may direct a flow to a Group Table, which may trigger a variety of actions that affect one or more flows
-- **Meter Table**
-  - This table triggers a variety of performance-related actions on a flow including the ability to rate-limit the traffic.
-
-<br>
+* **Flow Table**
+  * matches incoming  packets to a particular flow and specifies the functions that are to be  performed on the packets.
+  * There may be multiple flow tables that operate in a pipeline fashion.
+* **Group Table**
+  * A flow table may direct a flow to a Group Table, which may trigger a variety of actions that affect one or more flows
+* **Meter Table**
+  * This table triggers a variety of performance-related actions on a flow including the ability to rate-limit the traffic.
 
 ## Cisco's Application Centric Infrastructure (ACI)
 
@@ -200,4 +178,3 @@ Three core components of ACI:
    2. Built-in applications that automate configuration tasks via a guided workflow or GUI
    3. No programming skills are required.
    4. *Example*: Cisco APIC-EM
-

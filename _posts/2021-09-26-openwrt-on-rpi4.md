@@ -17,8 +17,6 @@ OpenWrt is stable and open source software.
 
 OpenWrt provides more than [3000 packages](https://openwrt.org/packages/start) ready to be installed.
 
-
-
 ## Requirements
 
 * Raspbery Pi 4 Model B
@@ -28,13 +26,11 @@ OpenWrt provides more than [3000 packages](https://openwrt.org/packages/start) r
 * 2 Ethernet Cables *(Cat 5e minimum)*
 * USB to Ethernet Adaptor
 
-
-
 ## Guide
 
 Download the appropriate image of OpenWRT for the Raspberry Pi 4, it can be found using the following link:
 
-https://downloads.openwrt.org/snapshots/targets/bcm27xx/bcm2711/
+<https://downloads.openwrt.org/snapshots/targets/bcm27xx/bcm2711/>
 
 Download the rpi-4-ext4-factory.img.gz file
 
@@ -56,11 +52,9 @@ I expanded the rootfs partition to use all available space with 4MiB either side
 
 Once completed, eject the MicroSD card storage and insert it into your Raspberry Pi 4.
 
-
-
 ### Conflicting IP addresses
 
-OpenWRT will have the IP address of 192.168.1.1 /24 automatically configured, in my setup this will cause an issue so I needed to change this before I could continue. 
+OpenWRT will have the IP address of 192.168.1.1 /24 automatically configured, in my setup this will cause an issue so I needed to change this before I could continue.
 
 The workaround was to power of the Raspberry Pi 4 while connected to a monitor and keyboard so I could change the address before connecting to the rest of the network.
 
@@ -71,8 +65,6 @@ You could also connect the Raspberry Pi 4 to a switch with a computer or laptop 
 | IP address  | 192.168.1.5   |
 | Subnet Mask | 255.255.255.0 |
 | Gateway     | 192.168.1.1   |
-
-
 
 **Changing OpenWRT IP address**
 
@@ -89,13 +81,13 @@ I modified the configuration file to look like
 ```bash
 ### Example of my LAN interface section
 config interface 'lan'
-	option device 'br-lan'
-	option proto 'static'
-	option ipaddr '192.168.1.10'
-	option netmask '255.255.255.0'
-	option gateway '192.168.1.1' # Current router
-	option dns '192.168.1.1'
-	option ip6assign '60'
+ option device 'br-lan'
+ option proto 'static'
+ option ipaddr '192.168.1.10'
+ option netmask '255.255.255.0'
+ option gateway '192.168.1.1' # Current router
+ option dns '192.168.1.1'
+ option ip6assign '60'
 ```
 
 Then reboot the Raspberry Pi.
@@ -130,8 +122,6 @@ All good from the figure below.
 
 ![openwrt-ping-nslookup](/assets/images/posts/openwrt-ping-nslookup.png)
 
-
-
 ### Update and WebGUI Installation
 
 Update the system
@@ -153,11 +143,9 @@ service nginx enable
 service nginx start
 ```
 
-Once completed we can now navigate to https://192.168.1.10/ and login to the WebGUI
+Once completed we can now navigate to <https://192.168.1.10/> and login to the WebGUI
 
 ![openwrt-luci-login](/assets/images/posts/openwrt-luci-login.png)
-
-
 
 ### USB Ethernet Adaptor
 
@@ -197,8 +185,6 @@ From the figure below we can see that the USB Ethernet adaptor has been detected
 
 We now have OpenWRT installed on a Raspberry Pi 4 with two Ethernet interfaces one for WAN and one  for LAN.
 
-
-
 ### Configuring the Interfaces
 
 We will need to configure our interfaces, currently we have a LAN interface configured on the integrated NIC *(Network Interface Card)*, but we need to add our WAN connection.
@@ -221,13 +207,11 @@ Once done, apply settings. You may also need to restart your modem, ensuring to 
 
 Also don't forget to remove our other router on our LAN interface once you make the switch over.
 
-
-
 ### Backup the MicroSD card
 
 This could be a good time to shutdown the Raspberry Pi 4 and make a backup of the MicroSD card.
 
-Shutdown OpenWRT using the command 
+Shutdown OpenWRT using the command
 
 ```bash
 halt now
@@ -239,8 +223,6 @@ This just means we can create a new MicroSD card in case of something breaking o
 
 ![openwrt-backup-sd](/assets/images/posts/openwrt-backup-sd.png)
 
-
-
 ### Extra Software
 
 OpenWRT has a large software repository with extra features and functionality available to add with a click, you can find it by navigating to System > Software, make sure you Update your lists.
@@ -248,8 +230,6 @@ OpenWRT has a large software repository with extra features and functionality av
 ![openwrt-software-page](/assets/images/posts/openwrt-software-page.png)
 
 You can also add and install additional packages such as [Argon theme](https://github.com/jerrykuku/luci-theme-argon), so we are not limited to the available repository software, but be careful with what you add.
-
-
 
 I'll be looking at the following packages as my current pfSense firewall is providing these services:
 
@@ -281,12 +261,9 @@ We can enable DNS reporting and Email notifications if we wish too, these will r
 
 ![openwrt-software-adblock](/assets/images/posts/openwrt-software-adblock.png)
 
-
 ##### AdGuardHome
 
 Another popular option is installing `adguardhome` from the software tab, you can find more information on the [AdGuardTeam Github](https://github.com/AdguardTeam/AdGuardHome#getting-started).
-
-
 
 ### Summary
 
@@ -295,4 +272,3 @@ OpenWRT is extremely good at replacing consumer routers, while being available o
 Installation was smooth and the user interface is intuitive for a tech savvy person. The large amount of additional software packages means we can add extra functionality although not everything is configurable through the webGUI.
 
 I've enjoyed exploring openWRT on a Raspberry Pi 4 and I'll be keeping this as a backup or portable solution for the future.
-

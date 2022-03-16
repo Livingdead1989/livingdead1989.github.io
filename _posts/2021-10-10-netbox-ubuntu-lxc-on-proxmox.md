@@ -38,15 +38,11 @@ I have a DHCP server and I will be reserving my server address, you can also con
 
 Ensure that Start at Boot is enabled within the Container options.
 
-
-
 Start the container and update the system
 
 ```bash
 sudo apt update && sudo apt upgrade -y
 ```
-
-
 
 ## NetBox Installation
 
@@ -58,10 +54,6 @@ The NetBox installation process is made up of 6 steps these are:
 4. Gunicorn
 5. HTTP server
 6. *LDAP Authentication (optional - not covered in this article)*
-
-
-
-
 
 ### PostgreSQL database
 
@@ -100,8 +92,6 @@ GRANT ALL PRIVILEGES ON DATABASE netbox TO netbox;
 
 `\q` or `exit` to exit PostgreSQL shell.
 
-
-
 Verify service status by using the following command
 
 ```bash
@@ -111,8 +101,6 @@ psql --username netbox --password --host localhost netbox
 If successful you will see a NetBox prompt. `\conninfo` to confirm your connection or `\q` or `exit` to exit.
 
 ![1-3-test-postgresql](/assets/images/posts/1-3-test-postgresql.png)
-
-
 
 ### Redis
 
@@ -134,8 +122,6 @@ redis-cli ping
 
 ![2-1-verify-redis](/assets/images/posts/2-1-verify-redis.png)
 
-
-
 ### NetBox components
 
 *NetBox v3.0 and later require Python 3.7, 3.8, or 3.9.*
@@ -151,8 +137,6 @@ Update pip3
 ```bash
 sudo pip3 install --upgrade pip
 ```
-
-
 
 Download NetBox using the GitHub repository
 
@@ -179,8 +163,6 @@ sudo adduser --system --group netbox
 sudo chown --recursive netbox /opt/netbox/netbox/media/
 ```
 
-
-
 **NetBox Configuration File**
 
 Change directory to NetBox configuration directory and copy the example configuration file
@@ -196,26 +178,24 @@ Edit the configuration file
 nano configuration.py
 ```
 
-
-
 Only the following four are required for new installations
 
-- `ALLOWED_HOSTS` = Hostname and IP addresses by which the server can be reached, ensure values are wrapped in single quotes. You can also use `*` to allow all host values.
+* `ALLOWED_HOSTS` = Hostname and IP addresses by which the server can be reached, ensure values are wrapped in single quotes. You can also use `*` to allow all host values.
 
-- `DATABASE` = Configuration details of our Postgre SQL
+* `DATABASE` = Configuration details of our Postgre SQL
 
   ```bash
   DATABASE = {
       'NAME': 'netbox',               # Database name
       'USER': 'netbox',               # PostgreSQL username
-      'PASSWORD': 'SuperPassword', 	# PostgreSQL password
+      'PASSWORD': 'SuperPassword',  # PostgreSQL password
       'HOST': 'localhost',            # Database server
       'PORT': '',                     # Database port (leave blank for default)
       'CONN_MAX_AGE': 300,            # Max database connection age (seconds)
   }
   ```
 
-- `REDIS` = NetBox requires two databases; tasks and caching.
+* `REDIS` = NetBox requires two databases; tasks and caching.
 
   ```bash
   REDIS = {
@@ -236,7 +216,7 @@ Only the following four are required for new installations
   }
   ```
 
-- `SECRET_KEY` = Randomly-generated key employed as a salt for hashing and related cryptographic functions.
+* `SECRET_KEY` = Randomly-generated key employed as a salt for hashing and related cryptographic functions.
 
   ```bash
   python3 ../generate_secret_key.py
@@ -247,8 +227,6 @@ Only the following four are required for new installations
   ![3-1-generate-secret](/assets/images/posts/3-1-generate-secret.png)
 
   *highly available installation with multiple web servers, `SECRET_KEY` must be identical among all servers*
-
-
 
 #### NAPALM and Remote File Storage Integration
 
@@ -266,23 +244,19 @@ sudo sh -c "echo 'napalm' >> /opt/netbox/local_requirements.txt"
 sudo sh -c "echo 'django-storages' >> /opt/netbox/local_requirements.txt"
 ```
 
-
-
 #### Actual Installation
 
 Run the upgrade script, which performs the following:
 
-- Create a Python virtual environment
-- Installs all required Python packages
-- Run database schema migrations
-- Builds the documentation locally (for offline use)
-- Aggregate static resource files on disk
+* Create a Python virtual environment
+* Installs all required Python packages
+* Run database schema migrations
+* Builds the documentation locally (for offline use)
+* Aggregate static resource files on disk
 
 ```bash
 sudo /opt/netbox/upgrade.sh
 ```
-
-
 
 Create your NetBox Super User account
 
@@ -297,15 +271,11 @@ python3 manage.py createsuperuser
 
 ![3-3-create-superuser](/assets/images/posts/3-3-create-superuser.png)
 
-
-
 Schedule the [Housekeeping task](https://netbox.readthedocs.io/en/stable/administration/housekeeping/) with cron.
 
 ```bash
 ln -s /opt/netbox/contrib/netbox-housekeeping.sh /etc/cron.daily/netbox-housekeeping
 ```
-
-
 
 **Test the Application**
 
@@ -327,8 +297,6 @@ Now while the development server is running, connect to your application via por
 
 Finally stop the development server by pressing `Ctrl + c`.
 
-
-
 ### Gunicorn
 
 [Gunicorn](https://gunicorn.org/) is a Python WSGI HTTP server and the one installed from NetBox documentation.
@@ -340,8 +308,6 @@ cp /opt/netbox/contrib/gunicorn.py /opt/netbox/
 ```
 
 Although the provided configuration should suffice, you can see the [Gunicorn documentation](https://docs.gunicorn.org/en/stable/configure.html) for available configuration parameters.
-
-
 
 #### Creating the Systemd Setup
 
@@ -363,8 +329,6 @@ sudo systemctl start netbox netbox-rq
 systemctl status netbox
 ```
 
-
-
 ### HTTP server
 
 Generate self-signed certificate
@@ -372,8 +336,6 @@ Generate self-signed certificate
 ```bash
 sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/netbox.key -out /etc/ssl/certs/netbox.crt
 ```
-
-
 
 Install Nginx
 
@@ -415,9 +377,4 @@ Restart the Nginx service
 sudo systemctl restart nginx
 ```
 
-
-
-You can now visit your new NetBox installation using your configured allowed host for example https://netbox.example.com/. I'm excited to explore what NetBox has to offer and will be sharing my experiences in future posts. For now enjoy your new NetBox installation and like me, maybe create a snapshot or backup just in-case you need to roll back.
-
-
-
+You can now visit your new NetBox installation using your configured allowed host for example <https://netbox.example.com/>. I'm excited to explore what NetBox has to offer and will be sharing my experiences in future posts. For now enjoy your new NetBox installation and like me, maybe create a snapshot or backup just in-case you need to roll back.

@@ -15,16 +15,12 @@ An ACL uses a sequential list of permit or deny statements, known as access cont
 * Screen hosts to permit or deny access to network services
 * Provide priority to certain classes of network traffic
 
-
-
 ## Types of ACL
 
 Routers support two types of ACLs:
 
-- **Standard ACLs** - ACLs only filter at Layer 3 using the source IPv4 address only.
-- **Extended ACLs** - ACLs filter at Layer 3 using the source and / or destination IPv4  address. They can also filter at Layer 4 using TCP, UDP ports, and  optional protocol type information for finer control.
-
-
+* **Standard ACLs** - ACLs only filter at Layer 3 using the source IPv4 address only.
+* **Extended ACLs** - ACLs filter at Layer 3 using the source and / or destination IPv4  address. They can also filter at Layer 4 using TCP, UDP ports, and  optional protocol type information for finer control.
 
 ![in-outbound](/assets/images/posts/in-outbound.png)
 
@@ -34,16 +30,12 @@ There is also an implicit deny statement at the end of an ACL which you do not s
 
 A best practice for configuring an extended ACL is to ensure that the most specific ACE is placed higher in the ACL.
 
-
-
 ## Wildcard Mask
 
 Wildcard masks use the following rules to match binary 1s and 0s:
 
-- **Wildcard mask bit 0** - Match the corresponding bit value in the address
-- **Wildcard mask bit 1** - Ignore the corresponding bit value in the address
-
-
+* **Wildcard mask bit 0** - Match the corresponding bit value in the address
+* **Wildcard mask bit 1** - Ignore the corresponding bit value in the address
 
 | **Wildcard Mask** | **Last Octet (in Binary)** | **Meaning (0 - match, 1 - ignore)**                          |
 | ----------------- | -------------------------- | ------------------------------------------------------------ |
@@ -53,8 +45,6 @@ Wildcard masks use the following rules to match binary 1s and 0s:
 | 0.0.0.252   | 11111100             | Match the first three octetsIgnore the six left most bits of the last octetMatch the last two bits |
 | 0.0.0.255   | 11111111             | Match the first three octetIgnore the last octet             |
 
-
-
 To calculate the wildcard mask, subtract the subnet mask (i.e., 255.255.255.0) from 255.255.255.255, as shown in the table.
 
 |                             |                      |
@@ -63,20 +53,16 @@ To calculate the wildcard mask, subtract the subnet mask (i.e., 255.255.255.0) f
 | Subtract the subnet mask    | - 255.255.255.  0  |
 | Resulting wildcard mask |   0.  0.  0.255 |
 
-
-
 ## Numbered and Named ACL
 
-* ACLs number 1 to 99, or 1300 to 1999 are standard ACLs 
+* ACLs number 1 to 99, or 1300 to 1999 are standard ACLs
 * ACLs number 100 to 199, or 2000 to 2699 are extended ACLs
 
 ```
 R1(config)# access-list ?
 ```
 
-Named ACLs is the preferred method to use when configuring ACLs. 
-
-
+Named ACLs is the preferred method to use when configuring ACLs.
 
 ## Where to place an ACL
 
@@ -84,35 +70,29 @@ Extended ACLs should be located as close as possible to the source of the traffi
 
 Standard ACLs should be located  as close to the destination as possible.
 
-
-
 ---
-
-
 
 ## Configure Standard IPv4 ACL
 
 When configuring a complex ACL, it is suggested that you:
 
-- Use a text editor and write out the specifics of the policy to be implemented.
-- Add the IOS configuration commands to accomplish those tasks.
-- Include remarks to document the ACL.
-- Copy and paste the commands onto the device.
-- Always thoroughly test an ACL to ensure that it correctly applies the desired policy.
+* Use a text editor and write out the specifics of the policy to be implemented.
+* Add the IOS configuration commands to accomplish those tasks.
+* Include remarks to document the ACL.
+* Copy and paste the commands onto the device.
+* Always thoroughly test an ACL to ensure that it correctly applies the desired policy.
 
 These recommendations enable you to create the ACL thoughtfully without impacting the traffic on the network.
 
-
-
 **Create a Numbered Standard ACL**
 
-```
+```text
 Router(config)# access-list access-list-number {deny | permit | remark text} source [source-wildcard] [log]
 ```
 
 example:
 
-```
+```text
 R2(config)# access-list 1 deny 192.168.11.0 0.0.0.255 
 R2(config)# access-list 1 permit any 
 
@@ -122,32 +102,24 @@ Standard IP access list 1
     20 permit any
 ```
 
-
-
 **Create a Named Standard ACL**
 
-```
+```text
 Router(config)# ip access-list standard access-list-name
 ```
 
-
-
 **Apply a Standard ACL**
 
-```
+```text
 Router(config-if) # ip access-group {access-list-number | access-list-name} {in | out}
 ```
 
 example:
 
-```
+```text
 R2(config)# int g0/0
 R2(config-if)# ip access-group 1 out
 ```
-
-
-
-
 
 ## Modify
 
@@ -156,15 +128,11 @@ Two ways to modify an ACL
 1. use a text editor
 2. use sequence numbers
 
-
-
 Option one is to copy everything into a text editor, make the required changes, remove the old configuration and apply the new configuration line by line.
-
-
 
 Option two  uses the automatically assigned sequence numbers of an ACE *(Access Control Entity)*
 
-```
+```text
 R1# show access-lists Standard IP access list 1 
     10 deny 19.168.10.10 
     20 permit 192.168.10.0, wildcard bits 0.0.0.255
@@ -172,25 +140,23 @@ R1# show access-lists Standard IP access list 1
 
 We can modify entry 10 by using the command, the below example shows a numbered list, but this works for named lists as well
 
-```
+```text
 R1# conf t
 R1(config)# ip access-list standard 1
 R1(config-std-nacl)# no 10
 R1(config-std-nacl)# 10 deny host 192.168.10.10
 ```
 
-```
+```text
 R1# configure terminal
 R1(config)# ip access-list standard NO-ACCESS
 ```
 
-
-
-## Secure VTY 
+## Secure VTY
 
 Using an ACL and username to secure the Virtual Teletype (VTY) connections
 
-```
+```text
 R1(config)# username ADMIN secret class
 
 R1(config)# ip access-list standard ADMIN-HOST
@@ -207,19 +173,13 @@ R1(config-line)# end
 
 ```
 
-
-
-
-
 ## Extended ACL
 
 The main difference between standard and extended is the ability to configure protocol and port.
 
-```
+```text
 Router(config)# access-list access-list-number {deny | permit | remark text} protocol source source-wildcard [operator {port}] destination destination-wildcard [operator {port}] [established] [log]
 ```
-
-
 
 | **Parameter**          | **Description**                                              |
 | ---------------------- | ------------------------------------------------------------ |
@@ -237,11 +197,9 @@ Router(config)# access-list access-list-number {deny | permit | remark text} pro
 | **established**        | (Optional) For the TCP protocol only. This is a 1st generation firewall feature. |
 | **log**                | (Optional) This keyword generates and sends an informational message whenever the ACE is matched. Only implement for troubleshooting or security reasons. |
 
-
-
 The **established** keyword can be used to permit only the return HTTP traffic from requested websites, while denying all other traffic.
 
-```
+```text
 R1(config)# ip access-list extended SURFING
 R1(config-ext-nacl)# Remark Permits inside HTTP and HTTPS traffic 
 R1(config-ext-nacl)# permit tcp 192.168.10.0 0.0.0.255 any eq 80

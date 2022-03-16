@@ -15,8 +15,6 @@ categories: cybersecurity
 5. **Mitigation** is the counter-measure for a potential threat or risk.
 6. **Risk** is the likelihood of a threat to exploit the vulnerability of an asset, with the aim of negatively affecting an organisation.
 
-
-
 ## Penetration Testing Tools
 
 * **Password Crackers**
@@ -46,10 +44,6 @@ categories: cybersecurity
 * **Vulnerability Scanners**
   * Examples of tools include Nipper, Secunia PSI, Core Impact, Nessus v6, SAINT, and Open VAS.
 
-
-
-
-
 ## Attack Types
 
 | Attack Type                | Description                                                  |
@@ -63,10 +57,6 @@ categories: cybersecurity
 | Compromised-Key Attack     | If a threat actor obtains a secret key, that key is referred to as a  compromised key. A compromised key can be used to gain access to a  secured communication without the sender or receiver being aware of the  attack. |
 | Sniffer Attack             | A sniffer is an  application or device that can read, monitor, and capture network data  exchanges and read network packets. If the packets are not encrypted, a  sniffer provides a full view of the data inside the packet. |
 
-
-
-
-
 ## Types of Malware
 
 1. A **worm** executes arbitrary code and installs copies of itself in the memory of  the infected computer. The main purpose of this malware is to  automatically replicate from system to system across the network.
@@ -77,10 +67,6 @@ categories: cybersecurity
 6. **Rootkits** are used by threat actors to gain administrator account-level access to a computer. They are very difficult to detect because they can alter  firewall, antivirus protection, system files, and even OS commands to  conceal their presence.
 7. **Ransomware** typically  denies a user access to their files by encrypting the files and then  displaying a message demanding a ransom for the decryption key.
 
-
-
-
-
 ## Common Network Attacks
 
 1. Tailgating is a **social engineering** attack where a threat actor quickly follows an authorized person into a secure location to gain access to a secure area.
@@ -88,10 +74,6 @@ categories: cybersecurity
 3. Port scanning is a **reconnaissance attack** in which a threat actor uses a tool like Nmap to scan for open ports on discovered active IP addresses.
 4. Man-in-the-Middle is an **access attack** in which the threat actor is positioned in between two legitimate  entities in order to read or modify the data that passes between the two parties.
 5. Spoofing is an **access attack** in which the threat actor device attempts to pose as another device by  falsifying data. Common spoofing attacks include IP spoofing, MAC  spoofing, and DHCP spoofing.
-
-
-
-
 
 ## IP Vulnerabilities and Threats
 
@@ -101,18 +83,12 @@ categories: cybersecurity
 4. In **ICMP attacks**, threat actors use pings to discover subnets and hosts on a protected  network, to generate flood attacks, and to alter host routing tables,
 5. An example of an **address spoofing attack** is when a threat actor creates packets with false source IP address  information to either hide the identity of the sender, or to pose as  another legitimate user. The threat actor can then gain access to  otherwise inaccessible data or circumvent security configurations.
 
-
-
-
-
 ## TCP and UDP Vulnerabilties
 
 1. The **TCP SYN flood attack** exploits the TCP three-way handshake.
 2. A **TCP reset attack** can be used to terminate TCP communications between two hosts using a pair of FIN and ACK segments from each endpoint.
 3. **TCP session hijacking** is where the threat actor spoofs the IP address of one host, predicts  the next sequence number, and sends an ACK to the other host. If  successful, the threat actor could send data to, but not receive data  from, the target device.
 4. A **UDP flood attack**  sends a flood of UDP packets to the target’s closed ports causing the  target to reply with ICMP port unreachable messages. Because there are  many closed ports on the server, this creates a lot of traffic on the  segment, which uses up most of the bandwidth. The result is very similar to a DoS attack.
-
-
 
 ## Network Security Best Practices
 
@@ -122,14 +98,9 @@ categories: cybersecurity
 4. A **VPN** security device provides secure services with corporate sites and  remote access support for remote users using secure encrypted tunnels.
 5. An **IPS** monitors incoming and outgoing traffic looking for malware, network  attack signatures, and more. If it recognizes a threat, it can  immediately stop it.
 
-
-
-
-
 ## Crypotography
 
 1. **Triple DES** or 3DES repeats an algorithm process three times and is considered very trustworthy when implemented using very short key lifetimes.
 2. A **stream cipher** encrypts one byte or one bit at time.
 3. **Symmetric** encryption methods use the same key to encrypt and decrypt data.
 4. The **Rivest cipher** is a stream cipher that is used to secure web traffic in SSL and TLS.
-

@@ -26,77 +26,77 @@ To create this I needed to place my own format file within Cacti's working direc
 
 4. Copy your formatting into that file
 
-   ```
+   ```text
    # Description: Steven's Custom Cacti Format
    # Theme: modern
    <html>
-   	<head>
-   		<title>Cacti Monitoring Report</title>
-   		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-   		<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-   		<meta name="viewport" content="width=device-width, initial-scale=1">
-   		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-   		<meta charset="utf-8">
-   		<style type='text/css'>
-   		
-   		html {
-   		background-color: #FAFAFA;
-   		font-family: 'Roboto', sans-serif;
-   		}
-   		hr {
-   		border: 0;
-   		border-top: 1px solid #474747;	
-   		}
-   		table {
-   		width: 100%;
-   		margin-left: auto;
-   		margin-right: auto;
-   		}
-   		.text_row, .image_row{
-   		padding: 10px 5px;
-   		display: block;
-   		}
-   		.header {
-   		margin: 0px auto 0px auto;
-   		margin-left: auto;
-   		margin-right: auto;
-   		padding: 5px;
-   		}
-   		.left {text-align: left;}
-   		.right {text-align: right;}
-   		.center {text-align: center;}
-   		.footer {
-   		display: block;
-   		text-align: right;
-   		margin-left: auto;
-   		margin-right: auto;
-   		}
-   		.footer a{
-   	    text-decoration: none;
-   	    color: #474747;
-   	    font-size: 0.9em;
-   		}
-   		</style>
-   	</head>
-   	<body>
-   		<div class='header'>
-   			<h1>Cacti Monitoring Report</h1>
-   		</div>
-   		<table>
-   			<tr>
-   				<td>
-   					<center>
-   						<REPORT>
-   					</center>
-   				</td>
-   			</tr>
-   		</table>
-   		<br>
-   		<div class='footer'>
-   			<span><a href="https://networkingdream.com" target="_blank">Steven's Custom Cacti Theme</a></span>
-   		</div>
-   		<br>
-   	</body>
+    <head>
+     <title>Cacti Monitoring Report</title>
+     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+     <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta charset="utf-8">
+     <style type='text/css'>
+     
+     html {
+     background-color: #FAFAFA;
+     font-family: 'Roboto', sans-serif;
+     }
+     hr {
+     border: 0;
+     border-top: 1px solid #474747; 
+     }
+     table {
+     width: 100%;
+     margin-left: auto;
+     margin-right: auto;
+     }
+     .text_row, .image_row{
+     padding: 10px 5px;
+     display: block;
+     }
+     .header {
+     margin: 0px auto 0px auto;
+     margin-left: auto;
+     margin-right: auto;
+     padding: 5px;
+     }
+     .left {text-align: left;}
+     .right {text-align: right;}
+     .center {text-align: center;}
+     .footer {
+     display: block;
+     text-align: right;
+     margin-left: auto;
+     margin-right: auto;
+     }
+     .footer a{
+        text-decoration: none;
+        color: #474747;
+        font-size: 0.9em;
+     }
+     </style>
+    </head>
+    <body>
+     <div class='header'>
+      <h1>Cacti Monitoring Report</h1>
+     </div>
+     <table>
+      <tr>
+       <td>
+        <center>
+         <REPORT>
+        </center>
+       </td>
+      </tr>
+     </table>
+      
+     <div class='footer'>
+      <span><a href="https://networkingdream.com" target="_blank">Steven's Custom Cacti Theme</a></span>
+     </div>
+      
+    </body>
    </html>
    ```
 

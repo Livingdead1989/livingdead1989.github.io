@@ -16,9 +16,7 @@ Home Assistant has [1000's of Integrations](https://www.home-assistant.io/integr
 
 All this sounds great but why virtualise Home Assistant using Proxmox, why not just use a Raspberry Pi? This is a good question and for me the answer is simple, I already have Proxmox so it makes sense to converge this service. There is also the added benefit of snapshotting, backing up and duplicating the VM, which makes experimenting much quicker, also the added redundancy of my Proxmox server hardware and control over the VM resources.
 
-
-
-## Let's get started with deploying!
+## Let's get started with deploying
 
 Home Assistant recommended a minimum virtual machine resources of:
 
@@ -40,8 +38,6 @@ Creating the VM I will be using the following settings, if they are not listed I
    7. **Memory Ballooning**: Disabled
 
 Once the VM has been created go to the Hardware tab, detach and remove the Hard Disk. In the next step we will be importing the Home Assistant hard disk.
-
-
 
 ## Importing qcow2 into Proxmox
 
@@ -80,6 +76,6 @@ There are a few extra settings we can change before starting our VM, these are:
   * Disable use tablet for pointer
   * Remove all Hotplug selections
 
-Now start the VM and once its booted you'll be able to visit http://homeassistant.local:8123/ or use the IP address of the virtual machine such as http://192.168.1.101:8123/.
+Now start the VM and once its booted you'll be able to visit <http://homeassistant.local:8123/> or use the IP address of the virtual machine such as <http://192.168.1.101:8123/>.
 
 Home Assistant is now running in a Promxox virtual machine ready for the inital configuration or restore your existing installation.

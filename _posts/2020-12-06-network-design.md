@@ -17,13 +17,13 @@ All enterprise networks must be able to do the following:
 
 It allows organizations to support a borderless  network that can connect:
 
-* anyone, 
-* anywhere, 
-* anytime, 
-* on any device;  
-* securely, 
-* reliably, 
-* and seamlessly.
+- anyone,
+- anywhere,
+- anytime,
+- on any device;  
+- securely,
+- reliably,
+- and seamlessly.
 
 The Cisco Borderless Network provides the framework to unify wired and  wireless access, including policy, access control, and performance  management across many different device types.
 
@@ -40,29 +40,27 @@ Three-Tier and Two-Tier Model
 
 **Core Layer**
 
-* Network backbone
-* Aggregation for Distribution Layer
-* Provides fault isolation
-* Provides high speed backbone
+- Network backbone
+- Aggregation for Distribution Layer
+- Provides fault isolation
+- Provides high speed backbone
 
 **Distribution Layer**
 
-* Middle layer
-* Aggregating Layer 2 broadcast domains
-* Aggregating Layer 3 routing boundaries
-* Intelligent switching, routing and network access policy functions
-* High availability through redundancy
-* Differentiated services, various classes of services
+- Middle layer
+- Aggregating Layer 2 broadcast domains
+- Aggregating Layer 3 routing boundaries
+- Intelligent switching, routing and network access policy functions
+- High availability through redundancy
+- Differentiated services, various classes of services
 
 **Access Layer**
 
-* The network edge
+- The network edge
 
-* Provides network access to user
+- Provides network access to user
 
-* Next-gen switching provides converged integrated and intelligent services
-
-  
+- Next-gen switching provides converged integrated and intelligent services
 
 ## Design for Scalability
 
@@ -72,22 +70,22 @@ Create an IPv4 and IPv6 address strategy that is hierarchical
 
 Routers or L3 Switches to limit broadcast and filter traffic.
 
-* Redundant Links
-* Multiple Links
-* Scalable Routing Protocol
-* Wireless Connectivity
+- Redundant Links
+- Multiple Links
+- Scalable Routing Protocol
+- Wireless Connectivity
 
 **Redundancy**
 
-* Minimising single point of failures
-  * Duplicate equipment with failover
-  * Multiple paths
+- Minimising single point of failures
+  - Duplicate equipment with failover
+  - Multiple paths
 
 **Reduce Failure Domain Size**
 
 Failure at the Core layer will have a large impact, efforts to reduce this will cost.
 
-Its cheaper and easier to control failure at the Distribution layer 
+Its cheaper and easier to control failure at the Distribution layer
 
 Routers or multi-layer switches are usually deployed in pairs with access layer switches divided between them, this is referred to a building or departmental switch block.
 
@@ -107,38 +105,36 @@ Adding wireless to the access layer allows for mobility and reduced costs for fl
 
 Using an advanced routing protocol such as OSPF allows for the network to grow, a fast convergence and maintained neighbour adjacencies allows for routes and best paths to change when the network expands.
 
-<br>
-
 ## Hardware
 
 **Switches**
 
 LAN Switches
 
-* Large variety from fan-less, 8 port to 13-blade switches with hundreds of ports.
-* Models include: 2960, 3560, 3650, 3850, 4500, 6500 and 6800
+- Large variety from fan-less, 8 port to 13-blade switches with hundreds of ports.
+- Models include: 2960, 3560, 3650, 3850, 4500, 6500 and 6800
 
 Cloud-managed Switches
 
-* Cloud managed with virtual stacking
-* Monitor and configure over the web
+- Cloud managed with virtual stacking
+- Monitor and configure over the web
 
-Data Centre Switches 
+Data Centre Switches
 
-* Promote infrastructure scalability, operational continuity and transport flexibility.
-* Models include: Nexus series
+- Promote infrastructure scalability, operational continuity and transport flexibility.
+- Models include: Nexus series
 
 Service Provider Switches
 
-* Fall under two categories: Aggregation switches and Ethernet access switches
-* Aggregation switches are carrier-grade
-* Ethernet switches aggregate traffic at the edge
-* Feature: application intelligence, unified services, virtualisation, integrated security and simplified management
+- Fall under two categories: Aggregation switches and Ethernet access switches
+- Aggregation switches are carrier-grade
+- Ethernet switches aggregate traffic at the edge
+- Feature: application intelligence, unified services, virtualisation, integrated security and simplified management
 
 Virtual Networking
 
-* For virtualised networks
-* Adding secure multi-tenant services by adding virtualisation intelligence to data centre networks
+- For virtualised networks
+- Adding secure multi-tenant services by adding virtualisation intelligence to data centre networks
 
 **Switch Form Factors**
 
@@ -154,53 +150,30 @@ Virtual Networking
 
 **Power over Ethernet (PoE)** allows the switch to deliver power to a device.
 
-<br>
-
 ### Routers
 
 **Roles**
 
-* Interconnecting multiple sites
-* Providing redundant paths
-* Connecting to ISPs
-* Translator between media types and protocols
-* Broadcast containment
-* Security filtering through ACL
+- Interconnecting multiple sites
+- Providing redundant paths
+- Connecting to ISPs
+- Translator between media types and protocols
+- Broadcast containment
+- Security filtering through ACL
 
 **Types**
 
-* Branch Routers
-  * Designed for 24x7x365 uptime
-  * Simple network configuration and management for LANs and WANs.
-  * Example: *Cisco Integrated Services Router (ISR) 4000 Series*
-* Network Edge Routers
-  * Designed for fast performance with high security for data centers, campus, and branch networks.
-  * Example: *Cisco Aggregation Services Routers (ASR) 9000 Series*
-* Service Provider Routers
-  * Designed for end-to-end delivery of subscriber services.
-  * Deliver next-generation internet experience across all devices and locations.
-  * Example: *Cisco Network Convergence System (NCS) 6000 Series*
-* Industrial
-  * Designed to provide enterprise-class features in rugged and harsh environments.
-  * Example: *Cisco 1100 Series Industrial Integrated Services*
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- Branch Routers
+  - Designed for 24x7x365 uptime
+  - Simple network configuration and management for LANs and WANs.
+  - Example: *Cisco Integrated Services Router (ISR) 4000 Series*
+- Network Edge Routers
+  - Designed for fast performance with high security for data centers, campus, and branch networks.
+  - Example: *Cisco Aggregation Services Routers (ASR) 9000 Series*
+- Service Provider Routers
+  - Designed for end-to-end delivery of subscriber services.
+  - Deliver next-generation internet experience across all devices and locations.
+  - Example: *Cisco Network Convergence System (NCS) 6000 Series*
+- Industrial
+  - Designed to provide enterprise-class features in rugged and harsh environments.
+  - Example: *Cisco 1100 Series Industrial Integrated Services*

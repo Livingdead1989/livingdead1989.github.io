@@ -38,14 +38,14 @@ A baseline is the normal network or system performance, often referred to as its
 
 *A network baseline should answer the following questions:*
 
-- *How does the network perform during a normal or average day?*
-- *Where are the most errors occurring?*
-- *What part of the network is most heavily used?*
-- *What part of the network is least used?*
-- *Which devices should be monitored and what alert thresholds should be set?*
-- *Can the network meet the identified policies?*
+* *How does the network perform during a normal or average day?*
+* *Where are the most errors occurring?*
+* *What part of the network is most heavily used?*
+* *What part of the network is least used?*
+* *Which devices should be monitored and what alert thresholds should be set?*
+* *Can the network meet the identified policies?*
 
-The baseline provides insight into whether the network meets business requirements. 
+The baseline provides insight into whether the network meets business requirements.
 
 Without a baseline, no standard exists to measure the optimum nature of network traffic and congestion levels.
 
@@ -67,10 +67,6 @@ Without a baseline, no standard exists to measure the optimum nature of network 
 
 Manual data collection using `show` commands is time consuming and not scalable. Network Management system (NMS) enable administrators to automatically create and review reports, compare performance and create alerts.
 
-<br>
-
-
-
 ## Troubleshooting Process
 
 **Seven-Step Process**
@@ -89,8 +85,6 @@ Manual data collection using `show` commands is time consuming and not scalable.
 7. Solve the Problem
    1. Inform relevant people
    2. Document the cause and fix
-
-<br>
 
 **Structured Troubleshooting Methods**
 
@@ -112,13 +106,7 @@ Structured methods use the OSI model layers
 * Educated Guess
   * Relies on knowledge and experience.
 
-<br>
-
 ![Guidelines for selecting a troubleshooting method](/assets/images/posts/troubleshooting_select.png)
-
-<br>
-
-
 
 ## Troubleshooting Tools
 
@@ -185,10 +173,6 @@ R1(config)# logging on
 R1(config)#
 ```
 
-<br>
-
-
-
 ## Network Problems
 
 **Layer 1 - Physical**
@@ -202,8 +186,6 @@ R1(config)#
 * Exceeding design limits
 * CPU overload
 
-<br>
-
 **Layer 2 - Data Link**
 
 * Encapsulation errors
@@ -211,15 +193,11 @@ R1(config)#
 * Framing errors
 * STP failure or loops
 
-<br>
-
 **Layer 3 - Network**
 
 * Routing table
 * Neighbour issues
 * Topology database
-
-<br>
 
 **Layer 4 - Transport**
 
@@ -235,8 +213,6 @@ R1(config)#
     * SNMP
   * Tunneling and Encryption protocols
 
-<br>
-
 **Layers 5-7 (Application TCP/IP model)**
 
 * Protocols included:
@@ -249,6 +225,3 @@ R1(config)#
   * NFS
 
 You can use the Telnet command to test other network protocols.
-
-
-

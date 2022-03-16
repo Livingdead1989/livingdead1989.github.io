@@ -9,11 +9,9 @@ description: >- # this means to ignore newlines until "baseurl:"
 
 In this guide I will be configuring a Proxmox lab using three HPE DL360 G7s servers with a QNAP NAS for shared storage and a Layer 2 VLAN capable switch interconnecting them. The aim is create a lab environment with High availability capability using existing equipment as a learning opportunity.
 
-I will step through how I configured my networking, created a cluster, setup storage for the cluster and finally configured High Availability (HA). 
+I will step through how I configured my networking, created a cluster, setup storage for the cluster and finally configured High Availability (HA).
 
 I performed a standard Installation of Proxmox onto each server using a bootable USB stick and the latest copy of [Proxmox VE](https://www.proxmox.com/en/proxmox-ve).
-
-
 
 ## Community Repository
 
@@ -28,18 +26,18 @@ Add the community repository for each server, change directory to `/etc/apt/sour
 # NOT recommended for production use
 deb http://download.proxmox.com/debian/pve buster pve-no-subscription    
 ```
-*https://pve.proxmox.com/wiki/Package_Repositories*
+
+*<https://pve.proxmox.com/wiki/Package_Repositories>*
 
 ![apt_sources](/assets/images/posts/apt_sources.png)
 
 Perform an apt update and upgrade for each server. Go to the Proxmox server, select Updates from navigation pane.
+
 * Refresh
 * Upgrade
 * Reboot
 
 ![update_upgrade](/assets/images/posts/update_upgrade.png)
-
-
 
 ## Network Configuration
 
@@ -50,8 +48,6 @@ apt install -y ifupdown2
 ```
 
 ![ifupdown2_install](/assets/images/posts/ifupdown2_install.png)
-
-
 
 ### IP Addressing Scheme
 
@@ -93,8 +89,6 @@ Using a interface bond under the bridge interface can be used to make the guest 
 | WL-PVE-3 | enp4s0f1  | 172.16.150.13/24 |         |
 | QNAP NAS |           | 172.16.150.10/24 |         |
 
-
-
 The below screenshot shows the Interfaces after they have been configured with the address scheme and Linux Bond.
 
 ![network_interfaces](/assets/images/posts/network_interfaces.png)
@@ -105,13 +99,11 @@ Setting jumbo frames on the storage network by checking the Advanced button and 
 
 ![network_jumbo](/assets/images/posts/network_jumbo.png)
 
-
-
 ## Cluster
 
-https://pve.proxmox.com/wiki/High_Availability_Cluster
+<https://pve.proxmox.com/wiki/High_Availability_Cluster>
 
-**Notes:** 
+**Notes:**
 
 * **Make sure to have auto-power on features enabled via BIOS as per [device fencing requirements](https://pve.proxmox.com/wiki/Fencing).**
   * On my HP DL360 G7's this option can be found in the BIOS under "Server Availability" and "Automatic Power-On", set this to "Enabled".
@@ -122,9 +114,7 @@ https://pve.proxmox.com/wiki/High_Availability_Cluster
   2. VM traffic (Called mine Data)
   3. Storage traffic
 * **Shared storage such as a SAN or NAS.**
-  * I have use of a QNAP TS-831XU NAS 
-
-
+  * I have use of a QNAP TS-831XU NAS
 
 ### Creating the cluster on WL-PVE-1
 
@@ -144,15 +134,13 @@ Once complete you should see all the nodes joined to the cluster.
 
 ![cluster_all_nodes](/assets/images/posts/cluster_all_nodes.png)
 
-
-
 ## Cluster Storage
 
 Now that we have our servers in a cluster, we need to provide some central storage to allow virtual machines and containers to migrate between nodes.
 
 > One major benefit of storing VMs on shared storage is the ability to live-migrate running machines without any downtime, as all nodes in the cluster have direct access to VM disk images. There is no need to copy VM image data, so live migration is very fast in that case.
 
-https://pve.proxmox.com/wiki/Storage
+<https://pve.proxmox.com/wiki/Storage>
 
 Shared storage options that offer support for Snapshots include:
 
@@ -169,19 +157,15 @@ You can find this under Control Panel > Network & File Services > Service Bindin
 
 ![qnap_iscsi_servicebinding](/assets/images/posts/qnap_iscsi_servicebinding.png)
 
-
-
-### Add iSCSI LUN to Proxmox 
+### Add iSCSI LUN to Proxmox
 
 Within Promox go to "DataCenter" > "Storage", select the add and iSCSI from the list.
 
 ![proxmox_storage_iscsi](/assets/images/posts/proxmox_storage_iscsi.png)
 
-Enter an ID for the iSCSI, i've used 'qnap-iscsi' as its easy to identify. Make sure to uncheck use LUNs directly as we will be adding a LVM on top. 
+Enter an ID for the iSCSI, i've used 'qnap-iscsi' as its easy to identify. Make sure to uncheck use LUNs directly as we will be adding a LVM on top.
 
 ![proxmox_storage_iscsi_add](/assets/images/posts/proxmox_storage_iscsi_add.png)
-
-
 
 ### Add LVM on top of the iSCSI
 
@@ -201,20 +185,16 @@ If all goes well, you should have an attached iSCSI and LVM within storage.
 
 I now unchecked the 'Enable' option for your local LVM disk to prevent Virtual Machines or Containers from being installed on anything other then the shared storage.
 
-
-
 ## High Availability
 
 As per [Proxmox High Availability documentation](https://pve.proxmox.com/wiki/High_Availability) the requirements are:
 
-- at least three cluster nodes (to get reliable quorum)
-- shared storage for VMs and containers *(resources)*
-- hardware redundancy (everywhere)
-- use reliable “server” components
-- hardware watchdog - if not available we fall back to the Linux kernel software watchdog (`softdog`)
-- optional hardware fencing devices
-
-
+* at least three cluster nodes (to get reliable quorum)
+* shared storage for VMs and containers *(resources)*
+* hardware redundancy (everywhere)
+* use reliable “server” components
+* hardware watchdog - if not available we fall back to the Linux kernel software watchdog (`softdog`)
+* optional hardware fencing devices
 
 ### HA group
 
@@ -225,8 +205,6 @@ We will now create a HA group for our Proxmox servers, navigate to the correct m
 
 ![proxmox_ha_group](/assets/images/posts/proxmox_ha_group.png)
 
-
-
 ### Fencing
 
 > On node failures, fencing ensures that the erroneous node is guaranteed to be offline. This is required to make sure that no resource runs twice when it gets recovered on another node. This is a **really important task**, because without this, it would not be possible to recover a resource on another node.
@@ -234,8 +212,6 @@ We will now create a HA group for our Proxmox servers, navigate to the correct m
 [HA Proxmox Documentation](https://pve.proxmox.com/wiki/High_Availability#ha_manager_fencing)
 
 By default Proxmox will use the software watchdog (softdog) that is built-in. Hardware watchdogs are blocked for security reasons and requirement manual intervention to enable them but this is outside the scope of my lab as I do not have any hardware.
-
-
 
 ### Testing HA using a Virtual Machine
 

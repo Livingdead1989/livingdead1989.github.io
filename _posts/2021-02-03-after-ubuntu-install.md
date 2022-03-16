@@ -9,8 +9,6 @@ description: >- # this means to ignore newlines until "baseurl:"
 
 All of the steps I take when I first install Ubuntu 20.04 and 20.10, this includes software used for projects, personal development, work and gaming.
 
-
-
 ## First Update, Upgrade & Utilities Install
 
 ```bash
@@ -25,13 +23,9 @@ gnupg-agent \
 software-properties-common
 ```
 
-
-
 ## Before Software Install
 
 ### Extra Repositories
-
-
 
 **Typora**
 
@@ -41,8 +35,6 @@ wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
 sudo add-apt-repository 'deb https://typora.io/linux ./'
 ```
 
-
-
 **Sublime**
 
 ```bash
@@ -51,8 +43,6 @@ wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add
 echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 ```
 
-
-
 **Etcher**
 
 ```bash
@@ -60,8 +50,6 @@ echo "deb https://deb.etcher.io stable etcher" | sudo tee /etc/apt/sources.list.
 
 sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 379CE192D401AB61
 ```
-
-
 
 ## Software Install
 
@@ -92,11 +80,7 @@ freecad \
 balena-etcher-electron
 ```
 
-
-
 ### Flatpak Repositories
-
-
 
 **Flat Repository**
 
@@ -104,23 +88,17 @@ balena-etcher-electron
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 ```
 
-
-
 **Plex Client**
 
 ```bash
 flatpak remote-add --if-not-exists plex-media-player https://flatpak.knapsu.eu/plex-media-player.flatpakrepo
 ```
 
-
-
 ### Flatpak Install
 
 ```bash
 flatpak install plex-media-player tv.plex.PlexMediaPlayer
 ```
-
-
 
 ### Snap
 
@@ -143,11 +121,7 @@ Grant MusicBrainz Picard removable media access (including Network)
 snap connect picard:removable-media
 ```
 
-
-
 ### Other
-
-
 
 **Microsoft Visual Studio Code**
 
@@ -157,15 +131,11 @@ https://code.visualstudio.com/docs/?dv=linux64_deb
 
 *You'll need to edit the /etc/apt/sources.d/vscode.list to remove the extra arch types*
 
-
-
 **Microsoft Edge Browser - *Preview/Beta***
 
 ```
 https://www.microsoftedgeinsider.com/en-gb/
 ```
-
-
 
 **Microsoft Teams**
 
@@ -173,23 +143,17 @@ https://www.microsoftedgeinsider.com/en-gb/
 https://www.microsoft.com/en-gb/microsoft-teams/download-app
 ```
 
-
-
 **Discord**
 
 ```
 https://discord.com/api/download?platform=linux&format=deb
 ```
 
-
-
 **Etcher**
 
 ```
 https://www.balena.io/etcher/
 ```
-
-
 
 ## Jekyll Development Install
 
@@ -217,8 +181,6 @@ Install Jekyll
 gem install jekyll bundler
 ```
 
-
-
 ## Ardunio Development Install
 
 ```bash
@@ -228,15 +190,11 @@ python3-pip \
 fritzing
 ```
 
-
-
 **Ardunio IDE** - download and run install.sh
 
 ```
 https://downloads.arduino.cc/arduino-1.8.13-linux64.tar.xz
 ```
-
-
 
 ## VM and Networking Installs
 
@@ -245,8 +203,6 @@ sudo apt install -y \
 wireshark \
 virtualbox
 ```
-
-
 
 **Docker and Docker-Compose Installation**
 
@@ -282,8 +238,6 @@ sudo usermod -aG wireshark $(whoami)
 sudo usermod -aG docker $(whoami)
 ```
 
-
-
 **Portainer Container Install**
 
 ```bash
@@ -291,8 +245,6 @@ docker volume create portainer_data
 
 docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
 ```
-
-
 
 **GNS3 Installation**
 
@@ -303,23 +255,17 @@ sudo apt update
 sudo apt install gns3-gui gns3-server gns3-iou
 ```
 
-
-
 **Packet Tracer**
 
 ```
 https://www.netacad.com/portal/resources/packet-tracer
 ```
 
-
-
 ## Gaming Installs
 
 ```bash
 sudo add-apt-repository ppa:lutris-team/lutris
 ```
-
-
 
 ```bash
 sudo apt update
@@ -329,8 +275,6 @@ steam
 lutris
 ```
 
-
-
 ## 3D Printer
 
 I have a Snapmaker printer
@@ -339,11 +283,7 @@ I have a Snapmaker printer
 https://github.com/Snapmaker/Luban/releases/latest
 ```
 
-
-
 ## After Software Install
-
-
 
 **Sublime Text**
 
@@ -354,14 +294,10 @@ https://github.com/Snapmaker/Luban/releases/latest
   * HTMLBeautify
   * Emmet
 
-
-
 **VLC**
 
 * Subtitles / OSD
   * Show media title on video start: no
-
-
 
 ## Misc Tasks
 

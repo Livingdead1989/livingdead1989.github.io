@@ -12,8 +12,6 @@ description: >- # this means to ignore newlines until "baseurl:"
 
 The aim of this guide is to deploy HAProxy and Let's Encrypt ACME onto our OPNsense instance, this will enable us to simplify our exposed ports and provide internal services with free SSL certificates. This article is similar to how I used HAProxy with ACME on our pfSense instance, you can find [that article here](https://networkingdream.com/server/pfsense-haproxy-acme/).
 
-
-
 ## Installation of Packages
 
 You can install the required package by navigating to System > Firmware > Plugins and installing:
@@ -25,15 +23,11 @@ You can install the required package by navigating to System > Firmware > Plugin
 
 ![opnsense-haproxy-acme-packages](/assets/images/posts/opnsense-haproxy-acme-packages.png)
 
-
-
 ## Cloudflare and DNS entries
 
 We have Cloudflare for our domain services, these include Firewall, Caching and DNS. I already have my DNS A records which resolve to my external IP address.
 
 I have also configured an API token for ACME as this will need write permission to your DNS records.
-
-
 
 ## Configuration of Packages
 
@@ -65,7 +59,7 @@ Go to the Automatons menu and create a new.  Provide a name and from the Run Com
 
 ![opnsense-automation-restart-haproxy](/assets/images/posts/opnsense-automation-restart-haproxy.png)
 
-Now we are ready to create our certificate request. Navigate to the Certificates menu and create a new using the small plus symbol (+). 
+Now we are ready to create our certificate request. Navigate to the Certificates menu and create a new using the small plus symbol (+).
 
 We'll be providing a Common Name *(FQDN)* and selecting from the drop down menus our Let's Encrypt account and Challenge Type, then finally adding our Restart HAProxy automation.
 
@@ -135,8 +129,6 @@ The figure below shows my demo WordPress site working with my domain name and se
 
 ![opnsense-haproxy-acme-working-site](/assets/images/posts/opnsense-haproxy-acme-working-site.png)
 
-
-
 ## DNS Host Override
 
 The figure below shows a host override using OPNsense DNSMasq DNS and OPNsense Unbound DNS. *(I have shown both for demo purposes, of course we do not need two DNS servers)*
@@ -146,8 +138,6 @@ This will direct our internal hosts to our LAN address instead of querying, goin
 ![opnsense-dnsmasq-host-override](/assets/images/posts/opnsense-dnsmasq-host-override.png)
 
 ![opnsense-unbound-host-override](/assets/images/posts/opnsense-unbound-host-override.png)
-
-
 
 ## Troubleshooting
 
@@ -167,6 +157,4 @@ We can create a simple rule to permit traffic.
 | Destination            | WAN address   |
 | Destination port range | HTTPS - HTTPS |
 
-
 ![opnsense-haproxy-firewall-rule](/assets/images/posts/opnsense-haproxy-firewall-rule.png)
-

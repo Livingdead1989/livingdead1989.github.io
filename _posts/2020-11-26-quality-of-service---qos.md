@@ -8,10 +8,10 @@ categories: networking
 
 Quality of Service (QoS) allows devices such as Routers and Switches to prioritise traffic over others when congestion occurs.
 
-**Where is QoS required?** 
+**Where is QoS required?**
 
-* Aggregation (multi lines into one), 
-* Speed Mismatch (Fast-Slow), 
+* Aggregation (multi lines into one),
+* Speed Mismatch (Fast-Slow),
 * LAN to WAN (Fast-Slow).
 
 ![Example of Congestion Points](/assets/images/posts/congestion_points.png)
@@ -32,8 +32,6 @@ Quality of Service (QoS) allows devices such as Routers and Switches to prioriti
 To compensate for the effects of jitter, a mechanism called a  playout delay buffer is used. The playout delay buffer receives and  buffers voice packets and then retransmits them in a steady stream with  the jitter removed.
 
 ![Playout Delay Buffer](/assets/images/posts/qos_playout.png)
-
-<br>
 
 ## Traffic Characteristics
 
@@ -71,15 +69,13 @@ To compensate for the effects of jitter, a mechanism called a  playout delay buf
 
 **Data traffic** can consume a large portion of network capacity due to some TCP applications but is insensitive to jitter and packet loss.
 
-<br>
-
 ## Queuing Algorithms
 
 First In, First Out (**FIFO**) - No QoS
 
 ![FIFO](/assets/images/posts/fifo.png)
 
-Weighted Fair Queuing (**WFQ**) - Automatic classification (no configuration) 
+Weighted Fair Queuing (**WFQ**) - Automatic classification (no configuration)
 
 ![WFQ](/assets/images/posts/wfq.png)
 
@@ -90,8 +86,6 @@ Class Based Weighted Fair Queuing (**CBWFQ**) - User-defined classes
 Low Latency Queuing (**LLQ**) - Strict Priority Queue
 
 ![LLQ](/assets/images/posts/llq.png)
-
-<br>
 
 ## QoS Models
 
@@ -116,27 +110,23 @@ Low Latency Queuing (**LLQ**) - Strict Priority Queue
 
 **Note**: Modern networks primarily use the DiffServ model. However, due to the increasing volumes of delay- and jitter-sensitive traffic, IntServ and RSVP are sometimes co-deployed.
 
-<br>
-
 ## QoS Implementation Techniques
 
 Packet loss is usually the result of congestion on an interface.
 
 The following approaches can prevent drops in sensitive applications:
 
-- Increase link capacity
-- Guarantee enough bandwidth and increase buffer space
-  - WFQ, CBWFQ, and LLQ can guarantee bandwidth and provide prioritised forwarding to drop-sensitive applications.
-- Drop lower-priority packets before congestion occurs. 
-  - Cisco QoS provides weighted random early detection (WRED),  that start dropping lower-priority packets before congestion occurs.
-
-
+* Increase link capacity
+* Guarantee enough bandwidth and increase buffer space
+  * WFQ, CBWFQ, and LLQ can guarantee bandwidth and provide prioritised forwarding to drop-sensitive applications.
+* Drop lower-priority packets before congestion occurs.
+  * Cisco QoS provides weighted random early detection (WRED),  that start dropping lower-priority packets before congestion occurs.
 
 There are **three categories of QoS tools**
 
-- Classification and marking tools
-- Congestion avoidance tools
-- Congestion management tools
+* Classification and marking tools
+* Congestion avoidance tools
+* Congestion management tools
 
 ![QoS Tools](/assets/images/posts/qos_tools.png)
 
@@ -144,8 +134,6 @@ There are **three categories of QoS tools**
 
 * classifying traffic flows at Layer 2 and 3 include using interfaces, ACLs, and class maps.
 * classified at Layers 4 to 7 using Network Based Application Recognition (NBAR)
-
-
 
 ### Traffic Marking for QoS
 
@@ -159,12 +147,9 @@ There are **three categories of QoS tools**
 
 Differentiated Services Code Point (DSCP) supersedes IP Precedence (IPP).
 
-
-
 Marking should be done as close to the source device as possible. This establishes the **trust boundary.**
 
 ![Trust Boundaries](/assets/images/posts/qos_trust_boundaries.png)
-
 
 **Congestion Avoidance**
 
@@ -175,7 +160,6 @@ WRED provides buffer management for TCP before buffers are exhausted and tail dr
 There is no congestion avoidance for UDP based traffic such as voice, methods such as queuing and compression help to reduce, even prevent UDP packet loss.
 
 ![Congestion Avoidance](/assets/images/posts/qos_congestion_avoidance.png)
-
 
 **Shaping vs Policing**
 

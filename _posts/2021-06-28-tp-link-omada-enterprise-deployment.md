@@ -17,8 +17,6 @@ The equipment used in the full solution:
 * 62x [TP-Link Omada EAP660 HD Access Point](https://amzn.to/3iiQLe3)
 * Virtual Windows Server for NPS (RADIUS)
 
-
-
 **Contents**
 
 1. [Controller Install](#controller-install)
@@ -42,15 +40,11 @@ The equipment used in the full solution:
    3. [Band Steering](#band-steering)
    4. [Adding more EAPs](#adding-more-eaps)
 
-
-
 ## Controller Install
 
 Firstly, start by unboxing the OC300 controller and rack mounting it, providing mains power and Ethernet connectivity to our switch. The controller will automatically request an IP address from our DHCP server, which I will reserve going forward.
 
 ![omada-dhcp-lease](/assets/images/posts/omada-dhcp-lease.png)
-
-
 
 ## TP-Link Welcome Wizard
 
@@ -90,8 +84,6 @@ I ran into problems here where the bind would not complete, no errors were given
 
 The last page is the summary so you can confirm everything, then you'll be returned to a login screen. Login using the credentials you configured during the setup wizard.
 
-
-
 ## Fixing Cloud Access
 
 After reviewing my network configurations I found that the organisation's VLANs had no internet access for their wireless management, the previous wireless controllers was local only and firmware upgrades were completed manually. Although the TP-Link Omada does not depend on an internet connection it would be nice to utilise cloud access and semi-automatic firmware upgrades.
@@ -101,8 +93,6 @@ I added the TP-Link OC300 to the internet VLAN and I was able to connect to the 
 *This is something unique to our organisation and will require discussion about how to resolve this in the future. - EDIT: This has now been resolved and our controller now has internet access.*
 
 ![omada-cloud-access](/assets/images/posts/omada-cloud-access.png)
-
-
 
 ## Update Firmware
 
@@ -114,8 +104,6 @@ Navigate to Settings > Maintenance > Hardware Controller use the Manual upgrade 
 
 If the devices have internet access they can check for upgrades and update using the internet connection.
 
-
-
 ## Auto Backup
 
 The OC200 and OC300 come with a USB port on the front of the controller, we can attach some storage and use this to performed automatic backups of our controller configuration.
@@ -125,8 +113,6 @@ Navigate to Settings > Auto Backup and enable the service by checking the top bo
 I am performing a daily backup at 22:00, with a maximum of 15 and retain data backup for 1 month. The saving path is set to a 32GB USB Flash Storage.
 
 ![omada-auto-backup](/assets/images/posts/omada-auto-backup.png)
-
-
 
 ## Creating Wireless Networks
 
@@ -142,8 +128,6 @@ Providing a Network Name (SSID), we'll be using both 2.4GHz and 5GHz bands and W
 
 Click Apply and we are done, Pre-Shared Key (PSK) wireless networks and quick and easy to configure.
 
-
-
 ### Creating a Voucher based Captive Portal Wireless Network
 
 In our previous setup, we had a guest network where our community staff could generate a username and password for guests to log into our network. We wanted to continue this and TP-Link provide a voucher option where codes can be generated and used as a 1-off, this type of authentication is called a Voucher.
@@ -154,8 +138,6 @@ There are three steps required to create one of these networks;
 2. Create a Portal
 3. Generate vouchers
 4. Create Operator account (*Optional*)
-
-
 
 We needed to create a new Wireless Network due to our VLAN setup, guests have their own VLAN separate from the rest of the network. As you can see from the screenshot, I have created a Wireless Network similar to the PSK network, but changed the VLAN to VLAN 110. I have kept the password, as this will ensure that devices do not see this as an "open" network, which will cause users to see security warnings.
 
@@ -197,13 +179,9 @@ Make sure to switch to the Operators tab located at the top then Create Operator
 
 Click Save and now you have a Operator account that can manage the Vouchers without providing Administrator access to the rest of the Wireless solution.
 
-
-
 ### Creating a Windows Radius Wireless Network
 
 The purpose of this wireless network is to allow staff to connect their devices to our network by authenticating using their Active Directory account credentials. I will be using a Microsoft Server configured with [Network Policy Server (NPS)](https://docs.microsoft.com/en-us/windows-server/networking/technologies/nps/nps-top), then configuring our TP-Link controller to use RADIUS to authenticate user credentials.
-
-
 
 #### Configuring Windows RADIUS
 
@@ -225,21 +203,17 @@ For the Certificate Servers we'll only need the Certification Authority role add
 
 ![omada-radius-ad-cs-role](/assets/images/posts/omada-radius-ad-cs-role.png)
 
-
-
 ![omada-radius-remote-access-role](/assets/images/posts/omada-radius-remote-access-role.png)
 
 We will come back to complete post configuration after we have configured our Firewall.
 
 ![omada-radius-server-roles-installed](/assets/images/posts/omada-radius-server-roles-installed.png)
 
-
-
 ##### Firewall Rules
 
 We will need to open some ports on our RADIUS server for communication, this can be done in the Windows Defender Firewall with Advanced Security panel.
 
-Control Panel > Update & Security > Windows Security > Firewall & Network Protection > Advanced Settings 
+Control Panel > Update & Security > Windows Security > Firewall & Network Protection > Advanced Settings
 
 The rule we will be creating is:
 
@@ -251,8 +225,6 @@ The rule we will be creating is:
 * **Profile**: Domain, Private
 
 ![omada-radius-firewall-rule](/assets/images/posts/omada-radius-firewall-rule.png)
-
-
 
 ##### Post Configurations
 
@@ -365,7 +337,7 @@ We do not require the Private key and we'll export the DER encoded binary X.509 
 
 ![omada-radius-cert-export-2](/assets/images/posts/omada-radius-cert-export-2.png)
 
-Lastly move the certificate over to the Apple Configurator server. 
+Lastly move the certificate over to the Apple Configurator server.
 
 Now we will create a new profile within Apple Configurator 2 by going to File and selecting New Profile.
 
@@ -393,8 +365,6 @@ Now in the Wi-Fi section in the left pane we'll be creating a new payload. In th
 
 ![omada-apple-5](/assets/images/posts/omada-apple-5.png)
 
-
-
 ##### Apple DEP and Profile Manager
 
 To ease Apple's DEP onboarding, I will be using Apple Configurator 2 to load a temporary Wi-Fi and restore the device, this will cause the iPad to automatically enrol to our DEP and Profile Manager server.
@@ -403,9 +373,7 @@ On our Profile Manager server, I have configured a device group which applies th
 
 The end result is one that allows us to quickly and very easily restore any Apple iPad with automatic restore of Student Wi-Fi to a hidden SSID authenticated against Windows NPS (RADIUS).
 
-
-
-### NPS Accounting 
+### NPS Accounting
 
 I have configure NPS accounting which keeps a log of the selected requests, status and failures. In this demonstration I am logging to a text file on our RADIUS server.
 
@@ -415,8 +383,6 @@ I have kept the default options, which will log everything and store this in Win
 
 ![omada-radius-accounting-2](/assets/images/posts/omada-radius-accounting-2.png)
 
-
-
 ### Configure TP-Link Controller
 
 Now we will configure the TP-Link OC300 controller with our RADIUS profile. In the screenshot below I am creating a new Wireless Network, I have selected WPA-Enterprise for the Security option which provides a drop-down menu for a RADIUS profile.
@@ -424,8 +390,6 @@ Now we will configure the TP-Link OC300 controller with our RADIUS profile. In t
 In this menu, you can create a new RADIUS profile, which I am doing. I have enabled the RADIUS accounting, providing the IP address of the RADIUS server and the shared secret from when we configured NPS.
 
 ![omada-radius-oc-profile](/assets/images/posts/omada-radius-oc-profile.png)
-
-
 
 ### Testing
 
@@ -446,8 +410,6 @@ Using my test laptop I double check that the group policy has been applied then 
  I also tested by removing the computer from the RADIUS_auth_computers group and attempted to connect and it fails.
 
 ![omada-radius-test-unable-connect](/assets/images/posts/omada-radius-test-unable-connect.png)
-
-
 
 ## Student Wireless Network
 
@@ -479,8 +441,6 @@ In the figure below I have configured a custom Time Range Entry which contains t
 
 ![omada-wifi-schedule-2](/assets/images/posts/omada-wifi-schedule-2.png)
 
-
-
 ## Misc
 
 ### Adopting or Resetting an EAP
@@ -490,8 +450,6 @@ If you ever need to adopt an EAP you'll need the username and password which is 
 ![omada-device-account](/assets/images/posts/omada-device-account.png)
 
 Failing that you may need to reset to EAP, you can do this by pressing and holding the reset button for a few seconds, this can be found next to the Ethernet and Power sockets. Once the device has been reset its like its just been unboxed and you can provision it using controller.
-
-
 
 ### Fast Roaming
 
@@ -507,8 +465,6 @@ You can enable this by navigating to Settings > Site, check the Advanced Feature
 
 *As per TP-Links warning, advanced features can negatively impact the performance of the wireless network and need to be configured by network administrators with knowledge of the WLAN parameters.*
 
-
-
 ### Band Steering
 
 Band Steering is an advanced feature, which allows dual-band clients (2.5GHz and 5GHz) to be directed to the 5GHz when appropriate, this feature can improve network performance as the 5GHz band supports a larger number of non-overlapping channels.
@@ -516,8 +472,6 @@ Band Steering is an advanced feature, which allows dual-band clients (2.5GHz and
 You can enable this by navigating to Settings > Site, check the Advanced Features box then enable Band Steering as shown in the figure below.
 
 ![omada-band-steering](/assets/images/posts/omada-band-steering.png)
-
-
 
 ### Adding more EAPs
 
@@ -534,4 +488,3 @@ Populate the Friendly name, IP address of the newly added EAP and provide your s
 ![omada-radius-nps-add-client-2](/assets/images/posts/omada-radius-nps-add-client-2.png)
 
 Now the new EAP will be able to authenticate users against our NPS server.
-

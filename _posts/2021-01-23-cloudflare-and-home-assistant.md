@@ -8,7 +8,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   How to setup a Namecheap custom domain, Cloudflare services with Home Assistant and pfSense for a secure remote access.
 ---
 
-In this article I will be configuring a domain name with Cloudflare and Home Assistant, the purpose of this is to allow external access to my Home Assistant installation while being secure. I will be leveraging Cloudflare's network, free certificates and firewall rules. 
+In this article I will be configuring a domain name with Cloudflare and Home Assistant, the purpose of this is to allow external access to my Home Assistant installation while being secure. I will be leveraging Cloudflare's network, free certificates and firewall rules.
 
 I personally use pfSense as my firewall and I will be configuring that as well.
 
@@ -58,8 +58,6 @@ Navigate to Firewall and Firewall Rules then select Create a Firewall rule. We w
 This means that when someone from outside the United Kingdom accesses "homeassistant.domain.com" we will then "Block" that connection.
 
 ![cloudflare firewall geo rule](/assets/images/posts/cloudflare-firewall-rule.png)
-
-
 
 ## Home Assistant Configuration
 
@@ -143,6 +141,7 @@ First I will create an alias group containing all of [Cloudflare's IP addresses]
 ![pfsense firewall cloudflare alias](/assets/images/posts/pfsense-firewall-alias.png)
 
 I then created a NAT Port Forward rule which will direct only source IP addresses matching Cloudflare's listed IP addresses and my configured Home Assistant port.
+
 * WAN interface
 * TCP
 * Source is from the Cloudflare Alias addresses with any port
