@@ -25,7 +25,7 @@ The benefit of open-source is a huge community that is actively working together
 
 For smooth installation, check what operating system versions are supported by Zabbix before hand.
 
-![zabbix-supported](/home/livingdead1989/Documents/website-git/Article/zabbix/images/zabbix-supported.png)
+![zabbix-supported](/assets/images/posts/zabbix-supported.png)
 
 ### Database Choice
 
@@ -110,35 +110,35 @@ Provide a name, ~~un-check nesting as we will not require it~~ and provide a pas
 
 **EDIT**: Enable nesting for Debian containers otherwise there will be a delay after console/shell/SSH login.
 
-![zabbix-container-create-1](/home/livingdead1989/Documents/website-git/Article/zabbix/images/zabbix-container-create-1.png)
+![zabbix-container-create-1](/assets/images/posts/zabbix-container-create-1.png)
 
 Select the Debian 11 container template.
 
-![zabbix-container-create-2](/home/livingdead1989/Documents/website-git/Article/zabbix/images/zabbix-container-create-2.png)
+![zabbix-container-create-2](/assets/images/posts/zabbix-container-create-2.png)
 
 Configure a 30 GB disk, I have placed this on my ZFS Solid State Disks (SSD).
 
-![zabbix-container-create-3](/home/livingdead1989/Documents/website-git/Article/zabbix/images/zabbix-container-create-3.png)
+![zabbix-container-create-3](/assets/images/posts/zabbix-container-create-3.png)
 
 Configured the container to have 2 CPU cores.
 
-![zabbix-container-create-4](/home/livingdead1989/Documents/website-git/Article/zabbix/images/zabbix-container-create-4.png)
+![zabbix-container-create-4](/assets/images/posts/zabbix-container-create-4.png)
 
 Configured the container to have 2048 MB of RAM (2 GB)
 
-![zabbix-container-create-5](/home/livingdead1989/Documents/website-git/Article/zabbix/images/zabbix-container-create-5.png)
+![zabbix-container-create-5](/assets/images/posts/zabbix-container-create-5.png)
 
 Set a static IP address for this container as its a server and should have a fixed address.
 
-![zabbix-container-create-6](/home/livingdead1989/Documents/website-git/Article/zabbix/images/zabbix-container-create-6.png)
+![zabbix-container-create-6](/assets/images/posts/zabbix-container-create-6.png)
 
 All my containers use the Proxmox configured DNS server.
 
-![zabbix-container-create-7](/home/livingdead1989/Documents/website-git/Article/zabbix/images/zabbix-container-create-7.png)
+![zabbix-container-create-7](/assets/images/posts/zabbix-container-create-7.png)
 
 After creation, ensure the "Start at boot" option is enabled.
 
-![zabbix-container-create-8](/home/livingdead1989/Documents/website-git/Article/zabbix/images/zabbix-container-create-8.png)
+![zabbix-container-create-8](/assets/images/posts/zabbix-container-create-8.png)
 
 ### Software Installation
 
@@ -299,21 +299,21 @@ The next few steps are the welcome wizard.
 
 The first is to set the default language, as "en_GB" is not supported my only option is "en_US".
 
-![zabbix-install-1](/home/livingdead1989/Documents/website-git/Article/zabbix/images/zabbix-install-1.png)
+![zabbix-install-1](/assets/images/posts/zabbix-install-1.png)
 
 The pre-requisites check should show "OK" for all components and options, if this does not then pause, resolve the issue then continue.
 
-![zabbix-install-2](/home/livingdead1989/Documents/website-git/Article/zabbix/images/zabbix-install-2.png)
+![zabbix-install-2](/assets/images/posts/zabbix-install-2.png)
 
 On the configure DB connection page, enter the SQL user password then continue.
 
-![zabbix-install-3](/home/livingdead1989/Documents/website-git/Article/zabbix/images/zabbix-install-3.png)
+![zabbix-install-3](/assets/images/posts/zabbix-install-3.png)
 
 The last page is to set a server name, default time zone and theme. I have configured my server name as "Zabbix", the timezone to London and changed from the default "Blue" theme to "Dark".
 
-![zabbix-install-4](/home/livingdead1989/Documents/website-git/Article/zabbix/images/zabbix-install-4.png)
+![zabbix-install-4](/assets/images/posts/zabbix-install-4.png)
 
-![zabbix-install-5](/home/livingdead1989/Documents/website-git/Article/zabbix/images/zabbix-install-5.png)
+![zabbix-install-5](/assets/images/posts/zabbix-install-5.png)
 
 Default login credentials
 
@@ -322,13 +322,13 @@ Default login credentials
 
 At this point the container is using on average; 1% CPU,  212 MB RAM and 619 MB Storage.
 
-![zabbix-after-install-resources](/home/livingdead1989/Documents/website-git/Article/zabbix/images/zabbix-after-install-resources.png)
+![zabbix-after-install-resources](/assets/images/posts/zabbix-after-install-resources.png)
 
 #### Missing Locale
 
 If you see issues regarding '*Locale for language "en_US" is not found on the web server*'.
 
-![zabbix-install-6](/home/livingdead1989/Documents/website-git/Article/zabbix/images/zabbix-install-6.png)
+![zabbix-install-6](/assets/images/posts/zabbix-install-6.png)
 
 Open a shell or SSH connect to your Zabbix server, then list installed locales using the command below
 
