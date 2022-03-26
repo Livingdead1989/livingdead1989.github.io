@@ -335,5 +335,5 @@ systemctl restart deluged
 Now visit the Deluge web panel, the default password is `deluge`.
 
 ```http
-http://<IP Address><u></u>:8112/
+http://<IP Address>:8112/
 ```
