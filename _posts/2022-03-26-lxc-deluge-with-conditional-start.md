@@ -21,7 +21,7 @@ Peer-to-peer technology is used for other services such as Microsoft Windows 10 
 
 I will be creating a Privileged container, this is because I will be mounting a TrueNAS NFS later in the article, as shown below Proxmox LXC NFS feature is only supported in privileged only.
 
-![deluge-lxc-options](/home/livingdead1989/Documents/website-git/Article/deluge/deluge-lxc-options.png)
+![deluge-lxc-options](/assets/images/posts/deluge-lxc-options.png)
 
 As I will be running additional services within this LXC I have created one with the following resources:
 
