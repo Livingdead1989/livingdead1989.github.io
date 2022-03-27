@@ -2,7 +2,7 @@
 title: "WhatsUp Gold 21 Trial Install"
 date: 2022-03-26 15:00:00 +0000
 categories: server
-tags: proxmox microsoft windows server virtio wug whatsupgold nms monitoring logging
+tags: proxmox microsoft whatsupgold nms 
 description: >- # this means to ignore newlines until "baseurl:"
   In this article I will be exploring the steps required  to install WhatsUp Gold (WUG) 21 trial and create a HTTP redirect.
 ---
