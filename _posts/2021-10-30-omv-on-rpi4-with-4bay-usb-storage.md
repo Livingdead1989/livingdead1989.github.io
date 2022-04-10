@@ -83,11 +83,11 @@ You can reconnect using the new IP address or just continue to the webGUI.
 
 Visit the OMV webGUI
 
-```
+```http
 http://192.168.1.50/
 ```
 
-The default username is "admin" with a password of "openmediavault".
+The default username is `admin` with a password of `openmediavault`.
 
 ![rpi-nas-login](/assets/images/posts/rpi-nas-login.png)
 
@@ -99,7 +99,7 @@ That completes the initial installations of Open Media Vault.
 
 ## Storage
 
-I have a few 3TB disks within my IcyBox, to utilise them I need to create a File System. Navigate to Storage > File Systems and click the Create button.
+I have two 3TB disks within my IcyBox, to utilise them I need to create a File System. Navigate to Storage > File Systems and click the Create button.
 
 ![rpi-nas-storage-filesystem](/assets/images/posts/rpi-nas-storage-filesystem.png)
 
@@ -169,7 +169,9 @@ You'll also notice that Docker is not currently installed. Install and enable Do
 
 Once complete the Status will change to "Installed and running". OMV comes with two options for container management the first is Portainer and the second is Yacht, I will be looking at Yacht.
 
-*I have covered Portainer is only projects, its a fantastic project which makes container and stack management a breeze, its worth checking out if you haven't used it before.*
+### Yacht
+
+*I have covered Portainer in other projects, its a fantastic project which makes container and stack management a breeze, its worth checking out if you haven't used it before.*
 
 Install Yacht using the drop down menu.
 
@@ -185,7 +187,7 @@ Click the ADMIN@YACHT.LOCAL in the top right and select User, then Change passwo
 
 ![rpi-nas-yacht-password](/assets/images/posts/rpi-nas-yacht-password.png)
 
-**Terminology**
+#### Terminology
 
 * **Applications** - Individual containers
 * **Templates** - Container templates
@@ -195,7 +197,7 @@ I will not be covering how to deploy using Yacht as that is a little out of the 
 
 ## Conclusion
 
-To conclude, the Open Media Vault (OMV) is a powerful project, which can be easily ran of a Raspberry Pi 4 (RPI4). Although I have only covered this project very lightly, it has the ability to offer numerous services to a house hold such as:
+To conclude, the Open Media Vault (OMV) is a powerful project, which can be easily ran of a Raspberry Pi 4 (RPI4). Although I have only covered this project very lightly, it has the ability to offer numerous services such as:
 
 * S.M.A.R.T and Raid Management
 
@@ -208,6 +210,10 @@ To conclude, the Open Media Vault (OMV) is a powerful project, which can be easi
 * Access Control Lists (ACL) and User / Group permissions
 
 * Support for FTP, NFS, Rsync and SMB/CIFS
+
+* Docker support with container management webGUIs
+
+* Cockpit integration for host management
 
 * Range of additional plugins adding extra functionality including:
 
@@ -230,9 +236,5 @@ To conclude, the Open Media Vault (OMV) is a powerful project, which can be easi
   * **Diskstats** - Additional performance statistics for Disks
 
   * **OpenVPN** - Access to OpenVPN direct in the webGUI
-
-* Docker support with container management webGUIs
-
-* Cockpit integration for host management
 
 All behind a slick and intuitive web interface. The last note is that OMV is running on Raspberry Pi OS Lite, which is a Debian based distribution so the possibilities are limitless with what features and functions we can add.
