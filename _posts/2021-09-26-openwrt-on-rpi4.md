@@ -56,7 +56,7 @@ Once completed, eject the MicroSD card storage and insert it into your Raspberry
 
 OpenWRT will have the IP address of 192.168.1.1 /24 automatically configured, in my setup this will cause an issue so I needed to change this before I could continue.
 
-The workaround was to power of the Raspberry Pi 4 while connected to a monitor and keyboard so I could change the address before connecting to the rest of the network.
+The workaround was to power on the Raspberry Pi 4 while connected to a monitor and keyboard so I could change the address before connecting to the rest of the network.
 
 You could also connect the Raspberry Pi 4 to a switch with a computer or laptop device in isolation from the rest of the network, then statically configure an IP address in the 192.168.1.0/24 range such as:
 
@@ -66,7 +66,7 @@ You could also connect the Raspberry Pi 4 to a switch with a computer or laptop 
 | Subnet Mask | 255.255.255.0 |
 | Gateway     | 192.168.1.1   |
 
-**Changing OpenWRT IP address**
+### Changing OpenWRT IP address
 
 Edit the configuration file using vi.
 
@@ -90,9 +90,7 @@ config interface 'lan'
  option ip6assign '60'
 ```
 
-Then reboot the Raspberry Pi.
-
-Now we can SSH into the Raspberry Pi 4
+Then reboot the Raspberry Pi, when its back online SSH into the Raspberry Pi 4
 
 ```bash
 ssh root@192.168.1.10
@@ -249,9 +247,7 @@ ACME-DNSapi provides DNS challenge integration, which is useful for services suc
 
 `haproxy` is available as a package in Software but there isn't a webGUI available for monitoring or management so configuration will be through the command line interface.
 
-#### pfBlocker-NG (Ad, Trackers and Content Blocking)
-
-##### AdBlock
+#### AdBlock
 
 To enable ad blocking I have installed the package `luci-app-adblock` and enabled multiple Blocklist sources, we can also ensure SafeSearch for Google, Bing, DuckDuckGo, Yandex, Youtube (strict or moderate) and Pixabay, which are selective options.
 
@@ -260,10 +256,6 @@ We can force local DNS for specific zones and ports, which prevents users from u
 We can enable DNS reporting and Email notifications if we wish too, these will require the following to be installed; `tcpdump-mini` and `msmtp`.
 
 ![openwrt-software-adblock](/assets/images/posts/openwrt-software-adblock.png)
-
-##### AdGuardHome
-
-Another popular option is installing `adguardhome` from the software tab, you can find more information on the [AdGuardTeam Github](https://github.com/AdguardTeam/AdGuardHome#getting-started).
 
 ### Summary
 
