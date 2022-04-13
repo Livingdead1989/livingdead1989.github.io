@@ -4,7 +4,7 @@ date: 2022-04-10 18:30:00 +0000
 categories: server
 tags: rpi rpi3 pihole dns dhcp
 description: >- # this means to ignore newlines until "baseurl:"
-  Deploying a Raspberry Pi 3 powered PiHole acting as a DNS and DHCP server, removing pesky adverts and trackers and using forced safe search to keep our family safe.
+  Deploying a RPI3 PiHole as a DNS and DHCP server, removing adverts, trackers and forced safe search to keep our family safe.
 ---
 
 In this article I will be deploying a Raspberry Pi 3 powered PiHole server to act as our networks DNS and DHCP server, removing pesky adverts and trackers for the whole network and making use of forced safe search and adult content filtering to keep our family safe.
