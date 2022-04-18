@@ -7,7 +7,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   In this article I will be deploying OpenMediaVault (OMV) 5.6.13 as a virtual machine on Proxmox.
 ---
 
-In this article I will be deploying OpenMediaVault (OMV) 5.6.13 as a virtual machine on Proxmox. Providing a full step by step installation and some basic configuration, such as email notifications, NTP, configuring a RAID1 mirror, creating users and groups, sharing via SMB and NFS and finally how to add OMV-Extras for additional plugins and Docker support.
+I will be deploying OpenMediaVault (OMV) 5.6.13 as a virtual machine on Proxmox. Providing a full step by step installation and some basic configuration, such as email notifications, NTP, configuring a RAID1 mirror, creating users and groups, sharing via SMB and NFS and finally how to add OMV-Extras for additional plugins and Docker support.
 
 ## OpenMediaVault
 
