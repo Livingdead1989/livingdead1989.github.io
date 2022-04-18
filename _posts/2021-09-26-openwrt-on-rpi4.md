@@ -28,9 +28,9 @@ OpenWrt provides more than [3000 packages](https://openwrt.org/packages/start) r
 
 ## Guide
 
-Download the appropriate image of OpenWRT for the Raspberry Pi 4, it can be found using the following link:
+Download the appropriate image of OpenWRT 21.02.2 for the Raspberry Pi 4, it can be found using the following link:
 
-<https://downloads.openwrt.org/snapshots/targets/bcm27xx/bcm2711/>
+<https://downloads.openwrt.org/releases/21.02.2/targets/bcm27xx/bcm2711/>
 
 Download the rpi-4-ext4-factory.img.gz file
 
