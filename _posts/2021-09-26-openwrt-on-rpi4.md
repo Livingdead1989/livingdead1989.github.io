@@ -122,6 +122,8 @@ All good from the figure below.
 
 ### Update and WebGUI Installation
 
+This step is only required if using the SNAPSHOT, the stable release contains LuCI WebUI by default.
+
 Update the system
 
 ```bash
@@ -159,9 +161,13 @@ From the figure below we can see it uses RTL8153
 
 Using this information we can go back to our Raspberry Pi 4 and list available drivers.
 
-````bash
+```bash
+opkg update
+```
+
+```bash
 opkg list kmod-usb-net-rtl*
-````
+```
 
 ![openwrt-list-rtl](/assets/images/posts/openwrt-list-rtl.png)
 
