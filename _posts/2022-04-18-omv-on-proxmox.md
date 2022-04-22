@@ -21,19 +21,19 @@ At the time of writing the stable version is 5.6.13 with version 6.0 currently i
 
 The first step is to download the latest stable ISO file from [OpenMediaVault.org](https://www.openmediavault.org/?page_id=77). Once downloaded upload this file to your ISO images repository.
 
-![proxmox-omv-vm-1](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-vm-1.png)
+![proxmox-omv-vm-1](/assets/images/posts/proxmox-omv-vm-1.png)
 
 Now start the VM creation wizard. I have summarised some of the wizard steps, where I felt changes are necessary.
 
 On the **General tab**, ensure that the "Start at boot" option is enabled. To ensure that our file server is serving content before starting other virtual machines or containers I have set a "Start/Shutdown order" of 0 with a "Startup delay" of 2 minutes.
 
-![proxmox-omv-vm-2](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-vm-2.png)
+![proxmox-omv-vm-2](/assets/images/posts/proxmox-omv-vm-2.png)
 
 On the **OS tab**, select the ISO image and leave type as Linux as OMV is based upon Debian.
 
 On the **System tab**, I have set the SCSI controller to VirtIO SCSI single, this is to leverage some features such as SSD emulation and best performance. I have also enabled the QEMU agent, which I will install at a later date.
 
-![proxmox-omv-vm-3](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-vm-3.png)
+![proxmox-omv-vm-3](/assets/images/posts/proxmox-omv-vm-3.png)
 
 On the **Disks tab**, I have set the storage location and size, a minimum of 4 GB is recommended by OMV.
 
@@ -43,7 +43,7 @@ I have also enabled other features such as Discard, SSD emulation and IO thread.
 * **SSD emulation** - “If you would like a drive to be  presented to the guest as a solid-state drive rather than a rotational  hard disk, you can set the SSD emulation option on that drive.”
 * **IO Thread** - “Qemu creates one I/O thread per  storage controller, rather than a single thread for all I/O. This can  increase performance when multiple disks are used and each disk has its  own storage controller.”
 
-![proxmox-omv-vm-4](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-vm-4.png)
+![proxmox-omv-vm-4](/assets/images/posts/proxmox-omv-vm-4.png)
 
 On the **CPU tab**, I have set 1 core and left the type as kvm64. *- A single core is perfect for light-weight usage.*
 
@@ -55,7 +55,7 @@ Lastly on the **Network tab**, I have connected to my LAN bridge and left the ne
 
 This completes the VM creation wizard. The last alteration I am going to make is on the VM options and is to disable the "Use tablet for pointer" option.
 
-![proxmox-omv-vm-5](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-vm-5.png)
+![proxmox-omv-vm-5](/assets/images/posts/proxmox-omv-vm-5.png)
 
 ## Installation
 
@@ -63,73 +63,73 @@ Now we are ready to start the OMV installation process.
 
 Below is each step of this process, with any notes I feel may be useful. Otherwise the process is straight forward.
 
-![proxmox-omv-install-1](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-install-1.png)
+![proxmox-omv-install-1](/assets/images/posts/proxmox-omv-install-1.png)
 
 Set a language.
 
-![proxmox-omv-install-2](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-install-2.png)
+![proxmox-omv-install-2](/assets/images/posts/proxmox-omv-install-2.png)
 
 Set your location.
 
-![proxmox-omv-install-3](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-install-3.png)
+![proxmox-omv-install-3](/assets/images/posts/proxmox-omv-install-3.png)
 
 Configure the keyboard.
 
-![proxmox-omv-install-4](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-install-4.png)
+![proxmox-omv-install-4](/assets/images/posts/proxmox-omv-install-4.png)
 
-![proxmox-omv-install-5](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-install-5.png)
+![proxmox-omv-install-5](/assets/images/posts/proxmox-omv-install-5.png)
 
 As I have a DHCP server this was assigned an IP, if this step fails you can manually configure an IP address using the install wizard.
 
-![proxmox-omv-install-6](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-install-6.png)
+![proxmox-omv-install-6](/assets/images/posts/proxmox-omv-install-6.png)
 
 Configure a hostname for this system.
 
-![proxmox-omv-install-7](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-install-7.png)
+![proxmox-omv-install-7](/assets/images/posts/proxmox-omv-install-7.png)
 
 Configure a domain name, I have used an internal domain called "home.lan".
 
-![proxmox-omv-install-8](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-install-8.png)
+![proxmox-omv-install-8](/assets/images/posts/proxmox-omv-install-8.png)
 
 Set a password for the `root` user.
 
-![proxmox-omv-install-9](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-install-9.png)
+![proxmox-omv-install-9](/assets/images/posts/proxmox-omv-install-9.png)
 
-![proxmox-omv-install-10](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-install-10.png)
+![proxmox-omv-install-10](/assets/images/posts/proxmox-omv-install-10.png)
 
 Installation begins.
 
-![proxmox-omv-install-11](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-install-11.png)
+![proxmox-omv-install-11](/assets/images/posts/proxmox-omv-install-11.png)
 
 Configure the package manager location.
 
-![proxmox-omv-install-12](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-install-12.png)
+![proxmox-omv-install-12](/assets/images/posts/proxmox-omv-install-12.png)
 
 Configure an archive mirror.
 
-![proxmox-omv-install-13](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-install-13.png)
+![proxmox-omv-install-13](/assets/images/posts/proxmox-omv-install-13.png)
 
 Set a proxy if you have one, I do not therefore I can leave this blank.
 
-![proxmox-omv-install-14](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-install-14.png)
+![proxmox-omv-install-14](/assets/images/posts/proxmox-omv-install-14.png)
 
-![proxmox-omv-install-15](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-install-15.png)
+![proxmox-omv-install-15](/assets/images/posts/proxmox-omv-install-15.png)
 
-![proxmox-omv-install-16](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-install-16.png)
+![proxmox-omv-install-16](/assets/images/posts/proxmox-omv-install-16.png)
 
 Set the device for the boot loader installation, if you have more than 1 device, select the one that contains the OS installation.
 
-![proxmox-omv-install-17](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-install-17.png)
+![proxmox-omv-install-17](/assets/images/posts/proxmox-omv-install-17.png)
 
-![proxmox-omv-install-18](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-install-18.png)
+![proxmox-omv-install-18](/assets/images/posts/proxmox-omv-install-18.png)
 
 Installation complete.
 
-![proxmox-omv-install-19](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-install-19.png)
+![proxmox-omv-install-19](/assets/images/posts/proxmox-omv-install-19.png)
 
 Now remove the CD/DVD drive (ide2) from the VM in Proxmox. Shutdown the VM and restart it to apply the changes.
 
-![proxmox-omv-install-20](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-install-20.png)
+![proxmox-omv-install-20](/assets/images/posts/proxmox-omv-install-20.png)
 
 ## QEMU Agent
 
@@ -139,7 +139,7 @@ Log into the OMV server from the shell or SSH as root, which we configured durin
 apt install -y qemu-agent-client
 ```
 
-![proxmox-omv-qemu-agent-1](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-qemu-agent-1.png)
+![proxmox-omv-qemu-agent-1](/assets/images/posts/proxmox-omv-qemu-agent-1.png)
 
 Once that has been installed reboot the VM and Proxmox will display the IP address information in the summary panel, which is a good indicator that it is installed and working.
 
@@ -147,7 +147,7 @@ Once that has been installed reboot the VM and Proxmox will display the IP addre
 reboot
 ```
 
-![proxmox-omv-qemu-agent-2](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-qemu-agent-2.png)
+![proxmox-omv-qemu-agent-2](/assets/images/posts/proxmox-omv-qemu-agent-2.png)
 
 ## Configuration
 
@@ -173,13 +173,13 @@ http://omv.home.lan/
 
 The default login credentials for OMV are admin:openmediavault. Once logged in you'll be presented with the dashboard as shown below.
 
-![proxmox-omv-config-dashboard](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-config-dashboard.png)
+![proxmox-omv-config-dashboard](/assets/images/posts/proxmox-omv-config-dashboard.png)
 
 ### Change default password
 
 To change the default password, navigate to **System** > **General Settings** and select the "**Web Administrator Password**" tab.
 
-![proxmox-omv-config-default-password](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-config-default-password.png)
+![proxmox-omv-config-default-password](/assets/images/posts/proxmox-omv-config-default-password.png)
 
 ### Misc Settings
 
@@ -189,17 +189,17 @@ A few other settings that are worth configuring, they are:
 
 To configure NTP, first navigate to **System** > **Date & Time**, configure your timezone and set a time server, I have used my router by other suggestions include the [NTP Pool Project](https://www.pool.ntp.org/zone/uk).
 
-![proxmox-omv-config-ntp](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-config-ntp.png)
+![proxmox-omv-config-ntp](/assets/images/posts/proxmox-omv-config-ntp.png)
 
 #### Email Notification
 
 To configure email notifications first navigate to **System** > **Notification** and configure your SMTP settings, don't forget to click "Enable".
 
-![proxmox-omv-config-email-1](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-config-email-1.png)
+![proxmox-omv-config-email-1](/assets/images/posts/proxmox-omv-config-email-1.png)
 
 Notifications topics can be configured on the **Notifications** tab, as shown below I have chosen to receive only "Filesystems", "S.M.A.R.T", "Software Raid" and "Software Update" notifications.
 
-![proxmox-omv-config-email-2](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-config-email-2.png)
+![proxmox-omv-config-email-2](/assets/images/posts/proxmox-omv-config-email-2.png)
 
 ### Create User
 
@@ -212,25 +212,25 @@ Provide details such as:
 
 Users can be assigned to groups using the **Groups** tab, but by default all created users become part of the "Users" group.
 
-![proxmox-omv-config-user-1](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-config-user-1.png)
+![proxmox-omv-config-user-1](/assets/images/posts/proxmox-omv-config-user-1.png)
 
 ### Create Group
 
 To create a group, navigate to **Access Rights Management** > **Group**, and click "Add". Provide a name for the group and a comment if you wish.
 
-![proxmox-omv-config-group-1](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-config-group-1.png)
+![proxmox-omv-config-group-1](/assets/images/posts/proxmox-omv-config-group-1.png)
 
 On the **Members** tab I have assigned users to the group, as shown in the figure below I have added my own user.
 
-![proxmox-omv-config-group-2](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-config-group-2.png)
+![proxmox-omv-config-group-2](/assets/images/posts/proxmox-omv-config-group-2.png)
 
 ### Disk Management RAID1
 
 For demonstration purposes I have added two additional hard disks via Proxmox
 
-![proxmox-omv-config-disks-1](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-config-disks-1.png)
+![proxmox-omv-config-disks-1](/assets/images/posts/proxmox-omv-config-disks-1.png)
 
-![proxmox-omv-config-disks-2](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-config-disks-2.png)
+![proxmox-omv-config-disks-2](/assets/images/posts/proxmox-omv-config-disks-2.png)
 
 To start I will create a RAID1, which is a mirror. Navigate to **Storage** > **RAID Management** and click "Create".
 
@@ -247,13 +247,13 @@ Set a name for the RAID array and the appropriate level, options are listed belo
 
 Lastly check which disks to include within this array.
 
-![proxmox-omv-config-disks-3](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-config-disks-3.png)
+![proxmox-omv-config-disks-3](/assets/images/posts/proxmox-omv-config-disks-3.png)
 
-![proxmox-omv-config-disks-4](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-config-disks-4.png)
+![proxmox-omv-config-disks-4](/assets/images/posts/proxmox-omv-config-disks-4.png)
 
 Once complete the **State** will list as "clean".
 
-![proxmox-omv-config-disks-5](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-config-disks-5.png)
+![proxmox-omv-config-disks-5](/assets/images/posts/proxmox-omv-config-disks-5.png)
 
 Now we can create a File System on to of our RAID, navigate to **File Systems**. The file system decision is a hard one, but I will be exploring XFS in this demonstration, I have listed a few points regarding each below.
 
@@ -269,11 +269,11 @@ Now we can create a File System on to of our RAID, navigate to **File Systems**.
   * Default file system for RHEL 7
 * **JFS** - Journaled File system
 
-![proxmox-omv-config-disks-6](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-config-disks-6.png)
+![proxmox-omv-config-disks-6](/assets/images/posts/proxmox-omv-config-disks-6.png)
 
 Once the file system has been created click the **Mount** button.
 
-![proxmox-omv-config-disks-7](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-config-disks-7.png)
+![proxmox-omv-config-disks-7](/assets/images/posts/proxmox-omv-config-disks-7.png)
 
 ### Create Share
 
@@ -285,27 +285,27 @@ I have created a shared folder called "OMV-Data" using the newly created "DataDi
 Administrator: read/write, Users: read-only, Others: no access
 ```
 
-![proxmox-omv-config-share-1](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-config-share-1.png)
+![proxmox-omv-config-share-1](/assets/images/posts/proxmox-omv-config-share-1.png)
 
 Now click the **ACL** button, which stands for Access Control List.
 
-![proxmox-omv-config-share-2](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-config-share-2.png)
+![proxmox-omv-config-share-2](/assets/images/posts/proxmox-omv-config-share-2.png)
 
 From this window we can configure the shared folder permissions to meet our requirements.
 
 I have set my user to have read/write access and changed the group to our previously created group "NetworkingDream".
 
-![proxmox-omv-config-share-3](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-config-share-3.png)
+![proxmox-omv-config-share-3](/assets/images/posts/proxmox-omv-config-share-3.png)
 
 ### Enable SMB/CIFS
 
 Now that we have a shared folder we can offer this through the SMB service. Navigate to **Services** > **SMB/CIFS** and check the "**Enable**" button on the **Settings** tab.
 
-![proxmox-omv-config-smb-1](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-config-smb-1.png)
+![proxmox-omv-config-smb-1](/assets/images/posts/proxmox-omv-config-smb-1.png)
 
 Next change to the **Shares** tab and click "Add". Here I will enable our shared folder called "OMV-Data". *- There are plenty of other options and its worth viewing them all, but for a basic share this is all we need.*
 
-![proxmox-omv-config-smb-2](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-config-smb-2.png)
+![proxmox-omv-config-smb-2](/assets/images/posts/proxmox-omv-config-smb-2.png)
 
 We can test our share by opening the SMB location and logging in using our username.
 
@@ -317,13 +317,13 @@ smb://omv.home.lan/
 
 To enable the NFS service, first navigate to **Services** > **NFS** and click "Enable" from within the **Settings** tab.
 
-![proxmox-omv-config-nfs-1](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-config-nfs-1.png)
+![proxmox-omv-config-nfs-1](/assets/images/posts/proxmox-omv-config-nfs-1.png)
 
 Now switch to the **Shares** tab and click "Add". NFS does not use usernames instead it has allowed networks and clients, therefore its important to not expose the NFS share with read/write access to the whole network as shown in the figure below.
 
 Instead only use a trusted IP address such as: 192.168.1.25
 
-![proxmox-omv-config-nfs-2](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-config-nfs-2.png)
+![proxmox-omv-config-nfs-2](/assets/images/posts/proxmox-omv-config-nfs-2.png)
 
 ### Update Management
 
@@ -331,9 +331,9 @@ Update are easy to perform via the web panel. First navigate to **System** > **U
 
 This is the same as updating via SSH using `apt update && apt upgrade -y`.
 
-![proxmox-omv-config-update-1](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-config-update-1.png)
+![proxmox-omv-config-update-1](/assets/images/posts/proxmox-omv-config-update-1.png)
 
-![proxmox-omv-config-update-2](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-config-update-2.png)
+![proxmox-omv-config-update-2](/assets/images/posts/proxmox-omv-config-update-2.png)
 
 ### Plugins
 
@@ -341,13 +341,13 @@ To install plugins, first navigate to **System** > **Plugins** and click the "Ch
 
 In this demonstration I will install **NUT**, which stands for [Network UPS Tools](https://networkupstools.org/). Find the plugin in the list, check the selection box then select "Install".
 
-![proxmox-omv-config-plugin-1](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-config-plugin-1.png)
+![proxmox-omv-config-plugin-1](/assets/images/posts/proxmox-omv-config-plugin-1.png)
 
-![proxmox-omv-config-plugin-2](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-config-plugin-2.png)
+![proxmox-omv-config-plugin-2](/assets/images/posts/proxmox-omv-config-plugin-2.png)
 
 Once installation has completed the page will reload and the appropriate new item can be found in the navigation pane.
 
-![proxmox-omv-config-plugin-3](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-config-plugin-3.png)
+![proxmox-omv-config-plugin-3](/assets/images/posts/proxmox-omv-config-plugin-3.png)
 
 #### 3rd Party Plugins
 
@@ -367,6 +367,6 @@ https://github.com/OpenMediaVault-Plugin-Developers/packages/raw/master/openmedi
 
 Once installation has completed there will be many more plugins available for installation and the OMV-Extras menu, containing **Docker**, **Cockpit** and **Kernel**.
 
-![proxmox-omv-config-extras](/home/livingdead1989/Documents/website-git/Article/proxmox-omv/images/proxmox-omv-config-extras.png)
+![proxmox-omv-config-extras](/assets/images/posts/proxmox-omv-config-extras.png)
 
 That concludes this article, it is only a basic walk through but hopefully enough to get your feet wet and explore OMV.
