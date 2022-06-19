@@ -1,6 +1,6 @@
 ---
 title: "vSphere 7 06 VMs and Hosts"
-date: 2022-06-19 12:00:00 +0000
+date: 2022-06-19 11:00:00 +0000
 categories: server
 tags: vmware esxi vcenter
 description: >- # this means to ignore newlines until "baseurl:"
