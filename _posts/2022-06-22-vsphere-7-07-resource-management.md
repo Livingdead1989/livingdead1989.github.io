@@ -19,15 +19,15 @@ Resources:
 
 Storage I/O Control in [vSphere 7 02 Storage](https://networkingdream.com/server/vsphere-7-02-storage/) discusses aspects of using shares, limits and reservations within storage. These topics were also discussed in [vSphere 7 03 Monitoring](https://networkingdream.com/server/vsphere-7-03-monitoring/) in regards to Memory.
 
-Reservations grant resources to a VM, this guarantees that the VM will have resources, but these could be wasted when not used as no other VM will be able to utilise the resource. Also if an offline system with a reservation cannot be satisfied it will not boot up, this includes vMotion.
+**Reservations** grant resources to a VM, this guarantees that the VM will have resources, but these could be wasted when not used as no other VM will be able to utilise the resource. Also if an offline system with a reservation cannot be satisfied it will not boot up, this includes vMotion.
 
-Limits are a hard cap on resources, that cannot be consumed. An example is limit a VM's CPU to 500 Mhz.
+**Limits** are a hard cap on resources, that cannot be consumed. An example is limit a VM's CPU to 500 Mhz.
 
 Both Reservations and Limits are quite restrictive and should be strongly considered before using.
 
 ![vmware-vm-resource-01](/assets/images/posts/vmware-vm-resource-01.png)
 
-Shares are built to be flexible and are only used in times of **contention** / **congestion**. They provide a mechanism for prioritising resources based upon share profiles and their entitlement.
+**Shares** are built to be flexible and are only used in times of **contention** / **congestion**. They provide a mechanism for prioritising resources based upon share profiles and their entitlement.
 
 Shares are based upon the resource values configured for each VM.
 
