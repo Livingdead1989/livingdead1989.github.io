@@ -2,7 +2,7 @@
 title: "vSphere 7 07 Resource Management"
 date: 2022-06-22 21:00:00 +0000
 categories: server
-tags: vmware esxi vcenter vsphere
+tags: vmware esxi vcenter vsphere vapp
 description: >- # this means to ignore newlines until "baseurl:"
   VMware vSphere is everywhere. To stay relevant, I needed to understand vSphere. I undertook a learning path, which discusses various topics for a vSphere 7 environment.
 ---
