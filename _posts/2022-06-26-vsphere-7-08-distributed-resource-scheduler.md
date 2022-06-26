@@ -2,7 +2,7 @@
 title: "vSphere 7 08 Distributed Resource Scheduler"
 date: 2022-06-26 12:00:00 +0000
 categories: server
-tags: vmware esxi vcenter
+tags: vmware esxi vcenter vsphere
 description: >- # this means to ignore newlines until "baseurl:"
   VMware vSphere is everywhere. To stay relevant, I needed to understand vSphere. I undertook a learning path, which discusses various topics for a vSphere 7 environment.
 
