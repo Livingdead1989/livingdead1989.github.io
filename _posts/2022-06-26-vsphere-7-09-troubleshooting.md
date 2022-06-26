@@ -2,7 +2,7 @@
 title: "vSphere 7 09 Troubleshooting"
 date: 2022-06-26 13:00:00 +0000
 categories: server
-tags: vmware esxi vcenter
+tags: vmware esxi vcenter vsphere
 description: >- # this means to ignore newlines until "baseurl:"
   VMware vSphere is everywhere. To stay relevant, I needed to understand vSphere. I undertook a learning path, which discusses various topics for a vSphere 7 environment.
 
@@ -12,8 +12,6 @@ Resources:
 
 * [VMware Pathfinder](https://pathfinder.vmware.com/v3/page/hands-on-labs?menu=overview)
 * Lab: [vSphere Performance Testing of ESXi Host Subsystems](https://pathfinder.vmware.com/v3/activity/vsphere_testing_hosts_hol) - Module 4 and 5.
-
-
 
 ## Restart Management Agent
 
@@ -37,8 +35,6 @@ If you need to restart all the management agents on the ESXi host, you can do so
 services.sh restart
 ```
 
-
-
 The shell can be accessed via the Direct Console User Interface (DCUI), although it needs to be enabled first.
 
 1. Press F2 and enter the root password
@@ -47,11 +43,9 @@ The shell can be accessed via the Direct Console User Interface (DCUI), although
 4. Press ESC twice to exit.
 5. Access the ESXi Shell by pressing ALT + F1 from the ESXi console screen.
 
-
-
 ## Export System Logs
 
-vCenter > Export System Logs 
+vCenter > Export System Logs
 
 ![vmware-vm-troubleshoot-02](/assets/images/posts/vmware-vm-troubleshoot-02.png)
 
