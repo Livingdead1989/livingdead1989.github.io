@@ -1,7 +1,7 @@
 ---
 title: "PowerShell Server Admin Scripting"
 date: 2022-08-04 21:20:00 +0000
-categories: server
+categories: powershell
 tags: powershell script server admin
 description: >- # this means to ignore newlines until "baseurl:"
   Beginner course on how to use PowerShell scripting for server administration.
