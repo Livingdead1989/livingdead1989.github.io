@@ -23,8 +23,6 @@ Additional resources include [PowerShell Documentation](https://docs.microsoft.c
 
 The following are my notes while taking part in LinkedIn Learning course [PowerShell: Scripting for Server Administration](https://www.linkedin.com/learning/powershell-scripting-for-server-administration).
 
-
-
 ## Execution Policy
 
 1. **Restricted** - No scripts will run
@@ -37,7 +35,7 @@ The following are my notes while taking part in LinkedIn Learning course [PowerS
 Scope from highest precedence
 
 1. **Process** including a PowerShell session
-2. Specific users using **CurrentUser** 
+2. Specific users using **CurrentUser**
 3. **LocalMachine** including all users
 
 Two scopes that can be configured via Group Policy are
@@ -45,9 +43,7 @@ Two scopes that can be configured via Group Policy are
 * **MachinePolicy**
 * **UserPolicy**
 
-
-
-### View 
+### View
 
 ```powershell
 Get-ExecutionPolicy
@@ -63,8 +59,6 @@ Get-ExecutionPolicy -List
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy AllSigned
 ```
 
-
-
 ## PowerShell Tolerance
 
 PowerShell is mostly not case sensitive, although PowerShell Core may require case sensitivity for Cross-Platform support.
@@ -72,8 +66,6 @@ PowerShell is mostly not case sensitive, although PowerShell Core may require ca
 PowerShelll Core can use both backslash and forward slash interchangeably.
 
 PowerShell scripts, new lines and indentations are often optional.
-
-
 
 ## PowerShell Style Guide
 
@@ -87,9 +79,7 @@ Some basics include:
 * Use a line break between functions and loops to aid with readability.
 * Use [PascalCase](https://www.theserverside.com/definition/Pascal-case) - each word begins with a capital letter.
   * Similar to CamelCase, but the first word must be a capital.
-* Comment your scripts. Using a hash, followed by a space `# `.
-
-
+* Comment your scripts. Using a hash, followed by a space `#`.
 
 ## PowerShell ISE Add-ons
 
@@ -98,8 +88,6 @@ Although there is a strong movement to using other applications such as [Visual 
 From the Add-ons drop down menu select "Open Add-on Tools Website", which will open a TechNet page. On the page you'll find a list of community add-ons and their links.
 
 ![powershell-scripting-2](/assets/images/posts/powershell-scripting-2.png)
-
-
 
 ## Working with External Files
 
@@ -129,8 +117,6 @@ if (-not (Test-Path -Path C:\Scripts )) {
 }
 ```
 
-
-
 Access text files by using `Get-Content`, each line will be viewed as a string ready for processing.
 
 We can use a text file containing usernames to create new local accounts.
@@ -144,8 +130,6 @@ Get-Content C:\Scripts\Input\Users.txt | New-LocalUser -Password $SecurePassword
 ```
 
 Although this will create accounts, there is minimal information, which is where use of a CSV file can expand our capabilities.
-
-
 
 ### Working with CSV files
 
@@ -169,8 +153,6 @@ $SecurePassword = "Yellow3!n" | ConvertTo-SecureString -AsPlainText -Force
 Import-CSV -Path C:\Scripts\Input\LocalUsers.csv | New-LocalUser -Password $SecurePassword
 ```
 
-
-
 ### Working with XML files
 
 XML files provide:
@@ -183,8 +165,6 @@ Get-Service -Name BITS | Export-CliXML -Path C:\Scripts\Output\BITSService.clixm
 ```
 
 *Note: the file extension can be either clixml or xml*
-
-
 
 ## Building Blocks of PowerShell Scripts
 
@@ -208,8 +188,6 @@ Some examples include:
 * [DellBIOSProvider](https://www.powershellgallery.com/packages/DellBIOSProvider/2.6.0)
 * Az - Microsoft Azure Modules
 * Dsc - Desired State Configuration Modules
-
-
 
 ### Functions
 
@@ -243,10 +221,6 @@ Export-CompanyDomainUsers -OUName Marketing
 Export-CompanyDomainUsers -OUName Finance
 ```
 
-
-
-
-
 ## Administer Servers
 
 ### PowerShell Remoting
@@ -275,13 +249,11 @@ To perform tasks on **One-To-Many** computers the `Invoke-Command` cmdlet can be
 Invoke-Command -ComputerName dc01, sql02 -ScriptBlock {Get-Service -Name W32time} -Credential $Cred
 ```
 
-
-
 ### WMI
 
 [Windows Management Instrumentation](https://docs.microsoft.com/en-us/windows/win32/wmisdk/about-wmi) (WMI) is Microsoft's implementation of Web-Based Enterprise Management (WBEM), which is an industry initiative to develop a standard accessing management information in an enterprise environment.
 
-WMI is hierarchically organised and broken down into 
+WMI is hierarchically organised and broken down into
 
 1. **Namespaces**
 2. A Namespace is further broken down into **Classes**.
@@ -307,8 +279,6 @@ WMI can be utilised within a PowerShell script such as below using the TimeZone.
 
 ![powershell-scripting-6](/assets/images/posts/powershell-scripting-6.png)
 
-
-
 ### CIM
 
 [Common Information Model](https://www.dmtf.org/standards/cim) (CIM) is an open standard model for storing system information and is what WMI is based upon and the format used.
@@ -329,7 +299,4 @@ The WMI equivalent command is;
 (Get-WmiObject -ClassName Win32_OperatingSystem).Caption
 ```
 
-
-
 [CIM Session](https://docs.microsoft.com/en-us/powershell/module/cimcmdlets/new-cimsession?view=powershell-7.2) - `New-CimSession` can connect to one or more computers at the same time, for a session, whereas WMI cmdlets can only connect to a single computer and per command.
-
