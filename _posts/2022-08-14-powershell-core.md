@@ -1,7 +1,7 @@
 ---
 title: "PowerShell Core"
 date: 2022-08-14 09:10:00 +0000
-categories: server
+categories: powershell
 tags: powershell
 description: >- # this means to ignore newlines until "baseurl:"
   Introduction to PowerShell Core
