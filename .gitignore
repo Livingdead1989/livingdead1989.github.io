@@ -7,6 +7,7 @@ Gemfile.lock
 *.gem
 **/.ruby-version
 main.css.map
+site-style.css.map
 
 # OS Files 
 .DS_Store

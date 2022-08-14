@@ -4,8 +4,8 @@
 - name: brand
   link: "/#brand"
 
-- name: web work
-  link: "/#work"
-
 - name: tech blog
   link: "/blog"
+
+- name: web work
+  link: "/#work"
