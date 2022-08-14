@@ -13,6 +13,8 @@ PowerShell Core, introduced in 2016 is open-source and designed to run cross-pla
 
 PowerShell and PowerShell Core can run in parallel, and its important to remember that not all cmdlets and features are available in PowerShell Core.
 
+The following are my notes while taking part in LinkedIn Learning course [Learning PowerShell Core](https://www.linkedin.com/learning/learning-powershell-core).
+
 ## Installation
 
 ### Windows
