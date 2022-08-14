@@ -13,8 +13,6 @@ PowerShell Core, introduced in 2016 is open-source and designed to run cross-pla
 
 PowerShell and PowerShell Core can run in parallel, and its important to remember that not all cmdlets and features are available in PowerShell Core.
 
-
-
 ## Installation
 
 ### Windows
@@ -40,8 +38,6 @@ To call PowerShell Core from a normal command prompt use the command
 ```bash
 PWSH
 ```
-
-
 
 ### Linux
 
@@ -80,8 +76,6 @@ sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsof
 sudo apt update && sudo apt install -y powershell
 ```
 
-
-
 Run and Verify
 
 ```bash
@@ -92,11 +86,7 @@ PWSH
 $PSVersionTable
 ```
 
-
-
 ![powershell-core-3](/assets/images/posts/powershell-core-3.png)
-
-
 
 ## Help
 
@@ -129,10 +119,6 @@ Get-Help -Name Get-Cotent -Full
 
 Get-Help -Name Get-Cotent -Examples
 ```
-
-
-
-
 
 ## Commands
 
@@ -180,8 +166,6 @@ Get-Command -Module PackageManagement
 
 ![powershell-core-7](/assets/images/posts/powershell-core-7.png)
 
-
-
 ## Alias
 
 To list all configured alias, use the following command;
@@ -198,8 +182,6 @@ Get-Alias -Name cls
 
 ![powershell-core-8](/assets/images/posts/powershell-core-8.png)
 
-
-
 ## Pipeline
 
 The pipeline allows the administrator to stitch one command to another, passing the object through, for example.
@@ -208,16 +190,10 @@ The pipeline allows the administrator to stitch one command to another, passing 
 Get-Service -Name "BITS" | Start-Service
 ```
 
-
-
-
-
 ## Objects
 
 * **Methods** = Actions that an object can take.
 * **Properties** = An attribute of an object.
-
-
 
 To see all the available methods and properties on an object, use `Get-Member`.
 
@@ -227,8 +203,6 @@ Get-Date | Get-Member
 
 ![powershell-core-9](/assets/images/posts/powershell-core-9.png)
 
-
-
 PowerShell hides some properties, these can all be shown by using the `Select-Object` command.
 
 ```powershell
@@ -236,8 +210,6 @@ Get-Date | Select-Object *
 ```
 
 ![powershell-core-10](/assets/images/posts/powershell-core-10.png)
-
-
 
 ## Modules
 
@@ -329,17 +301,11 @@ Update by using the command
 Update-Module -Name AdminToolbox.Remoting
 ```
 
-
-
 To uninstall a module completely
 
 ```powershell
 Uninstall-Module -Name AdminToolbox.ActiveDirectory
 ```
-
-
-
-
 
 ## Functions
 
@@ -369,8 +335,6 @@ function Test-ServiceStarted {
 Test-ServiceStarted -Name  wuauserv
 ```
 
-
-
 ## Remote Resource Management
 
 Any Windows Server after 2012 R2 will have [PSRemoting](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/enable-psremoting?view=powershell-7.2) enabled by default, but there are additional configuration required such as; Firewall exeception and the Service running.
@@ -397,16 +361,12 @@ $credential = Get-Credential
 Enter-PSSession -ComputerName 192.168.100.169 -Credential $credential
 ```
 
-
-
 ### Remoting from Linux to Windows
 
 [SSH](https://docs.microsoft.com/en-us/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-7.2) is used to connect to and from Linux systems.
 
 1. [Install OpenSSH for Windows](https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse?tabs=powershell)
 2. [Configure Remoting SSH on Windows](https://docs.microsoft.com/en-us/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-7.2)
-
-
 
 Install OpenSSH server
 
@@ -422,8 +382,6 @@ Start-Service sshd
 Set-Service -Name sshd -StartupType 'Automatic'
 ```
 
-
-
 Edit file `C:\ProgramData\ssh\sshd_config`, adding the following Subsystem
 
 ```
@@ -437,32 +395,3 @@ Restart the `sshd` service
 ```powershell
 Restart-Service sshd
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
