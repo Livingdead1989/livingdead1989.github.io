@@ -7,7 +7,6 @@ description: >- # this means to ignore newlines until "baseurl:"
   In this article, I will be deploying a Raspberry Pi 4, then installing Zabbix 6.2 with MySQL and Nginx.
 ---
 
-
 ## What is Zabbix
 
 Zabbix is an extremely powerful enterprise-class open source and free of cost distributed monitoring solution capable of monitoring a network and the health and integrity of servers, virtual machines,  applications, services, databases, websites, the cloud and more.
@@ -203,13 +202,13 @@ Find `DBPassword` within the configuration file and uncomment it, then add your 
 
 *Use Nano's search feature by pressing `ctrl+w` .*
 
-```
+```text
 DBPassword=P@55word!
 ```
 
 If you are using a different database name or username, then you'll also need to change the values below.
 
-```
+```text
 DBName=zabbix
 DBUser=zabbix
 ```
@@ -273,7 +272,7 @@ sudo shutdown -r now
 
 Visit the Zabbix web interface using the default port of "8080".
 
-```
+```text
 http://zabbixpi.local:8080/
 ```
 
