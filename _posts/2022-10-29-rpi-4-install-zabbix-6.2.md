@@ -25,18 +25,20 @@ The benefit of open-source is a huge community that is actively working together
 
 Download and install the RPI Imager tool
 
-![zabbixpi-1](zabbix monitoring logging nms network management system mysql nginxzabbixpi-1.png)Flash the Raspberry Pi OS Lite (64-bit) image onto a MicroSD card, with the additional advanced settings:
+![zabbixpi-1](/assets/images/posts/zabbixpi-1.png)
+
+Flash the Raspberry Pi OS Lite (64-bit) image onto a MicroSD card, with the additional advanced settings:
 
 * Set hostname
 * Enable SSH
 * Set a password
 * Set region settings
 
-![zabbixpi-2](zabbix monitoring logging nms network management system mysql nginxzabbixpi-2.png)
+![zabbixpi-2](/assets/images/posts/zabbixpi-2.png)
 
 Eject, Insert and Power-On the Raspberry Pi
 
-![zabbixpi-3](zabbix monitoring logging nms network management system mysql nginxzabbixpi-3.png)
+![zabbixpi-3](/assets/images/posts/zabbixpi-3.png)
 
 Establish an SSH connection using the hostname or IP address
 
@@ -44,7 +46,7 @@ Establish an SSH connection using the hostname or IP address
 ssh pi@zabbixpi.local
 ```
 
-![zabbixpi-4](zabbix monitoring logging nms network management system mysql nginxzabbixpi-4.png)
+![zabbixpi-4](/assets/images/posts/zabbixpi-4.png)
 
 Expand the filesystem by using the Raspi-Config tool
 
@@ -54,7 +56,7 @@ sudo raspi-config
 
 Select "Advanced Options" and "Expand Filesystem", restart the Pi to apply changes.
 
-![zabbixpi-5](zabbix monitoring logging nms network management system mysql nginxzabbixpi-5.png)
+![zabbixpi-5](/assets/images/posts/zabbixpi-5.png)
 
 Update and Upgrade the system
 
@@ -72,7 +74,7 @@ Navigate to Zabbix's website and set your perferred configuration, this article 
 * Database: MySQL
 * Web Server: NGINX
 
-![zabbixpi-6](zabbix monitoring logging nms network management system mysql nginxzabbixpi-6.png)
+![zabbixpi-6](/assets/images/posts/zabbixpi-6.png)
 
 ### Database Choice
 
@@ -280,23 +282,23 @@ Now step through the wizard until completion
 
 I have changed the default language to `English (en_GB)`.
 
-![zabbixpi-7](zabbix monitoring logging nms network management system mysql nginxzabbixpi-7.png)
+![zabbixpi-7](/assets/images/posts/zabbixpi-7.png)
 
 All of the pre-requisites should be marked as "OK", if they are not go back and review before continuing.
 
-![zabbixpi-8](zabbix monitoring logging nms network management system mysql nginxzabbixpi-8.png)
+![zabbixpi-8](/assets/images/posts/zabbixpi-8.png)
 
 When configuring the DB connection, the default values are fine, just add your MySQL user password and update the username or database name if you changed from the default value.
 
-![zabbixpi-9](zabbix monitoring logging nms network management system mysql nginxzabbixpi-9.png)
+![zabbixpi-9](/assets/images/posts/zabbixpi-9.png)
 
 Lastly configure the server name and timezone.
 
-![zabbixpi-10](zabbix monitoring logging nms network management system mysql nginxzabbixpi-10.png)
+![zabbixpi-10](/assets/images/posts/zabbixpi-10.png)
 
 Configuration complete, a new file has been created in `/usr/share/zabbix/conf/zabbix.conf.php`
 
-![zabbixpi-11](zabbix monitoring logging nms network management system mysql nginxzabbixpi-11.png)
+![zabbixpi-11](/assets/images/posts/zabbixpi-11.png)
 
 Continue to login. The default username is `Admin` with `zabbix`as the password.
 
