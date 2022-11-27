@@ -94,7 +94,7 @@ git clone https://github.com/silvanmelchior/RPi_Cam_Web_Interface.git
 Now run the installation script
 
 ```bash
-bash RPi_Cam_Web_Interface\install.sh
+bash RPi_Cam_Web_Interface/install.sh
 ```
 
 You'll be presented with a Configuration Options page, I will be configuring my setup with the following:
