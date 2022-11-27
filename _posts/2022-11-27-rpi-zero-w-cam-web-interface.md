@@ -116,7 +116,7 @@ After the installation is complete, start the camera now then browse to your Ras
 
 Under the Camera Settings I have loaded the preset "Max View 972p 4:3" and flipped the image in both directions.
 
-Enable motion detection of startup, in the schedule settings add "md 1" in the Period Start box. Also set the "Purge Space Mode" to "Minimum Space %" and set to "5".
+To enable motion detection on startup, change to the schedule settings and add "md 1" in the Period Start box. I also set the "Purge Space Mode" to "Minimum Space %" and set to "5" so the storage will be recycled when this threshold is met.
 
 ### Turn off the camera red LED
 
