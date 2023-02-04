@@ -35,7 +35,7 @@ Creating the VM I will be using the following settings, if they are not listed I
    4. **System**, BIOS: OVMF (UEFI)
    5. **System**, Qemu Agent: Enabled
    6. **Hard disk** - This doesn't matter as we will remove the disk afterwards.
-   7. **Memory Ballooning**: Disabled
+   7. **CPU** - 2 Cores
 
 Once the VM has been created go to the Hardware tab, detach and remove the Hard Disk. In the next step we will be importing the Home Assistant hard disk.
 
@@ -44,25 +44,25 @@ Once the VM has been created go to the Hardware tab, detach and remove the Hard 
 Now open a SSH connection or Shell session to our Proxmox server and download the KVM/Proxmox (.qcow2) file from the [Alternative downloads](https://www.home-assistant.io/installation/alternative) section using wget.
 
 ```bash
-wget https://github.com/home-assistant/operating-system/releases/download/6.5/haos_ova-6.5.qcow2.xz
+https://github.com/home-assistant/operating-system/releases/download/9.5/haos_ova-9.5.qcow2.xz
 ```
 
 then extract the contents of the file.
 
 ```bash
-xz -d haos_ova-6.5.qcow2.xz
+xz -d haos_ova-9.5.qcow2.xz
 ```
 
 Import the disk to a VM, which has an ID of 101 *(You may have a different ID)* and my local storage is called local-btrfs *(You may have different local storage, depending on your installation)*.
 
 ```bash
-qm importdisk 101 haos_ova-6.5.qcow2 local-btrfs
+qm importdisk 101 haos_ova-9.5.qcow2 local-btrfs
 ```
 
 Don't forget to clear up the old files
 
 ```bash
-rm haos_ova-6.5.qcow2
+rm haos_ova-9.5.qcow2
 ```
 
 Now go back to the Proxmox webGUI for the VM and assign the newly imported disk, enable SSD emulation and the boot options to use this disk.
