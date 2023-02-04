@@ -82,3 +82,5 @@ There are a few extra settings we can change before starting our VM, these are:
 Now start the VM and once its booted you'll be able to visit <http://homeassistant.local:8123/> or use the IP address of the virtual machine such as <http://192.168.1.101:8123/>.
 
 Home Assistant is now running in a Promxox virtual machine ready for the inital configuration or restore your existing installation.
+
+**Note:** *I noticed that the VM started to consume high amount of CPU (50-70%), the cause for me was the fallback DNS feature in Home Assistant. To turn off this feature, open your Home Assistant console, and type `ha dns resolution --fallback=false`. After applying this change my CPU usage returned to a steady 5%.*
