@@ -65,7 +65,7 @@ Don't forget to clear up the old files
 rm haos_ova-9.5.qcow2
 ```
 
-Now go back to the Proxmox webGUI for the VM and assign the newly imported disk, enable SSD emulation and the boot options to use this disk.
+Now go back to the Proxmox webGUI for the VM and assign the newly imported disk, enable SSD emulation, discard and the boot options to use this disk.
 
 There are a few extra settings we can change before starting our VM, these are:
 
@@ -75,6 +75,9 @@ There are a few extra settings we can change before starting our VM, these are:
 * Options
   * Disable use tablet for pointer
   * Remove all Hotplug selections
+
+
+**Note:** *I had to disable Secure Boot in UEFI, to do this go to the Console, start the VM and Press 'ESC' to access "OVMF menu". Navigate to Device Manager > Secure Boot Configuration and uncheck "Attempt Secure Boot", save and exit the OVMF menu and the VM will now boot.*
 
 Now start the VM and once its booted you'll be able to visit <http://homeassistant.local:8123/> or use the IP address of the virtual machine such as <http://192.168.1.101:8123/>.
 
