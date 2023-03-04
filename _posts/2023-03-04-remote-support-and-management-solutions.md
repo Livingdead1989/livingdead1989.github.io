@@ -20,7 +20,7 @@ In this article I will briefly cover each product and provide guidance on how I 
 
 **Summary:** A remote desktop software, the open source TeamViewer alternative, works out of the box, no configuration required. You have full control of  your data, with no concerns about security.
 
-**Weblink:** https://rustdesk.com/
+**Weblink:** [https://rustdesk.com/](https://rustdesk.com/)
 
 * Project is open source: yes
 * Cost: free
@@ -44,7 +44,7 @@ Although use of a reverse proxy is not supported, you can use Streams in NPM to 
 
 ### Setup
 
-* Documentation: https://rustdesk.com/docs/en/
+* Documentation: [https://rustdesk.com/docs/en/](https://rustdesk.com/docs/en/)
 
 The easiest and quickest way to get Rustdesk setup is through Docker Compose, below is a custom file that will create both the HBBS and HBBR servers with a shared volume and forced encryption.
 
@@ -101,7 +101,7 @@ volumes:
 
 **Summary:** A remote control and remote scripting solution, built with .NET 6, Blazor, and SignalR Core.
 
-**Weblink:** https://github.com/immense/Remotely
+**Weblink:** [https://github.com/immense/Remotely](https://github.com/immense/Remotely)
 
 * Project is open source: yes
 * Cost: free
@@ -128,7 +128,7 @@ I had difficulties with Linux clients, most likely due to permissions, but even 
 
 ### Setup
 
-* Documentation: https://github.com/immense/Remotely
+* Documentation: [https://github.com/immense/Remotely](https://github.com/immense/Remotely)
 
 The only modern supported way to deploy Remotely is through Docker, below is a custom file that will create the Remotely server, which will automatically restart and has an external volume for the data folder, which contains the "[appsettings.json](https://github.com/immense/Remotely/blob/master/Server/appsettings.json)" file.
 
@@ -154,7 +154,7 @@ volumes:
 
 **Summary:** The open source, multi-platform, self-hosted, feature packed web site for remote device management.
 
-**Weblink:** https://meshcentral.com
+**Weblink:** [https://meshcentral.com](https://meshcentral.com)
 
 * Project is open source: yes
 * Cost: free
@@ -182,8 +182,8 @@ MeshCentral offers a selection of client notifications and user and group permis
 
 ### Setup
 
-* Documentation: https://github.com/Ylianst/MeshCentral
-* Plugins: https://github.com/topics/meshcentral-plugin
+* Documentation: [https://github.com/Ylianst/MeshCentral](https://github.com/Ylianst/MeshCentral)
+* Plugins: [https://github.com/topics/meshcentral-plugin](https://github.com/topics/meshcentral-plugin)
 
 Below is the official Docker Compose file for MeshCentral, with some slight tweaks.
 
@@ -268,7 +268,7 @@ volumes:
 
 **Summary:** Self-hosted open source remote management solution for Windows, macOS & Linux. Intuitive, easy to use inventory management, remote access, script execution, VPN replacement, and much more.
 
-**Weblink:** 
+**Weblink:** [https://rport.io/](https://rport.io/)
 
 * Project is open source: 
 * Cost: [free](https://rport.io/pricing-hosted/)
@@ -298,8 +298,8 @@ RPort comes with a vault, which is an encrypted data, used to store credentials.
 
 ### Setup
 
-* Documentation: https://kb.rport.io/install-the-rport-server/install-on-premises
-* How to get started with RPort: https://rport.io/get-started/
+* Documentation: [https://kb.rport.io/install-the-rport-server/install-on-premises](https://kb.rport.io/install-the-rport-server/install-on-premises)
+* How to get started with RPort: [https://rport.io/get-started/](https://rport.io/get-started/)
 
 1. Create a Virtual Machine
 
