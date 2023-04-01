@@ -13,8 +13,8 @@ This short guide provides guidance and images of a APC Uninterruptible power sup
 
 If you purchase the official APC battery pack then you do not need to remove the stickers or wiring as you are purchasing a complete unit, but I found I can purchase a set of Yuasa batteries for roughly £30 in comparison to the kit which sells for roughly £90.
 
-* [Amazon APC UPS Batteries](https://amzn.to/3mIqKFk)
-* [Amazon 12v Lead Acid Batteries](https://amzn.to/3tnAreY)
+* [Amazon APC UPS Batteries](https://amzn.to/3K4Fquf)
+* [Amazon 12v Lead Acid Batteries](https://amzn.to/3lZctbf)
 
 The process was relatively quick and easy to achieve, I used some [Gorilla tape](https://amzn.to/2QrbMHt) to reapply the sticker as it lost some adhesive and I wanted to be sure I could pull the batteries back out again when required.
 
