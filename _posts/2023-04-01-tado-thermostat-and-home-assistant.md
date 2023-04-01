@@ -7,11 +7,11 @@ description: >- # this means to ignore newlines until "baseurl:"
   In this article, I will be deploying a Tado Wireless Thermostat v3 starter kit and integrating it into Home Assistant for free automations.
 ---
 
-[Tado](https://www.tado.com/) is a popular smart home product manufacturer, who facilitate energy saving and maximising comfort in the home. They offer the following products:
+[Tado](https://www.tado.com/) is a popular smart home product manufacturer, who facilitate energy saving and maximising comfort in the home. They offer the following products *(Amazon affiliate links below)*:
 
-* Wired / Wireless Thermostat
-* Radiator valves
-* Air Conditioning or Air-to-Air Heat Pump
+* [Wired](https://amzn.to/40MZFDA) / [Wireless](https://amzn.to/3MqLDnt) Thermostat
+* [Radiator valves](https://amzn.to/42VjYAH)
+* [Air Conditioning or Air-to-Air Heat Pump](https://amzn.to/3Gaw6Ee)
 
 Tado works with most gas boilers and can be [installed](https://www.tado.com/gb-en/installation) yourself or by a professional. Some popular manufacturers are below with [many more supported](https://support.tado.com/en/articles/3387245-is-tado-compatible-with-my-boiler).
 
