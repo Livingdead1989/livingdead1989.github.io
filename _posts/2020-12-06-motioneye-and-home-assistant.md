@@ -10,11 +10,11 @@ Our aim here is to deploy the Motioneye OS to a Raspberry Pi Zero and add the st
 
 ### Hardware used
 
-* Raspberry Pi Zero W v1.1
+* [Raspberry Pi Zero W v1.1](https://amzn.to/3nDc12Y)
 * Offical RPI Zero Case with Camera top (moved to 3d printed case)
-* Raspberry Pi Camera Rev 1.3
-* Kingston 16GB MicroSD Class10 A1
-* Micro USB cable
+* [Raspberry Pi Camera Rev 1.3](https://amzn.to/42USLy2)
+* [Kingston 16GB MicroSD Class10 A1](https://amzn.to/3nEh5nN)
+* [Micro USB cable](https://amzn.to/3M3XuaJ)
 * USB Plug 1.2A Recommended *([documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/power/README.md))*
 * [Pigeon 3D Printed Case](https://www.thingiverse.com/thing:2230707)
 
