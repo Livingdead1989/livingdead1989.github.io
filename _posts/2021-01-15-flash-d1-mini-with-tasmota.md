@@ -14,7 +14,7 @@ In this walk through I will be using Ubuntu 20.04 to flash the [Wemos D1 Mini](h
 
 **Shopping List**
 
-* Wemos [D1 Mini](https://amzn.to/3t3ifHq) - ESP8266 Micro Controller
+* Wemos [D1 Mini](https://amzn.to/3lWvYRV) - ESP8266 Micro Controller
 
 ## Prerequisites
 
