@@ -19,7 +19,7 @@ OpenWrt provides more than [3000 packages](https://openwrt.org/packages/start) r
 
 ## Requirements
 
-* Raspbery Pi 4 Model B
+* [Raspbery Pi 4 Model B](https://amzn.to/40xXQuF)
 * Raspberry Pi 4 Case *(passive or active cooled recommended)*
 * MicroSD card *(Class 10, A2 recommended)*
 * Raspberry Pi 4 Power Cable *(USB Type C 5.1V 3A)*
