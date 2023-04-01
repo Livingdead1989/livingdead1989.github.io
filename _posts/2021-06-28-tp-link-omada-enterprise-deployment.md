@@ -13,8 +13,8 @@ TP-Link Omada ticked all of our requirement boxes therefore we purchased two EAP
 
 The equipment used in the full solution:
 
-* 1x [TP-Link Omada OC300 Controller](https://amzn.to/34G2tra)
-* 62x [TP-Link Omada EAP660 HD Access Point](https://amzn.to/3iiQLe3)
+* 1x [TP-Link Omada OC300 Controller](https://amzn.to/3M3iZse)
+* 62x [TP-Link Omada EAP660 HD Access Point](https://amzn.to/42WkgXU)
 * Virtual Windows Server for NPS (RADIUS)
 
 **Contents**
