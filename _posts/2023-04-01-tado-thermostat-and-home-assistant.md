@@ -65,11 +65,11 @@ The app will then provide step-by-step guidance on removing the old device. Its 
 
 In the Tado kit they provide useful sticky labels, which can be written on and stuck to the correct cables, which is all explained in the app. Below is a photograph of the labels for my setup.
 
-<img src="/assets/images/posts/tado-thermostat-install-3.jpg" alt="tado-thermostat-install-3" style="zoom:50%;" />
+![tado-thermostat-install-3](/assets/images/posts/tado-thermostat-install-3.jpg)
 
 After removing the old unit, applying the sticky labels you'll need to then install the new Tado unit. Then you'll continue back in the app, where it prompted for me to use the jumper cables provided to connect the COMs to the Live. Because I purchased my kits pre-loved from Ebay I was missing a jumper cable, therefore I used some 2-core electrical cable I had from another project.
 
-<img src="/assets/images/posts/tado-thermostat-install-4.jpg" alt="tado-thermostat-install-4" style="zoom:50%;" />
+![tado-thermostat-install-4](/assets/images/posts/tado-thermostat-install-4.jpg)
 
 With guidance from the app, you will now transfer the other cables into the Tado unit, replace the cover and switch the power back on. Lastly you'll pair the receiver, which completes the installation process.
 
@@ -83,7 +83,7 @@ The first thing I did in my Tado app was to create my schedules for the central 
 
 I did the same task for the hot water.
 
-<img src="/assets/images/posts/tado-thermostat-install-6.png" alt="tado-thermostat-install-6" style="zoom:50%;" />
+![tado-thermostat-install-6](/assets/images/posts/tado-thermostat-install-6.jpg)
 
 The next screenshot shows that I do not have the Auto-Assist subscription as it is "Inactive", I also turned off the Geofencing and Open Window Detection options as I will handle this through Home Assistant to have increased flexibility and avoid having the subscription plan.
 
@@ -94,7 +94,7 @@ Some benefits of doing the automation through Home Assistant over the Auto-Assis
 * Cross system automation,
 * More flexibility and control.
 
-<img src="/assets/images/posts/tado-thermostat-install-7.png" alt="tado-thermostat-install-7" style="zoom:50%;" />
+![tado-thermostat-install-7](/assets/images/posts/tado-thermostat-install-7.jpg)
 
 ### Home Assistant
 
@@ -106,7 +106,7 @@ Once complete, this will add all your devices and then you can create dashboards
 
 I kept it simple to start with by adding a basic dashboard entry with all the newly discovered devices. This is likely to change over time as I integrate and develop the home more.
 
-<img src="/assets/images/posts/tado-thermostat-install-9.png" alt="tado-thermostat-install-9" style="zoom:67%;" />
+![tado-thermostat-install-9](/assets/images/posts/tado-thermostat-install-9.jpg)
 
 To automate the Geo-fencing aspect I created two crude automation called "Boiler - Away mode" and "Boiler - Home mode".
 
@@ -116,7 +116,7 @@ These automation trigger when family mobile devices either enter or leave the ho
 
 For the home mode automation, the condition is if the Tado system is already in "Away" mode.
 
-<img src="/assets/images/posts/tado-thermostat-install-11.png" alt="tado-thermostat-install-11" style="zoom:80%;" />
+![tado-thermostat-install-11](/assets/images/posts/tado-thermostat-install-11.jpg)
 
 I have included the YAML code for both automation below.
 
