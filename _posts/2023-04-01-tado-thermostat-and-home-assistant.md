@@ -1,10 +1,10 @@
 ---
 title: "Tado Thermostat and Home Assistant"
 date: 2023-04-01 15:00:00 +0000
-categories: iot
+categories: homeautomation
 tags: home automation tado 
 description: >- # this means to ignore newlines until "baseurl:"
-  In this article, I will be deploying a Tado Wireless Thermostat v3 starter kit and integrating it into Home Assistant for free automations.
+  I will be deploying a Tado Wireless Thermostat v3 starter kit and integrating it into Home Assistant for free flexible automations.
 ---
 
 [Tado](https://www.tado.com/) is a popular smart home product manufacturer, who facilitate energy saving and maximising comfort in the home. They offer the following products *(Amazon affiliate links below)*:
@@ -41,8 +41,6 @@ Although Tado does have a subscription plan for their "[Auto-Assist](https://www
 
 At the time of writing the subscription costs either £34.99 per year or £3.99 per month.
 
-Next I turned off 
-
 ## Why bother?
 
 With rising energy costs it makes sense to make the home smarter and reap the cost rewards. This year I plan on developing my smart home in a cost-conscious fashion that doesn't rely on internet access and allows me to take the products when I move properties.
@@ -50,8 +48,6 @@ With rising energy costs it makes sense to make the home smarter and reap the co
 This article will cover my installation the Tado Smart Wireless Thermostat v3, which I sourced from [Ebay](https://www.ebay.co.uk/sch/i.html?_nkw=tado%20wireless%20thermostat). I will be integrating this with my Home Assistant instance to allow for cross-system automation and to allow me to automate the Geo-fence options without having a Auto-Assist subscription.
 
 [Compatibility Guide for the Smart Thermostat V3+](https://cdn.brandfolder.io/607DGEMS/at/v92ptv27qx9ks87g9j5tbpg/Smart_Thermostat_-_Compatibility_Guide_-_EN_-_V21.pdf) *(PDF)*
-
-
 
 ##  Thermostat Installation
 
