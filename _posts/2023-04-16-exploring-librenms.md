@@ -4,10 +4,10 @@ date: 2023-04-16 17:30:00 +0000
 categories: server
 tags: nms monitoring
 description: >- # this means to ignore newlines until "baseurl:"
-  In this article I will be exploring LibreNMS, implementing my own home lab version, I will provide guidance throughout my journey so you can follow along.
+  In this article I will be exploring LibreNMS, implementing my own home lab version using Docker, I will provide guidance throughout my journey so you can follow along.
 ---
 
-In this article I will be exploring LibreNMS, implementing my own home lab version, I will provide guidance throughout my journey so you can follow along.
+In this article I will be exploring LibreNMS, implementing my own home lab version using Docker, I will provide guidance throughout my journey so you can follow along.
 
 Lets start with, what is LibreNMS? well, its a [free](https://www.gnu.org/philosophy/free-sw.html), fully featured network monitoring system (NMS) forked from [Observium](https://www.observium.org/), features include:
 
