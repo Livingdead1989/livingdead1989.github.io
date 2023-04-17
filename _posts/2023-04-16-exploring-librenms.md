@@ -3,8 +3,7 @@ title: "Exploring LibreNMS"
 date: 2023-04-16 17:30:00 +0000
 categories: server
 tags: nms monitoring
-description: >- # this means to ignore newlines until "baseurl:"
-  In this article I will be exploring LibreNMS, implementing my own home lab version using Docker, I will provide guidance throughout my journey so you can follow along.
+description: In this article I will be exploring LibreNMS, implementing my own home lab version using Docker, I will provide guidance throughout my journey so you can follow along.
 ---
 
 In this article I will be exploring LibreNMS, implementing my own home lab version using Docker, I will provide guidance throughout my journey so you can follow along.
