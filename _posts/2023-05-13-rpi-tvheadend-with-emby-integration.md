@@ -4,7 +4,7 @@ date: 2023-05-13 10:30:00 +0000
 categories: server
 tags: media tv tvheadend emby 
 description: >- # this means to ignore newlines until "baseurl:"
-  In this article I will explore using a old Raspberry Pi to create a live TV video streamer, then integrate it with Emby.
+  Using a old Raspberry Pi to create a live TV video streamer, then integrate it with Emby.
 ---
 
 In this article I will explore using a old Raspberry Pi to create a live TV video streamer, which will provide live TV streams across the network. I will achieve this by using Tvheadend software. This can then be used in conjunction with a media streamer such as Emby, Jellyfin or Plex to record or watch TV, which I will demonstrate by setting up Emby to utilise Tvheadend.
