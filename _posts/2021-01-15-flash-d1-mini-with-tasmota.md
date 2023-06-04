@@ -25,12 +25,15 @@ Start by ensuring you have python and pip installed
 If they are not installed you can install both python 3 and pip for python 3 using the command below.
 
 ```bash
-sudo apt install python3 python3-pip
+sudo apt install -y python3 python3-pip pipx
 ```
 
-We will then install the esptool using pip3
+We will then install the esptool using pipx
 
-![install esptool using pip3](/assets/images/posts/2-install_pip_esptool.png)
+```bash
+pipx install esptool
+pipx ensurepath
+```
 
 Next download the tasmota.bin *(english)* from the official repository on [Github](https://github.com/arendst/Tasmota/releases/tag/v9.2.0)
 
