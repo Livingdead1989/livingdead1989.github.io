@@ -54,14 +54,16 @@ Remember its: `/dev/ttyUSB0`
 Change directory to esptool
 
 ```bash
-cd ~/.local/lib/python3.8/site-packages/
+cd ~/.local/bin
 ```
 
-You'll need to change the permission to allow execution of the `esptool.py` file, there are many ways to grant this permission.
+Check the permission of esptool.py, and if you need to set execute, then either:
 
 ```bash
 sudo chmod a+x esptool.py
 ```
+
+or
 
 ```bash
 sudo chmod 775 esptool.py
