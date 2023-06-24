@@ -14,11 +14,7 @@ In this article I will be deploying a Podman instance with Portainer for a manag
 * **Podman** is an open source tool for developing, managing, and running containers on your Linux systems. Originally developed by Red Hat engineers along with the open source community.
 * **Portainer** is an open-source application container management platform with a friendly web interface.
 
-
-
 I have already setup a Proxmox VE server therefore I will only cover the creation of a new LXC (**L**inu**X** **C**ontainer).
-
-
 
 ## Proxmox LXC
 
@@ -30,13 +26,9 @@ Select and download Rocky Linux 9
 
 ![1](/assets/images/posts/rocky-podman-1.png)
 
-
-
 Create a new container (CT)
 
 ![2](/assets/images/posts/rocky-podman-2.png)
-
-
 
 ### General Tab
 
@@ -46,15 +38,11 @@ Also uncheck the 'Unprivileged container' box as we need this for NFS and CIFS c
 
 ![3](/assets/images/posts/rocky-podman-3.png)
 
-
-
 ### Template Tab
 
 Select the downloaded Rocky Linux 9 image.
 
 ![4](/assets/images/posts/rocky-podman-4.png)
-
-
 
 ### Disks Tab
 
@@ -62,15 +50,11 @@ Set a root disk, I have configured 32 GB.
 
 ![5](/assets/images/posts/rocky-podman-5.png)
 
-
-
 ### CPU Tab
 
 Add additional cores, I have configured 2 vCPUs, for my requirements this will be plenty.
 
 ![6](/assets/images/posts/rocky-podman-6.png)
-
-
 
 ### Memory Tab
 
@@ -78,23 +62,17 @@ I will be allocating 2 GB of RAM (2048 MB), again, for my requirements this will
 
 ![7](/assets/images/posts/rocky-podman-7.png)
 
-
-
 ### Network Tab
 
 Its recommended to have a fixed IP address for servers, this can be achieved by setting a static address, like I have in the screenshot below or create a DHCP reservation.
 
 ![8](/assets/images/posts/rocky-podman-8.png)
 
-
-
 ### DNS Tab
 
 Finally I have left the DNS domain and server as the host values.
 
 ![9](/assets/images/posts/rocky-podman-9.png)
-
-
 
 Complete the container creation.
 
@@ -105,8 +83,6 @@ Navigate to the container Options > Features and Enable features for Nesting, NF
 Now start the container and open a console to it.
 
 ![10](/assets/images/posts/rocky-podman-10.png)
-
-
 
 ## Rocky Linux
 
@@ -127,8 +103,6 @@ dnf autoremove -y
 # Performs cleanup of temporary files kept for repositories.
 dnf clean all
 ```
-
-
 
 ### SSH
 
@@ -152,8 +126,6 @@ Restart the SSHD service
 systemctl restart sshd
 ```
 
-
-
 ## Podman
 
 [Install podman](https://podman.io/docs/installation)
@@ -172,8 +144,6 @@ Start the podman service
 # Enable
 systemctl enable --now podman
 ```
-
-
 
 ## Portainer CE
 
@@ -196,8 +166,6 @@ sudo podman run -d -p 9443:9443 --name portainer --restart=always -v /run/podman
 # List containers
 podman ps
 ```
-
-
 
 Access the Portainer web interface via the container's IP address
 
@@ -226,8 +194,6 @@ To wrap up here is a screenshot of the LXC container system resources.
 
 In this article I have deployed a Rocky Linux 9 LXC container on Proxmox VE, then installed Podman the open source alternative to Docker. Finally I have deployed a Portainer container for ease of management of containers and stacks (compose).
 
-
-
 ## Bonus
 
 ### Creating a new Bridge network
@@ -235,8 +201,6 @@ In this article I have deployed a Rocky Linux 9 LXC container on Proxmox VE, the
 The built in bridge network is considered legacy and its not recommended for production system. More information about this can be read on the [Docker Docs](https://docs.docker.com/network/drivers/bridge/) site.
 
 A major benefit of a user defined bridge is that containers can not only communicate by IP address, but can also resolve a container name to an IP address. This capability is called automatic service discovery. 
-
-
 
 Lets start by listing all of our networks
 
@@ -249,10 +213,6 @@ We can view the configuration of the default `podman` bridge network, by using t
 ```bash
 podman network inspect podman
 ```
-
-
-
-
 
 Below is an example of creating a user defined bridge, which provides DNS features, a specified subnet and gateway and no IPv6 configuration.
 
@@ -270,16 +230,13 @@ services:
     networks: 
       - customBridge
     ....
- 
- 
+
  networks:
   customBridge:
     external: true 
 ```
 
-
-
 Some additional reading:
 
-* https://docs.docker.com/network/network-tutorial-standalone/#use-user-defined-bridge-networks
-* https://docs.podman.io/en/latest/markdown/podman-network-create.1.html
+* [Docs Docker - User Defined Bridge Network](https://docs.docker.com/network/network-tutorial-standalone/#use-user-defined-bridge-networks)
+* [Docs Podman - Network Create](https://docs.podman.io/en/latest/markdown/podman-network-create.1.html)
