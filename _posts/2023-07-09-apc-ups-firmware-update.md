@@ -1,6 +1,6 @@
 ---
 title: "APC UPS Firmware Update"
-date: 2023-07-09 09:00:00 +0000
+date: 2023-07-09 08:00:00 +0000
 categories: misc
 tags: apc ups firmware
 description: >- # this means to ignore newlines until "baseurl:"
