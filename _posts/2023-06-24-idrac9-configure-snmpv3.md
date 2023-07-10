@@ -108,3 +108,20 @@ racadm.exe -r 192.168.1.10 -i set System.ServerOS.OSName "Operating System name"
 ```
 
 ![10](/assets/images/posts/idrac9-snmp-10.png)
+
+
+### IP Blocking
+
+If you notice that your iDRAC servers are producing false positives, then you may need to check if the iDRAC is IP blocking.
+
+To view and change this either use RACADM.exe or open a SSH connection to the iDRAC.
+
+```bash
+get iDRAC.IPBlocking
+```
+
+If you want to disable this feature then use the next command
+
+```bash
+set iDRAC.IPBlocking.BlockEnable Disabled
+```
