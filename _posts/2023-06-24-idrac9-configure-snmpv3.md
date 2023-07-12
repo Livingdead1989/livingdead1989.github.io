@@ -49,7 +49,7 @@ The default types of SHA and AES are good, its not recommended to use MD5 or DES
 
 Enable Passphrase, which will make the Authentication and Privacy passphrase fields appear.
 
-Set a strong Authentication and Privacy passphrase, then save and close.
+Set a strong Authentication and Privacy passphrase (Do not exceed 32 characters), then save and close.
 
 ![4](/assets/images/posts/idrac9-snmp-4.png)
 
