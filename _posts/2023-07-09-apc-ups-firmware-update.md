@@ -54,7 +54,7 @@ Lastly once complete, turn on the outlet groups again.
 
 ## NMC Firmware Update Utility
 
-I will be using the NMC firmware update utility to perform the updates, although this tool is only available for Windows operating systems, for Linux we can use the FPT/SCP option.
+I will be using the NMC firmware update utility to perform the updates, although this tool is only available for Windows operating systems, for Linux we can use the FTP/SCP option.
 
 Firstly Open the web interface for the UPS and navigate to About, from the UPS page take note of the SKU and from the Network page, note the model number.
 
