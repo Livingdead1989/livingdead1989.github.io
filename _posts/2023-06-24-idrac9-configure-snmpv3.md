@@ -125,3 +125,5 @@ If you want to disable this feature then use the next command
 ```bash
 set iDRAC.IPBlocking.BlockEnable Disabled
 ```
+
+This setting can also be found within the iDRAC web interface, under iDRAC settings > Connectivity > Advanced Network Settings > IP Blocking
