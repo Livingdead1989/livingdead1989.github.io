@@ -14,7 +14,7 @@ The two core components of vSphere are ESXi and vCenter Server.
 * **ESXi** is the virtualization platform, the bare metal server opearting system, where you create and run virtual machines and virtual appliances. 
 * **vCenter Server** is the virtual machine service through which you manage multiple ESXi hosts connected in a network and pool host resources.
 
-![vmware8-prep-01](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-prep-01.png)
+![vmware8-prep-01](/assets/images/posts/vmware8-prep-01.png)
 
 vSphere is a sophisticated product with multiple components to install and set up.
 
@@ -45,7 +45,7 @@ The CPUs used within these servers are not listed on the compatibility list and 
 
 The diagram below shows a crude physical topology, this will create the basis of my network configuration.
 
-![vmware8-server-01](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-server-01.png)
+![vmware8-server-01](/assets/images/posts/vmware8-server-01.png)
 
 
 
@@ -83,7 +83,7 @@ The diagram below shows a crude physical topology, this will create the basis of
 
 Login to VMware Customer Connect and download the appropriate files, I will be installing Essentials Plus.
 
-![vmware8-prep-02](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-prep-02.png)
+![vmware8-prep-02](/assets/images/posts/vmware8-prep-02.png)
 
 [Download VMware vSphere - VMware Customer Connect](https://customerconnect.vmware.com/en/downloads/info/slug/datacenter_cloud_infrastructure/vmware_vsphere/8_0)
 
@@ -106,7 +106,7 @@ To create a bootable USB in Windows, its recommended to use a piece of software,
 
 The example screenshot below is using Rufus. When the warning for an obsolete version of `menu.c32` appears you want to select 'No' and use the VMware provided version.
 
-![vmware8-prep-04](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-prep-04.png)
+![vmware8-prep-04](/assets/images/posts/vmware8-prep-04.png)
 
 ## Install ESXi
 
@@ -136,7 +136,7 @@ After the initial installation and configuration was complete, the rest of the s
 
 Set the Time & Date to utilise NTP servers, this can be found under "Manage" > "System" > "Time & Date".
 
-![vmware8-config-01](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-config-01.png)
+![vmware8-config-01](/assets/images/posts/vmware8-config-01.png)
 
 ### Power
 
@@ -144,7 +144,7 @@ Because these servers will be only used for a few non-mission critical services 
 
 The power management option can be found under the "Hardware" tab.
 
-![vmware8-config-02](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-config-02.png)
+![vmware8-config-02](/assets/images/posts/vmware8-config-02.png)
 
 ### Networking 
 
@@ -206,7 +206,7 @@ Next I will configure the networking elements. I will be creating the following:
 
 The screenshot below shows overriding the failover order, to ensure that one vmnic is marked as un-used. If this is not completed, adding the iSCSI block storage will fail.
 
-![vmware8-config-07](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-config-07.png)
+![vmware8-config-07](/assets/images/posts/vmware8-config-07.png)
 
 
 
@@ -236,29 +236,29 @@ The screenshot below shows overriding the failover order, to ensure that one vmn
 
 Add your storage, I will be adding an iSCSI block storage. Start by creating a new software iSCSI.
 
-![vmware8-config-05](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-config-05.png)
+![vmware8-config-05](/assets/images/posts/vmware8-config-05.png)
 
 Take note of the IQN, as this will be required for configuring our storage.
 
 I will be using a HPE Nimble to offer a block of iSCSI storage to my ESXi hosts. First I will create a new initiator group, limited down to my three ESXi hosts and their IQNs.
 
-![vmware8-nimble-01](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-nimble-01.png)
+![vmware8-nimble-01](/assets/images/posts/vmware8-nimble-01.png)
 
 Then I will create a new CHAP account for authentication.
 
-![vmware8-nimble-02](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-nimble-02.png)
+![vmware8-nimble-02](/assets/images/posts/vmware8-nimble-02.png)
 
 Next, I will create a new volume, using the access policy and CHAP account.
 
-![vmware8-nimble-03](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-nimble-03.png)
+![vmware8-nimble-03](/assets/images/posts/vmware8-nimble-03.png)
 
 Lastly I will create a new data protection policy, this is a basic 30 days, daily.
 
-![vmware8-nimble-04](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-nimble-04.png)
+![vmware8-nimble-04](/assets/images/posts/vmware8-nimble-04.png)
 
 This can then be applied to the newly created volume.
 
-![vmware8-nimble-05](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-nimble-05.png)
+![vmware8-nimble-05](/assets/images/posts/vmware8-nimble-05.png)
 
 Now we can go back to our ESXi hosts and finish the iSCSI configuration.
 
@@ -266,21 +266,21 @@ Now we can go back to our ESXi hosts and finish the iSCSI configuration.
 * Add the iSCSI VMKs to the Network Port Bindings.
 * Enter the discovery IP address into the dynamic targets.
 
-![vmware8-config-06](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-config-06.png)
+![vmware8-config-06](/assets/images/posts/vmware8-config-06.png)
 
 In the "Devices" tab, you should now see the iSCSI block storage that we previously created.
 
 Select the 5 TB block and create a new data store. - Follow the wizard through to completion.
 
-![vmware8-config-08](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-config-08.png)
+![vmware8-config-08](/assets/images/posts/vmware8-config-08.png)
 
 I will be using the full disk in VMFS version 6, which is the latest available to me.
 
-![vmware8-config-09](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-config-09.png)
+![vmware8-config-09](/assets/images/posts/vmware8-config-09.png)
 
 The new data store is available to my ESXi host, which means I can setup the vCenter appliance directly on my centralised storage.
 
-![vmware8-config-10](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-config-10.png)
+![vmware8-config-10](/assets/images/posts/vmware8-config-10.png)
 
 
 
@@ -290,61 +290,61 @@ Download the VCSA iso file and mount it.
 
 Run the VCSA-UI-Installer, I will be using the Win32 version.
 
-![vmware8-vcsa-01](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-vcsa-01.png)
+![vmware8-vcsa-01](/assets/images/posts/vmware8-vcsa-01.png)
 
 I will be selecting the "Install" option for a new installation, but as the screenshot shows we can also upgrade, migrate and restore using this application.
 
-![vmware8-vcsa-02](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-vcsa-02.png)
+![vmware8-vcsa-02](/assets/images/posts/vmware8-vcsa-02.png)
 
 Progress through the wizard until the 3rd step.
 
 Provide the ESXi host information and root credentials.
 
-![vmware8-vcsa-03](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-vcsa-03.png)
+![vmware8-vcsa-03](/assets/images/posts/vmware8-vcsa-03.png)
 
 Give the vCenter appliance a name and set the root password.
 
-![vmware8-vcsa-04](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-vcsa-04.png)
+![vmware8-vcsa-04](/assets/images/posts/vmware8-vcsa-04.png)
 
 In this setup the "Tiny" deployment will be good enough.
 
-![vmware8-vcsa-05](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-vcsa-05.png)
+![vmware8-vcsa-05](/assets/images/posts/vmware8-vcsa-05.png)
 
 I will now select our iSCSI datastore, which is located on the network and available to all of the ESXi hosts.
 
 I have also enabled Thin Disk mode, as my storage will support it.
 
-![vmware8-vcsa-06](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-vcsa-06.png)
+![vmware8-vcsa-06](/assets/images/posts/vmware8-vcsa-06.png)
 
 Lastly configure the vCenter network information.
 
-![vmware8-vcsa-07](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-vcsa-07.png)
+![vmware8-vcsa-07](/assets/images/posts/vmware8-vcsa-07.png)
 
 And now sit back and wait for the installation to complete. - This process can take some time, up to 30 minutes roughly depending on your equipment.
 
 Once the installation has completed we move onto Stage 2.
 
-![vmware8-vcsa-08](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-vcsa-08.png)
+![vmware8-vcsa-08](/assets/images/posts/vmware8-vcsa-08.png)
 
 I will sychronise my time and date with the ESXi hosts, as I have already configured NTP on them.
 
 I will also enable SSH, this is required for vCenter HA.
 
-![vmware8-vcsa-09](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-vcsa-09.png)
+![vmware8-vcsa-09](/assets/images/posts/vmware8-vcsa-09.png)
 
 As this is a new installation I will create a new vCenter server SSO domain.
 
-![vmware8-vcsa-10](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-vcsa-10.png)
+![vmware8-vcsa-10](/assets/images/posts/vmware8-vcsa-10.png)
 
 Lastly I will join the CEIP and complete Stage 2.
 
 Now you are able to log into the vSphere Client.
 
-![vmware8-vcsa-11](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-vcsa-11.png)
+![vmware8-vcsa-11](/assets/images/posts/vmware8-vcsa-11.png)
 
 Lastly I enabled 'autostart' for the host and the vCenter appliance, as shown in the screenshot.
 
-![vmware8-vcsa-13](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-vcsa-13.png)
+![vmware8-vcsa-13](/assets/images/posts/vmware8-vcsa-13.png)
 
 
 
@@ -358,7 +358,7 @@ Supported protocols include: FTPS, HTTPS, SFTP, FTP, NFS, SMB and HTTP.
 
 *How to configure a Windows Server for SFTP - [Get started with OpenSSH for Windows | Microsoft Learn](https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse?tabs=powershell)*
 
-![vmware8-vcsa-12](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-vcsa-12.png)
+![vmware8-vcsa-12](/assets/images/posts/vmware8-vcsa-12.png)
 
 
 
@@ -370,21 +370,21 @@ Lets start by creating a new datacenter, right clicking the vCenter Server Appli
 
 Then give it a name or stay with the default of "Datacenter".
 
-![vmware8-vsphere-01](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-vsphere-01.png)
+![vmware8-vsphere-01](/assets/images/posts/vmware8-vsphere-01.png)
 
 Then right click the datacenter and create a "New Cluster".
 
-![vmware8-vsphere-02](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-vsphere-02.png)
+![vmware8-vsphere-02](/assets/images/posts/vmware8-vsphere-02.png)
 
 Provide a name for this cluster and set whether you want to enable DRS, HA, vSAN.
 
 *Please bare in mind that some of these features are enterprise edition license only, such as DRS.*
 
-![vmware8-vsphere-03](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-vsphere-03.png)
+![vmware8-vsphere-03](/assets/images/posts/vmware8-vsphere-03.png)
 
 Now set the ESXi version you want to use for your image.
 
-![vmware8-vsphere-04](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-vsphere-04.png)
+![vmware8-vsphere-04](/assets/images/posts/vmware8-vsphere-04.png)
 
 Once the cluster has been created, we can now add hosts to it.
 
@@ -398,7 +398,7 @@ Using the Quickstart section, after the cluster has been created, we can move on
 
 Click the "Add" button to start the wizard.
 
-![vmware8-vsphere-05](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-vsphere-05.png)
+![vmware8-vsphere-05](/assets/images/posts/vmware8-vsphere-05.png)
 
 Populate the fields with your other ESXi hosts, I can use the same credentials for all hosts as I have set them up identical to one another.
 
@@ -406,45 +406,45 @@ Populate the fields with your other ESXi hosts, I can use the same credentials f
 
 **Edit**: I forgot to add my first ESXi host, which was hosting the VCSA. I added this after the fact.
 
-![vmware8-vsphere-06](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-vsphere-06.png)
+![vmware8-vsphere-06](/assets/images/posts/vmware8-vsphere-06.png)
 
 I will not import an image from these hosts.
 
-![vmware8-vsphere-07](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-vsphere-07.png)
+![vmware8-vsphere-07](/assets/images/posts/vmware8-vsphere-07.png)
 
 The final review also mentions about the hosts being placed into maintenance mode before they are moved into the cluster.
 
-![vmware8-vsphere-08](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-vsphere-08.png)
+![vmware8-vsphere-08](/assets/images/posts/vmware8-vsphere-08.png)
 
 A new VM will be created called "vCLS", this was introduced in vSphere 7 and is for the [vSphere Clustering Service](https://core.vmware.com/resource/introduction-vsphere-clustering-service-vcls).
 
 With the ESXi hosts in maintenance mode, we can now continue onto Step 3 within the Quickstart, configuring the cluster.
 
-![vmware8-vsphere-09](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-vsphere-09.png)
+![vmware8-vsphere-09](/assets/images/posts/vmware8-vsphere-09.png)
 
 As I do not have a real enterprise license I will not be using distributed switches, therefore I will configure networking later.
 
-![vmware8-vsphere-10](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-vsphere-10.png)
+![vmware8-vsphere-10](/assets/images/posts/vmware8-vsphere-10.png)
 
 Within the advanced options there are a few options; vSphere HA, Host Options and Enhanced vMotion Compatibility.
 
 In vSphere HA I have enabled Virtual Machine monitoring.
 
-![vmware8-vsphere-11](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-vsphere-11.png)
+![vmware8-vsphere-11](/assets/images/posts/vmware8-vsphere-11.png)
 
 In host options I have provided a list of NTP servers for the cluster to use.
 
-![vmware8-vsphere-12](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-vsphere-12.png)
+![vmware8-vsphere-12](/assets/images/posts/vmware8-vsphere-12.png)
 
 And lastly I have enabled enhanced vMotion compatibility (EVC) for my server's CPU generation.
 
-![vmware8-vsphere-13](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-vsphere-13.png)
+![vmware8-vsphere-13](/assets/images/posts/vmware8-vsphere-13.png)
 
 The minimum number of ESXi heartbeat data stores is 2, therefore I needed to create another volume on the Nimble to act as a dummy data store.
 
 *Later I will not require this extra data store as I will implement Veeam replicas, with its own data store.*
 
-![vmware8-vsphere-14](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-vsphere-14.png)
+![vmware8-vsphere-14](/assets/images/posts/vmware8-vsphere-14.png)
 
 At this point we have a fully working VMware vSphere cluster.
 
@@ -478,29 +478,29 @@ Add the new storage to the old vSphere
 
 Stop the VMs and Migrate the VM storage per VM
 
-![vmware8-migrate-01](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-migrate-01.png)
+![vmware8-migrate-01](/assets/images/posts/vmware8-migrate-01.png)
 
 We only need to migrate the storage only.
 
-![vmware8-migrate-02](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-migrate-02.png)
+![vmware8-migrate-02](/assets/images/posts/vmware8-migrate-02.png)
 
 Move the VM files to the new storage
 
-![vmware8-migrate-03](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-migrate-03.png)
+![vmware8-migrate-03](/assets/images/posts/vmware8-migrate-03.png)
 
 Register the new VM using the migrated storage
 
-![vmware8-migrate-04](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-migrate-04.png)
+![vmware8-migrate-04](/assets/images/posts/vmware8-migrate-04.png)
 
 Select the new datacenter and keep the existing VM name.
 
-![vmware8-migrate-05](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-migrate-05.png)
+![vmware8-migrate-05](/assets/images/posts/vmware8-migrate-05.png)
 
 Select an appropriate ESXi host for the new compute resource.
 
 *Note: in the screenshot my ESXi hosts are complaining about only running on a single PSU, this is only a temporary measure.*
 
-![vmware8-migrate-06](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-migrate-06.png)
+![vmware8-migrate-06](/assets/images/posts/vmware8-migrate-06.png)
 
 Review the VM, then start and verify everything is working and then consider removing VM from the old vSphere environment.
 
@@ -514,36 +514,36 @@ I have already created another block storage and presented it to the vSphere env
 
 First step is to add the vCenter Server, this can be completed via the "Inventory" tab, under "Virtual Infrastructure" > "VMware vSphere" and "vCenter Servers". Right click and "Add Server", progress through the wizard until completion.
 
-![vmware8-veeam-01](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-veeam-01.png)
+![vmware8-veeam-01](/assets/images/posts/vmware8-veeam-01.png)
 
 Disable the existing job and create a new Replication job.
 
-![vmware8-veeam-02](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-veeam-02.png)
+![vmware8-veeam-02](/assets/images/posts/vmware8-veeam-02.png)
 
 Add the virtual machines you wish to replicate.
 
-![vmware8-veeam-03](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-veeam-03.png)
+![vmware8-veeam-03](/assets/images/posts/vmware8-veeam-03.png)
 
 Next select the new vSphere cluster, resource pool, VM folder and datastore.
 
-![vmware8-veeam-04](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-veeam-04.png)
+![vmware8-veeam-04](/assets/images/posts/vmware8-veeam-04.png)
 
 Select the repository replica metadata, and I have changed the restore points down to 1.
 
-![vmware8-veeam-05](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-veeam-05.png)
+![vmware8-veeam-05](/assets/images/posts/vmware8-veeam-05.png)
 
 I have selected a direct transfer, using automatic proxy selection for both the source and target.
 
-![vmware8-veeam-06](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-veeam-06.png)
+![vmware8-veeam-06](/assets/images/posts/vmware8-veeam-06.png)
 
 To enable application-aware processing we need to provide valid credentials to access the selected virtual machines.
 
 I followed this up with a "Test Now" to verify the success.
 
-![vmware8-veeam-07](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-veeam-07.png)
+![vmware8-veeam-07](/assets/images/posts/vmware8-veeam-07.png)
 
 Lastly I configured the schedule, which will occur every 3 hours, Monday-Friday and retry upon failure.
 
-![vmware8-veeam-08](/home/livingdead1989/Desktop/vmware-8-upgrade/images/vmware8-veeam-08.png)
+![vmware8-veeam-08](/assets/images/posts/vmware8-veeam-08.png)
 
 Everything that I set out to achieve was completed, and therefore is the end of this article. I hope this helps someone, somehow.
