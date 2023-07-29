@@ -356,7 +356,7 @@ Click the "Backup" menu option and configure a new schedule.
 
 Supported protocols include: FTPS, HTTPS, SFTP, FTP, NFS, SMB and HTTP.
 
-*How to configure a Windows Server for SFTP - [Get started with OpenSSH for Windows | Microsoft Learn](https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse?tabs=powershell)*
+*How to configure a Windows Server for SFTP - [Get started with OpenSSH for Windows](https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse?tabs=powershell)*
 
 ![vmware8-vcsa-12](/assets/images/posts/vmware8-vcsa-12.png)
 
