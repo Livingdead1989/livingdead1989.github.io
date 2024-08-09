@@ -652,3 +652,11 @@ To clear the Nextcloud logs, use the below echo command.
 ```bash
 echo "" > /var/www/nextcloud/data/nextcloud.log
 ```
+
+### Adding missing indices
+
+You may see warnings of missing indices, these can be added by using the following command
+
+```bash
+runuser --user www-data -- /usr/bin/php /var/www/nextcloud/occ db:add-missing-indices
+```
