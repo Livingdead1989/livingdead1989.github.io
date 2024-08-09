@@ -619,7 +619,14 @@ Once you have resolved any checks, then continue to use the provided [Nextcloud 
 
 
 
-## Misc tasks
+## Misc
+
+### Cloudflare Notes
+
+Using some of Cloudflare's services can cause issues with NextCloud, for example ensure you a configuration rule set to disable Email Obfuscation and Rocket Loader.
+
+Additionally in some cases you may need to create a Page rule to set the Cache level to Bypass.
+
 
 ### Forgotten Admin Password
 
