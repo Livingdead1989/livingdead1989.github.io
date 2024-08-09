@@ -1,10 +1,10 @@
 ---
-title: "Nextcloud VM"
+title: "NextCloud VM"
 date: 2024-07-14 20:00:00 +0000
 categories: server
 tags: nextcloud files virtual
 description: >- # this means to ignore newlines until "baseurl:"
-  In this article I will discuss how to manually install Nextcloud on top of a virtualised platform, performing a server installation manually is great for learning.
+  In this article I will discuss how to manually install Nextcloud on top of a virtualised platform routing through a reverse proxy. Performing a server installation manually is great for learning and opportunity to troubleshoot.
 ---
 
 Nextcloud is a popular open source content collaboration platform, providing functionality similar to Dropbox, Office 365 or Google G Suite.
