@@ -83,7 +83,7 @@ The first thing I did in my Tado app was to create my schedules for the central 
 
 I did the same task for the hot water.
 
-![tado-thermostat-install-6](/assets/images/posts/tado-thermostat-install-6.jpg)
+![tado-thermostat-install-6](/assets/images/posts/tado-thermostat-install-6.png)
 
 The next screenshot shows that I do not have the Auto-Assist subscription as it is "Inactive", I also turned off the Geofencing and Open Window Detection options as I will handle this through Home Assistant to have increased flexibility and avoid having the subscription plan.
 
@@ -94,7 +94,7 @@ Some benefits of doing the automation through Home Assistant over the Auto-Assis
 * Cross system automation,
 * More flexibility and control.
 
-![tado-thermostat-install-7](/assets/images/posts/tado-thermostat-install-7.jpg)
+![tado-thermostat-install-7](/assets/images/posts/tado-thermostat-install-7.png)
 
 ### Home Assistant
 
@@ -116,7 +116,7 @@ These automation trigger when family mobile devices either enter or leave the ho
 
 For the home mode automation, the condition is if the Tado system is already in "Away" mode.
 
-![tado-thermostat-install-11](/assets/images/posts/tado-thermostat-install-11.jpg)
+![tado-thermostat-install-11](/assets/images/posts/tado-thermostat-install-11.png)
 
 I have included the YAML code for both automation below.
 
