@@ -1,6 +1,8 @@
 <section id="latestblog">
 	<h2>Latest Blog</h2>
-	
+
+	<p>My latest blog posts cover a wide range of technology projects and topics.</p>
+
 	<div class="latestblog-flexwrap">
 		{% for post in site.posts | limit:6 %}
 			<a class="latest-post" href="{{ post.url | relative_url }}">
@@ -16,6 +18,4 @@
 		<a href="/blog">View All Posts</a>
 	</div>
 	
-	<p>My latest blog posts cover a wide range of technology projects and topics, including web development, Linux, networking, Cisco, IoT, home automation, and more.</p>
-
 </section>
