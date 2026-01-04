@@ -3,7 +3,7 @@ description: >
   A quiet place for lifelong learning, thoughtful tinkering,
   and enjoying the journey of computing.
 url: https://livingdead1989.github.io
-baseurl: "/networkingdream"   # set to "/repo-name" if not a user site
+baseurl: ""   # set to "/repo-name" if not a user site
 
 markdown: kramdown
 
