@@ -176,11 +176,208 @@ function initScrollTopButton() {
   });
 }
 
+
+/* =========================
+   Code Blocks
+========================= */
+
+function initCodeBlocks() {
+  const pres = document.querySelectorAll('.post-content pre');
+  if (!pres.length) return;
+
+  pres.forEach(pre => {
+    // Prevent double-processing
+    if (pre.dataset.enhanced === 'true') return;
+    pre.dataset.enhanced = 'true';
+
+    const code = pre.querySelector('code');
+
+    /* =========================
+       Copy button
+    ========================= */
+
+    if (code && navigator.clipboard) {
+      const copyBtn = document.createElement('button');
+      copyBtn.className = 'copy-button';
+      copyBtn.type = 'button';
+      copyBtn.textContent = 'Copy';
+
+      copyBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(code.textContent);
+          copyBtn.textContent = 'Copied';
+          copyBtn.classList.add('copied');
+
+          setTimeout(() => {
+            copyBtn.textContent = 'Copy';
+            copyBtn.classList.remove('copied');
+          }, 1600);
+        } catch {
+          copyBtn.textContent = 'Error';
+        }
+      });
+
+      pre.appendChild(copyBtn);
+    }
+
+    /* =========================
+       Language detection
+    ========================= */
+
+    if (!pre.dataset.lang) {
+      let parent = pre.parentElement;
+
+      while (parent && parent !== document.body) {
+        const langClass = [...parent.classList].find(c =>
+          c.startsWith('language-')
+        );
+        if (langClass) {
+          pre.dataset.lang = langClass.replace('language-', '');
+          break;
+        }
+        parent = parent.parentElement;
+      }
+    }
+
+    /* =========================
+       Auto-collapse long blocks
+    ========================= */
+
+    const maxHeight = 352; // ~22rem
+    if (pre.scrollHeight > maxHeight) {
+      pre.classList.add('is-collapsed');
+
+      const toggle = document.createElement('button');
+      toggle.className = 'code-toggle';
+      toggle.type = 'button';
+      toggle.textContent = 'Show more';
+
+      toggle.addEventListener('click', () => {
+        const expanded = pre.classList.toggle('is-expanded');
+        pre.classList.toggle('is-collapsed', !expanded);
+        toggle.textContent = expanded ? 'Show less' : 'Show more';
+      });
+
+      pre.appendChild(toggle);
+    }
+  });
+}
+
+/* =========================
+     Table of Contents (TOC)
+  ========================= */
+
+function initTOC() {
+  const tocContainer = document.querySelector(".toc-container");
+  const tocHeader = tocContainer?.querySelector(".toc-header");
+  const toc = document.querySelector("ul.toc");
+
+  /* =========================
+     TOC container toggle
+  ========================= */
+
+  if (tocContainer && tocHeader) {
+    tocHeader.addEventListener("click", e => {
+      // Prevent accidental toggles from nested elements
+      if (e.target.closest("a, button")) return;
+
+      const isOpen = tocContainer.classList.toggle("is-open");
+      tocHeader.setAttribute("aria-expanded", String(isOpen));
+    });
+  }
+
+  if (!toc) return;
+
+  /* =========================
+     Nested section toggles
+  ========================= */
+
+  const tocItems = toc.querySelectorAll("li");
+
+  tocItems.forEach(li => {
+    if (li.dataset.tocInit === "true") return;
+    li.dataset.tocInit = "true";
+
+    const nested = li.querySelector(":scope > ul");
+    if (!nested) return;
+
+    const button = document.createElement("button");
+    button.className = "toc-toggle";
+    button.type = "button";
+    button.setAttribute("aria-expanded", "false");
+    button.setAttribute("aria-label", "Toggle subsections");
+
+    button.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg"
+           viewBox="0 0 24 24"
+           fill="none"
+           stroke="currentColor"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round"
+           class="toc-icon"
+           aria-hidden="true">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    `;
+
+    const link = li.querySelector(":scope > a");
+    link?.after(button);
+
+    button.addEventListener("click", e => {
+      e.preventDefault();
+
+      const isExpanded = li.classList.contains("is-expanded");
+      const parentList = li.parentElement;
+
+      // Collapse siblings
+      parentList
+        .querySelectorAll(":scope > li.is-expanded")
+        .forEach(item => {
+          if (item !== li) {
+            item.classList.remove("is-expanded");
+            item.querySelector(".toc-toggle")
+              ?.setAttribute("aria-expanded", "false");
+          }
+        });
+
+      // Toggle current
+      li.classList.toggle("is-expanded", !isExpanded);
+      button.setAttribute("aria-expanded", String(!isExpanded));
+    });
+  });
+
+  /* =========================
+     Auto-expand active hash
+  ========================= */
+
+  const currentHash = decodeURIComponent(location.hash);
+  if (!currentHash) return;
+
+  const activeLink = toc.querySelector(`a[href="${currentHash}"]`);
+  if (!activeLink) return;
+
+  let currentLi = activeLink.closest("li");
+
+  while (currentLi && currentLi.closest("ul.toc")) {
+    currentLi.classList.add("is-expanded");
+    currentLi.querySelector(".toc-toggle")
+      ?.setAttribute("aria-expanded", "true");
+
+    currentLi = currentLi.parentElement.closest("li");
+  }
+}
+
+
 /* =========================
    Init everything
 ========================= */
 
-initSectionObserver();
-initThemeToggle();
-initMobileNav();
-initScrollTopButton();
+document.addEventListener("DOMContentLoaded", () => {
+  initSectionObserver();
+  initThemeToggle();
+  initMobileNav();
+  initScrollTopButton();
+  initCodeBlocks();
+  initTOC();
+});
