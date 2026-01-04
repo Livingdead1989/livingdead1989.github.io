@@ -1,0 +1,234 @@
+/* =========================================================
+   Table of Contents (TOC)
+   ========================================================= */
+.toc-container {
+  margin: 1.75rem 0 2.25rem;
+  background: var(--panel);
+  border: 1px solid var(--border-subtle);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+
+.toc-header {
+  all: unset;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0.9rem 1.25rem;
+  cursor: pointer;
+
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Rotate when open */
+.toc-container.is-open .toc-header-icon {
+  transform: rotate(90deg);
+}
+
+/* TOC list */
+ul.toc {
+  list-style: none;
+  padding: 0 1.35rem 1.1rem;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* Individual TOC items */
+ul.toc li {
+  margin: 0.35rem 0;
+}
+
+/* TOC links */
+ul.toc a {
+  color: var(--text);
+  text-decoration: none;
+  transition:
+    color var(--hover-duration) var(--hover-ease),
+    text-shadow var(--hover-duration) var(--hover-ease);
+}
+
+/* Hover / focus state */
+ul.toc a:hover,
+ul.toc a:focus {
+  color: var(--accent-warm);
+  text-shadow: 0 0 6px var(--accent-glow);
+}
+
+ul.toc a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Optional: subtle marker */
+ul.toc li::marker {
+  color: var(--accent);
+}
+
+/* Make TOC visually quieter than main content */
+ul.toc a {
+  font-weight: 500;
+}
+
+/* =========================================================
+   Nested TOC (H3+)
+   ========================================================= */
+
+ul.toc ul {
+  margin-top: 0.35rem;
+  padding-left: 1.1rem;
+  border-left: 1px dashed var(--border-soft);
+}
+
+ul.toc ul li {
+  font-size: 0.92rem;
+}
+
+ul.toc ul ul li {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+/* Hide toggles for deepest level */
+ul.toc ul ul .toc-toggle {
+  display: none;
+}
+
+
+/* =========================================================
+   TOC Collapsible Nested Levels
+   ========================================================= */
+
+/* Hide nested lists by default */
+ul.toc li > ul {
+  margin-top: 0.4rem;
+  transition: opacity var(--hover-duration) var(--hover-ease);
+}
+
+/* Show when expanded */
+ul.toc li.is-expanded > ul {
+  display: block;
+}
+
+ul.toc li:not(.is-expanded) > ul {
+  opacity: 0;
+}
+
+/* Make parent items clickable containers */
+ul.toc li {
+  position: relative;
+}
+
+/* Toggle button */
+ul.toc .toc-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 0.5rem;
+
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  transition: color var(--hover-duration) var(--hover-ease),
+              transform var(--hover-duration) var(--hover-ease);
+}
+
+/* Toggle button reset */
+.toc-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  color: var(--text-muted);
+  transition:
+    color var(--hover-duration) var(--hover-ease),
+    transform var(--hover-duration) var(--hover-ease);
+}
+
+.toc-icon {
+  width: 0.85rem;
+  height: 0.85rem;
+}
+
+/* Hover */
+ul.toc .toc-toggle:hover {
+  color: var(--accent);
+}
+
+/* Rotate indicator when open */
+ul.toc li.is-expanded > .toc-toggle {
+  transform: rotate(90deg);
+}
+
+/* =========================================================
+   TOC Expand / Collapse Animation
+   ========================================================= */
+
+ul.toc li > ul {
+  display: none;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+
+  opacity: 0;
+  transform: translateY(-2px);
+
+  transition:
+    grid-template-rows var(--motion-fast) var(--motion-ease),
+    opacity var(--hover-duration) var(--hover-ease),
+    transform var(--hover-duration) var(--hover-ease);
+  transition-delay: 0ms;
+}
+
+/* Expanded state */
+ul.toc li.is-expanded > ul {
+  display: grid;
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 40ms;
+}
+
+/* Inner list wrapper */
+ul.toc li > ul > li {
+  min-height: 0;
+}
+
+/* Desktop media query */
+@media (min-width: 769px) {
+  .toc-container {
+    max-width: 42rem;
+  }
+
+  .toc-header {
+    cursor: default;
+  }
+}
+
+/* Mobile media query */
+@media (max-width: 768px) {
+  .toc-container ul.toc {
+    display: none;
+  }
+
+  .toc-container.is-open ul.toc {
+    display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ul.toc li > ul {
+    transition: none;
+  }
+}
+

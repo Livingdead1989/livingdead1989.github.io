@@ -1,0 +1,139 @@
+/* ============================
+   Cards
+============================ */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  position: relative;
+  padding: 1.6rem;
+  color: var(--text);
+  text-decoration: none;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+
+  border: 3px solid transparent;
+
+  background:
+    linear-gradient(var(--panel), var(--panel)) padding-box,
+    linear-gradient(
+      135deg,
+      var(--accent-border),
+      var(--accent-border-warm)
+    ) border-box;
+
+  transition:
+    transform var(--hover-duration) var(--hover-ease),
+    box-shadow var(--hover-duration) var(--hover-ease),
+    border-color var(--hover-duration) ease;
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.012);
+  box-shadow:
+    var(--shadow-lg),
+    0 0 18px var(--accent-glow);
+
+  background:
+    linear-gradient(var(--panel), var(--panel)) padding-box,
+    linear-gradient(
+      135deg,
+      var(--accent),
+      var(--accent-warm)
+    ) border-box;
+}
+
+/* --------------------------------
+   Card content
+-------------------------------- */
+
+.card h3 {
+  font-size: 1.15rem;
+  line-height: 1.3;
+  margin-bottom: 0.4rem;
+}
+
+.card a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  height: 100%;
+}
+
+/* --------------------------------
+   Status badges
+-------------------------------- */
+
+.recent {
+  font-size: 0.7rem;
+  padding: 0.15em 0.55em;
+  border-radius: 999px;
+  letter-spacing: 0.08em;
+  margin-left: 0.4em;
+  background: var(--panel-soft);
+  box-shadow: inset 0 0 0 1px var(--border-subtle);
+}
+
+/* Status colors */
+
+.status-active {
+  color: var(--accent-live);
+}
+
+.status-updated {
+  color: var(--accent-warm);
+}
+
+.status-completed {
+  color: var(--accent);
+}
+
+.status-archived {
+  color: var(--text-muted);
+}
+
+
+#blog .card {
+  background:
+    linear-gradient(var(--panel), var(--panel)) padding-box,
+    linear-gradient(
+      120deg,
+      var(--accent-border),
+      var(--accent-border-warm)
+    ) border-box;
+}
+
+/* Angle variations */
+#blog .card:hover {
+  background:
+    linear-gradient(var(--panel), var(--panel)) padding-box,
+    linear-gradient(
+      120deg,
+      var(--accent),
+      var(--accent-warm)
+    ) border-box;
+}
+
+#projects .card {
+  background:
+    linear-gradient(var(--panel), var(--panel)) padding-box,
+    linear-gradient(
+      200deg,
+      var(--accent-border),
+      var(--accent-border-warm)
+    ) border-box;
+}
+
+#projects .card:hover {
+  background:
+    linear-gradient(var(--panel), var(--panel)) padding-box,
+    linear-gradient(
+      200deg,
+      var(--accent),
+      var(--accent-warm)
+    ) border-box;
+}

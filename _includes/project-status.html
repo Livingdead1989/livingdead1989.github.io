@@ -1,0 +1,11 @@
+{% assign status = include.status | downcase %}
+
+{% if status == "active" %}
+  <span class="recent status-active">ACTIVE</span>
+{% elsif status == "updated" %}
+  <span class="recent status-updated">UPDATED</span>
+{% elsif status == "completed" %}
+  <span class="recent status-completed">COMPLETED</span>
+{% elsif status == "archived" %}
+  <span class="recent status-archived">ARCHIVED</span>
+{% endif %}

@@ -1,0 +1,21 @@
+social:
+  - name: GitHub
+    url: https://github.com/livingdead1989
+    icon: github
+
+  - name: LinkedIn
+    url: https://www.linkedin.com/in/steven-smith-b5673375/
+    icon: linkedin
+
+  - name: YouTube
+    url: https://www.youtube.com/@NetworkingDream
+    icon: youtube
+
+support:
+  - name: Paypal
+    url: https://www.paypal.com/paypalme/stevensmith1989
+    icon: paypal
+
+  - name: GitHub sponsors
+    url: https://github.com/sponsors/Livingdead1989
+    icon: github

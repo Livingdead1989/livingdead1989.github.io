@@ -1,0 +1,119 @@
+---
+layout: default
+title: Search
+permalink: /search/
+---
+
+<main class="search-page">
+  <header class="search-header">
+    <h1>Search</h1>
+
+    <input
+      type="search"
+      id="search-input"
+      placeholder="Search posts and projects…"
+      aria-label="Search"
+      autofocus
+    >
+
+    <!-- link to tags -->
+    <p class="search-tags-link">
+      <a href="{{ '/tags/' | relative_url }}">
+        Explore by tag 
+        <svg
+          class="icon-tag"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M20.59 13.41 11 3.83V2H2v9l9.59 9.59a2 2 0 0 0 2.82 0l5.18-5.18a2 2 0 0 0 0-2.82Z"/>
+          <circle cx="7.5" cy="7.5" r="1.5"/>
+        </svg>
+  </a>
+    </p>
+  </header>
+
+  <ul id="search-results" class="search-results"></ul>
+
+  <p id="search-empty" hidden>No results found.</p>
+</main>
+
+<script>
+  (function () {
+    const input = document.getElementById('search-input');
+    const resultsEl = document.getElementById('search-results');
+    const emptyEl = document.getElementById('search-empty');
+
+    let index = [];
+
+    fetch('{{ "/search.json" | relative_url }}')
+      .then(res => res.json())
+      .then(data => index = data);
+
+    input.addEventListener('input', function () {
+      const query = this.value.toLowerCase().trim();
+      resultsEl.innerHTML = '';
+
+      if (!query) {
+        emptyEl.hidden = true;
+        return;
+      }
+
+      const results = index.filter(item => {
+        return (
+          item.title.toLowerCase().includes(query) ||
+          item.description.toLowerCase().includes(query) ||
+          item.content.toLowerCase().includes(query) ||
+          (item.tags || []).join(' ').toLowerCase().includes(query)
+        );
+      });
+
+      if (results.length === 0) {
+        emptyEl.hidden = false;
+        return;
+      }
+
+      emptyEl.hidden = true;
+
+      results.slice(0, 20).forEach(item => {
+        const li = document.createElement('li');
+        li.className = 'search-result';
+
+        const tags = (item.tags || []).slice(0, 3).map(tag => {
+          return `<a href="/tags/${tag}/" class="tag-pill">${tag}</a>`;
+        }).join('');
+        const description = item.description || '';
+
+        li.innerHTML = `
+          <a href="${item.url}" class="result-link">
+            <h2 class="result-title">${item.title}</h2>
+          </a>
+
+          <p class="result-meta">${item.type}</p>
+
+          ${description ? `<p class="result-excerpt">${description}</p>` : ''}
+          ${tags ? `<div class="tag-pills">${tags}</div>` : ''}
+        `;
+
+        resultsEl.appendChild(li);
+      });
+    });
+  })();
+</script>
+
+<!-- animate script -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    setTimeout(() => {
+      document.body.classList.add('search-animate');
+    }, 0);
+  });
+</script>
+

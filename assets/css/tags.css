@@ -1,0 +1,224 @@
+/* ============================
+   Inline Tag Links (posts/projects)
+============================ */
+
+.tags {
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+}
+
+.tags a {
+  margin-right: 0.6em;
+  color: var(--accent-warm);
+  opacity: 0.8;
+  text-decoration: none;
+
+  transition:
+    opacity var(--hover-duration) var(--hover-ease),
+    color var(--hover-duration) var(--hover-ease);
+}
+
+.tags a:hover,
+.tags a:focus {
+  opacity: 1;
+  color: var(--accent);
+}
+
+/* ============================
+   Tags Index Page
+============================ */
+
+.tags-page {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  color: var(--text);
+}
+
+.tag-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tag-item {
+  margin-bottom: 2rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--panel) 70%, var(--accent-dark));
+}
+
+/* ============================
+   Tag Title
+============================ */
+
+.tag-title {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.tag-title a {
+  text-decoration: none;
+  color: var(--text);
+
+  transition:
+    color var(--hover-duration) var(--hover-ease);
+}
+
+.tag-title a:hover,
+.tag-title a:focus {
+  color: var(--accent-warm);
+}
+
+/* ============================
+   Tag Page Content
+============================ */
+
+.tags-page section {
+  margin-top: 2.5rem;
+}
+
+/* Section headings */
+
+.tags-page h2 {
+  font-size: 1.15rem;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+/* Content list */
+
+.tags-page ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Individual item */
+
+.tags-page li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--panel) 70%, var(--accent-dark));
+}
+
+/* Title link */
+
+.tags-page li a {
+  text-decoration: none;
+  color: var(--text);
+  font-size: 1rem;
+
+  transition:
+    color var(--hover-duration) var(--hover-ease);
+}
+
+.tags-page li a:hover,
+.tags-page li a:focus {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* Optional metadata (date / type) */
+
+.tag-item-meta {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--theme-light-text);
+}
+
+/* Empty state */
+
+.tags-page .empty {
+  margin-top: 1.5rem;
+  font-style: italic;
+  color: var(--theme-light-text);
+}
+
+/* ============================
+   Tag Count
+============================ */
+
+.tag-count {
+  margin-left: 0.35rem;
+  font-weight: normal;
+  color: var(--theme-light-text);
+}
+
+/* ============================
+   Tag Description
+============================ */
+
+.tag-description {
+  margin: 0.5rem 0;
+  color: var(--text);
+  opacity: 0.85;
+}
+
+/* ============================
+   Tag Meta (post/project counts)
+============================ */
+
+.tag-meta {
+  font-size: 0.85rem;
+  color: var(--theme-light-text);
+}
+
+/* ============================
+   Tag Filter Input
+============================ */
+
+.tag-filter {
+  width: 100%;
+  max-width: 24rem;
+  padding: 0.5rem 0.75rem;
+  margin: 1rem 0 2rem;
+
+  font-size: 1rem;
+  color: var(--text);
+  background-color: var(--panel);
+
+  border: 1px solid var(--accent-dark);
+  border-radius: 0.5rem;
+
+  transition:
+    border-color var(--hover-duration) var(--hover-ease),
+    box-shadow var(--hover-duration) var(--hover-ease);
+}
+
+.tag-filter::placeholder {
+  color: var(--theme-light-text);
+}
+
+.tag-filter:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px
+    color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+/* ============================
+   Filtering States
+============================ */
+
+.tag-item[hidden] {
+  display: none;
+}
+
+#no-results {
+  margin-top: 2rem;
+  font-style: italic;
+  color: var(--theme-light-text);
+}
+
+/* ============================
+   Reduced Motion
+============================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .tags a,
+  .tag-title a,
+  .tag-filter {
+    transition: none;
+  }
+}

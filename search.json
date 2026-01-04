@@ -1,0 +1,18 @@
+---
+layout: null
+permalink: /search.json
+---
+
+[
+  {% assign items = site.posts | concat: site.projects %}
+  {% for item in items %}
+    {
+      "title": {{ item.title | jsonify }},
+      "url": {{ item.url | relative_url | jsonify }},
+      "type": {{ item.collection | default: "posts" | jsonify }},
+      "tags": {{ item.tags | jsonify }},
+      "description": {{ item.description | default: "" | strip_html | jsonify }},
+      "content": {{ item.content | strip_html | strip_newlines | jsonify }}
+    }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]

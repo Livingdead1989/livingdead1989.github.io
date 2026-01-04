@@ -1,0 +1,175 @@
+/* =========================================================
+   Global Theme Tokens
+   Dark theme is DEFAULT
+   ========================================================= */
+
+/* =========================================================
+   Typography
+   ========================================================= */
+
+:root {
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont,
+               "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* =======================================================
+     Text
+     ======================================================= */
+
+  --text: #e5e7eb;
+  --text-muted: #9ca3af;
+  --theme-light-text: #9ca3af;
+
+  /* =======================================================
+     Surfaces
+     ======================================================= */
+
+  --bg: #0b1210;
+  --panel: #121a17;
+  --panel-soft: rgba(255,255,255,0.04);
+
+  /* =======================================================
+     Borders
+     ======================================================= */
+
+  --border-subtle: rgba(255,255,255,0.08);
+  --border-soft: rgba(127,191,154,0.25);
+
+  /* =======================================================
+     Accent Palette
+     ======================================================= */
+
+  --accent: #7fbf9a;
+  --accent-dark: #4f8f73;
+  --accent-warm: #d6b866;
+  --accent-warm-dark: #bea45a;
+  --accent-muted: #888888;
+  --accent-live: #64aabe;
+
+  /* =======================================================
+    Status Colors (semantic, not derived from accent)
+    ======================================================= */
+
+  --note: #60a5fa;
+  --tip: #34d399;
+  --warning: #fbbf24;
+  --danger: #f87171;
+
+  /* =======================================================
+     Accent Derivatives (DO NOT NORMALISE)
+     These values are tuned visually – keep literal RGBA
+     ======================================================= */
+
+  --accent-surface: rgba(127,191,154,0.08);
+  --accent-soft: rgba(127,191,154,0.12);
+
+  --accent-border: rgba(127,191,154,0.25);
+  --accent-border-strong: rgba(127,191,154,0.4);
+  --accent-border-warm: rgba(214,184,102,0.35);
+
+  --accent-glow: rgba(127,191,154,0.25);
+  --accent-glow-strong: rgba(127,191,154,0.4);
+  --accent-glow-warm: rgba(214,184,102,0.45);
+
+  --tag-background: rgba(127,191,154,0.14);
+
+  /* =======================================================
+     Gradients
+     ======================================================= */
+
+  --gradient-accent:
+    linear-gradient(135deg, rgba(127,191,154,0.85), rgba(214,184,102,0.85));
+
+  --gradient-accent-soft:
+    linear-gradient(135deg, rgba(127,191,154,0.45), rgba(214,184,102,0.45));
+
+  /* =======================================================
+     Shadows
+     ======================================================= */
+
+  --shadow-sm: 0 6px 18px rgba(0,0,0,0.25);
+  --shadow-md: 0 10px 28px rgba(0,0,0,0.4);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,0.45);
+
+  /* =======================================================
+     Motion
+     ======================================================= */
+
+  --hover-duration: 240ms;
+  --hover-ease: cubic-bezier(.2,.8,.2,1);
+  --motion-fast: 420ms;
+  --motion-ease: cubic-bezier(.2,.8,.2,1);
+
+  /* =======================================================
+     Radius
+     ======================================================= */
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  /* =======================================================
+     Code Highlighting
+     ======================================================= */
+
+  --code-bg: #0f172a;
+  --code-inline-bg: rgba(255,255,255,0.08);
+  --code-text: #e5e7eb;
+  --code-selection: rgba(127,191,154,0.25);
+
+  --code-comment: #9ca3af;
+  --code-keyword: #7fbf9a;
+  --code-string: #d6b866;
+  --code-number: #34d399;
+  --code-function: #64aabe;
+  --code-operator: #9ca3af;
+}
+
+/* =========================================================
+   Light Theme (opt-in)
+   Override values ONLY
+   ========================================================= */
+
+[data-theme="light"] {
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --theme-light-text: #64748b;
+
+  --bg: #f8fafc;
+  --panel: #ffffff;
+  --panel-soft: rgba(0,0,0,0.04);
+
+  --border-subtle: rgba(0,0,0,0.08);
+  --border-soft: rgba(79,143,115,0.35);
+
+  --accent: #4f8f73;
+  --accent-dark: #2f6f55;
+  --accent-warm: #c9a94d;
+
+  --accent-soft: rgba(79,143,115,0.14);
+  --accent-glow: rgba(79,143,115,0.35);
+  --accent-glow-strong: rgba(79,143,115,0.45);
+  --accent-glow-warm: rgba(201,169,77,0.30);
+  --accent-border: rgba(79,143,115,0.35);
+  --accent-border-strong: rgba(79,143,115,0.45);
+  --accent-border-warm: rgba(201,169,77,0.42);
+
+  --tag-background: rgba(79,143,115,0.18);
+
+  --shadow-sm: 0 6px 18px rgba(0,0,0,0.12);
+  --shadow-md: 0 10px 28px rgba(0,0,0,0.18);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,0.25);
+
+  --code-bg: #f1f5f9;
+  --code-inline-bg: rgba(15, 23, 42, 0.06);
+  --code-text: #0f172a;
+  --code-selection: rgba(37, 99, 235, 0.2);
+
+  --code-comment: #64748b;
+  --code-keyword: #2563eb;
+  --code-string: #b45309;
+  --code-number: #059669;
+  --code-function: #0369a1;
+  --code-operator: #475569;
+}

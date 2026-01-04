@@ -1,0 +1,44 @@
+/* ============================
+   Tag Pills
+============================ */
+
+.tag-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.tag-pill {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+
+  font-size: 0.75rem;
+  line-height: 1.4;
+
+  color: var(--theme-light-text);
+  background-color: var(--panel);
+
+  border: 1px solid var(--accent-dark);
+  border-radius: 999px;
+
+  text-decoration: none;
+
+  transition:
+    color var(--hover-duration) var(--hover-ease),
+    border-color var(--hover-duration) var(--hover-ease),
+    background-color var(--hover-duration) var(--hover-ease);
+}
+
+.tag-pill:hover,
+.tag-pill:focus {
+  color: var(--accent-warm);
+  border-color: var(--accent-warm);
+  background-color:
+    color-mix(in srgb, var(--panel) 85%, var(--accent-warm));
+}
+
+.tag-pill:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}

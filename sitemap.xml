@@ -1,0 +1,21 @@
+---
+layout: none
+---
+<!-- Totally optional — RSS already covers most discovery. -->
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  {% for post in site.posts %}
+    <url>
+      <loc>{{ site.url }}{{ post.url }}</loc>
+      <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
+    </url>
+  {% endfor %}
+
+  {% for project in site.projects %}
+    <url>
+      <loc>{{ site.url }}{{ project.url }}</loc>
+    </url>
+  {% endfor %}
+
+</urlset>

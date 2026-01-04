@@ -1,0 +1,112 @@
+.avatar {
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  margin-bottom:1.2rem;
+}
+
+.avatar img {
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  border:2px solid var(--accent-dark);
+}
+
+.about-socials {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2.5rem;
+}
+
+.about-social-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.about-social-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.about-social-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.about-social-divider {
+  width: 48px;
+  height: 1px;
+  align-self: center;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent-border-warm),
+    transparent
+  );
+  
+
+  opacity: 0.6;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .about-socials:hover .about-social-divider {
+    transform: scaleX(1.2);
+    opacity: 0.9;
+  }
+}
+
+.about-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--text);
+  border: 2px solid var(--accent-dark);
+  background: transparent;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.about-circle svg {
+  width: 20px;
+  height: 20px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .about-circle:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 0 0 2px var(--accent-border),
+      0 0 18px var(--accent-glow);
+    animation: glowPulseOnce 900ms ease-out both;
+
+  }
+}
+
+@keyframes glowPulseOnce {
+  0% {
+    box-shadow:
+      0 0 0 2px var(--accent-border),
+      0 0 0 var(--accent-glow);
+  }
+  60% {
+    box-shadow:
+      0 0 0 2px var(--accent-border-strong),
+      0 0 22px var(--accent-glow-strong);
+  }
+  100% {
+    box-shadow:
+      0 0 0 2px var(--accent-border),
+      0 0 14px var(--accent-glow);
+  }
+}

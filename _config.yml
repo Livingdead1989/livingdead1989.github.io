@@ -1,0 +1,32 @@
+title: NetworkingDream
+description: >
+  A quiet place for lifelong learning, thoughtful tinkering,
+  and enjoying the journey of computing.
+url: https://livingdead1989.github.io
+baseurl: "/networkingdream"   # set to "/repo-name" if not a user site
+
+markdown: kramdown
+
+permalink: pretty
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+  tags:
+    output: true
+    permalink: /tags/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: project

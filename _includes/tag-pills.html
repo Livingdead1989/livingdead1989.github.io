@@ -1,0 +1,15 @@
+{% if include.tags %}
+  <div class="tag-pills">
+    {% for tag in include.tags %}
+      {% assign tag_page = site.tags | where: "tag", tag | first %}
+      {% if tag_page %}
+        <a
+          href="{{ tag_page.url | relative_url }}"
+          class="tag-pill"
+        >
+          {{ tag_page.title | default: tag }}
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endif %}

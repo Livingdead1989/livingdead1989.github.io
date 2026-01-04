@@ -1,0 +1,46 @@
+---
+layout: default
+---
+
+<main class="post">
+  <article>
+    <header class="post-header">
+      <h1>{{ page.title }}</h1>
+
+      <p class="post-meta">
+        {{ page.date | date: "%B %d, %Y" }}
+      </p>
+    </header>
+
+    <p class="post-description">
+      {{ page.description }}
+    </p>
+
+    <!-- TOC -->
+    <div class="toc-container">
+      <button class="toc-header" aria-expanded="true">
+        <span>Contents</span>
+      </button>
+
+      {% include toc.html html=content sanitize=true class="toc" h_min=2 h_max=4 %}
+    </div>
+
+    <!-- Content -->
+    <div class="post-content">
+      {{ content }}
+    </div>
+
+  <br>
+
+  <!-- tags -->
+  {% include tag-pills.html tags=page.tags %}
+
+  </article>
+
+  <!-- TOC Toggle -->
+  <script src="{{ '/assets/js/toc-toggle.js' | relative_url }}" defer></script>
+  <!-- Code Copy -->
+  <script src="{{ '/assets/js/codeblock.js' | relative_url }}" defer></script>
+  
+      
+</main>

@@ -1,0 +1,44 @@
+<section id="about">
+            <h2>About</h2>
+
+            <div class="avatar">
+                <img src="{{ site.data.site.author.avatar }}" alt="{{ site.data.site.author.name }} avatar" />
+                <p style="margin:0;opacity:0.9;">Created by <strong>{{ site.data.site.author.name }}</strong> 🌵</p>
+            </div>
+
+            <p>NetworkingDream is a personal space — a calm corner of the internet for tinkering, curiosity, and enjoying the long road of computing.</p>
+            <p>I’m a lifelong learner, zombie fan, and boulderer who works as an <strong>ICT Network Manager</strong>. I like poking around under the hood of things — from <strong>networking</strong> and <strong>infrastructure</strong> to <strong>systems</strong> and <strong>automation</strong>.</p>
+            <p>I enjoy sharing what I learn along the way, helping people improve their <strong>networks</strong>, fix everyday tech problems, and feel more confident with the tools they use. I’m especially into <strong>open‑source</strong>, <strong>security</strong>, and <strong>privacy</strong>, and building things on solid fundamentals.</p>
+
+            <div class="manifesto-label">Manifesto</div>
+            <div class="manifesto" aria-label="Brand manifesto">
+                <p><strong>Learn by doing.</strong></p>
+                <p>Stay curious. Build small. Revisit the fundamentals.</p>
+                <p><em>No hype — just steady exploration.</em></p>
+            </div>
+
+            <div class="about-socials">
+
+                <div class="about-social-group">
+                    <span class="about-social-label">Social</span>
+                    <div class="about-social-row">
+                        {% for link in site.data.socials.social %}
+                            <a href="{{ link.url }}" class="about-circle" aria-label="{{ link.name }}">
+                                {% include icons/{{ link.icon }}.svg %}
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="about-social-group">
+                    <span class="about-social-label">Support</span>
+                    <div class="about-social-row">
+                        {% for link in site.data.socials.support %}
+                            <a href="{{ link.url }}" class="about-circle" aria-label="{{ link.name }}">
+                                {% include icons/{{ link.icon }}.svg %}
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>

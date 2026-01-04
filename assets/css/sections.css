@@ -1,0 +1,191 @@
+/* ============================
+   Section reveal
+============================ */
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+section {
+  margin-bottom: 5rem;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --------------------------------
+   Circle (system UI element)
+-------------------------------- */
+
+.circle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--border-subtle);
+  color: inherit;
+  transition:
+    transform var(--hover-duration) var(--hover-ease),
+    box-shadow var(--hover-duration) var(--hover-ease),
+    border-color var(--hover-duration) var(--hover-ease);
+}
+
+.circle:hover,
+.circle:focus-visible {
+  transform: translateY(-1px);
+  border-color: var(--accent-border);
+  box-shadow:
+    inset 0 0 0 1px var(--accent-border),
+    0 0 10px var(--accent-soft);
+  background: transparent;
+  color: inherit;
+}
+
+/* --------------------------------
+   Hover raise (featured only)
+-------------------------------- */
+
+.hover-raise {
+  transition:
+    transform var(--hover-duration) cubic-bezier(.2,.8,.2,1),
+    box-shadow var(--hover-duration) cubic-bezier(.2,.8,.2,1);
+  will-change: transform, box-shadow;
+}
+
+.hover-raise:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow:
+    var(--shadow-lg),
+    0 0 18px var(--accent-glow);
+}
+
+/* --------------------------------
+   Typography
+-------------------------------- */
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.manifesto-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-top: 2rem;
+  margin-bottom: 0.4rem;
+}
+
+/* --------------------------------
+   Manifesto block
+-------------------------------- */
+
+.manifesto {
+  margin-top: 1.8rem;
+  padding: 1.6rem 1.8rem;
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--accent-surface),
+      transparent 70%
+    ),
+    var(--panel);
+
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--accent-border);
+
+  box-shadow:
+    inset 0 0 0 1px var(--accent-border),
+    var(--shadow-md);
+}
+
+.manifesto p {
+  margin: 0.4rem 0;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.manifesto p strong {
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  background: linear-gradient(
+    90deg,
+    var(--accent),
+    var(--accent-warm)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.manifesto p em {
+  font-style: normal;
+  opacity: 0.75;
+}
+
+/* --------------------------------
+   Motion refinement
+-------------------------------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .hover-raise:hover {
+    animation: hoverRaiseIn var(--motion-fast) var(--motion-ease) both;
+  }
+
+  .hover-raise:not(:hover) {
+    animation: hoverRaiseOut 320ms cubic-bezier(.4,0,.6,1) both;
+  }
+
+  .manifesto {
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+}
+
+ @keyframes hoverRaiseIn {
+  from {
+    transform: translateY(0) scale(1);
+    box-shadow: none;
+  }
+  to {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow:
+      var(--shadow-lg),
+      0 0 18px var(--accent-glow);
+  }
+}
+
+@keyframes hoverRaiseOut {
+  from {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow:
+      var(--shadow-lg),
+      0 0 18px var(--accent-glow);
+  }
+  to {
+    transform: translateY(0) scale(1);
+    box-shadow: none;
+  }
+}
+
+/* --------------------------------
+   Reduced motion
+-------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  section {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

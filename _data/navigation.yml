@@ -1,0 +1,8 @@
+- label: About
+  url: "#about"
+
+- label: Blog
+  url: "blog"
+
+- label: Projects
+  url: "projects"

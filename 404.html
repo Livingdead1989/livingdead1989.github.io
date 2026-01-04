@@ -1,0 +1,50 @@
+---
+layout: default
+permalink: /404.html
+title: Page not found
+is_404: true
+---
+
+<main class="not-found">
+  <section class="not-found-panel">
+    <div class="not-found-illustration" aria-hidden="true">
+      <svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Sad Computer -->
+        <rect x="18" y="18" width="60" height="42" rx="6" stroke="currentColor" stroke-width="4"/>
+        <circle cx="40" cy="36" r="2" fill="currentColor" />
+        <circle cx="56" cy="36" r="2" fill="currentColor" />
+        <path d="M42 46c2-2 10-2 12 0" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <path d="M48 60v8" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <path d="M34 70h28" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+
+    <p class="not-found-code">404</p>
+
+    <h1>Well… this packet didn’t arrive</h1>
+
+    <p class="not-found-message">
+      The page you’re looking for doesn’t exist, was moved,
+      or quietly disappeared into the void.
+    </p>
+
+    <p class="not-found-subtle">
+      It happens. Even well-routed networks drop packets sometimes.
+    </p>
+
+    <div class="not-found-actions">
+      <a href="{{ '/' | relative_url }}" class="btn btn-primary">
+        Return home
+      </a>
+
+      <a href="{{ '/blog/' | relative_url }}" class="btn btn-secondary">
+        Browse Blog
+      </a>
+
+      <a href="{{ '/projects/' | relative_url }}" class="btn btn-secondary">
+        Browse Projects
+      </a>
+    </div>
+  </section>
+</main>

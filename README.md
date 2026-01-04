@@ -89,8 +89,16 @@ Variants include:
 
 ## 🚀 Local Development
 
+```bash
 bundle install  
-bundle exec jekyll serve  
+bundle exec jekyll serve
+```
+
+or 
+
+```bash
+rake serve
+```
 
 Then open:  
 http://localhost:4000/

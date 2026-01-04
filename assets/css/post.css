@@ -1,0 +1,1009 @@
+.post-content {
+  overflow-x: hidden;
+}
+
+/* Lists (bullet points & numbered) */
+.post-content ul,
+.post-content ol {
+  margin: 1.25rem 0;
+  padding-left: 1.5rem;
+}
+
+.post-content li {
+  margin: 0.4rem 0;
+  line-height: 1.6;
+}
+
+.post-content ul li::marker {
+  color: var(--accent);
+}
+
+.post-content ol li::marker {
+  font-weight: 600;
+}
+
+/* =========================================================
+   Inline code
+   ========================================================= */
+
+.post-content code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--code-inline-bg);
+  color: var(--code-keyword);
+  padding: 0.15em 0.35em;
+  border-radius: var(--radius-sm);
+}
+
+/* =========================================================
+   Code blocks
+   ========================================================= */
+
+.post-content pre {
+  background: var(--code-bg);
+  color: var(--code-text);
+  padding: 2.75rem 1.5rem 1.25rem;
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  position: relative;
+  --code-max-height: 22rem; /* limit long code blocks */
+  transition: max-height var(--motion-fast) var(--motion-ease);
+}
+
+/* Collapsed state */
+.post-content pre.is-collapsed {
+  max-height: var(--code-max-height);
+  overflow: hidden;
+}
+
+.post-content pre.is-collapsed::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+
+  height: 5rem;
+  pointer-events: none;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.2)
+  );
+}
+
+.post-content pre.is-expanded {
+  max-height: none;
+}
+
+.post-content pre.is-expanded::after {
+  display: none;
+}
+
+.post-content pre::before {
+  content: attr(data-lang);
+  position: absolute;
+  top: 0.6rem;
+  left: 1rem;
+
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: var(--text-muted);
+  background: var(--panel-soft);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-pill);
+}
+
+.post-content pre ::selection {
+  background: var(--code-selection);
+}
+
+.post-content pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+.post-content pre code::before {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.75rem;
+
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-pill);
+
+  background: var(--panel-soft);
+  color: var(--text-muted);
+
+  pointer-events: none;
+
+  opacity: 0.6;
+  transition: opacity var(--hover-duration) var(--hover-ease);
+}
+
+.post-content pre:hover code::before {
+  opacity: 1;
+}
+
+/* Code block scrollbar */
+.post-content pre::-webkit-scrollbar {
+  height: 6px;
+}
+
+.post-content pre::-webkit-scrollbar-thumb {
+  background: var(--border-soft);
+  border-radius: var(--radius-pill);
+}
+
+
+/* =========================================================
+   Code Toggle
+   ========================================================= */
+
+.post-content .code-toggle {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.75rem;
+
+  font-size: 0.7rem;
+  padding: 0.3rem 0.6rem;
+
+  background: var(--panel-soft);
+  color: var(--text-muted);
+
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+
+  cursor: pointer;
+  z-index: 2;
+
+  transition:
+    background var(--hover-duration) var(--hover-ease),
+    color var(--hover-duration) var(--hover-ease);
+}
+
+.post-content .code-toggle:hover {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+/* =========================================================
+   Tables
+   ========================================================= */
+
+.post-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.75rem 0;
+  font-size: 0.95rem;
+  display: block;
+  overflow-x: auto;
+}
+
+.post-content th,
+.post-content td {
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.post-content th {
+  font-weight: 600;
+  background: var(--panel-soft);
+}
+
+.post-content tr:hover td {
+  background: var(--panel-soft);
+}
+
+/* =========================================================
+   Images
+   ========================================================= */
+
+.post-content img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+
+  margin: 2.25rem auto 0.75rem;
+
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  box-sizing: border-box;
+  background: var(--panel);
+}
+
+/* Caption (markdown: italic text immediately after image) */
+.post-content img + em {
+  display: block;
+  max-width: 42rem;
+  margin: 0 auto 2rem;
+
+  font-size: 0.85rem;
+  line-height: 1.5;
+  text-align: center;
+
+  color: var(--text-muted);
+  font-style: normal;
+}
+
+/* Subtle separator feel */
+.post-content img + em::before {
+  content: "—";
+  display: block;
+  margin-bottom: 0.25rem;
+  opacity: 0.4;
+}
+
+/* Slightly reduce emphasis on links inside captions */
+.post-content img + em a {
+  color: var(--theme-light-text);
+  text-decoration-thickness: 1px;
+}
+
+.post-content img.diagram + em {
+  text-align: left;
+  max-width: 100%;
+}
+
+
+/* =========================================================
+   Links
+   ========================================================= */
+
+.post-content a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  transition:
+    color var(--hover-duration) var(--hover-ease),
+    background var(--hover-duration) var(--hover-ease);
+}
+
+.post-content a:hover {
+  background: var(--accent-soft);
+}
+
+/* External link indicator */
+.post-content a[href^="http"]::after {
+  content: "↗";
+  font-size: 0.75em;
+  margin-left: 0.2em;
+}
+
+/* =========================================================
+   Details / Summary
+   ========================================================= */
+
+.post-content details {
+  margin: 1.75rem 0;
+  padding: 0.75rem 1rem;
+
+  background: var(--panel);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+
+  box-shadow: var(--shadow-sm);
+}
+
+/* Remove default marker */
+.post-content summary {
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  font-weight: 600;
+  color: var(--text);
+
+  padding: 0.5rem 0.25rem;
+}
+
+.post-content summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Custom caret */
+.post-content summary::before {
+  content: "▸";
+  font-size: 0.9em;
+  color: var(--accent);
+
+  transition: transform var(--hover-duration) var(--hover-ease);
+}
+
+/* Open state */
+.post-content details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+/* Hover / focus */
+.post-content summary:hover {
+  color: var(--accent);
+}
+
+.post-content summary:focus-visible {
+  outline: 2px solid var(--accent-border);
+  outline-offset: 4px;
+}
+
+/* Inner content spacing */
+.post-content details > :not(summary) {
+  margin-top: 0.75rem;
+}
+
+/* Subtle divider between summary and content */
+.post-content details[open] summary {
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px dashed var(--border-subtle);
+}
+
+/* =========================================================
+   Callouts
+   ========================================================= */
+
+.post-content .callout {
+  position: relative;
+  margin: 1.75rem 0;
+  padding: 1rem 1.25rem 1rem 3.5rem;
+
+  border-left: 4px solid;
+  border-radius: var(--radius-sm);
+
+  line-height: 1.65;
+  font-size: 0.95rem;
+  background: var(--panel-soft);
+}
+
+/* Icon */
+.post-content .callout::before {
+  content: "";
+  position: absolute;
+  top: 1.15rem;
+  left: 1.25rem;
+
+  width: 1.6rem;
+  height: 1.6rem;
+
+  opacity: 0.7;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Trim spacing */
+.post-content .callout > :first-child { margin-top: 0; }
+.post-content .callout > :last-child  { margin-bottom: 0; }
+
+/* Note */
+.post-content .callout-note {
+  border-color: var(--note);
+  background: color-mix(in srgb, var(--note) 12%, transparent);
+}
+
+.post-content .callout-note::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2360a5fa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='16' x2='12' y2='12'/%3E%3Cline x1='12' y1='8' x2='12.01' y2='8'/%3E%3C/svg%3E");
+}
+
+/* Tip */
+.post-content .callout-tip {
+  border-color: var(--tip);
+  background: color-mix(in srgb, var(--tip) 12%, transparent);
+}
+
+.post-content .callout-tip::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2334d399' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M9 12l2 2 4-4'/%3E%3C/svg%3E");
+}
+
+/* Warning */
+.post-content .callout-warning {
+  border-color: var(--warning);
+  background: color-mix(in srgb, var(--warning) 14%, transparent);
+}
+
+.post-content .callout-warning::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fbbf24' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z'/%3E%3Cline x1='12' y1='9' x2='12' y2='13'/%3E%3Cline x1='12' y1='17' x2='12.01' y2='17'/%3E%3C/svg%3E");
+}
+
+/* Danger */
+.post-content .callout-danger {
+  border-color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 14%, transparent);
+}
+
+.post-content .callout-danger::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f87171' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='15' y1='9' x2='9' y2='15'/%3E%3Cline x1='9' y1='9' x2='15' y2='15'/%3E%3C/svg%3E");
+}
+
+/* =========================================================
+   Syntax Highlighting (Rouge)
+   ========================================================= */
+
+.post-content .highlight {
+  margin: 1.5rem 0;
+  position: relative;
+}
+
+/* Comments */
+.post-content .highlight .c,
+.post-content .highlight .c1,
+.post-content .highlight .cm {
+  color: var(--code-comment);
+  font-style: italic;
+}
+
+/* Keywords */
+.post-content .highlight .k,
+.post-content .highlight .kd,
+.post-content .highlight .kn,
+.post-content .highlight .kp {
+  color: var(--code-keyword);
+  font-weight: 500;
+}
+
+/* Strings */
+.post-content .highlight .s,
+.post-content .highlight .s1,
+.post-content .highlight .s2,
+.post-content .highlight .sb {
+  color: var(--code-string);
+}
+
+/* Numbers */
+.post-content .highlight .m,
+.post-content .highlight .mi,
+.post-content .highlight .mf {
+  color: var(--code-number);
+}
+
+/* Functions / built-ins */
+.post-content .highlight .nf,
+.post-content .highlight .nb {
+  color: var(--code-function);
+}
+
+/* Variables */
+.post-content .highlight .nv,
+.post-content .highlight .vi {
+  color: var(--code-text);
+}
+
+/* Operators & punctuation */
+.post-content .highlight .o,
+.post-content .highlight .p {
+  color: var(--code-operator);
+}
+
+/* =========================================================
+   Diff blocks (GitHub-style)
+   ========================================================= */
+
+/* Ensure diff blocks inherit code styling */
+.post-content pre code.language-diff {
+  display: block;
+}
+
+/* Shared diff line styling */
+.post-content .highlight .gi,
+.post-content .highlight .gd {
+  display: block;
+  margin: 0 -1.5rem;
+  padding: 0.1rem 1.5rem;
+  border-left: 3px solid transparent;
+}
+
+/* Added lines (+) */
+.post-content .highlight .gi {
+  background: color-mix(in srgb, var(--tip) 14%, transparent);
+  border-left-color: var(--tip);
+  color: var(--code-text);
+}
+
+/* Deleted lines (-) */
+.post-content .highlight .gd {
+  background: color-mix(in srgb, var(--danger) 14%, transparent);
+  border-left-color: var(--danger);
+  color: var(--code-text);
+  text-decoration: line-through;
+  text-decoration-color: color-mix(in srgb, var(--danger) 55%, transparent);
+}
+
+/* Optional: diff headers (@@, index, etc.) */
+.post-content .highlight .gh {
+  color: var(--text-muted);
+  font-weight: 600;
+  background: var(--panel-soft);
+  display: block;
+  margin: 0 -1.5rem;
+  padding: 0.15rem 1.5rem;
+}
+
+/* Optional: context lines */
+.post-content .highlight .gc {
+  color: var(--text-muted);
+}
+
+/* Prevent selection bleed */
+.post-content .highlight .gi::selection,
+.post-content .highlight .gd::selection {
+  background: var(--code-selection);
+}
+
+
+/* ============================
+   Code block toolbar
+============================ */
+
+/* Copy button */
+.post-content pre .copy-button {
+  position: absolute;
+  top: 0.55rem;
+  right: 1rem;
+
+  font-size: 0.7rem;
+  padding: 0.25rem 0.6rem;
+
+  background: var(--panel-soft);
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+
+  cursor: pointer;
+  transition:
+    color var(--hover-duration) var(--hover-ease),
+    background var(--hover-duration) var(--hover-ease),
+    border-color var(--hover-duration) var(--hover-ease);
+}
+
+.post-content pre:hover .copy-button {
+  opacity: 1;
+}
+
+.post-content pre .copy-button:hover {
+  background: var(--accent-soft);
+  color: var(--text);
+  border-color: var(--accent-border);
+}
+
+/* Copied state */
+.post-content pre .copy-button.copied {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-color: var(--accent-border);
+}
+
+/* fallback */
+.post-content pre:not([data-lang])::before {
+  content: "code";
+}
+
+
+/* =========================================================
+   Media (Images, Video, Audio, Embeds)
+   ========================================================= */
+
+/* Generic media wrapper */
+.post-content .media {
+  margin: 2.5rem 0;
+}
+
+/* =========================================================
+   Figures & Captions
+   ========================================================= */
+
+.post-content figure {
+  margin: 2.5rem 0;
+}
+
+.post-content figure > * {
+  display: block;
+  width: 100%;
+}
+
+/* Figcaption (preferred over markdown em captions) */
+.post-content figcaption {
+  max-width: 42rem;
+  margin: 0.75rem auto 0;
+
+  font-size: 0.85rem;
+  line-height: 1.5;
+  text-align: center;
+
+  color: var(--text-muted);
+}
+
+/* Decorative separator */
+.post-content figcaption::before {
+  content: "—";
+  display: block;
+  margin-bottom: 0.25rem;
+  opacity: 0.4;
+}
+
+/* =========================================================
+   Images (non-breaking enhancement)
+   ========================================================= */
+
+/* Keep your existing img styles — just tighten figure images */
+.post-content figure img {
+  margin: 0;
+}
+
+/* =========================================================
+   Video
+   ========================================================= */
+
+.post-content video {
+  display: block;
+  width: 100%;
+  max-height: 70vh;
+
+  margin: 2.5rem auto 0.75rem;
+
+  border-radius: var(--radius-lg);
+  background: #000;
+  box-shadow: var(--shadow-sm);
+}
+
+/* =========================================================
+   Audio
+   ========================================================= */
+
+.post-content audio {
+  display: block;
+  width: 100%;
+
+  margin: 2rem 0;
+
+  border-radius: var(--radius-md);
+}
+
+/* =========================================================
+   Embedded Media (YouTube, Vimeo, etc.)
+   ========================================================= */
+
+.post-content .media-embed {
+  margin: 3rem 0;
+}
+
+/* Aspect-ratio container */
+.post-content .media-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+
+  background: var(--panel);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Iframe fill */
+.post-content .media-frame iframe {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* =========================================================
+   Media Rhythm
+   ========================================================= */
+
+/* Improve spacing around media */
+.post-content p + figure,
+.post-content p + video,
+.post-content p + .media-embed {
+  margin-top: 2.75rem;
+}
+
+.post-content figure + p,
+.post-content video + p,
+.post-content .media-embed + p {
+  margin-top: 2.25rem;
+}
+
+/* =========================================================
+   Reduced Motion
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .post-content video,
+  .post-content .media-frame {
+    transition: none;
+  }
+}
+
+
+/* =========================================================
+   Mark (highlighted text)
+   ========================================================= */
+
+.post-content mark {
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+  color: inherit;
+
+  padding: 0.1em 0.25em;
+  border-radius: var(--radius-sm);
+}
+
+/* Avoid awkward breaks */
+.post-content mark::selection {
+  background: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+/* =========================================================
+   acronyms
+   ========================================================= */
+
+.post-content abbr[title] {
+  border-bottom: 1px dotted var(--border-soft);
+  cursor: help;
+  text-decoration: none;
+}
+
+/* =========================================================
+   Keyboard input
+   ========================================================= */
+
+.post-content kbd {
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+
+  padding: 0.2em 0.45em;
+
+  border-radius: var(--radius-sm);
+
+  background: var(--panel-soft);
+  border: 1px solid var(--border-subtle);
+
+  box-shadow:
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+
+  color: var(--text);
+  white-space: nowrap;
+}
+
+/* Chord spacing: Ctrl + C */
+.post-content kbd + kbd {
+  margin-left: 0.15em;
+}
+
+/* =========================================================
+   Task lists
+   ========================================================= */
+
+.post-content ul.task-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.post-content .task-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+
+  margin: 0.5rem 0;
+}
+
+/* Checkbox */
+.post-content .task-list-item input[type="checkbox"] {
+  margin-top: 0.25rem;
+  accent-color: var(--accent);
+}
+
+/* Completed task */
+.post-content .task-list-item.completed,
+.post-content .task-list-item input:checked + label {
+  opacity: 0.7;
+  text-decoration: line-through;
+}
+
+/* Light theme adjustments */
+
+
+:root[data-theme="light"] .post-content .task-list-item input[type="checkbox"] {
+  accent-color: var(--accent);
+  filter: saturate(1.2) contrast(1.1);
+}
+
+/* Make completed items more readable in light mode */
+:root[data-theme="light"]
+.post-content .task-list-item.completed,
+:root[data-theme="light"]
+.post-content .task-list-item input:checked + label {
+  opacity: 0.85;
+  text-decoration-color: var(--border-subtle);
+}
+
+/* =========================================================
+   Definition lists
+   ========================================================= */
+
+.post-content dl {
+  margin: 2rem 0;
+}
+
+.post-content dt {
+  font-weight: 600;
+  color: var(--text);
+  margin-top: 1.25rem;
+}
+
+.post-content dd {
+  margin: 0.4rem 0 0.75rem 1.25rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* First term spacing fix */
+.post-content dt:first-child {
+  margin-top: 0;
+}
+
+/* =========================================================
+   Address
+   ========================================================= */
+
+.post-content address {
+  margin: 2rem 0;
+  padding: 1rem 1.25rem;
+
+  font-style: normal;
+  line-height: 1.6;
+
+  background: var(--panel-soft);
+  border-left: 3px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+
+  color: var(--text-muted);
+}
+
+/* Improve link visibility inside address */
+.post-content address a {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+
+.post-content q {
+  font-style: italic;
+  quotes: "“" "”" "‘" "’";
+
+}
+.post-content sup,
+.post-content sub {
+  font-size: 0.75em;
+  line-height: 0;
+}
+.post-content time {
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+.post-content figure {
+  margin: 2.5rem 0;
+}
+
+.post-content figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.post-content small {
+  font-size: 0.8em;
+  color: var(--text-muted);
+}
+
+.post-content ins {
+  text-decoration: none;
+  background: color-mix(in srgb, var(--tip) 18%, transparent);
+}
+
+.post-content del {
+  color: var(--text-muted);
+}
+
+/* =========================================================
+   Footnotes
+   ========================================================= */
+
+.post-content .footnotes {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+
+  border-top: 1px dashed var(--border-subtle);
+
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.post-content .footnotes::before {
+  content: "Footnotes";
+  display: block;
+
+  margin-bottom: 0.75rem;
+
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: var(--text-muted);
+}
+
+/* Footnote list */
+.post-content .footnotes ol {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+/* Individual footnotes */
+.post-content .footnotes li {
+  margin: 0.75rem 0;
+  line-height: 1.6;
+}
+
+/* Paragraph inside footnote */
+.post-content .footnotes p {
+  margin: 0;
+}
+
+/* Back-reference link (↩) */
+.post-content .footnotes a[href^="#fnref"] {
+  margin-left: 0.4rem;
+
+  font-size: 0.75em;
+  text-decoration: none;
+
+  color: var(--text-muted);
+  opacity: 0.6;
+
+  transition:
+    color var(--hover-duration) var(--hover-ease),
+    opacity var(--hover-duration) var(--hover-ease);
+}
+
+.post-content .footnotes a[href^="#fnref"]:hover {
+  color: var(--accent);
+  opacity: 1;
+}
+
+/* Superscript reference in body */
+.post-content sup a {
+  font-size: 0.7em;
+  text-decoration: none;
+
+  color: var(--accent);
+  opacity: 0.85;
+}
+
+.post-content sup a:hover {
+  text-decoration: underline;
+}
+
+/* Optional: subtle highlight when navigating to footnote */
+.post-content .footnotes li:target {
+  background: var(--panel-soft);
+  border-radius: var(--radius-sm);
+  padding: 0.25rem 0.4rem;
+}

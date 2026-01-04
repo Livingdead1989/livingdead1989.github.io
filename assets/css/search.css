@@ -1,0 +1,190 @@
+/* ============================
+   Search Page
+============================ */
+
+.search-page {
+  padding: 2rem 1rem;
+  color: var(--text);
+}
+
+/* ============================
+   Search Input
+============================ */
+
+#search-input {
+  width: 100%;
+  max-width: 36rem;
+  padding: 0.75rem 1rem;
+  margin: 1rem 0 2rem;
+  font-size: 1.05rem;
+  color: var(--text);
+  background-color: var(--panel);
+  border: 1px solid var(--accent-dark);
+  border-radius: 0.5rem;
+
+  transition:
+    border-color var(--hover-duration) var(--hover-ease),
+    box-shadow var(--hover-duration) var(--hover-ease);
+}
+
+#search-input::placeholder {
+  color: var(--theme-light-text);
+}
+
+#search-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+/* ============================
+   Tags link
+============================ */
+
+.search-tags-link {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.search-tags-link a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color var(--hover-duration) var(--hover-ease);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.search-tags-link a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.search-tags-link a:hover .icon-tag {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.icon-tag {
+  width: 1.2em;
+  height: 1.2em;
+  opacity: 0.7;
+  transition:
+    opacity var(--hover-duration) var(--hover-ease),
+    transform var(--hover-duration) var(--hover-ease);
+}
+
+/* ============================
+   Search Results
+============================ */
+
+.search-results {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Individual result */
+
+.search-result {
+  padding: 1rem 0;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--panel) 70%, var(--accent-dark));
+}
+
+/* Title */
+
+.result-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* Link wrapper */
+
+.result-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.result-link:hover .result-title,
+.result-link:focus .result-title {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* Metadata line */
+
+.result-meta {
+  margin: 0.25rem 0;
+  font-size: 0.85rem;
+  color: var(--theme-light-text);
+}
+
+/* Description excerpt */
+
+.result-excerpt {
+  margin: 0.25rem 0 0;
+  color: var(--text);
+  opacity: 0.85;
+}
+
+/* ============================
+   Empty State
+============================ */
+
+#search-empty {
+  margin-top: 2rem;
+  font-style: italic;
+  color: var(--theme-light-text);
+}
+
+/* ============================
+   Reduced Motion
+============================ */
+
+@media (prefers-reduced-motion: reduce) {
+  #search-input,
+  .result-link {
+    transition: none;
+  }
+  .search-header,
+  .search-results {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+/* ============================
+   Search Page Entry Animation
+============================ */
+
+/* Initial hidden state (NO animation here) */
+.search-header,
+.search-results {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+}
+
+/* Activated state */
+.search-animate .search-header,
+.search-animate .search-results {
+  animation: searchEnter var(--motion-fast) var(--motion-ease) forwards;
+}
+
+/* Stagger results */
+.search-animate .search-results {
+  animation-delay: 80ms;
+}
+
+@keyframes searchEnter {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
