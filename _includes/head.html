@@ -50,10 +50,16 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
 
+
+  <!-- Twitter Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta property="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta property="twitter:domain" content="{{ site.url }}">
+  <meta property="twitter:url" content="{{ site.url }}{{ page.url }}">
+  <meta name="twitter:title" content="NetworkingDream Website">
+  <meta name="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
-
+  <meta name="twitter:image" content="{{ site.url }}/assets/og/default.png">
+  
   <!-- Schema -->
   {% include schema-breadcrumbs.html %}
   {% include schema-person.html %}
