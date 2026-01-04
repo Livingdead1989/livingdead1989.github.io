@@ -1,7 +1,0 @@
-- name: PayPal
-  link: 'https://paypal.me/stevensmith1989?locale.x=en_GB'
-  icon: <i class="fab fa-paypal" aria-hidden="true"></i>
-
-- name: GitHub Sponsor
-  link: 'https://github.com/sponsors/Livingdead1989'
-  icon: <i class="fab fa-github" aria-hidden="true"></i>
