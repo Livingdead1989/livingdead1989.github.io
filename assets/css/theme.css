@@ -73,6 +73,15 @@
 
   --tag-background: rgba(127,191,154,0.14);
 
+  --logo-glow: rgba(127,191,154,0.22);
+
+  /* =======================================================
+      Logo-specific accents (slightly darker than UI accent)
+      ======================================================= */
+
+   --logo-accent: #679c7d;
+   --logo-accent-dark: #356d58;
+
   /* =======================================================
      Gradients
      ======================================================= */
@@ -124,7 +133,9 @@
   --code-number: #34d399;
   --code-function: #64aabe;
   --code-operator: #9ca3af;
+
 }
+
 
 /* =========================================================
    Light Theme (opt-in)
@@ -155,7 +166,12 @@
   --accent-border-strong: rgba(79,143,115,0.45);
   --accent-border-warm: rgba(201,169,77,0.42);
 
+  --logo-accent: #3f7f66;
+  --logo-accent-dark: #2a5f4a;
+
   --tag-background: rgba(79,143,115,0.18);
+
+  --logo-glow: rgba(79,143,115,0.8);
 
   --shadow-sm: 0 6px 18px rgba(0,0,0,0.12);
   --shadow-md: 0 10px 28px rgba(0,0,0,0.18);

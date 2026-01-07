@@ -118,11 +118,11 @@ nav a::after {
 }
 
 .site-logo .logo-accent {
-  fill: var(--accent);
+  fill: var(--logo-accent);
 }
 
 .site-logo .logo-accent-dark {
-  fill: var(--accent-dark);
+  fill: var(--logo-accent-dark);
 }
 
 .site-logo .logo-accent-warm {

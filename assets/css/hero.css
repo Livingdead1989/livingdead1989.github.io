@@ -7,7 +7,7 @@ header {
     }
     
 .hero {
-      padding: 7rem 2rem 6rem;
+      padding: 4rem 2rem 6rem;
       position: relative;
       overflow: hidden;
       text-align: center;
@@ -58,6 +58,14 @@ header {
       opacity: 1;
     }
 
+    .hero-logo .site-logo path:nth-child(odd) {
+      transform: translateZ(0) translateY(-20px);
+    }
+
+    .hero-logo .site-logo path:nth-child(even) {
+      transform: translateZ(0) translateY(20px);
+    }
+
     @media (prefers-reduced-motion: no-preference) {
       .hero-logo .site-logo path {
         opacity: 0;
@@ -77,9 +85,9 @@ header {
       }
     }
 
-    /* Soft ambient glow in hero only - IOS fix */
-    .logo-wrap {
-      filter: drop-shadow(0 0 16px var(--accent-glow));
+    /* Soft ambient glow in hero only */
+    .hero .logo-wrap {
+      filter: drop-shadow(0 0 16px var(--logo-glow));
     }
 
     .hero h1 {
