@@ -36,24 +36,43 @@ function initSectionObserver() {
 ========================= */
 
 function initThemeToggle() {
-  const toggle = document.getElementById('themeToggle');
+  const toggle = document.getElementById("themeToggle");
   if (!toggle) return;
 
+  const root = document.documentElement;
+
   const applyTheme = theme => {
-    document.body.dataset.theme = theme;
-    toggle.setAttribute('aria-pressed', theme === 'dark');
-    localStorage.setItem('theme', theme);
+    const root = document.documentElement;
+
+    // Enable transitions for this change only
+    root.classList.add("theme-transition");
+
+    root.dataset.theme = theme;
+    localStorage.setItem("theme", theme);
+
+    document.dispatchEvent(
+      new CustomEvent("theme:changed", { detail: theme })
+    );
+
+    // Remove transition class after animation window
+    window.setTimeout(() => {
+      root.classList.remove("theme-transition");
+    }, 500);
   };
 
-  toggle.addEventListener('click', () => {
-    const nextTheme =
-      document.body.dataset.theme === 'dark' ? 'light' : 'dark';
-    applyTheme(nextTheme);
-  });
+  // Restore persisted theme (fallback once)
+  const savedTheme = localStorage.getItem("theme") || "dark";
+  applyTheme(savedTheme);
 
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme) applyTheme(savedTheme);
+  toggle.addEventListener("click", () => {
+    const next =
+      root.dataset.theme === "dark" ? "light" : "dark";
+    applyTheme(next);
+  });
 }
+
+
+
 
 /* =========================
    Mobile navigation
@@ -381,3 +400,4 @@ document.addEventListener("DOMContentLoaded", () => {
   initCodeBlocks();
   initTOC();
 });
+

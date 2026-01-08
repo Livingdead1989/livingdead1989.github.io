@@ -12,6 +12,13 @@
                "Segoe UI", Roboto, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
+  /* =========================================
+     Theme cross-fade transitions
+     ========================================= */
+
+  --theme-transition-duration: 420ms;
+  --theme-transition-ease: cubic-bezier(.2,.8,.2,1);
+
   /* =======================================================
      Text
      ======================================================= */
@@ -188,4 +195,25 @@
   --code-number: #059669;
   --code-function: #0369a1;
   --code-operator: #475569;
+}
+
+
+/* Enable transitions only during toggle */
+html.theme-transition *,
+html.theme-transition {
+transition:
+   background-color var(--theme-transition-duration) var(--theme-transition-ease),
+   color var(--theme-transition-duration) var(--theme-transition-ease),
+   border-color var(--theme-transition-duration) var(--theme-transition-ease),
+   fill var(--theme-transition-duration) var(--theme-transition-ease),
+   stroke var(--theme-transition-duration) var(--theme-transition-ease),
+   box-shadow var(--theme-transition-duration) var(--theme-transition-ease);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+html.theme-transition *,
+html.theme-transition {
+   transition: none !important;
+}
 }

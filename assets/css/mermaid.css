@@ -1,0 +1,187 @@
+/* =========================================================
+   Mermaid Diagram Theme
+   ========================================================= */
+
+/* =========================================================
+   Container & Layout
+   ========================================================= */
+
+.mermaid {
+  margin: 2.5rem 0 1.25rem;
+  padding: 1.25rem;
+  background: var(--panel);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow-x: auto;
+}
+
+.mermaid svg {
+  font-family: var(--font-sans);
+}
+
+.mermaid-caption {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* =========================================================
+   Nodes
+   ========================================================= */
+
+.mermaid .node rect,
+.mermaid .node polygon,
+.mermaid .node ellipse {
+  fill: var(--panel-soft);
+  stroke: var(--border-soft);
+  stroke-width: 1;
+}
+
+.mermaid .node text {
+  fill: var(--text);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+/* =========================================================
+   Edges / Links
+   ========================================================= */
+
+.mermaid .edgePath path {
+  stroke: var(--accent-muted);
+  stroke-width: 1.25;
+}
+
+.mermaid .edgeLabel {
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+/* =========================================================
+   Subgraphs (VLANs / Zones)
+   ========================================================= */
+
+.mermaid .cluster rect {
+  fill: var(--accent-surface);
+  stroke: var(--accent-border);
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+}
+
+.mermaid .cluster text {
+  fill: var(--accent);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* =========================================================
+   Semantic Highlighting
+   ========================================================= */
+
+/* Production / Trusted Nodes */
+.mermaid .node.prod rect,
+.mermaid .node.prod ellipse {
+  fill: var(--accent-soft);
+  stroke: var(--accent-border-strong);
+}
+
+.mermaid .node.prod text {
+  font-weight: 600;
+}
+
+/* =========================================================
+   Arrowheads
+   ========================================================= */
+
+.mermaid marker path {
+  fill: var(--accent-muted);
+}
+
+/* =========================================================
+   Light Theme Adjustments
+   ========================================================= */
+
+[data-theme="light"] .mermaid {
+  background: var(--panel);
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme="light"] .mermaid .edgePath path {
+  stroke: rgba(0,0,0,0.35);
+}
+
+[data-theme="light"] .mermaid marker path {
+  fill: rgba(0,0,0,0.35);
+}
+
+/* =========================================================
+   Accessibility & Print
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .mermaid {
+    animation: none;
+  }
+}
+
+@media print {
+  .mermaid {
+    background: #ffffff;
+    box-shadow: none;
+  }
+
+  .mermaid .node rect,
+  .mermaid .cluster rect {
+    stroke: #000;
+  }
+
+  .mermaid .node text,
+  .mermaid .cluster text {
+    fill: #000;
+  }
+
+  .mermaid .edgePath path {
+    stroke: #000;
+  }
+}
+
+/* =========================================================
+   Mermaid render transitions (motion-safe)
+   ========================================================= */
+
+.mermaid {
+  opacity: 1;
+  transform: none;
+}
+
+/* Animate only when motion is allowed */
+@media (prefers-reduced-motion: no-preference) {
+  .mermaid {
+    transition:
+      opacity 420ms var(--motion-ease),
+      transform 420ms var(--motion-ease);
+  }
+
+  .mermaid.is-rendering {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+/* Reduced motion: instant render */
+@media (prefers-reduced-motion: reduce) {
+  .mermaid {
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .mermaid {
+    transition-delay: calc(var(--i, 0) * 60ms);
+  }
+  .theme-transition .mermaid svg {
+    transition: filter 0.35s ease, opacity 0.35s ease;
+  }
+}

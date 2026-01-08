@@ -1,5 +1,5 @@
 ---
-title: NetworkingDream Website
+title: "NetworkingDream Website"
 layout: project
 status: active # active / updated / archived
 featured: true

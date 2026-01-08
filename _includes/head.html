@@ -35,6 +35,10 @@
   {% if page.is_404 %}
     <link rel="stylesheet" href="{{ '/assets/css/notfound.css' | relative_url }}">
   {% endif %}
+  {% if page.mermaid %}
+    <link rel="stylesheet" href="{{ '/assets/css/mermaid.css' | relative_url }}">
+  {% endif %}
+
 
 
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
@@ -71,4 +75,15 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
 
+  <!-- Fix for screen flash on first paint -->
+  <script>
+    (function () {
+      try {
+        const theme = localStorage.getItem("theme");
+        if (theme) {
+          document.documentElement.dataset.theme = theme;
+        }
+      } catch {}
+    })();
+  </script>
 </head>
