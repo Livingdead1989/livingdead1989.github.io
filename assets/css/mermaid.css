@@ -22,6 +22,7 @@
 
 /* SVG sizing & rendering quality */
 .mermaid svg {
+  width: 100%;
   max-width: 100%;
   height: auto;
   font-family: var(--font-sans);
@@ -253,5 +254,20 @@
   .mermaid .edgePath path,
   .mermaid .timeline-line {
     stroke: #000 !important;
+  }
+}
+
+/* =========================================================
+   Mobile Adjustments
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .mermaid {
+    padding: 0;
+    display: block; 
+  }
+  .mermaid svg {
+    display: block;
+    margin: 0 auto;
   }
 }
