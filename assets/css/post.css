@@ -791,7 +791,6 @@
 /* =========================================================
    Task lists
    ========================================================= */
-
 .post-content ul.task-list {
   list-style: none;
   padding-left: 0;
@@ -799,41 +798,119 @@
 
 .post-content .task-list-item {
   display: flex;
-  align-items: flex-start;
-  gap: 0.6rem;
-
-  margin: 0.5rem 0;
+  align-items: center;
 }
+.post-content input.task-list-item-checkbox {
+  /* Reset native */
+  appearance: none;
+  -webkit-appearance: none;
 
-/* Checkbox */
-.post-content .task-list-item input[type="checkbox"] {
+  width: 1.5rem;
+  height: 1.5rem;
   margin-top: 0.25rem;
+  margin-right: 0.6rem;
+
+  border-radius: 999px;
+  border: 2px solid var(--accent-border);
+  background: var(--panel);
+
+  display: inline-grid;
+  place-content: center;
+
+  cursor: pointer;
+  position: relative;
+
+  transition:
+    background-color var(--hover-duration) var(--hover-ease),
+    border-color var(--hover-duration) var(--hover-ease),
+    box-shadow var(--hover-duration) var(--hover-ease),
+    transform 120ms ease;
+}
+
+/* =========================================================
+   Checkmark
+   ========================================================= */
+
+.post-content input.task-list-item-checkbox::after {
+  content: "";
+  width: 0.55rem;
+  height: 0.3rem;
+
+  border-left: 2px solid var(--text-invert);
+  border-bottom: 2px solid var(--text-invert);
+
+  transform: rotate(-45deg) scale(0);
+  transform-origin: center;
+  opacity: 0;
+
+  transition:
+    transform 140ms ease,
+    opacity 140ms ease;
+}
+
+/* =========================================================
+   Checked state
+   ========================================================= */
+
+.post-content input.task-list-item-checkbox:checked {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow:
+    inset 0 0 0 1px var(--accent-border),
+    0 0 0 3px var(--accent-soft);
+}
+
+.post-content input.task-list-item-checkbox:checked::after {
+  transform: rotate(-45deg) scale(1);
+  opacity: 1;
+}
+
+/* =========================================================
+   Hover (enabled only)
+   ========================================================= */
+
+.post-content
+input.task-list-item-checkbox:not(:disabled):hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+/* =========================================================
+   Focus-visible (keyboard users)
+   ========================================================= */
+
+.post-content
+input.task-list-item-checkbox:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--panel),
+    0 0 0 4px var(--accent);
+}
+
+/* =========================================================
+   Disabled state
+   ========================================================= */
+
+.post-content
+input.task-list-item-checkbox:disabled {
+  background: var(--panel);
+  cursor: not-allowed;
+  opacity: 1 !important;
+  filter: none !important;
+  cursor: default;
+}
+
+.post-content
+input.task-list-item-checkbox:disabled::after {
+  border-color: var(--accent);
+}
+
+/* Checked tasks keep accent color */
+.post-content
+input.task-list-item-checkbox:disabled:checked {
   accent-color: var(--accent);
 }
 
-/* Completed task */
-.post-content .task-list-item.completed,
-.post-content .task-list-item input:checked + label {
-  opacity: 0.7;
-  text-decoration: line-through;
-}
-
-/* Light theme adjustments */
-
-
-:root[data-theme="light"] .post-content .task-list-item input[type="checkbox"] {
-  accent-color: var(--accent);
-  filter: saturate(1.2) contrast(1.1);
-}
-
-/* Make completed items more readable in light mode */
-:root[data-theme="light"]
-.post-content .task-list-item.completed,
-:root[data-theme="light"]
-.post-content .task-list-item input:checked + label {
-  opacity: 0.85;
-  text-decoration-color: var(--border-subtle);
-}
 
 /* =========================================================
    Definition lists
