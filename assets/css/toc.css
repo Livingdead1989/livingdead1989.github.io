@@ -24,6 +24,8 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-muted);
+  /* removes the 300ms delay and improves tap reliability */
+  touch-action: manipulation;
 }
 
 /* Rotate when open */

@@ -145,7 +145,7 @@ function initMobileNav() {
     isOpen ? closeMenu() : openMenu();
   });
 
-  /* ✅ Close menu when a link is clicked */
+  /* Close menu when a link is clicked */
   menu.addEventListener('click', e => {
     if (e.target.tagName === 'A') {
       closeMenu();
@@ -297,8 +297,8 @@ function initTOC() {
 
   if (tocContainer && tocHeader) {
     tocHeader.addEventListener("click", e => {
-      // Prevent accidental toggles from nested elements
-      if (e.target.closest("a, button")) return;
+      // Only block clicks on actual links (not icons / spans)
+      if (e.target.closest("a")) return;
 
       const isOpen = tocContainer.classList.toggle("is-open");
       tocHeader.setAttribute("aria-expanded", String(isOpen));
