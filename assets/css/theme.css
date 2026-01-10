@@ -24,6 +24,7 @@
      ======================================================= */
 
   --text: #e5e7eb;
+  --text-invert: #0f172a;
   --text-muted: #9ca3af;
   --theme-light-text: #9ca3af;
 
@@ -53,6 +54,15 @@
   --accent-muted: #888888;
   --accent-live: #64aabe;
 
+  --accent-blue: #5aa9e6;
+  --accent-blue-soft: color-mix(in oklab, var(--accent-blue) 70%, var(--panel));
+  --accent-green: #5fb3a2;
+  --accent-green-soft: color-mix(in oklab, var(--accent-green) 70%, var(--panel));
+  --accent-amber: #e0b454;
+  --accent-red: #e26d5c; 
+  --accent-purple: #8b7fd6; 
+  --accent-slate: #7a8699;
+  
   /* =======================================================
     Status Colors (semantic, not derived from accent)
     ======================================================= */
@@ -141,7 +151,12 @@
   --code-function: #64aabe;
   --code-operator: #9ca3af;
 
-}
+  /* =======================================================
+   Diagram text (SVG / charts / Mermaid)
+   ======================================================= */
+
+   /* --diagram-text-on-surface: color-mix( in oklab, var(--text) 82%, var(--bg) ); */
+}  
 
 
 /* =========================================================
@@ -151,6 +166,7 @@
 
 [data-theme="light"] {
   --text: #0f172a;
+  --text-invert: #e5e7eb;
   --text-muted: #64748b;
   --theme-light-text: #64748b;
 
@@ -195,19 +211,35 @@
   --code-number: #059669;
   --code-function: #0369a1;
   --code-operator: #475569;
+
+  /* --diagram-text-on-surface: color-mix( in oklab, var(--text) 70%, var(--bg)); */
+--diagram-text-on-surface:white;
+
 }
 
 
-/* Enable transitions only during toggle */
-html.theme-transition *,
+/* =========================================================
+   Theme cross-fade 
+   ========================================================= */
+
 html.theme-transition {
-transition:
-   background-color var(--theme-transition-duration) var(--theme-transition-ease),
-   color var(--theme-transition-duration) var(--theme-transition-ease),
-   border-color var(--theme-transition-duration) var(--theme-transition-ease),
-   fill var(--theme-transition-duration) var(--theme-transition-ease),
-   stroke var(--theme-transition-duration) var(--theme-transition-ease),
-   box-shadow var(--theme-transition-duration) var(--theme-transition-ease);
+  transition:
+    background-color var(--theme-transition-duration) var(--theme-transition-ease),
+    color var(--theme-transition-duration) var(--theme-transition-ease);
+}
+
+html.theme-transition body,
+html.theme-transition .site-logo,
+html.theme-transition .mermaid svg,
+html.theme-transition header,
+html.theme-transition main,
+html.theme-transition footer {
+  transition:
+    background-color var(--theme-transition-duration) var(--theme-transition-ease),
+    color var(--theme-transition-duration) var(--theme-transition-ease),
+    fill var(--theme-transition-duration) var(--theme-transition-ease),
+    stroke var(--theme-transition-duration) var(--theme-transition-ease),
+    box-shadow var(--theme-transition-duration) var(--theme-transition-ease);
 }
 
 /* Respect reduced motion */

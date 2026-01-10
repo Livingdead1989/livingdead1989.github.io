@@ -1,5 +1,6 @@
 /* =========================================================
-   Mermaid Diagram Theme
+   Mermaid
+   Relies on mermaid.js themeVariables for color
    ========================================================= */
 
 /* =========================================================
@@ -7,18 +8,28 @@
    ========================================================= */
 
 .mermaid {
-  margin: 2.5rem 0 1.25rem;
+  margin: 2.5rem 0 1.5rem;
   padding: 1.25rem;
-  background: var(--panel);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
   overflow-x: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* motion-safe defaults */
+  opacity: 1;
+  transform: none;
 }
 
+/* SVG sizing & rendering quality */
 .mermaid svg {
+  max-width: 100%;
+  height: auto;
   font-family: var(--font-sans);
+  shape-rendering: geometricPrecision;
+  text-rendering: optimizeLegibility;
 }
 
+/* Optional caption below diagram */
 .mermaid-caption {
   margin-top: 0.5rem;
   font-size: 0.875rem;
@@ -27,141 +38,185 @@
 }
 
 /* =========================================================
-   Nodes
+   Text Clarity (Critical)
+   ========================================================= */
+
+/* Kill SVG stroke inheritance on text */
+.mermaid text,
+.mermaid tspan {
+    stroke: none !important;
+    stroke-width: 0 !important;
+    filter: none !important;
+    text-shadow: none !important;
+    paint-order: fill !important;
+    vector-effect: non-scaling-stroke;
+    font-family: var(--font-sans);
+}
+.mermaid tspan {
+  fill: var(--diagram-text-on-surface);
+}
+
+/* Disable filters Mermaid sometimes injects */
+.mermaid text {
+  filter: none !important;
+  text-shadow: none !important;
+}
+
+/* Edge labels & annotations */
+.mermaid .edgeLabel text,
+.mermaid .messageText,
+.mermaid .note text,
+.mermaid .legend text,
+.mermaid .pieTitleText {
+  stroke: none !important;
+}
+
+/* =========================================================
+   Nodes (Flowcharts, Mindmaps, States)
    ========================================================= */
 
 .mermaid .node rect,
 .mermaid .node polygon,
-.mermaid .node ellipse {
-  fill: var(--panel-soft);
-  stroke: var(--border-soft);
+.mermaid .node ellipse,
+.mermaid .mindmap-node > rect,
+.mermaid .mindmap-node > path {
   stroke-width: 1;
+  rx: 6;
+  ry: 6;
 }
 
-.mermaid .node text {
-  fill: var(--text);
+.mermaid .mindmap-node text,
+.mermaid .timeline-item text {
+  fill: var(--diagram-text-on-surface) !important;
+}
+
+.mermaid .node text,
+.mermaid .mindmap-node text {
   font-size: 13px;
-  font-weight: 400;
+  font-weight: 500;
+}
+
+/* Root emphasis (mindmap) */
+.mermaid .mindmap-root > rect {
+  stroke-width: 2;
 }
 
 /* =========================================================
    Edges / Links
    ========================================================= */
 
-.mermaid .edgePath path {
-  stroke: var(--accent-muted);
-  stroke-width: 1.25;
+.mermaid .edgePath path,
+.mermaid .mindmap-edge {
+  stroke-width: 1.5;
 }
 
-.mermaid .edgeLabel {
-  background: transparent;
-  color: var(--text-muted);
-  font-size: 12px;
+.mermaid marker path {
+  stroke: none;
+}
+
+.mermaid .edgeLabel text,
+.mermaid .note text {
+  fill: var(--diagram-text-on-surface) !important;
+}
+
+.mermaid .pieTitleText,
+.mermaid .cluster text {
+  fill: var(--text) !important;
 }
 
 /* =========================================================
-   Subgraphs (VLANs / Zones)
+   Sequence Diagrams
+   ========================================================= */
+
+.mermaid .actor rect {
+  rx: 6;
+  ry: 6;
+}
+
+.mermaid .actor text {
+  font-weight: 600;
+}
+
+.mermaid .messageLine0,
+.mermaid .messageLine1 {
+  stroke-width: 2;
+}
+
+.mermaid .note rect {
+  rx: 6;
+  ry: 6;
+  stroke-width: 1;
+}
+
+.mermaid .activation0,
+.mermaid .activation1,
+.mermaid .activation2 {
+  stroke-width: 1;
+}
+
+/* =========================================================
+   Pie Charts
+   ========================================================= */
+
+.mermaid .pieOuterCircle {
+  fill: none;
+}
+
+.mermaid .pieCircle {
+  opacity: 0.95;
+}
+
+.mermaid .slice {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.mermaid .legend rect {
+  rx: 3;
+  ry: 3;
+}
+
+/* =========================================================
+   Timelines
+   ========================================================= */
+
+.mermaid .timeline-line {
+  stroke-width: 2;
+}
+
+.mermaid .timeline-item rect {
+  rx: 6;
+  ry: 6;
+}
+
+.mermaid .timeline-item text {
+  font-size: 13px;
+  fill: var(--diagram-text-on-surface) !important;
+}
+
+/* =========================================================
+   Subgraphs / Clusters
    ========================================================= */
 
 .mermaid .cluster rect {
-  fill: var(--accent-surface);
-  stroke: var(--accent-border);
-  stroke-width: 1;
   stroke-dasharray: 4 3;
+  rx: 8;
+  ry: 8;
 }
 
 .mermaid .cluster text {
-  fill: var(--accent);
-  font-size: 13px;
-  font-weight: 500;
-}
-
-/* =========================================================
-   Semantic Highlighting
-   ========================================================= */
-
-/* Production / Trusted Nodes */
-.mermaid .node.prod rect,
-.mermaid .node.prod ellipse {
-  fill: var(--accent-soft);
-  stroke: var(--accent-border-strong);
-}
-
-.mermaid .node.prod text {
   font-weight: 600;
 }
 
 /* =========================================================
-   Arrowheads
+   Motion-safe render transitions
    ========================================================= */
 
-.mermaid marker path {
-  fill: var(--accent-muted);
-}
-
-/* =========================================================
-   Light Theme Adjustments
-   ========================================================= */
-
-[data-theme="light"] .mermaid {
-  background: var(--panel);
-  box-shadow: var(--shadow-sm);
-}
-
-[data-theme="light"] .mermaid .edgePath path {
-  stroke: rgba(0,0,0,0.35);
-}
-
-[data-theme="light"] .mermaid marker path {
-  fill: rgba(0,0,0,0.35);
-}
-
-/* =========================================================
-   Accessibility & Print
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-  .mermaid {
-    animation: none;
-  }
-}
-
-@media print {
-  .mermaid {
-    background: #ffffff;
-    box-shadow: none;
-  }
-
-  .mermaid .node rect,
-  .mermaid .cluster rect {
-    stroke: #000;
-  }
-
-  .mermaid .node text,
-  .mermaid .cluster text {
-    fill: #000;
-  }
-
-  .mermaid .edgePath path {
-    stroke: #000;
-  }
-}
-
-/* =========================================================
-   Mermaid render transitions (motion-safe)
-   ========================================================= */
-
-.mermaid {
-  opacity: 1;
-  transform: none;
-}
-
-/* Animate only when motion is allowed */
 @media (prefers-reduced-motion: no-preference) {
   .mermaid {
     transition:
-      opacity 420ms var(--motion-ease),
-      transform 420ms var(--motion-ease);
+      opacity 360ms var(--motion-ease),
+      transform 360ms var(--motion-ease);
   }
 
   .mermaid.is-rendering {
@@ -170,18 +225,33 @@
   }
 }
 
-/* Reduced motion: instant render */
 @media (prefers-reduced-motion: reduce) {
   .mermaid {
     transition: none;
+    animation: none;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
+/* =========================================================
+   Print Safety
+   ========================================================= */
+
+@media print {
   .mermaid {
-    transition-delay: calc(var(--i, 0) * 60ms);
+    background: #ffffff;
+    box-shadow: none;
   }
-  .theme-transition .mermaid svg {
-    transition: filter 0.35s ease, opacity 0.35s ease;
+
+  .mermaid svg {
+    filter: none;
+  }
+
+  .mermaid text {
+    fill: #000 !important;
+  }
+
+  .mermaid .edgePath path,
+  .mermaid .timeline-line {
+    stroke: #000 !important;
   }
 }
