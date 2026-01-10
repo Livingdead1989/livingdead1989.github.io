@@ -1,0 +1,4 @@
+footer-center-links:
+  - name: Uptime-Kuma Status Page
+    url: https://uptime.networkingdream.com/status/services
+    icon: health
