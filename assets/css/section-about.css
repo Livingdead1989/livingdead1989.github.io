@@ -51,16 +51,8 @@
     transparent
   );
   
-
   opacity: 0.6;
   transition: transform 0.4s ease, opacity 0.4s ease;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .about-socials:hover .about-social-divider {
-    transform: scaleX(1.2);
-    opacity: 0.9;
-  }
 }
 
 .about-circle {
@@ -89,7 +81,10 @@
       0 0 0 2px var(--accent-border),
       0 0 18px var(--accent-glow);
     animation: glowPulseOnce 900ms ease-out both;
-
+  }
+  .about-socials:hover .about-social-divider {
+    transform: scaleX(1.2);
+    opacity: 0.9;
   }
 }
 

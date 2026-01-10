@@ -142,24 +142,6 @@
 }
 
 /* ============================
-   Reduced Motion
-============================ */
-
-@media (prefers-reduced-motion: reduce) {
-  #search-input,
-  .result-link {
-    transition: none;
-  }
-  .search-header,
-  .search-results {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
-}
-
-
-/* ============================
    Search Page Entry Animation
 ============================ */
 
@@ -188,3 +170,19 @@
   }
 }
 
+/* ============================
+   Reduced Motion
+============================ */
+
+@media (prefers-reduced-motion: reduce) {
+  #search-input,
+  .result-link {
+    transition: none;
+  }
+  .search-header,
+  .search-results {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

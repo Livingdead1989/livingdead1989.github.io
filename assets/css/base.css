@@ -61,7 +61,7 @@ blockquote strong {
   color: var(--text);
 }
 
-
+/* Motion */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation: none !important;

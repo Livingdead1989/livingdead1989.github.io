@@ -151,11 +151,6 @@
   --code-function: #64aabe;
   --code-operator: #9ca3af;
 
-  /* =======================================================
-   Diagram text (SVG / charts / Mermaid)
-   ======================================================= */
-
-   /* --diagram-text-on-surface: color-mix( in oklab, var(--text) 82%, var(--bg) ); */
 }  
 
 
@@ -212,9 +207,7 @@
   --code-function: #0369a1;
   --code-operator: #475569;
 
-  /* --diagram-text-on-surface: color-mix( in oklab, var(--text) 70%, var(--bg)); */
---diagram-text-on-surface:white;
-
+  --diagram-text-on-surface:#e5e7eb;
 }
 
 

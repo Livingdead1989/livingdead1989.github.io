@@ -226,6 +226,7 @@ ul.toc li > ul > li {
   }
 }
 
+/* Motion */
 @media (prefers-reduced-motion: reduce) {
   ul.toc li > ul {
     transition: none;
