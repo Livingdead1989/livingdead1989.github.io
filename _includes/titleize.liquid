@@ -1,0 +1,22 @@
+{% assign words = include.text
+  | replace: '-', ' '
+  | replace: '_', ' '
+  | upcase
+  | split: ' ' %}
+
+{% assign out = "" %}
+
+{% for word in words %}
+  {% assign mapped = site.data.acronyms[word] %}
+  {% if mapped %}
+    {% assign out = out | append: mapped %}
+  {% else %}
+    {% assign lower = word | downcase %}
+    {% assign out = out | append: lower | capitalize %}
+  {% endif %}
+  {% unless forloop.last %}
+    {% assign out = out | append: ' ' %}
+  {% endunless %}
+{% endfor %}
+
+{{ out }}

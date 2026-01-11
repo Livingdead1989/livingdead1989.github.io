@@ -1,6 +1,7 @@
 ---
 layout: tag
-tag: github-pages
-title: GitHub Pages
-description: Tutorials and notes on building, deploying, and maintaining static websites with GitHub Pages and related tools.
+tag: "github-pages"
+slug: "github-pages"
+title: "Github Pages"
+description: "Building, deploying, and maintaining static sites using GitHub Pages."
 ---

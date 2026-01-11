@@ -1,0 +1,66 @@
+# =========================================================
+# Acronyms & Canonical Capitalisation
+# =========================================================
+
+# Home Automation
+iot: IoT
+zigbee: Zigbee
+zwave: Z-Wave
+mqtt: MQTT
+coap: CoAP
+rtl: RTL
+rf: RF
+nfc: NFC
+ble: BLE
+wifi: Wi-Fi
+lan: LAN
+wan: WAN
+poe: PoE
+ups: UPS
+
+# Computing / Systems
+cpu: CPU
+gpu: GPU
+apu: APU
+ram: RAM
+rom: ROM
+ssd: SSD
+hdd: HDD
+nvme: NVMe
+pcie: PCIe
+uefi: UEFI
+bios: BIOS
+os: OS
+vm: VM
+vmm: VMM
+
+# Homelab / Infrastructure
+nas: NAS
+san: SAN
+idrac: iDRAC
+ipmi: IPMI
+pxe: PXE
+raid: RAID
+zfs: ZFS
+ceph: Ceph
+nfs: NFS
+smb: SMB
+cifs: CIFS
+iscsi: iSCSI
+ha: HA
+dr: DR
+
+# Open Source / Dev Culture
+oss: OSS
+foss: FOSS
+cli: CLI
+tui: TUI
+gui: GUI
+api: API
+sdk: SDK
+lts: LTS
+semver: SemVer
+rc: RC
+eol: EOL
+pr: PR
+mr: MR

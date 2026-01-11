@@ -1,6 +1,7 @@
 ---
 layout: tag
-tag: learning
-title: Learning
-description: Learning notes, experiments, and reflections while exploring new technologies, tools, and development concepts.
+tag: "learning"
+slug: "learning"
+title: "Learning"
+description: "Notes, experiments, and projects focused on learning and exploration."
 ---

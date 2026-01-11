@@ -37,6 +37,7 @@ layout: default
     {% endif %}
   {% endfor %}
 
+  {% assign related_tags = related_tags | compact %}
   {% assign related_tags = related_tags | uniq | sort %}
 
   {% if related_tags.size > 0 %}

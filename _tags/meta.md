@@ -1,6 +1,7 @@
 ---
 layout: tag
-tag: meta
-title: Meta
-description: Behind-the-scenes posts about this website, including structure, tooling choices, workflows, and site changes.
+tag: "meta"
+slug: "meta"
+title: "Meta"
+description: "Posts and projects about this site, its structure, and how it is built."
 ---
