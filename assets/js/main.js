@@ -50,6 +50,12 @@ function initThemeToggle() {
     root.dataset.theme = theme;
     localStorage.setItem("theme", theme);
 
+    // Update aria-pressed value used for style
+    toggle.setAttribute(
+      "aria-pressed",
+      String(theme === "dark")
+    );
+
     document.dispatchEvent(
       new CustomEvent("theme:changed", { detail: theme })
     );
@@ -70,9 +76,6 @@ function initThemeToggle() {
     applyTheme(next);
   });
 }
-
-
-
 
 /* =========================
    Mobile navigation
