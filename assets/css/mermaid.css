@@ -165,6 +165,12 @@
 
 .mermaid .pieCircle {
   opacity: 0.95;
+  transition: transform 200ms cubic-bezier(0.65, 0.5, 0.36, 1);
+}
+
+/* Hover effect */
+.mermaid .pieCircle:hover {
+  transform: scale(1.03);
 }
 
 .mermaid .slice {
@@ -269,5 +275,19 @@
   .mermaid svg {
     display: block;
     margin: 0 auto;
+  }
+}
+
+/* =========================================================
+   Reduced Motion
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .mermaid .pieCircle path {
+    transition: none;
+  }
+
+  .mermaid .pieCircle:hover  {
+    transform: none;
   }
 }
