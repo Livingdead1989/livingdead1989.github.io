@@ -10,7 +10,6 @@
 }
 
 .post-content li {
-  margin: 0.4rem 0;
   line-height: 1.6;
 }
 
@@ -20,6 +19,10 @@
 
 .post-content ol li::marker {
   font-weight: 600;
+}
+
+.post-content ul > li ul {
+  margin: 0 0 1.2rem;
 }
 
 /* =========================================================
