@@ -171,6 +171,9 @@
 /* Hover effect */
 .mermaid .pieCircle:hover {
   transform: scale(1.03);
+  filter: drop-shadow(
+    0 4px 10px color-mix(in srgb, var(--text) 20%, transparent)
+  );
 }
 
 .mermaid .slice {
@@ -283,7 +286,7 @@
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .mermaid .pieCircle path {
+  .mermaid .pieCircle {
     transition: none;
   }
 
