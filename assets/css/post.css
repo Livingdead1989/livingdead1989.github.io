@@ -21,7 +21,8 @@
   font-weight: 600;
 }
 
-.post-content ul > li ul {
+.post-content ul > li ul,
+.post-content ol > li ul {
   margin: 0 0 1.2rem;
 }
 

@@ -13,6 +13,9 @@ excerpt: >
 
 tags:
   - learning
+  - homelab
+  - server
+  - hardware
 
 started: 2026-01-08
 archived: false
@@ -84,6 +87,8 @@ flowchart TD
     disk[(DAS 
         Storage)] --- omv
 
+    usbdisk[(USB SSD)] --- proxmox
+
     subgraph PoE Switch
         switchPoE[\Switch PoE Unmanaged\] ---> switchCore
         doorbell(Doorbell) --> switchPoE
@@ -94,17 +99,9 @@ flowchart TD
 
 ---
 
-### Hardware Philosophy
-
-The homelab is intentionally compact, energy-efficient, and role-driven. Each device exists for a clear purpose—nothing is running “just in case.”
-
-The house is fully wired with Cat6A Ethernet, providing a strong foundation for future upgrades and enough headroom to introduce 10 GbE where it makes sense.
-
----
-
 ### Hardware Inventory
 
-I’ve installed Cat6A Ethernet cabling throughout the home. This provides a solid foundation for future upgrades and ensures the network is ready for 10 GbE when needed.
+The house is fully wired with Cat6A Ethernet, providing a strong foundation for future upgrades and enough headroom to introduce 10 <abbr title="Gigabit Ethernet">GbE</abbr> where it makes sense.
 
 My current homelab is intentionally compact, with a focus on low power usage and clearly defined roles for each device.
 
@@ -168,16 +165,15 @@ The homelab has become a critical part of daily life. While individual products 
         Emby
         NextCloud 
     end
-    
 </div>
 
 - **OpenWRT**
   - Firewall
-  - VPN
-  - Dynamic DNS (DDNS)
+  - <abbr title="Virtual Private Network">VPN</abbr>
+  - <abbr title="Dynamic Domain Name System">DDNS</abbr>
 - **PiHole**
-  - DNS
-  - DHCP
+  - <abbr title="Domain Name System">DNS</abbr>
+  - <abbr title="Dynamic Host Configuration Protocol">DHCP</abbr>
 - **NPM** (Nginx Proxy Manager)
   - Reverse Proxy
   - Let's Encrypt Certificates
@@ -191,20 +187,72 @@ The homelab has become a critical part of daily life. While individual products 
 
 ---
 
-## Homelab Goals and Learning Priorities for 2026
+## Pinch Points and Design Responses
 
-Rather than a rigid roadmap, these are guiding themes I want the homelab to support throughout 2026:
-
-- **Resiliency** — Designing systems that fail gracefully
-- **Security** — Improving network and service-level security practices
-- **Automating** — Reducing repetitive and manual operational work
-- **Monitoring** — Observability that answers meaningful questions
-- **Electronics** — Combining hardware experimentation with software systems
-
-Many of these areas intentionally overlap.
+Running my own servers over time has highlighted a number of practical weaknesses in the current setup. These lessons—mostly learned the hard way—directly inform how the 2026 homelab will be redesigned. Each pinch point is paired with a response to improve resilience, performance, and operational flexibility.
 
 ---
 
-## Planning the 2026 Homelab Refresh
+### 1. Power Outages (Rare, but Impactful)
+
+**Problem**  
+The homelab currently has no <abbr title="Uninterruptible Power Supply">UPS</abbr>. As a result, it cannot tolerate short power outages or perform a graceful shutdown, risking filesystem corruption and service instability.
+
+**Resolution**  
+Introduce a <abbr title="Uninterruptible Power Supply">UPS</abbr> capable of sustaining the homelab during short outages and providing sufficient runtime for an orderly, automated shutdown when battery capacity is low. Integration with hosts and critical services will be required to avoid abrupt power loss.
+
+---
+
+### 2. Automatic Power-On Dependencies
+
+**Problem**  
+Media storage is hosted on a USB <abbr title="Direct Attached Storage">DAS</abbr> that does not automatically power on after a power loss. When this occurs, OpenMediaVault starts without its backing storage, leading to failed mounts and cascading failures in media-related containers.
+
+**Resolution**  
+Replace the existing USB <abbr title="Direct Attached Storage">DAS</abbr> with storage hardware that supports automatic power-on after an outage. This removes a single point of failure and ensures storage-dependent services can recover cleanly without manual intervention.
+
+---
+
+### 3. Proxmox CPU I/O Delay Spikes
+
+**Problem**  
+Occasional spikes in <abbr title="Central Processing Unit">CPU</abbr> <abbr title="Input Output">I/O</abbr> wait within Proxmox lead to noticeable performance degradation. This is most likely caused by slow or overwhelmed storage. Tools such as `iotop` help identify disk-heavy workloads, but they do not address the underlying storage bottleneck.
+
+**Resolution**  
+Migrate to faster storage with higher sustained <abbr title="Input Output">I/O</abbr> throughput and lower latency. The storage layer must be capable of absorbing bursty workloads without pushing the hypervisor into prolonged <abbr title="Input Output">I/O</abbr> wait states.
+
+Where appropriate, introduce a secondary compute node to distribute workloads, reduce contention, and smooth performance during peak activity, while providing fault tolerance through automatic failover or workload migration.
+
+---
+
+### 4. Network Performance Ceilings
+
+**Problem**  
+Although the house is wired with Cat6A, most active networking equipment is limited to 1 <abbr title="Gigabit Ethernet">GbE</abbr>. While the physical infrastructure is ready for higher speeds, the hardware currently caps throughput.
+
+**Resolution**  
+Incrementally upgrade network interfaces and switching to support 2.5 <abbr title="Gigabit Ethernet">GbE</abbr> or 10 <abbr title="Gigabit Ethernet">GbE</abbr> where it provides measurable benefit. Existing cabling allows this to be done selectively rather than through a full network replacement.
+
+---
+
+### 5. Storage Capacity Growth
+
+**Problem**  
+When initially deployed, 4 TB disks felt generous. Over time—particularly with media and backups—capacity has filled faster than expected, resulting in reactive rather than intentional expansion.
+
+**Resolution**  
+Redesign the storage layout around higher-capacity modern disks with deliberate room for expansion. Capacity planning should balance redundancy, power consumption, and future growth.
+
+---
+
+### 6. Remote Access Limitations
+
+**Problem**  
+On rare occasions, remote management of the homelab is required. While front-end services are accessible externally, management interfaces are intentionally not exposed to the <abbr title="Wide Area Network">WAN</abbr>. This improves security but limits the ability to respond to issues when off-site.
+
+**Resolution**  
+Introduce secure, authenticated, and encrypted entry points for remote administration, enabling off-site management without exposing internal interfaces directly to the internet. Access should remain tightly scoped, logged, and auditable.
+
+---
 
 This project will evolve as the 2026 homelab takes shape. Check back soon.
