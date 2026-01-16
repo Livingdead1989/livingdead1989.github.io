@@ -66,35 +66,31 @@ Because these services are relied upon day to day, stability is essential. I int
 ### Network Diagram
 
 <div class="mermaid">
-flowchart TD
-    isp((Internet)) --> openWRT(RPI 
-            openWRT 
-            Router)
+flowchart TB
+  isp((Internet)) --> fw
+  switchServer[\Switch Managed\] --- switchPoE[\Switch PoE Unmanaged\]
 
-    subgraph Switch Core
-        openWRT --> switchCore[\Switch Managed\]
-        omv(RPI 
-        Open Media Vault
-        Storage) --> switchCore
-        proxmox(N100 
-        Proxmox 
-        Hypervisor) --> switchCore
-        hassio(RPI 
-        Home Assistant 
-        Zigbee) --> switchCore
-    end
+  fw(Firewall) --> switchServer
+  hassio(Home 
+  Assistant) --> switchServer
+  proxmox(Compute
+  Proxmox) --> switchServer
+  omv(Storage
+  Open Media Vault) --> switchServer
 
-    disk[(DAS 
-        Storage)] --- omv
+  das[(DAS)] -- USB --- omv
+  ssd[(SSD)] -- USB --- proxmox
+  zigbee[Zigbee 
+  Coordinator] -- USB --- hassio
 
-    usbdisk[(USB SSD)] --- proxmox
+  doorbell(Doorbell) --> switchPoE
+  camera(Camera) --> switchPoE
 
-    subgraph PoE Switch
-        switchPoE[\Switch PoE Unmanaged\] ---> switchCore
-        doorbell(Doorbell) --> switchPoE
-        wifi(Wi-Fi AP) --> switchPoE
-        camera(Camera) --> switchPoE
-    end
+  subgraph WiFi
+    wifi1(Wi-Fi AP)
+    wifi2(Wi-Fi AP)
+  end
+  WiFi --> switchPoE
 </div>
 
 ---
@@ -187,71 +183,146 @@ The homelab has become a critical part of daily life. While individual products 
 
 ---
 
-## Pinch Points and Design Responses
+## Pinch Points and Responses
 
-Running my own servers over time has highlighted a number of practical weaknesses in the current setup. These lessons—mostly learned the hard way—directly inform how the 2026 homelab will be redesigned. Each pinch point is paired with a response to improve resilience, performance, and operational flexibility.
+Running my own servers over time has highlighted a number of practical weaknesses in the current setup. These lessons—mostly learned the hard way—directly inform how the 2026 homelab will be redesigned. Each pinch point is paired with a response.
+
+In no particular order:
+
+<details>
+  <summary>1. Power Outages (Rare, but Impactful)</summary>
+  <p><strong>Problem</strong></p>
+  <p>The homelab currently has no <abbr title="Uninterruptible Power Supply">UPS</abbr>. As a result, it cannot tolerate short power outages or perform a graceful shutdown, risking filesystem corruption and service instability.</p>
+  <p><strong>Resolution</strong></p>
+  <p>Introduce a <abbr title="Uninterruptible Power Supply">UPS</abbr> capable of sustaining the homelab during short outages and providing sufficient runtime for an orderly, automated shutdown when battery capacity is low. Integration with hosts and critical services will be required to avoid abrupt power loss.</p>
+</details>
+
+<details>
+  <summary>2. Automatic Power-On Dependencies</summary>
+  <p><strong>Problem</strong></p>
+  <p>Media storage is hosted on a USB <abbr title="Direct Attached Storage">DAS</abbr> that does not automatically power on after a power loss. When this occurs, OpenMediaVault starts without its backing storage, leading to failed mounts and cascading failures in media-related containers.</p>
+  <p><strong>Resolution</strong></p>
+  <p>Replace the existing USB <abbr title="Direct Attached Storage">DAS</abbr> with storage hardware that supports automatic power-on after an outage. This removes a single point of failure and ensures storage-dependent services can recover cleanly without manual intervention.</p>
+</details>
+
+<details>
+  <summary>3. Proxmox CPU I/O Delay Spikes</summary>
+  <p><strong>Problem</strong></p>
+  <p>Occasional spikes in <abbr title="Central Processing Unit">CPU</abbr> <abbr title="Input Output">I/O</abbr> wait within Proxmox lead to noticeable performance degradation. This is most likely caused by slow or overwhelmed storage. Tools such as `iotop` help identify disk-heavy workloads, but they do not address the underlying storage bottleneck.</p>
+  <p><strong>Resolution</strong></p>
+  <p>Migrate to faster storage with higher sustained <abbr title="Input Output">I/O</abbr> throughput and lower latency. The storage layer must be capable of absorbing bursty workloads without pushing the hypervisor into prolonged <abbr title="Input Output">I/O</abbr> wait states.</p>
+  <p>Where appropriate, introduce a secondary compute node to distribute workloads, reduce contention, and smooth performance during peak activity, while providing fault tolerance through automatic failover or workload migration.</p>
+</details>
+
+<details>
+  <summary>4. Network Performance Ceilings</summary>
+  <p><strong>Problem</strong></p>
+  <p>Although the house is wired with Cat6A, most active networking equipment is limited to 1 <abbr title="Gigabit Ethernet">GbE</abbr>. While the physical infrastructure is ready for higher speeds, the hardware currently caps throughput.</p>
+  <p><strong>Resolution</strong></p>
+  <p>Incrementally upgrade network interfaces and switching to support 2.5 <abbr title="Gigabit Ethernet">GbE</abbr> or 10 <abbr title="Gigabit Ethernet">GbE</abbr> where it provides measurable benefit. Existing cabling allows this to be done selectively rather than through a full network replacement.</p>
+</details>
+
+<details>
+  <summary>5. Storage Capacity Growth</summary>
+  <p><strong>Problem</strong></p>
+  <p>When initially deployed, 4 TB disks felt generous. Over time—particularly with media and backups—capacity has filled faster than expected, resulting in reactive rather than intentional expansion.</p>
+  <p><strong>Resolution</strong></p>
+  <p>Redesign the storage layout around higher-capacity modern disks with deliberate room for expansion. Capacity planning should balance redundancy, power consumption, and future growth.</p>
+</details>
+
+<details>
+  <summary>6. Remote Access Limitations</summary>
+  <p><strong>Problem</strong></p>
+  <p>On rare occasions, remote management of the homelab is required. While front-end services are accessible externally, management interfaces are intentionally not exposed to the <abbr title="Wide Area Network">WAN</abbr>. This improves security but limits the ability to respond to issues when off-site.</p>
+  <p><strong>Resolution</strong></p>
+  <p>Introduce secure, authenticated, and encrypted entry point for remote administration, enabling off-site management without exposing internal interfaces directly to the internet. Access should remain tightly scoped, logged, and auditable.</p>
+</details>
+
+<details>
+  <summary>7. No Backup</summary>
+  <p><strong>Problem</strong></p>
+  <p>As my homelab has grown, new services have been deployed and the household has become increasingly dependent on it. Despite this, little consideration has been given to backups beyond the use of a mirrored <abbr title="Redundant Array of Independent Disks">RAID</abbr> array, which provides redundancy but is not a substitute for a proper backup strategy.</p>
+  <p><strong>Resolution</strong></p>
+  <p>Introduce a backup strategy that protects critical application data and configuration. Backups should run regularly to independent storage, with retention policies that allow recovery from both recent failures and historical data corruption. The entire backup process should be automated to ensure consistency and reliability.</p>
+</details>
+
 
 ---
 
-### 1. Power Outages (Rare, but Impactful)
+## New Design
 
-**Problem**  
-The homelab currently has no <abbr title="Uninterruptible Power Supply">UPS</abbr>. As a result, it cannot tolerate short power outages or perform a graceful shutdown, risking filesystem corruption and service instability.
+With a few tweaks, I can achieve all of my targets:  
 
-**Resolution**  
-Introduce a <abbr title="Uninterruptible Power Supply">UPS</abbr> capable of sustaining the homelab during short outages and providing sufficient runtime for an orderly, automated shutdown when battery capacity is low. Integration with hosts and critical services will be required to avoid abrupt power loss.
+- By adding a <abbr title="Uninterruptible Power Supply">UPS</abbr> to my <abbr title="Power Distribution Unit">PDU</abbr>, I can provide battery power to all hardware simultaneously.  
+- Adding another Proxmox compute node will enable me to transition to a <abbr title="High Availability">HA</abbr> Proxmox cluster. This not only improves resiliency but also reduces the impact of bursty workloads.  
+- Transition from a USB to a networked Zigbee coordinator, ensuring that Home Assistant can access it reliably within a <abbr title="High Availability">HA</abbr> Proxmox cluster.  
+- Transitioning to a <abbr title="Network Attached Storage">NAS</abbr> allows me to remove automatic power-on dependencies completely, accommodate additional drives for future growth, and provide a repository for backups.  
+- Ensuring that any new hardware supports at least 2.5 <abbr title="Gigabit Ethernet">GbE</abbr> will enable me to leverage improved network capabilities, while existing hardware can be upgraded as needed.  
+- Incorporating a <abbr title="Virtual Private Network">VPN</abbr> server will provide secure remote access for network management.  
 
----
-
-### 2. Automatic Power-On Dependencies
-
-**Problem**  
-Media storage is hosted on a USB <abbr title="Direct Attached Storage">DAS</abbr> that does not automatically power on after a power loss. When this occurs, OpenMediaVault starts without its backing storage, leading to failed mounts and cascading failures in media-related containers.
-
-**Resolution**  
-Replace the existing USB <abbr title="Direct Attached Storage">DAS</abbr> with storage hardware that supports automatic power-on after an outage. This removes a single point of failure and ensures storage-dependent services can recover cleanly without manual intervention.
 
 ---
 
-### 3. Proxmox CPU I/O Delay Spikes
+### Hardware
 
-**Problem**  
-Occasional spikes in <abbr title="Central Processing Unit">CPU</abbr> <abbr title="Input Output">I/O</abbr> wait within Proxmox lead to noticeable performance degradation. This is most likely caused by slow or overwhelmed storage. Tools such as `iotop` help identify disk-heavy workloads, but they do not address the underlying storage bottleneck.
+This is a concept diagram of what my hardware network would look like after the additions.
 
-**Resolution**  
-Migrate to faster storage with higher sustained <abbr title="Input Output">I/O</abbr> throughput and lower latency. The storage layer must be capable of absorbing bursty workloads without pushing the hypervisor into prolonged <abbr title="Input Output">I/O</abbr> wait states.
+<div class="mermaid">
+flowchart TB
+  isp((Internet)) --- fw
+  switchServer[\Switch Managed\] --- switchPoE[\Switch PoE Unmanaged\]
 
-Where appropriate, introduce a secondary compute node to distribute workloads, reduce contention, and smooth performance during peak activity, while providing fault tolerance through automatic failover or workload migration.
+  fw(Firewall) --- switchServer
+  data[(NAS)] --- switchServer
+      
+  subgraph cluster[Proxmox Cluster]
+    c1(Proxmox 1) -.- c2
+    c2(Proxmox 2)
+  end
+  cluster --- switchServer
+
+  zigbee(Zigbee 
+    Coordinator) --- switchPoE
+  doorbell(Doorbell) --- switchPoE
+  camera(Camera) --- switchPoE
+
+  subgraph WiFi
+    wifi1(Wi-Fi AP)
+    wifi2(Wi-Fi AP)
+  end
+  WiFi --- switchPoE
+</div>
 
 ---
 
-### 4. Network Performance Ceilings
+### Services
 
-**Problem**  
-Although the house is wired with Cat6A, most active networking equipment is limited to 1 <abbr title="Gigabit Ethernet">GbE</abbr>. While the physical infrastructure is ready for higher speeds, the hardware currently caps throughput.
+Using a two-node Proxmox cluster provides the ability to consolidate services into the cluster. This not only makes the services highly available but also allows for load balancing of certain services.
 
-**Resolution**  
-Incrementally upgrade network interfaces and switching to support 2.5 <abbr title="Gigabit Ethernet">GbE</abbr> or 10 <abbr title="Gigabit Ethernet">GbE</abbr> where it provides measurable benefit. Existing cabling allows this to be done selectively rather than through a full network replacement.
+<div class="mermaid">
+flowchart
+  subgraph c1[Proxmox 1]
+    dns1(DNS)
+    dhcp1(DHCP)
+    proxy1(Proxy)
+    nc(NextCloud)
+    emby(Emby)
+    uptime(Uptime-Kuma)
+  end
 
----
+  subgraph c2[Proxmox 2]
+    dns2(DNS)
+    dhcp2(DHCP)
+    proxy2(Proxy)
+    ha(Home Assistant)
+    omada(Omada)
+  end
 
-### 5. Storage Capacity Growth
+  proxy1 <-.-> proxy2
+  dns1 <-.-> dns2
+  dhcp1 <-.-> dhcp2
 
-**Problem**  
-When initially deployed, 4 TB disks felt generous. Over time—particularly with media and backups—capacity has filled faster than expected, resulting in reactive rather than intentional expansion.
-
-**Resolution**  
-Redesign the storage layout around higher-capacity modern disks with deliberate room for expansion. Capacity planning should balance redundancy, power consumption, and future growth.
-
----
-
-### 6. Remote Access Limitations
-
-**Problem**  
-On rare occasions, remote management of the homelab is required. While front-end services are accessible externally, management interfaces are intentionally not exposed to the <abbr title="Wide Area Network">WAN</abbr>. This improves security but limits the ability to respond to issues when off-site.
-
-**Resolution**  
-Introduce secure, authenticated, and encrypted entry points for remote administration, enabling off-site management without exposing internal interfaces directly to the internet. Access should remain tightly scoped, logged, and auditable.
+</div>
 
 ---
 
