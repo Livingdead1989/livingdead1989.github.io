@@ -396,9 +396,303 @@ flowchart LR
 
 <small>Dotted Links - represent synchronization, state awareness, or failover relationships rather than direct client traffic.</small>
 
+---
+
+### Other considerations
+
+<details>
+  <summary><strong>Estimated Power Budget Breakdown</strong></summary>
+  <p>A key goal of the homelab redesign is to improve resilience and capability without significantly increasing ongoing power consumption.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Component</th>
+        <th>Estimated Avg Power</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Existing Proxmox host (N100)</td>
+        <td>~10–15 Watts</td>
+      </tr>
+      <tr>
+        <td>Additional Proxmox host (N100-class)</td>
+        <td>~10–15 Watts</td>
+      </tr>
+      <tr>
+        <td>NAS (4-bay, modern ARM/x86, NVMe-capable)</td>
+        <td>~20–30 Watts</td>
+      </tr>
+      <tr>
+        <td>Firewall / Router (pfSense-capable)</td>
+        <td>~10–20 Watts</td>
+      </tr>
+      <tr>
+        <td>Switch (2.5 GbE, fanless)</td>
+        <td>~8–15 Watts</td>
+      </tr>
+      <tr>
+        <td>Zigbee network coordinator</td>
+        <td>&lt; 2 Watts</td>
+      </tr>
+      <tr>
+        <td>Misc (APs, overhead)</td>
+        <td>~10–15 Watts</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Estimated Total Average Load: 💡 ~70–92 Watts continuous</p>
+
+  <p>Using an electricity rate of <strong>23.74 pence per kWh</strong>, the estimated running cost is:</p>
+  <ul>
+    <li><strong>Daily consumption:</strong> ~1.7–2.2 kWh</li>
+    <li><strong>Daily cost:</strong> ~£0.40 – £0.52</li>
+    <li><strong>Monthly cost:</strong> ~£12 – £16</li>
+    <li><strong>Annual cost:</strong> ~£145 – £190</li>
+  </ul>
+</details>
+
+
 
 ---
 
 ## From Plan to Reality
+
+The review has identified several changes to the homelab’s hardware requirements. These updates must be carefully evaluated to ensure they meet functional needs, stay within budget, and align with energy efficiency goals. Keeping power consumption low is essential to minimise long-term operating costs.
+
+Below you'll find a few products for each category that I will need to upgrade my homelab
+
+I have highlighted my selection with a ⭐:
+
+<details>
+  <summary><strong>UPS</strong></summary>
+  <p><strong>Requirement</strong>: Replaceable batteries with 30–60 min runtime</p>
+  <p><a href="https://upsselector.eaton.com/Load" target="_blank">Eaton Calculator</a></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Approx. Cost (£)</th>
+        <th>VA / Watts</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>APC Back‑UPS 1000VA</td>
+        <td>£124</td>
+        <td>1000 VA / 600 W</td>
+      </tr>
+      <tr>
+        <td>Powercool Smart UPS 1200VA</td>
+        <td>£90</td>
+        <td>1200 VA / 720 W</td>
+      </tr>
+      <tr>
+        <td>CyberPower VP1200EILCD</td>
+        <td>£218</td>
+        <td>1200 VA / 720 W</td>
+      </tr>
+      <tr>
+        <td>APC Back‑UPS BX1600MI</td>
+        <td>~£175</td>
+        <td>1600 VA / 900 W</td>
+      </tr>
+    </tbody>
+  </table>
+</details>
+
+<details>
+  <summary><strong>NAS</strong></summary>
+  <p><strong>Requirement</strong>: 4-Bay with NVMe support for caching</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Approx. Cost (£)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Synology DS925+ ⭐</td>
+        <td>£579</td>
+      </tr>
+      <tr>
+        <td>AOOSTAR 4-Bay Ryzen NAS</td>
+        <td>£599</td>
+      </tr>
+      <tr>
+        <td>UGREEN NASync DXP4800 Plus</td>
+        <td>£510</td>
+      </tr>
+      <tr>
+        <td>QNAP TS-433</td>
+        <td>£368</td>
+      </tr>
+    </tbody>
+  </table>
+</details>
+
+<details>
+  <summary><strong>Proxmox Host</strong></summary>
+  <p><strong>Requirement</strong>: Small footprint, with dual NIC for data and storage</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Product / Build</th>
+        <th>Approx. Cost (£)</th>
+        <th>Estimated Power</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Intel N100 Mini PC</td>
+        <td>£180–£260</td>
+        <td>~10–15 W</td>
+      </tr>
+      <tr>
+        <td>ASRock 4×4 BOX-N1000</td>
+        <td>£220–£260</td>
+        <td>~12–18 W</td>
+      </tr>
+      <tr>
+        <td>Beelink SER5</td>
+        <td>£270–£350</td>
+        <td>~25–35 W</td>
+      </tr>
+      <tr>
+        <td>Intel NUC i3/i5</td>
+        <td>£350–£480</td>
+        <td>~25–40 W</td>
+      </tr>
+    </tbody>
+  </table>
+</details>
+
+<details>
+  <summary><strong>Firewall / Router</strong></summary>
+  <p><strong>Requirement</strong>: Dual NIC at a minimum, with enough resources for extra services</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Approx. Cost (£)</th>
+        <th>Idle Power</th>
+        <th>NICs (Count & Speed)</th>
+        <th>pfSense Compatibility</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Netgate SG-2100</td>
+        <td>£190–£240</td>
+        <td>~7–10 W</td>
+        <td>3 × 1 GbE (switch-based)</td>
+        <td>✔ Fully supported</td>
+      </tr>
+      <tr>
+        <td>Intel N100 Mini PC ⭐</td>
+        <td>£180–£260</td>
+        <td>~10–15 W</td>
+        <td>2 × 2.5 GbE (Intel i226-V)</td>
+        <td>✔ Fully supported</td>
+      </tr>
+      <tr>
+        <td>Protectli Vault Pro VP2420-4 Port</td>
+        <td>£270–£320</td>
+        <td>~12–18 W</td>
+        <td>4 × 2.5 GbE</td>
+        <td>✔ Fully supported</td>
+      </tr>
+      <tr>
+        <td>Intel NUC (i3 / i5) as Firewall Node</td>
+        <td>£250–£450</td>
+        <td>~25–40 W</td>
+        <td>1–2 × GbE onboard</td>
+        <td>✔ Supported</td>
+      </tr>
+    </tbody>
+  </table>
+</details>
+
+<details>
+  <summary><strong>Ethernet Zigbee Coordinator</strong></summary>
+  <p><strong>Requirement</strong>: Powered using PoE, and good range</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Coordinator</th>
+        <th>Approx. Cost (£)</th>
+        <th>Integration</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>SMLIGHT SLZB-06mg24 (PoE)</td>
+        <td>£75–£85</td>
+        <td>Zigbee2MQTT (TCP)</td>
+      </tr>
+      <tr>
+        <td>SONOFF Dongle Max ⭐</td>
+        <td>£38–£45</td>
+        <td>Zigbee2MQTT (TCP)</td>
+      </tr>
+    </tbody>
+  </table>
+</details>
+
+<details>
+  <summary><strong>2.5 GbE Network Switch</strong></summary>
+  <p><strong>Requirement</strong>: Energy-efficient, 2.5 GbE capable, optionally managed</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th>Price (£)</th>
+        <th>Port Count & Speed</th>
+        <th>Managed</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Ubiquiti UniFi Switch Flex Mini 2.5G</td>
+        <td>£60</td>
+        <td>5 × 2.5 GbE</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td>UGREEN 2.5 Gbps Network Switch</td>
+        <td>£50</td>
+        <td>5 × 2.5 GbE</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td>TP-Link TL-SG105-M2</td>
+        <td>£40</td>
+        <td>5 × 2.5 GbE</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td>TP-Link TL-SG108-M2</td>
+        <td>£55</td>
+        <td>8 × 2.5 GbE</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td>TP-Link Omada 8-Port 2.5G L2+ Managed Switch</td>
+        <td>£241</td>
+        <td>8 × 2.5 GbE + 2 × 10 GbE uplinks</td>
+        <td>Yes</td>
+      </tr>
+    </tbody>
+  </table>
+</details>
+
+
+
+---
+
+---
 
 This project will evolve as the 2026 homelab takes shape. Check back soon.
