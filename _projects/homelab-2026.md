@@ -237,7 +237,6 @@ This review focuses on how well each service fits its intended purpose—what ha
   <p><strong>Possible Alternative:</strong> <a href="https://www.openhab.org/" target="_blank">OpenHAB</a> – a vendor and technology agnostic open source automation software.</p>
 </details>
 
-
 <details>
   <summary>Uptime-Kuma</summary>
   <p><span class="tag">Keep</span></p>
@@ -310,7 +309,6 @@ In no particular order:
   <p><strong>Resolution</strong></p>
   <p>Introduce a backup strategy that protects critical application data and configuration. Backups should run regularly to independent storage, with retention policies that allow recovery from both recent failures and historical data corruption. The entire backup process should be automated to ensure consistency and reliability.</p>
 </details>
-
 
 ---
 
@@ -454,8 +452,6 @@ flowchart LR
   </ul>
 </details>
 
-
-
 ---
 
 ## From Plan to Reality
@@ -464,7 +460,7 @@ The review has identified several changes to the homelab’s hardware requiremen
 
 Below you'll find a few products for each category that I will need to upgrade my homelab
 
-I have highlighted my selection with a ⭐:
+⭐* Items I have purchased*
 
 <details>
   <summary><strong>UPS</strong></summary>
@@ -501,6 +497,7 @@ I have highlighted my selection with a ⭐:
       </tr>
     </tbody>
   </table>
+  <p>Another option is to deploy a house battery system. This would protect all connected electrical equipment and, when used alongside a UPS, could keep critical IT infrastructure running for extended periods during a power outage.</p>
 </details>
 
 <details>
@@ -649,49 +646,49 @@ I have highlighted my selection with a ⭐:
     <thead>
       <tr>
         <th>Model</th>
-        <th>Price (£)</th>
-        <th>Port Count & Speed</th>
+        <th>Ports</th>
+        <th>PoE Support</th>
         <th>Managed</th>
+        <th>Est. Idle Power (No PoE)</th>
+        <th>Approx. Price (£)</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>Ubiquiti UniFi Switch Flex Mini 2.5G</td>
-        <td>£60</td>
+        <td>TP‑Link TL‑SG105‑M2</td>
         <td>5 × 2.5 GbE</td>
-        <td>No</td>
+        <td>None</td>
+        <td>Unmanaged</td>
+        <td>~3–6 W</td>
+        <td>~£70–£90</td>
       </tr>
       <tr>
-        <td>UGREEN 2.5 Gbps Network Switch</td>
-        <td>£50</td>
+        <td>Ubiquiti UniFi Flex Mini 2.5G</td>
         <td>5 × 2.5 GbE</td>
-        <td>No</td>
+        <td>PoE input only</td>
+        <td>L2 Managed</td>
+        <td>~6-10 W</td>
+        <td>~£50–£70</td>
       </tr>
       <tr>
-        <td>TP-Link TL-SG105-M2</td>
-        <td>£40</td>
-        <td>5 × 2.5 GbE</td>
-        <td>No</td>
+        <td>BrosTrend 8 Port 2.5Gb</td>
+        <td>8 × 2.5 GbE</td>
+        <td>None</td>
+        <td>Unmanaged</td>
+        <td>~6–10 W</td>
+        <td>~£60–£90</td>
       </tr>
       <tr>
         <td>TP-Link TL-SG108-M2</td>
-        <td>£55</td>
         <td>8 × 2.5 GbE</td>
-        <td>No</td>
-      </tr>
-      <tr>
-        <td>TP-Link Omada 8-Port 2.5G L2+ Managed Switch</td>
-        <td>£241</td>
-        <td>8 × 2.5 GbE + 2 × 10 GbE uplinks</td>
-        <td>Yes</td>
+        <td>None</td>
+        <td>Unmanaged</td>
+        <td>~5–8 W</td>
+        <td>~£90</td>
       </tr>
     </tbody>
   </table>
 </details>
-
-
-
----
 
 ---
 
