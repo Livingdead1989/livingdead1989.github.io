@@ -671,6 +671,14 @@ Below you'll find a few products for each category that I will need to upgrade m
         <td>~£50–£70</td>
       </tr>
       <tr>
+        <td>MERCUSYS MS108GS-M2 ⭐</td>
+        <td>8 × 2.5 GbE</td>
+        <td>None</td>
+        <td>Unmanaged</td>
+        <td>~5–8 W</td>
+        <td>£50</td>
+      </tr>
+      <tr>
         <td>BrosTrend 8 Port 2.5Gb</td>
         <td>8 × 2.5 GbE</td>
         <td>None</td>
@@ -689,6 +697,9 @@ Below you'll find a few products for each category that I will need to upgrade m
     </tbody>
   </table>
 </details>
+
+
+
 
 ---
 
