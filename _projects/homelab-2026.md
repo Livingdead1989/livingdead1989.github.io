@@ -650,6 +650,7 @@ Below you'll find a few products for each category that I will need to upgrade m
         <th>PoE Support</th>
         <th>Managed</th>
         <th>Est. Idle Power (No PoE)</th>
+        <th>Switching Capacity</th>
         <th>Approx. Price (£)</th>
       </tr>
     </thead>
@@ -660,6 +661,7 @@ Below you'll find a few products for each category that I will need to upgrade m
         <td>None</td>
         <td>Unmanaged</td>
         <td>~3–6 W</td>
+        <td>25 Gbps</td>
         <td>~£70–£90</td>
       </tr>
       <tr>
@@ -668,6 +670,7 @@ Below you'll find a few products for each category that I will need to upgrade m
         <td>PoE input only</td>
         <td>L2 Managed</td>
         <td>~6-10 W</td>
+        <td>20 Gbps</td>
         <td>~£50–£70</td>
       </tr>
       <tr>
@@ -676,6 +679,7 @@ Below you'll find a few products for each category that I will need to upgrade m
         <td>None</td>
         <td>Unmanaged</td>
         <td>~5–8 W</td>
+        <td>40 Gbps</td>
         <td>£50</td>
       </tr>
       <tr>
@@ -684,6 +688,7 @@ Below you'll find a few products for each category that I will need to upgrade m
         <td>None</td>
         <td>Unmanaged</td>
         <td>~6–10 W</td>
+        <td>40 Gbps</td>
         <td>~£60–£90</td>
       </tr>
       <tr>
@@ -692,6 +697,7 @@ Below you'll find a few products for each category that I will need to upgrade m
         <td>None</td>
         <td>Unmanaged</td>
         <td>~5–8 W</td>
+        <td>40 Gbps</td>
         <td>~£90</td>
       </tr>
     </tbody>
