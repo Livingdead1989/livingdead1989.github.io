@@ -67,6 +67,7 @@ Because these services are relied upon day to day, stability is essential. I int
 
 <div class="mermaid">
 flowchart TB
+
   isp((Internet
   Modem)) --> fw
   switchServer[\Switch Managed\] --- switchPoE[\Switch PoE Unmanaged\]
@@ -90,6 +91,13 @@ flowchart TB
     wifi2(Wi-Fi AP)
   end
   WiFi --> switchPoE
+
+  subgraph housePorts [House Ports]
+    computers(Computers)
+    consoles(Consoles)
+    media(Media)
+  end
+  housePorts ---> switchServer
 </div>
 
 ---
@@ -114,7 +122,7 @@ My current homelab is intentionally compact, with a focus on low power usage and
   <summary>Storage</summary>
   <ul>
     <li>Raspberry Pi 4</li>
-    <li>2 Bay Direct Attached Storage</li>
+    <li>4 Bay Icybox Direct Attached Storage</li>
     <li>2 × 4 TB HDDs configured as a mirrored RAID array</li>
   </ul>
 </details>
@@ -123,15 +131,15 @@ My current homelab is intentionally compact, with a focus on low power usage and
   <summary>Firewall and Router</summary>
   <ul>
     <li>Raspberry Pi 4</li>
-    <li>Secondary network via USB</li>
+    <li>Secondary Ethernet via USB</li>
   </ul>
 </details>
 
 <details>
   <summary>Networking</summary>
   <ul>
-    <li>16-port 1 GbE smart managed switch</li>
-    <li>5-port 1 GbE PoE unmanaged switch</li>
+    <li>Netgear 16-port 1 GbE smart managed switch</li>
+    <li>TP-Link 5-port 1 GbE PoE unmanaged switch</li>
   </ul>
 </details>
 
@@ -139,7 +147,7 @@ My current homelab is intentionally compact, with a focus on low power usage and
   <summary>Home Automation</summary>
   <ul>
     <li>Raspberry Pi 4</li>
-    <li>USB Zigbee coordinator</li>
+    <li>USB Sonoff Zigbee coordinator</li>
   </ul>
 </details>
 
@@ -338,6 +346,7 @@ flowchart LR
     isp((Internet 
     Modem)) --- fw
     switchServer[\Switch Managed\] ---- switchPoE[\Switch PoE Unmanaged\]
+    switchHouse[\Switch House\] --- switchServer
 
     fw(Firewall) --- switchServer
     data[(NAS)] --- switchServer
@@ -358,6 +367,13 @@ flowchart LR
       wifi2(Wi-Fi AP)
     end
     WiFi --- switchPoE
+
+    subgraph housePorts [House Ports]
+      computers(Computers)
+      consoles(Consoles)
+      media(Media)
+    end
+    housePorts --> switchHouse
   end
 </div>
 
@@ -427,7 +443,7 @@ flowchart LR
         <td>~10–20 Watts</td>
       </tr>
       <tr>
-        <td>Switch (2.5 GbE, fanless)</td>
+        <td>Switch (2.5 <abbr title="Gigabit Ethernet">GbE</abbr>, fanless)</td>
         <td>~8–15 Watts</td>
       </tr>
       <tr>
@@ -502,67 +518,98 @@ Below you'll find a few products for each category that I will need to upgrade m
 
 <details>
   <summary><strong>NAS</strong></summary>
-  <p><strong>Requirement</strong>: 4-Bay with NVMe support for caching</p>
-  <table>
+  <p><strong>Requirement</strong>: 4-Bay, 2.5 <abbr title="Gigabit Ethernet">GbE</abbr> with NVMe support for caching</p>
+<table>
     <thead>
       <tr>
         <th>Product</th>
         <th>Approx. Cost (£)</th>
+        <th>Idle Power</th>
+        <th>Read/Write Power</th>
+        <th>Max Load Power</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>Synology DS925+ ⭐</td>
         <td>£579</td>
+        <td>12.5W</td>
+        <td>28.7W</td>
+        <td>41.3W</td>
       </tr>
       <tr>
         <td>AOOSTAR 4-Bay Ryzen NAS</td>
         <td>£599</td>
+        <td>16.2W</td>
+        <td>38.5W</td>
+        <td>52.1W</td>
       </tr>
       <tr>
         <td>UGREEN NASync DXP4800 Plus</td>
         <td>£510</td>
+        <td>14.3W</td>
+        <td>33.6W</td>
+        <td>45.2W</td>
       </tr>
       <tr>
-        <td>QNAP TS-433</td>
-        <td>£368</td>
+        <td>QNAP TS-433 (No NVMe)</td>
+        <td>£402</td>
+        <td>11.8W</td>
+        <td>26.4W</td>
+        <td>39.7W</td>
       </tr>
     </tbody>
   </table>
+
 </details>
 
 <details>
   <summary><strong>Proxmox Host</strong></summary>
-  <p><strong>Requirement</strong>: Small footprint, with dual NIC for data and storage</p>
+  <p><strong>Requirement</strong>: Small footprint, with dual 2.5 <abbr title="Gigabit Ethernet">GbE</abbr> <abbr title="Network Interface Card">NIC</abbr> for data and storage</p>
   <table>
     <thead>
-      <tr>
-        <th>Product / Build</th>
-        <th>Approx. Cost (£)</th>
-        <th>Estimated Power</th>
-      </tr>
+        <tr>
+            <th>Product</th>
+            <th>Approx. Cost (£)</th>
+            <th>Estimated Power</th>
+            <th>Processor</th>
+            <th>Cores / Threads</th>
+            <th>Base / Boost Clock</th>
+            <th>RAM</th>
+            <th>Storage</th>
+        </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Intel N100 Mini PC</td>
-        <td>£180–£260</td>
-        <td>~10–15 W</td>
-      </tr>
-      <tr>
-        <td>ASRock 4×4 BOX-N1000</td>
-        <td>£220–£260</td>
-        <td>~12–18 W</td>
-      </tr>
-      <tr>
-        <td>Beelink SER5</td>
-        <td>£270–£350</td>
-        <td>~25–35 W</td>
-      </tr>
-      <tr>
-        <td>Intel NUC i3/i5</td>
-        <td>£350–£480</td>
-        <td>~25–40 W</td>
-      </tr>
+        <tr>
+            <td>Beelink EQ14</td>
+            <td>£299</td>
+            <td>~8-20 W</td>
+            <td>Intel N150</td>
+            <td>2/2</td>
+            <td>1.1 GHz / 2.8 GHz</td>
+            <td>16GB</td>
+            <td>500GB SSD</td>
+        </tr>
+        <tr>
+            <td>BOSGAME E4</td>
+            <td>£299</td>
+            <td>~15-45 W</td>
+            <td>AMD Ryzen 5 3550H</td>
+            <td>4/8</td>
+            <td>2.1 GHz / 3.7 GHz</td>
+            <td>16GB</td>
+            <td>512GB SSD</td>
+        </tr>
+        <tr>
+            <td>GMKtec Nucbox M5 Ultra ⭐</td>
+            <td>£379</td>
+            <td>~10-30 W</td>
+            <td>AMD Ryzen 7 7730U</td>
+            <td>8/16</td>
+            <td>2.0 GHz / 4.5 GHz</td>
+            <td>16GB</td>
+            <td>512GB SSD</td>
+        </tr>
     </tbody>
   </table>
 </details>
