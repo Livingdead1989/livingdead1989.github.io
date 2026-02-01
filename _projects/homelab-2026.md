@@ -476,6 +476,8 @@ flowchart LR
 
 ## From Plan to Reality
 
+### Purchase Options
+
 The review has identified several changes to the homelab’s hardware requirements. These updates must be carefully evaluated to ensure they meet functional needs, stay within budget, and align with energy efficiency goals. Keeping power consumption low is essential to minimise long-term operating costs.
 
 Below you'll find a few products for each category that I will need to upgrade my homelab
@@ -484,40 +486,71 @@ Below you'll find a few products for each category that I will need to upgrade m
 
 <details>
   <summary><strong>UPS</strong></summary>
-  <p><strong>Requirement</strong>: Replaceable batteries with 30–60 min runtime</p>
-  <p><a href="https://upsselector.eaton.com/Load" target="_blank">Eaton Calculator</a></p>
+  <p><strong>Requirement</strong>: Replaceable batteries with 30–60 min runtime and USB or Ethernet monitoring</p>
+
   <table>
     <thead>
       <tr>
-        <th>Product</th>
+        <th>Model</th>
         <th>Approx. Cost (£)</th>
-        <th>VA / Watts</th>
+        <th>Output</th>
+        <th>Capacity (VA / W)</th>
+        <th>Est. Runtime @ 150 W</th>
+        <th>Battery Replaceable</th>
+        <th>AVR</th>
+        <th>Dataline Protection</th>
+        <th>NUT Support</th>
+        <th>Interface</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>APC Back‑UPS 1000VA</td>
-        <td>£124</td>
-        <td>1000 VA / 600 W</td>
+        <td>CyberPower VP1600EILCD Value PRO</td>
+        <td>£247</td>
+        <td>4× Battery Protected, 4× Surge Only</td>
+        <td>1600 VA / 960 W</td>
+        <td>~50–55 min</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>1 GbE</td>
+        <td>✔ (USB HID)</td>
+        <td>LCD</td>
       </tr>
       <tr>
-        <td>Powercool Smart UPS 1200VA</td>
-        <td>£90</td>
-        <td>1200 VA / 720 W</td>
+        <td>APC Back-UPS BX1600MI</td>
+        <td>£175</td>
+        <td>4× Battery Protected, 2× Surge Only</td>
+        <td>1600 VA / 900 W</td>
+        <td>~30–35 min</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>1 GbE</td>
+        <td>✔ (USB HID)</td>
+        <td>simple LED status</td>
       </tr>
       <tr>
-        <td>CyberPower VP1200EILCD</td>
-        <td>£218</td>
-        <td>1200 VA / 720 W</td>
-      </tr>
-      <tr>
-        <td>APC Back‑UPS BX1600MI</td>
-        <td>~£175</td>
-        <td>1600 VA / 900 W</td>
+        <td>APC Back-UPS Pro BR1600SI</td>
+        <td>£460</td>
+        <td>6× Battery Protected, 2× Surge Only</td>
+        <td>1600 VA / 960 W</td>
+        <td>~50–55 min</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>1 GbE</td>
+        <td>✔ (USB HID)</td>
+        <td>LCD</td>
       </tr>
     </tbody>
   </table>
-  <p>Another option is to deploy a house battery system. This would protect all connected electrical equipment and, when used alongside a UPS, could keep critical IT infrastructure running for extended periods during a power outage.</p>
+
+  <p><strong>Automatic Voltage Regulation</strong> (AVR) stabilizes the mains power supply voltage to a load which provides protection from power problems.</p>
+
+  <p><strong>Dataline Protection</strong> is an electrical safety measure that guards electronic devices against power surges and voltage spikes traveling through communication lines such as Ethernet.</p>
+
+  <br>
+
+  <p><strong>Future resilience option:</strong></p>
+  <p>A whole-house battery system can protect all electrical loads and dramatically extend runtime. When paired with a UPS, this ensures clean power delivery and controlled shutdown even during extended outages.</p>
 </details>
 
 <details>
@@ -564,7 +597,6 @@ Below you'll find a few products for each category that I will need to upgrade m
       </tr>
     </tbody>
   </table>
-
 </details>
 
 <details>
@@ -589,7 +621,7 @@ Below you'll find a few products for each category that I will need to upgrade m
             <td>£299</td>
             <td>~8-20 W</td>
             <td>Intel N150</td>
-            <td>2/2</td>
+            <td>4/4</td>
             <td>1.1 GHz / 2.8 GHz</td>
             <td>16GB</td>
             <td>500GB SSD</td>
@@ -636,7 +668,7 @@ Below you'll find a few products for each category that I will need to upgrade m
         <td>Netgate SG-2100</td>
         <td>£190–£240</td>
         <td>~7–10 W</td>
-        <td>3 × 1 GbE (switch-based)</td>
+        <td>1 x 1 GbE WAN + 4 × 1 GbE (switched)</td>
         <td>✔ Fully supported</td>
       </tr>
       <tr>
@@ -754,6 +786,33 @@ Below you'll find a few products for each category that I will need to upgrade m
     </tbody>
   </table>
 </details>
+
+---
+
+### Implementation
+
+1. Add the new 2.5 GbE switch, making connections in alignment with the new design diagram.
+2. Add the new Ethernet Zigbee Coordinator
+3. Setup the new NAS
+  - Install new disks into enclosure
+  - Connect both Ethernet into the 2.5 GbE switch (Data & iSCSI)
+  - Configure storage pools and volumes
+  - Configure iSCSI and create required LUNs
+  - Create any required users
+  - Create any required shared folders
+4. Setup the new Proxmox host
+  - Install the latest Proxmox VE
+  - Connect both Ethernet into the 2.5 GbE switch (Data & iSCSI)
+  - Create a Proxmox cluster and add both hosts
+  - Ensure the new NAS LUNs are configured as `shared` across both hosts
+  - Migrate existing Proxmox guests
+  - Decommission old Proxmox host
+5. Configure the new firewall
+  - Install the latest pfSense
+  - Complete essential configuration
+  - Configure UPS-triggered shutdown (pfSense → Proxmox → NAS)
+  - Swap with the existing firewall
+
 
 
 
