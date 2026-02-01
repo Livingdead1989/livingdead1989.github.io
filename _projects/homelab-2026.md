@@ -278,12 +278,16 @@ In no particular order:
 </details>
 
 <details>
-  <summary>3. Proxmox CPU I/O Delay Spikes</summary>
+  <summary>3. Proxmox I/O Delay and Pressure Stalls</summary>
   <p><strong>Problem</strong></p>
-  <p>Occasional spikes in <abbr title="Central Processing Unit">CPU</abbr> <abbr title="Input Output">I/O</abbr> wait within Proxmox lead to noticeable performance degradation. This is most likely caused by slow or overwhelmed storage. Tools such as `iotop` help identify disk-heavy workloads, but they do not address the underlying storage bottleneck.</p>
+  <p>Spikes in <abbr title="Input Output">I/O</abbr> delay and pressure stalls within Proxmox create significant performance bottlenecks, causing intermittent system responsiveness. Diagnostic tools included <code>iotop</code>, <code>iostat</code>, and <code>systemd-cgtop</code>.</p>
   <p><strong>Resolution</strong></p>
-  <p>Migrate to faster storage with higher sustained <abbr title="Input Output">I/O</abbr> throughput and lower latency. The storage layer must be capable of absorbing bursty workloads without pushing the hypervisor into prolonged <abbr title="Input Output">I/O</abbr> wait states.</p>
-  <p>Where appropriate, introduce a secondary compute node to distribute workloads, reduce contention, and smooth performance during peak activity, while providing fault tolerance through automatic failover or workload migration.</p>
+  <ol>
+    <li>Upgrade to high-performance storage with optimized I/O throughput</li>
+    <li>Implement granular resource management and precise host-level controls</li>
+    <li>Right-size host CPU to match workload demands</li>
+    <li>Deploy secondary compute node for workload distribution and resilience</li>
+  </ol>
 </details>
 
 <details>
@@ -427,44 +431,44 @@ flowchart LR
     </thead>
     <tbody>
       <tr>
-        <td>Existing Proxmox host (N100)</td>
-        <td>~10–15 Watts</td>
+        <td>Proxmox host</td>
+        <td>~10-30 W</td>
       </tr>
       <tr>
-        <td>Additional Proxmox host (N100-class)</td>
-        <td>~10–15 Watts</td>
+        <td>Additional Proxmox host</td>
+        <td>~10-30 W</td>
       </tr>
       <tr>
-        <td>NAS (4-bay, modern ARM/x86, NVMe-capable)</td>
-        <td>~20–30 Watts</td>
+        <td>NAS (4-bay, NVMe-capable)</td>
+        <td>~12.5–41.3 W</td>
       </tr>
       <tr>
-        <td>Firewall / Router (pfSense-capable)</td>
-        <td>~10–20 Watts</td>
+        <td>Firewall / Router</td>
+        <td>~10–15 W</td>
       </tr>
       <tr>
         <td>Switch (2.5 <abbr title="Gigabit Ethernet">GbE</abbr>, fanless)</td>
-        <td>~8–15 Watts</td>
+        <td>~8–15 W</td>
       </tr>
       <tr>
         <td>Zigbee network coordinator</td>
-        <td>&lt; 2 Watts</td>
+        <td>&lt; 2 W</td>
       </tr>
       <tr>
         <td>Misc (APs, overhead)</td>
-        <td>~10–15 Watts</td>
+        <td>~10–15 W</td>
       </tr>
     </tbody>
   </table>
 
-  <p>Estimated Total Average Load: 💡 ~70–92 Watts continuous</p>
+  <p>Estimated Total Average Load: 💡 ~62.5–148.3 Watts continuous</p>
 
   <p>Using an electricity rate of <strong>23.74 pence per kWh</strong>, the estimated running cost is:</p>
   <ul>
-    <li><strong>Daily consumption:</strong> ~1.7–2.2 kWh</li>
-    <li><strong>Daily cost:</strong> ~£0.40 – £0.52</li>
-    <li><strong>Monthly cost:</strong> ~£12 – £16</li>
-    <li><strong>Annual cost:</strong> ~£145 – £190</li>
+    <li><strong>Daily consumption:</strong> ~1.5–3.56 kWh</li>
+    <li><strong>Daily cost:</strong> ~£0.36 – £0.84</li>
+    <li><strong>Monthly cost:</strong> ~£11 – £25</li>
+    <li><strong>Annual cost:</strong> ~£130 – £300</li>
   </ul>
 </details>
 
@@ -476,7 +480,7 @@ The review has identified several changes to the homelab’s hardware requiremen
 
 Below you'll find a few products for each category that I will need to upgrade my homelab
 
-⭐* Items I have purchased*
+⭐ *Indicate purchased equipment*
 
 <details>
   <summary><strong>UPS</strong></summary>
