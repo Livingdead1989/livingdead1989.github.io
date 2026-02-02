@@ -660,7 +660,7 @@ Below you'll find a few products for each category that I will need to upgrade m
         <th>Approx. Cost (£)</th>
         <th>Idle Power</th>
         <th>NICs (Count & Speed)</th>
-        <th>pfSense Compatibility</th>
+        <th>OPNsense Compatibility</th>
       </tr>
     </thead>
     <tbody>
@@ -791,30 +791,44 @@ Below you'll find a few products for each category that I will need to upgrade m
 
 ### Implementation
 
+*DRAFT SECTION*
+
 1. Add the new 2.5 GbE switch, making connections in alignment with the new design diagram.
 2. Add the new Ethernet Zigbee Coordinator
 3. Setup the new NAS
-  - Install new disks into enclosure
-  - Connect both Ethernet into the 2.5 GbE switch (Data & iSCSI)
-  - Configure storage pools and volumes
-  - Configure iSCSI and create required LUNs
-  - Create any required users
-  - Create any required shared folders
+  - [x] Install new disks into enclosure
+  - [ ] Connect both Ethernet into the 2.5 GbE switch (Data & iSCSI)
+  - [x] Configure storage pools and volumes
+  - [x] Configure iSCSI and create required LUNs
+  - [x] Enable "multiple sessions from one or more iSCSI initiators" within iSCSI target.
+  - [x] Create any required users
+  - [x] Create any required shared folders
 4. Setup the new Proxmox host
-  - Install the latest Proxmox VE
-  - Connect both Ethernet into the 2.5 GbE switch (Data & iSCSI)
-  - Create a Proxmox cluster and add both hosts
-  - Ensure the new NAS LUNs are configured as `shared` across both hosts
-  - Migrate existing Proxmox guests
-  - Decommission old Proxmox host
+  - [x] Install the latest Proxmox VE
+  - [ ] Connect both Ethernet into the 2.5 GbE switch (Data & iSCSI)
+  - [x] Enable the non-subscription repository and update
+  - [x] Create a Proxmox cluster and add hosts
+  - join cluster using CLI due to have MFA enabled, on new host, use command `pvecm add {existing_host_IP} -link0 {new_host_IP}`
+  - [x] Ensure the new NAS LUNs are configured as `shared` across both hosts
+  - [x] Migrate existing Proxmox guests
+  - [x] Decommission old Proxmox host
+  - [Edit Corosync to remove old node](https://192.168.1.74:8006/pve-docs/chapter-pvecm.html#pvecm_edit_corosync_conf)
+  - `pvecm expected 1`
 5. Configure the new firewall
-  - Install the latest pfSense
-  - Complete essential configuration
-  - Configure UPS-triggered shutdown (pfSense → Proxmox → NAS)
-  - Swap with the existing firewall
-
-
-
+  - [x] Install the latest OPNsense
+  - [x] Complete configuration wizard
+  - [x] Swap with the existing firewall
+  - [x] Update
+  - Dynamic DNS
+  - [x] Install community plugin `os-ddclient`
+  - [x] Configure to use Cloudflare, monitoring the WAN
+  - Port forward for Reverse Proxy
+  - [x] Create Alias for Cloudflare IP ranges (URL Table for IPv4 and IPv6)
+  - [x] Create Firewall rule to permit tcp/443 for only Cloudflare IP range
+  - [x] Create Destination NAT rule
+  - VPN
+  - [ ] VPN client and restrict normal flow (killswitch)
+  - [x] VPN server for remote administration
 
 
 ---
