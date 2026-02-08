@@ -804,6 +804,12 @@ Below you'll find a few products for each category that I will need to upgrade m
   - [x] Create any required users
   - [x] Create any required shared folders
 4. Setup the new Proxmox host
+  - BIOS settings
+  - [x] Power Limit: Quiet 10W
+  - [x] Auto Power: On
+  - [x] I/O Port Access: Wireless and Audio = Off
+  - [x] Secure Boot: Enabled
+  - Proxmox OS
   - [x] Install the latest Proxmox VE
   - [ ] Connect both Ethernet into the 2.5 GbE switch (Data & iSCSI)
   - [x] Enable the non-subscription repository and update
@@ -827,9 +833,16 @@ Below you'll find a few products for each category that I will need to upgrade m
   - [x] Create Firewall rule to permit tcp/443 for only Cloudflare IP range
   - [x] Create Destination NAT rule
   - VPN
-  - [ ] VPN client and restrict normal flow (killswitch)
+  - [x] VPN client and restrict normal flow
   - [x] VPN server for remote administration
-
+  - Improve
+  - [x] Limit WebGUI to LAN
+  - [ ] Scheduled Backups
+  - [ ] Configure Notifications
+  - [x] Enable MFA for accounts
+  - [ ] IPS & IDS
+  - [ ] DPI
+  - [ ] Review & Implement Q-Feeds
 
 ---
 
