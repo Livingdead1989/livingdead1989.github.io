@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Enhance Your YouTube TV Experience with iSponserBlockTV"
+title: "Enhance YouTube TV with iSponsorBlockTV"
 description: "Automatically skip sponsorships, introductions, and ads in YouTube videos on your TV using iSponsorBlockTV, a lightweight self-hosted application powered by the SponsorBlock API."
 date: 2026-02-14
 assets: '/assets/posts/2026/isponserblocktv/'
