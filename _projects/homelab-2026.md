@@ -529,8 +529,8 @@ Below you'll find a few products for each category that I will need to upgrade m
         <td>simple LED status</td>
       </tr>
       <tr>
-        <td>APC Back-UPS Pro BR1600SI</td>
-        <td>£460</td>
+        <td>APC Back-UPS Pro BR1600MI ⭐</td>
+        <td>£362</td>
         <td>6× Battery Protected, 2× Surge Only</td>
         <td>1600 VA / 960 W</td>
         <td>~50–55 min</td>
@@ -791,59 +791,36 @@ Below you'll find a few products for each category that I will need to upgrade m
 
 ### Implementation
 
-*DRAFT SECTION*
+I implemented the upgrades in phased stages to avoid downtime:
 
-1. Add the new 2.5 GbE switch, making connections in alignment with the new design diagram.
-2. Add the new Ethernet Zigbee Coordinator
-3. Setup the new NAS
-  - [x] Install new disks into enclosure
-  - [ ] Connect both Ethernet into the 2.5 GbE switch (Data & iSCSI)
-  - [x] Configure storage pools and volumes
-  - [x] Configure iSCSI and create required LUNs
-  - [x] Enable "multiple sessions from one or more iSCSI initiators" within iSCSI target.
-  - [x] Create any required users
-  - [x] Create any required shared folders
-4. Setup the new Proxmox host
-  - BIOS settings
-  - [x] Power Limit: Quiet 10W
-  - [x] Auto Power: On
-  - [x] I/O Port Access: Wireless and Audio = Off
-  - [x] Secure Boot: Enabled
-  - Proxmox OS
-  - [x] Install the latest Proxmox VE
-  - [ ] Connect both Ethernet into the 2.5 GbE switch (Data & iSCSI)
-  - [x] Enable the non-subscription repository and update
-  - [x] Create a Proxmox cluster and add hosts
-  - join cluster using CLI due to have MFA enabled, on new host, use command `pvecm add {existing_host_IP} -link0 {new_host_IP}`
-  - [x] Ensure the new NAS LUNs are configured as `shared` across both hosts
-  - [x] Migrate existing Proxmox guests
-  - [x] Decommission old Proxmox host
-  - [Edit Corosync to remove old node](https://192.168.1.74:8006/pve-docs/chapter-pvecm.html#pvecm_edit_corosync_conf)
-  - `pvecm expected 1`
-5. Configure the new firewall
-  - [x] Install the latest OPNsense
-  - [x] Complete configuration wizard
-  - [x] Swap with the existing firewall
-  - [x] Update
-  - Dynamic DNS
-  - [x] Install community plugin `os-ddclient`
-  - [x] Configure to use Cloudflare, monitoring the WAN
-  - Port forward for Reverse Proxy
-  - [x] Create Alias for Cloudflare IP ranges (URL Table for IPv4 and IPv6)
-  - [x] Create Firewall rule to permit tcp/443 for only Cloudflare IP range
-  - [x] Create Destination NAT rule
-  - VPN
-  - [x] VPN client and restrict normal flow
-  - [x] VPN server for remote administration
-  - Improve
-  - [x] Limit WebGUI to LAN
-  - [ ] Scheduled Backups
-  - [ ] Configure Notifications
-  - [x] Enable MFA for accounts
-  - [ ] IPS & IDS
-  - [ ] DPI
-  - [ ] Review & Implement Q-Feeds
+- **Synology NAS**
+  - Assembled the new Synology NAS using four 4 TB WD Red drives reclaimed from a previous project, configured as a RAID5.
+  - Added two Synology 400 GB NVMe modules as SSD cache.
 
----
+- **iSCSI storage**
+  - Created iSCSI LUNs on the Synology.
+  - Connected the existing Proxmox host to the new LUNs.
+  - Migrated all VM and container disks to the Synology LUNs to centralize storage.
 
-This project will evolve as the 2026 homelab takes shape. Check back soon.
+- **Proxmox host migration**
+  - Deployed the new Proxmox host, joined it to the existing cluster.
+  - Live-migrated guest VMs and containers from the original host to the new host while keeping services online.
+  - Removed the old Proxmox host from the cluster.
+
+- **Repurposing old hardware**
+  - Reused the decommissioned Proxmox server hardware as the new firewall.
+  - Migrated rules/policies, NAT entries, and VPN endpoints to the new firewall with minimal service interruption.
+  - Decomissioned the previous firewall appliance.
+
+- **Zigbee coordinator and Home Assistant**
+  - Installed the Ethernet-based Zigbee coordinator and integrated it into Home Assistant.
+
+- **Network and iSCSI**
+  - Connected all of the new equipment to the new 2.5 Gb switch.
+  - Configured a dedicated iSCSI interface on the Proxmox host and Synology.
+  - Ensured consistent MTU/Jumbo Frame settings across Synology and Proxmox hosts.
+
+- **UPS and rackwork**
+  - Installed the UPS under the switch rack
+  - Integrated it with Synology and Proxmox for graceful shutdowns—configured and tested UPS notifications and shutdown scripts.
+  - Tidied cabling, labeled ports, and updated rack documentation.
