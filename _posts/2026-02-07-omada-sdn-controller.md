@@ -336,9 +336,55 @@ The Omada [iOS](https://apps.apple.com/gb/app/tp-link-omada/id1327615864){:targe
 
 ---
 
+## Tweaks
+
+### Java tuning
+
+We can apply a min and max memory value, which can help on systems with limited RAM
+
+Edit the Omada control file
+
+```bash
+nano /opt/tplink/EAPController/bin/control.sh
+```
+
+Edit this section
+
+```sh
+JAVA_OPTS="-server -XX:MaxHeapFreeRatio=60 -XX:MinHeapFreeRatio=30  -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=${LOG_DIR}/java_heapdump.hprof -Djava.awt.headless=true -Djdk.lang.Process.launchMechanism=vfork"
+```
+
+Add `-Xms512m -Xmx512m` for example:
+
+```sh
+JAVA_OPTS="-server -Xms512m -Xmx512m -XX:MaxHeapFreeRatio=60 -XX:MinHeapFreeRatio=30  -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=${LOG_DIR}/java_heapdump.hprof -Djava.awt.headless=true -Djdk.lang.Process.launchMechanism=vfork"
+```
+
+### WiredTiger storage engine
+
+The `wiredTigerCacheSizeGB` is a configuration parameter in MongoDB that sets the size of the WiredTiger storage engine's memory cache in gigabytes.
+
+We can cap the MongoDB at 512 MB.
+
+```bash
+nano /etc/mongod.conf
+```
+
+Add
+
+```text
+storage:
+  wiredTiger:
+    engineConfig:
+      cacheSizeGB: 0.5
+```
+
+---
+
 ## References 
 
 - [Recommended Server Specifications for Omada Software Controller](https://www.tp-link.com/us/support/faq/2967/){:target="_blank"}
 - [MongoDB documentation](https://www.mongodb.com/docs/v8.0/tutorial/install-mongodb-on-debian/){:target="_blank"}
 - [Discover and manage Omada Devices](https://www.tp-link.com/us/support/faq/3387/){:target="_blank"}
 - [Omada Documents - Configuration Guides for Controllers](https://support.omadanetworks.com/en/document/?documentResourceTypeIdList=1116&documentTagIdList=7){:target="_blank"}
+- [Parameters Optimization of Omada SDN Controller](https://support.omadanetworks.com/cac/document/13109/){:target="_blank"}
