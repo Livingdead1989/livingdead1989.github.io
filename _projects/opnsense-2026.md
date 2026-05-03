@@ -25,7 +25,20 @@ mermaid: true
 
 ## Initial Setup
 
+General settings
+- Added my preferred internal domain name.
+- Set the `opnsense-dark` theme to prevent my eyes from melting.
+
+
+Miscellaneous settings
+- Thermal sensors, configured to "Intel Core CPU", this means you can add the Thermal Sensors widget on your dashboard and monitor their temperatures.
+- System Sounds, Startup/Shutdown Sound disabled.
+- Enabled Use PowerD and set the normal behaviour from `Hiadaptive` to `Minimum` mode this uses the lowest performance values to get the most power savings.
+
 ### Backup
+
+Snapshots 
+
 ### Notifications
 ### MFA
 
@@ -241,8 +254,10 @@ Unbound has a "Force SafeSearch" button within its General menu, applying to Goo
 
 SSH onto OPNsense and create a new file, this will automatically get added to the Unbound configuration.
 
+Edit the below file using `vi` or install nano using `pkg install nano`.
+
 ```bash
-vi /usr/local/etc/unbound.opnsense.d/custom_safesearch.conf
+nano /usr/local/etc/unbound.opnsense.d/custom_safesearch.conf
 ```
 
 Below is the safe search list, including YouTube, Yandex, DuckDuckGo, Bing, Pixabay, Qwant and Google.
@@ -703,9 +718,130 @@ This report page is similar to what PiHole presents, there are displays for:
 
 ## Dynamic DNS
 
+Dynamic DNS is a method of updating your DNS records when your IP changes, this is extremely useful when you do not have a static IP address provided by your ISP and is fairly normal when self-hosting from a homelab.
+
+OPNsense supports a range of service providers, such as Cloudflare.
+
+To configure Cloudflare as a DDNS service, you'll need to create a Cloudflare API token with DNS read and edit permissions, as it will need to update the value.
+
+You'll also need a host record created for example `ddns.example.com`
+
+- Service: Cloudflare
+- Username: `token` (the word)
+- Password: API key
+- Zone: Domain name
+- Hostname: ddns.example.com
+- Check IP Method: `Interface [IPv4]`
+- Interface to Monitor: `WAN`
+
+Once you have created the account, ensure that the service is enabled via the General Settings tab. By default it will periodocally update your record every 300 seconds (5 minutes).
+
+I'd also recommend adding the Dynamic DNS widget on the OPNsense dashboard.
+
 ---
 
-## NTP Server
+## Intrusion Detection
+
+Intrusion Detection (IDS) and Prevention (IPS) Systems monitor packets going through an interface and review them against a set of rules. If the system is in detection it will simplify alert about the trigger, but in prevention mode the packet will be dropped.
+
+The Intrusion Prevention System (IPS) system of OPNsense is based on [Suricata](https://suricata.io/){:target="_blank"} and utilizes Netmap to enhance performance.
+
+IDS and IPS are built-in and available within the Services menu item.
+
+---
+
+### Settings
+
+When you are ready to go live, come back and check the Enabled option.
+
+There are three options for the capture mode these are:
+ 
+1. **PCAP live mode (IDS)** - Alerts only
+2. **Netmap (IPS)** - Alerts and discards
+3. **Divert (IPS)** - Redirect packets via firewall rules
+
+Rules for an IDS/IPS system usually need to have a clear understanding about the internal network, therefore the interface will be set to **LAN**.
+
+Pattern matcher is the algorithm used to scan, there are three options available, these are: 
+
+1. **Aho–Corasick** is the default.
+2. **Hyperscan** is the best option on commodity hardware.
+3. **Aho–Corasick Ken Steele variant** performs better than default.
+
+![Intrusion Detection Settings page]({{ page.assets }}/intrusion-settings.png)
+
+---
+
+### Rulesets
+
+OPNsense have a abuse.ch and ET open rulesets available to download from the Download tab.
+
+- **abuse.ch/Feodo Tracker**
+  - botnet Command & Control (C&C) servers associated with Dridex, Emotet (aka Heodo), TrickBot, QakBot (aka QuakBot / Qbot) and BazarLoader (aka BazarBackdoor).
+- **abuse.ch/SSL Fingerprint Blacklist**
+  - SSL black list that identifies JA3 fingerprints helping you to detect & block malware botnet C&C communication on the TCP layer.
+- **abuse.ch/SSL IP Blacklist**
+  - Same as above by using IP addresses.
+- **abuse.ch/ThreatFox**
+  - Dedicated to sharing indicators of compromise (IOCs) associated with malware.
+- **abuse.ch/URLhaus**
+  - Dedicated to sharing malicious URLs that are being used for malware distribution.
+- [Emerging Threats Rule Categroies PDF](https://tools.emergingthreats.net/docs/ETPro%20Rule%20Categories.pdf){:target="_blank"}
+- **OPNsense App detection rules**
+  - [Rules](https://github.com/opnsense/rules){:target="_blank"} are focused on blocking web services and the URLs behind them.
+    - file-transfer (file sharing in general)
+    - media-streaming (streaming, like youtube or shoutcast)
+    - social-networking (facebook, google+)
+    - messaging (ICQ, whatsapp)
+    - mail (gmail, yahoo mail, mail.ru)
+    - uncategorized (Zynga, Amazon, etc.)
+
+Check the required rulesets, enable them and then use the "Download & Update Rules" button.
+
+Schedule the rulesets to automatically update by clicking the Schedule tab and enabling the automaitcally created schedule for "Update and reload intrusion detection rules".
+
+When using IPS mode make sure all hardware offloading features are disabled in the interface settings
+
+---
+
+### Policy
+
+Policies allow for granular control over the rules. By default the rulesets will be added in the `alert` action, we can modify our rulesets to `drop` using a policy.
+
+1. Create a new policy
+2. Select all rulesets
+2. Action: Alert
+3. New action: Drop
+
+This will change the enabled, alert rules to be drop instead.
+
+Removing the policy will revert the rules back to alert.
+
+---
+
+### Bypass Internal Networks
+
+By configuring a bypass this will result in traffic only being inspected between external (WAN) networks and internal (LAN) networks. With bypass enabled, routing performance is improved significantly between local networks while IPS is used.
+
+To bypass IPS for internal networks, create a "User Defined" rule.
+
+In the example below the source and destination network is `192.168.0.0/16` with the action to pass and the bypass keyword enabled.
+
+![Bypass for internal traffic]({{ page.assets }}/intrusion-lan-bypass.png)
+
+---
+
+### Alerts
+
+Its important to apply rules progressively and monitor using the alerts tab.
+
+IPS can break a network quickly if you decide to bulk add rulesets and drop everything
+
+
+
+---
+
+## Reverse Proxy
 
 ---
 
@@ -718,13 +854,5 @@ This report page is similar to what PiHole presents, there are displays for:
 ---
 
 ## VPN Client
-
----
-
-## IDS and IPS
-
----
-
-## Reverse Proxy
 
 ---
