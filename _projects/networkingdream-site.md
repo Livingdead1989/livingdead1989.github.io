@@ -1,8 +1,8 @@
 ---
 title: "NetworkingDream Website"
 layout: project
-status: active # active / updated / archived
-featured: true
+status: archived # active / updated / archived
+featured: false
 homepage: https://networkingdream.com
 
 description: >

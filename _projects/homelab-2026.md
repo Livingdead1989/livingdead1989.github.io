@@ -1,8 +1,8 @@
 ---
 title: "From Frankenstein to Focused: The 2026 Homelab"
 layout: project
-status: active # active / updated / archived
-featured: true
+status: archived # active / updated / archived
+featured: false
 homepage: https://networkingdream.com
 
 description: >
