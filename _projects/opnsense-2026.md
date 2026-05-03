@@ -6,10 +6,7 @@ featured: true
 homepage: https://networkingdream.com
 
 description: >
-  A complete OPNsense homelab build from initial setup to advanced networking features,
-  including DNS (Unbound + Dnsmasq), DHCP, DNS blocklists, intrusion detection (Suricata),
-  and dynamic DNS. Designed as a Pi-hole replacement with enhanced control, security,
-  and observability.
+  A complete OPNsense homelab build from initial setup to advanced networking features
 
 excerpt: >
   Step-by-step OPNsense homelab setup covering DNS, DHCP, ad blocking, IDS/IPS, and
@@ -39,6 +36,8 @@ assets: /assets/projects/opnsense-2026
 
 mermaid: true
 ---
+
+This project is currently under development, so there are sections missing.
 
 ## Initial Setup
 
