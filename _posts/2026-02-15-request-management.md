@@ -247,3 +247,9 @@ Each request management platform targets a slightly different audience:
 - **Ombi** offers the most complete feature set, broad DVR support, and mobile applications
 
 For an Emby-based media server, **Ombi** stands out as the most flexible and mature choice, particularly in multi-user environments where long-term scalability matters.
+
+After using Ombi for quite some time, although on paper it has everything I did notice that the general operation lacked in comparison to **Seerr**.
+
+**Seerr** uses a HTML 5 native web interface so there isn't really a requirement for a dedicated iOS or Android app and using the web interface on both desktop and mobile is sleek with everything you would need at your fingertips and working perfectly, whereas I noticed some UI glitches when using **Ombi**.
+
+My suggestion would be to deploy **Seerr**.
