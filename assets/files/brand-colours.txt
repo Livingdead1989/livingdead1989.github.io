@@ -1,0 +1,8 @@
+accent: #7fbf9a; # Muted Teal
+accent-dark: #4f8f73; # Jungle Teal
+accent-warm: #d6b866; # Metallic Gold
+accent-warm-dark: #bea45a; # Golden Bronze
+
+text: #e5e7eb;
+bg: #0b1210;
+
