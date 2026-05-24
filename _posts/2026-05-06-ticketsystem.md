@@ -7,6 +7,7 @@ featured: false
 tags:
   - self-hosted
   - homelab
+  - management
 excerpt: >
   A practical look at self-hosted IT ticketing systems, key requirements, and a hands-on setup with Zammad.
 ---

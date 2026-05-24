@@ -7,9 +7,10 @@ featured: false
 tags:
   - self-hosted
   - docker
-  - networking
+  - container
   - homelab
-  - debian
+  - management
+  - utility
 excerpt: >
   Deploy a Debian-based Docker server with Portainer, Webmin and a
   collection of self-hosted network utilities including monitoring,
