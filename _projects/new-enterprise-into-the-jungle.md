@@ -6,11 +6,8 @@ featured: true
 homepage: https://networkingdream.com
 
 description: >
-  A long-term project documenting my journey as Head of IT within a
-  multi-site educational establishment, covering discovery,
-  standardisation, technical debt reduction, infrastructure improvements,
-  self-hosted services, and the day-to-day realities of managing ICT
-  across a complex estate.
+  My journey as Head of IT, covering discovery, standardisation, technical debt reduction, infrastructure improvements,
+  self-hosted services, and the realities of managing ICT across a complex estate.
 
 excerpt: >
   Taking over a multi-site educational ICT environment with no handover,
