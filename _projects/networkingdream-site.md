@@ -22,7 +22,7 @@ tags:
 repo: https://github.com/livingdead1989/networkingdream
 started: 2024-12-30
 archived: false
-og_image: /assets/og/projects/site.png
+og_image: /assets/og/projects/networkingdream-site/networkingdream-site.png
 
 assets: /assets/projects/networkingdream-site
 ---

@@ -30,7 +30,7 @@ started: 2026-02-21
 archived: false
 updated: 2026-05-03
 
-og_image: /assets/og/projects/opnsense.png
+og_image: /assets/og/projects/opnsense-2026/opnsense-2026.png
 
 assets: /assets/projects/opnsense-2026
 

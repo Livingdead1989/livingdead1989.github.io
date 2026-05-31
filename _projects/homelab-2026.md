@@ -19,7 +19,7 @@ tags:
 
 started: 2026-01-08
 archived: false
-og_image: /assets/og/projects/site.png
+og_image: /assets/og/projects/homelab-2026/homelab-2026.png
 
 assets: /assets/projects/homelab-2026
 
