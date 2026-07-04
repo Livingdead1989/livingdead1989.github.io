@@ -381,6 +381,35 @@ storage:
 
 ---
 
+## Updating the Controller
+
+Its strongly recommended to backup your existing Oamda controller to avoid data loss.
+
+The example below show upgrading from version `6.1.0.19`  to `6.2.10.17`.
+
+You'll find the latest `deb` package available on the Omada webinterface or [Download Center for Omada Controller](https://support.omadanetworks.com/en/download/software/omada-controller/){:target="_blank"}.
+
+Download the Omada `.deb` package onto your Omada server.
+
+```bash
+wget https://ota-download.tplinkcloud.com/firmware/Omada_Network_Application_v6.2.10.17_linux_x64_20260428102045_1778119779543.deb
+```
+
+Install the update
+
+```bash
+sudo dpkg -i Omada_Network_Application_v6.2.10.17_linux_x64_20260428102045_1778119779543.deb
+```
+
+Clean up the install files once completed.
+
+```bash
+rm Omada_Network_Application_v6.2.10.17_linux_x64_20260428102045_1778119779543.deb
+```
+
+
+---
+
 ## References 
 
 - [Recommended Server Specifications for Omada Software Controller](https://www.tp-link.com/us/support/faq/2967/){:target="_blank"}
@@ -388,3 +417,4 @@ storage:
 - [Discover and manage Omada Devices](https://www.tp-link.com/us/support/faq/3387/){:target="_blank"}
 - [Omada Documents - Configuration Guides for Controllers](https://support.omadanetworks.com/en/document/?documentResourceTypeIdList=1116&documentTagIdList=7){:target="_blank"}
 - [Parameters Optimization of Omada SDN Controller](https://support.omadanetworks.com/cac/document/13109/){:target="_blank"}
+- [How to upgrade the Omada Software Controller](https://support.omadanetworks.com/en/document/13222/){:target="blank"}
