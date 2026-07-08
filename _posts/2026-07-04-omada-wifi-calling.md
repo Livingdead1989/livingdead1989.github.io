@@ -93,6 +93,16 @@ Create a Wi-Fi profile
 
 ---
 
+## Firewall Outbound Rule
+
+If outbound traffic is restricted then you'll need to create a firewall rule for the following:
+
+1. Create an alias containing the UK carrier FQDNs
+1. Create an service alias containing TCP:443, UDP:500, UDP:4500
+1. Create the rule to permit from selected internal networks to the UK Carrier FQDN alias using the Traffic Type ports.
+
+---
+
 ## Verify Wi-Fi Calling
 
 1. Connect your phone to Wi-Fi.
