@@ -1,7 +1,9 @@
 ---
 layout: post
 title: "Introduction to Fibre Optics"
-description: "The fundamentals of fibre optics."
+description: "The fundamentals of fibre optic networking, from single-mode and
+  multimode fibre to SFP transceivers, connectors, cable types, splicing,
+  and how fibre is deployed by Internet Service Providers."
 date: 2026-07-26
 featured: false
 tags:
@@ -10,9 +12,7 @@ tags:
   - ethernet
   - infrastructure
 excerpt: >
-  The fundamentals of fibre optic networking, from single-mode and
-  multimode fibre to SFP transceivers, connectors, cable types, splicing,
-  and how fibre is deployed by Internet Service Providers.
+  The fundamentals of fibre optics.
 ---
 
 ## What is Fibre Optics?
