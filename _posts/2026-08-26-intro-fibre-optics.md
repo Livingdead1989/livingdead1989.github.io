@@ -51,7 +51,7 @@ Because light suffers very little signal loss and is immune to electrical interf
 
 Optical modules matter, which will be discussed later in this post.
 
-![SMF vs MMF](../assets/posts/2026/intro-fibre-optics/smf-mmf.png)
+![SMF vs MMF](/assets/posts/2026/intro-fibre-optics/smf-mmf.png)
 
 ### Grades
 
@@ -103,7 +103,7 @@ Most fibre links use two fibres for Transmit (TX) and Receive (RX), this is know
 
 Some specialist optics, known as BiDi (Bidirectional) transceivers, transmit and receive over a single fibre using different wavelengths.
 
-![LC, SC, ST and MPO/MTP Connectors](../assets/posts/2026/intro-fibre-optics/fibre-connectors-types.jpeg)
+![LC, SC, ST and MPO/MTP Connectors](/assets/posts/2026/intro-fibre-optics/fibre-connectors-types.jpeg)
 
 ### SFP
 SFP stands for Small Form-Factor Pluggable. 
@@ -139,7 +139,7 @@ APC connectors minimise reflected light and are widely used in GPON and ISP netw
 
 > Never connect APC and UPC connectors together.
 
-![APC vs UPC Connectors](../assets/posts/2026/intro-fibre-optics/upc-vs-apc-connectors.png)
+![APC vs UPC Connectors](/assets/posts/2026/intro-fibre-optics/upc-vs-apc-connectors.png)
 
 ---
 
@@ -169,7 +169,7 @@ Tools
 
 Below is an example of a dirty fibre connection, and the result of cleaning it.
 
-![Before and After Fibre Cleaning](../assets/posts/2026/intro-fibre-optics/fibre-before-after-clean.png)
+![Before and After Fibre Cleaning](/assets/posts/2026/intro-fibre-optics/fibre-before-after-clean.png)
 
 ### Safety
 
@@ -236,11 +236,13 @@ The connection then continues to a Connectorised Block Terminal (CBT), before te
 
 The CSP then connects to an Optical Network Terminal (ONT), then finally the router.
 
-![Diagram of ISP Installation](../assets/posts/2026/intro-fibre-optics/isp-fibre-diagram.png)
+![Diagram of ISP Installation](/assets/posts/2026/intro-fibre-optics/isp-fibre-diagram.png)
 
-Below is a video demonstrating Openreach's fibre deployment.
+Below are some videos demonstrating Openreach's fibre deployment.
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/2Ef3iiY3K4s?si=LADx872cKeKJyWJr"frameborder="0" encrypted-media" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+- [FTTP Live installation Demo with Openreach & Zen Internet](https://youtu.be/2Ef3iiY3K4s?si=d57n4dAVEtekj3S7)
+- [Virtual Tour of Openreach's FTTP Network](https://youtu.be/6595-Xv-pZk?si=X4IYZ9Zu9ZqI_T0j)
+
 
 ---
 
