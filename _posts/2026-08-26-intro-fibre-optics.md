@@ -230,10 +230,13 @@ Fibre optic splicers are precision tools used to join glass fibres together
 
 ## Tools
 
-There are a few cheap tools that can be extremely useful, for example:
+There are a few tools that can be extremely useful, for example:
 
-- Optical light source
-- Optical power meter
+- Optical Light Source
+- Optical Power Meter
+- Optical Time-Domain Reflectometer (OTDR)
+
+Each tool gets progressively adds more features and functinality but also becomes more expensive.
 
 ### Optical Light Source
 
@@ -246,13 +249,27 @@ As you can see the light does reach the end of the cable, but its leaking out fr
 Optical light sources come in different forms, but the pen/flashlight is quite popular. In the photograph above I was using the [30KM Visual Fault Locator Fiber Optic Tester](https://amzn.to/4w0gava) from Amazon.
 
 
-### Optical power meter
+### Optical Power Meter
 
 Power meters measure the measure the power level of light traveling within the fibre cable. A reading is shown in dBm and can be used to detect loss/attenuation in cables or connectors.
 
 You'll need to compare the provided measurement against the speicifcation sheet for the cable or connector.
 
 I have the [Comptyco Optical Power Meter](https://amzn.to/3TzmegL) value device from Amazon, it also has a light source built-in.
+
+### Optical Time-Domain Reflectometer (OTDR)
+
+Measures the relected light to identify fibre characteristics such as:
+
+- Length
+- Attenuation
+- Bend, Cracks, Connectors at what distance.
+
+The meter produces a graph, similar to the graphic below.
+
+![OTDR Signal Graph](/assets/posts/2026/intro-fibre-optics/otdr-graph.png)
+
+You can buy cheap [OTDRs](https://amzn.to/3TRpaW6) from Amazon, but you are doing this professionally, then I'd suggest investing in quality tools.
 
 ---
 
