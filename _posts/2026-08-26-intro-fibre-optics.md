@@ -151,21 +151,23 @@ Although fibre cabling is quite durable, you still need to take care when handli
 
 You can test cables using a red light tester, if you can see the red light in the cable this means its potentially broken.
 
-Also keep the end caps on until the cable is being used, this helps to keep the connectors clean.
+Also keep the [end caps/covers](https://amzn.to/4vXcvOL) on until the cable is being used, this helps to keep the connectors clean.
 
-Lastly do not tangle cables, use a hook and loop fastener and avoid compressing the cable.
+Lastly do not tangle cables, use a [hook and loop fastener](https://amzn.to/3TvTFko) and avoid compressing the cable.
 
 ### Cleaning
 
 It's important to ensure that fibre optic termination points are clean as they can become dirty when handling, resulting in attenuation of signal.
 
 Tools
-- Cleaning Pen
+- [Cleaning Pen](https://amzn.to/4fKHnMt)
     - Different pen for each connector
     - Usable on patch panel ports
-- Cassette Tape Cleaner
+- [Cassette Tape Cleaner](https://amzn.to/3RMA4M9)
     - Universal cleaner
     - Not usable on patch panel port
+- [Cleaning Wipes](https://amzn.to/4h39J6W)
+    - Avoid wipes when you can use the pen or cassette
 
 Below is an example of a dirty fibre connection, and the result of cleaning it.
 
@@ -223,6 +225,34 @@ Fibre optic splicers are precision tools used to join glass fibres together
 1. Clean the bare fibre with 99.9% isopropyl alcohol (IPA)
 1. Fuse the fibre using the splicer
 1. Slide the sleeve into position and heat to shrink
+
+---
+
+## Tools
+
+There are a few cheap tools that can be extremely useful, for example:
+
+- Optical light source
+- Optical power meter
+
+### Optical Light Source
+
+This device produces a light source, and when connected to a fibre optical cable you can see if the light is reaching the other end or if there are breakages within the cable, as shown in the image below.
+
+As you can see the light does reach the end of the cable, but its leaking out from a potential break in the fibre, this will lead to signal loss.
+
+![Light leaking from Fibre optical cable](/assets/posts/2026/intro-fibre-optics/optical-light-leak.jpg)
+
+Optical light sources come in different forms, but the pen/flashlight is quite popular. In the photograph above I was using the [30KM Visual Fault Locator Fiber Optic Tester](https://amzn.to/4w0gava) from Amazon.
+
+
+### Optical power meter
+
+Power meters measure the measure the power level of light traveling within the fibre cable. A reading is shown in dBm and can be used to detect loss/attenuation in cables or connectors.
+
+You'll need to compare the provided measurement against the speicifcation sheet for the cable or connector.
+
+I have the [Comptyco Optical Power Meter](https://amzn.to/3TzmegL) value device from Amazon, it also has a light source built-in.
 
 ---
 
