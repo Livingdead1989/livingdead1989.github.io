@@ -122,7 +122,7 @@ My current homelab is intentionally compact, with a focus on low power usage and
   <summary>Storage</summary>
   <ul>
     <li>Raspberry Pi 4</li>
-    <li>[4 Bay Icybox Direct Attached Storage](https://amzn.to/4wBLMIX)</li>
+    <li><a href="https://amzn.to/4wBLMIX">4 Bay Icybox Direct Attached Storage</a></li>
     <li>2 × 4 TB HDDs configured as a mirrored RAID array</li>
   </ul>
 </details>
@@ -529,7 +529,7 @@ Below you'll find a few products for each category that I will need to upgrade m
         <td>simple LED status</td>
       </tr>
       <tr>
-        <td>[APC Back-UPS Pro BR1600MI](https://amzn.to/4wyVRWR) ⭐</td>
+        <td><a href="https://amzn.to/4wyVRWR">APC Back-UPS Pro BR1600MI</a> ⭐</td>
         <td>£362</td>
         <td>6× Battery Protected, 2× Surge Only</td>
         <td>1600 VA / 960 W</td>
@@ -568,7 +568,7 @@ Below you'll find a few products for each category that I will need to upgrade m
     </thead>
     <tbody>
       <tr>
-        <td>[Synology DS925+](https://amzn.to/4bRt9Is) ⭐</td>
+        <td><a href="https://amzn.to/4bRt9Is">Synology DS925+</a> ⭐</td>
         <td>£579</td>
         <td>12.5W</td>
         <td>28.7W</td>
@@ -637,7 +637,7 @@ Below you'll find a few products for each category that I will need to upgrade m
             <td>512GB SSD</td>
         </tr>
         <tr>
-            <td>[GMKtec Nucbox M5 Ultra](https://amzn.to/4pQNrHG) ⭐</td>
+            <td><a href="https://amzn.to/4pQNrHG">GMKtec Nucbox M5 Ultra</a> ⭐</td>
             <td>£379</td>
             <td>~10-30 W</td>
             <td>AMD Ryzen 7 7730U</td>
@@ -672,7 +672,7 @@ Below you'll find a few products for each category that I will need to upgrade m
         <td>✔ Fully supported</td>
       </tr>
       <tr>
-        <td>[Intel N100 Mini PC](https://amzn.to/45B8Mf0) ⭐</td>
+        <td><a href="https://amzn.to/45B8Mf0">Intel N100 Mini PC</a> ⭐</td>
         <td>£180–£260</td>
         <td>~10–15 W</td>
         <td>2 × 2.5 GbE (Intel i226-V)</td>
@@ -714,7 +714,7 @@ Below you'll find a few products for each category that I will need to upgrade m
         <td>Zigbee2MQTT (TCP)</td>
       </tr>
       <tr>
-        <td>[SONOFF Dongle Max](https://amzn.to/4h9vGBq) ⭐</td>
+        <td><a href="https://amzn.to/4h9vGBq">SONOFF Dongle Max</a> ⭐</td>
         <td>£38–£45</td>
         <td>Zigbee2MQTT (TCP)</td>
       </tr>
@@ -757,7 +757,7 @@ Below you'll find a few products for each category that I will need to upgrade m
         <td>~£50–£70</td>
       </tr>
       <tr>
-        <td>[MERCUSYS MS108GS-M2](https://amzn.to/4w6n42e) ⭐</td>
+        <td><a href="https://amzn.to/4w6n42e">MERCUSYS MS108GS-M2</a> ⭐</td>
         <td>8 × 2.5 GbE</td>
         <td>None</td>
         <td>Unmanaged</td>
